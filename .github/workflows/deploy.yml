@@ -23,13 +23,11 @@ jobs:
 
       - name: Setup pnpm
         uses: pnpm/action-setup@v4
-        with:
-          version: 10
 
       - name: Setup Node
         uses: actions/setup-node@v4
         with:
-          node-version: 20
+          node-version: 22
           cache: pnpm
 
       - name: Install
@@ -46,9 +44,14 @@ jobs:
 
       - name: Record bundle size
         run: |
-          echo "## Bundle size" >> "$GITHUB_STEP_SUMMARY"
-          du -sh apps/web/dist | tee -a "$GITHUB_STEP_SUMMARY"
-          find apps/web/dist -type f \( -name '*.js' -o -name '*.css' \) -printf '%s %p\n' | sort -n | tee -a "$GITHUB_STEP_SUMMARY"
+          {
+            echo "## Bundle size"
+            echo ""
+            echo '```'
+            du -sh apps/web/dist
+            find apps/web/dist -type f \( -name '*.js' -o -name '*.css' \) -printf '%s %p\n' | sort -n
+            echo '```'
+          } >> "$GITHUB_STEP_SUMMARY"
 
       - name: Install Playwright browsers
         run: pnpm --filter @strategos/web exec playwright install --with-deps chromium webkit
