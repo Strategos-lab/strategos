@@ -10,8 +10,8 @@ and be implemented**. They do not replace the plan.
 - Code must not silently override these rules.
 - On a conflict (rules ↔ plan ↔ code), do not silently pick one. Identify it, preserve the
   higher-level product decision, and report it before making any speculative change.
-- Authorisation overrides of the plan: no AI in any version; GitHub Pages PWA; no policing or
-  profession content; Module 5 = Social Dilemmas with contrast games; minimal two-stage sequential
+- Authorisation overrides of the plan: no AI in any version; GitHub Pages PWA; general-public
+  fictional domains only (see B); Module 5 = Social Dilemmas with contrast games; minimal two-stage sequential
   model; phases 0–9 one at a time, each confirmed.
 
 ---
@@ -48,7 +48,9 @@ and be implemented**. They do not replace the plan.
   values). Components must not invent prose dynamically.
 - PWA manifest `id` `/strategos/` (and scope/start_url) never changes.
 - Nothing else is published under the Strategos-lab org.
+<!-- lint:banned-terms-definition:start -->
 - No policing, law-enforcement or profession content. General-public fictional domains only.
+<!-- lint:banned-terms-definition:end -->
 - `Math.random` is forbidden. Use the engine's seeded PRNG.
 
 ## C. Visual design standard (preserve)
@@ -218,9 +220,18 @@ learning.
   with the engine. Distractors are never accidentally correct.
 - Never skip or weaken tests.
 
+## O2. Planned work (not yet implemented)
+
+Recorded for later phases; do not build ad hoc:
+
+- **Phase 2:** dependency allow-list enforced in CI (B); content-lint concept gating, so formal
+  terms such as "dominant" or "equilibrium" are blocked in pre-reveal copy (V1 Plan §2.11, §10.4).
+- **Phase 3:** discipline label (GT / DT / behavioural) shown on reveal (V1 Plan §2.5); expected
+  payoffs of each action under the declared belief shown after a single outcome (V1 Plan §2.13).
+
 ## P. Implementation discipline
 
-1. Inspect first.
+1. Read the existing code and content first.
 2. Classify the problem: hierarchy, copy, interaction, pedagogy, styling, or engine.
 3. Fix the smallest layer. Default order: **copy → hierarchy → spacing → component behaviour → CSS**.
 4. Don't redesign unrelated screens. Don't change tokens without a demonstrated reason.
