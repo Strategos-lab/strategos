@@ -1,16 +1,15 @@
 import { useState } from 'react';
+import { Link } from 'react-router-dom';
 import { PayoffMatrix, type CellCoord } from '../components/PayoffMatrix';
 import { ConfidenceControl } from '../components/ConfidenceControl';
 import { StoragePanel } from '../components/StoragePanel';
-import { InstallCard } from '../components/InstallCard';
-import { InstallHelp } from '../components/InstallHelp';
 import { EngineDebug } from '../components/EngineDebug';
 
-/** Classic PD numbers, labelled only as a demo — do not teach PD yet. */
-const DEMO_PAYOFFS: [
-  [[number, number], [number, number]],
-  [[number, number], [number, number]],
-] = [
+/**
+ * Developer mode (#/dev): the Phase 0/1 spike — tap-to-select matrix, engine debug output and the
+ * storage panel with sample-event tools. Not linked from the learner experience.
+ */
+const DEMO_PAYOFFS: [number, number][][] = [
   [
     [3, 3],
     [0, 5],
@@ -21,7 +20,7 @@ const DEMO_PAYOFFS: [
   ],
 ];
 
-export function HomePage() {
+export function DevPage() {
   const [selected, setSelected] = useState<CellCoord | null>(null);
   const [confidence, setConfidence] = useState(70);
   const [showEngine, setShowEngine] = useState(false);
@@ -29,15 +28,10 @@ export function HomePage() {
   return (
     <main className="home">
       <header className="hero">
-        <p className="eyebrow">Phase 0 spike</p>
+        <p className="eyebrow">Developer mode</p>
         <h1>STRATEGOS</h1>
-        <p className="lede">
-          Strategic decision laboratory. Device-only. Offline after first load. No
-          accounts, no cloud, no AI.
-        </p>
+        <p className="lede">Phase 0 stub and engine probes. Not part of the learner experience.</p>
       </header>
-
-      <InstallCard />
 
       <PayoffMatrix
         rowPlayerLabel="You (roommate A)"
@@ -63,19 +57,13 @@ export function HomePage() {
         <EngineDebug rowActions={['Clean', 'Leave it']} colActions={['Clean', 'Leave it']} payoffs={DEMO_PAYOFFS} />
       ) : null}
 
-      <ConfidenceControl value={confidence} onChange={setConfidence} />
+      <ConfidenceControl value={confidence} onChange={setConfidence} label="Prediction confidence (stub)" />
 
-      <StoragePanel />
-
-      <InstallHelp />
+      <StoragePanel devTools />
 
       <footer className="site-footer">
         <p className="muted small">
-          Live at{' '}
-          <a href="https://strategos-lab.github.io/strategos/">
-            strategos-lab.github.io/strategos
-          </a>
-          . Hash routes: <code>#/</code>
+          <Link to="/">Back to the app</Link>
         </p>
       </footer>
     </main>

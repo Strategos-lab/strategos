@@ -12,7 +12,7 @@ import {
   type PersistResult,
 } from '../storage';
 
-export function StoragePanel() {
+export function StoragePanel({ devTools = false }: { devTools?: boolean }) {
   const [events, setEvents] = useState<LearningEvent[]>([]);
   const [persistInfo, setPersistInfo] = useState<PersistResult | null>(null);
   const [status, setStatus] = useState<string>('');
@@ -59,46 +59,55 @@ export function StoragePanel() {
   }
 
   return (
-    <section className="storage-panel" aria-label="Device storage spike">
-      <h2>Device storage</h2>
-      <p className="muted small">
-        IndexedDB <code>strategos-v1-learning</code> (separate from worksheet stub{' '}
-        <code>strategos-v1-worksheet</code>). Data never leaves this device unless you
-        export it.
-      </p>
+    <section className="storage-panel" aria-label="Your data on this device">
+      <h2>Your data</h2>
+      {devTools ? (
+        <p className="muted small">
+          IndexedDB <code>strategos-v1-learning</code> (separate from worksheet stub{' '}
+          <code>strategos-v1-worksheet</code>). Data never leaves this device unless you
+          export it.
+        </p>
+      ) : (
+        <p className="muted small">
+          Your practice record is stored only on this device. Nothing is sent anywhere. Export a
+          copy now and then; importing a file replaces what is stored here.
+        </p>
+      )}
 
       <div className="persist-status" data-testid="persist-status">
         {persistInfo?.message ?? 'Checking storage…'}
       </div>
 
       <div className="btn-row">
-        <button
-          type="button"
-          className="btn"
-          disabled={busy}
-          data-testid="btn-write-sample"
-          onClick={() =>
-            void run('Sample event written.', async () => {
-              await writeLearningEvent({
-                type: 'phase0.sample',
-                payload: { note: 'Phase 0 IndexedDB spike', demo: true },
-                createdAt: new Date().toISOString(),
-                schemaVersion: 1,
-                engineVersion: '0.0.0-phase0',
-                contentVersion: '0.0.0-phase0',
-              });
-            })
-          }
-        >
-          Write sample event
-        </button>
+        {devTools ? (
+          <button
+            type="button"
+            className="btn"
+            disabled={busy}
+            data-testid="btn-write-sample"
+            onClick={() =>
+              void run('Sample event written.', async () => {
+                await writeLearningEvent({
+                  type: 'phase0.sample',
+                  payload: { note: 'Phase 0 IndexedDB spike', demo: true },
+                  createdAt: new Date().toISOString(),
+                  schemaVersion: 1,
+                  engineVersion: '0.0.0-phase0',
+                  contentVersion: '0.0.0-phase0',
+                });
+              })
+            }
+          >
+            Write sample event
+          </button>
+        ) : null}
         <button
           type="button"
           className="btn"
           disabled={busy}
           data-testid="btn-request-persist"
           onClick={() =>
-            void run('Persist request complete.', async () => {
+            void run('Done.', async () => {
               const result = await requestPersistentStorage();
               setPersistInfo(result);
             })
@@ -169,10 +178,10 @@ export function StoragePanel() {
         </p>
       ) : null}
 
-      <h3>Events in learning DB</h3>
+      <h3>{devTools ? 'Events in learning DB' : 'Saved records'}</h3>
       {events.length === 0 ? (
         <p className="muted" data-testid="events-empty">
-          No events yet.
+          Nothing saved yet.
         </p>
       ) : (
         <ul className="event-list" data-testid="events-list">

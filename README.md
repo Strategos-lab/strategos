@@ -4,10 +4,18 @@ Strategic decision laboratory — a **static, installable PWA** for learning to 
 
 **Live (GitHub Pages):** https://strategos-lab.github.io/strategos/
 
-## Phase status
+## Status
 
-**Phase 0** — decisions, Pages deploy, PWA shell, IndexedDB spike, design-language prototype.  
-Later phases (engine, modules, mastery, lab, worksheet) are not started.
+- **Phase 0** — decisions, Pages deploy, PWA shell, IndexedDB spike, design-language prototype ([`docs/phase0.md`](docs/phase0.md)).
+- **Phase 1** — exact game-theory engine `@strategos/engine` ([`docs/phase1.md`](docs/phase1.md)).
+- **Learner slice** — the first learner-facing experience: one complete roommate / shared-kitchen
+  encounter (situation → predict → confidence → decide → B’s response → outcome in words → matrix
+  reveal → engine-checked reasoning questions → summary separating decision quality from outcome).
+  Content is data-driven and validated; every game fact comes from the engine; B’s choice comes from a
+  declared seeded policy (Leave it 7/10, Clean 3/10). See [`docs/slice-roommate.md`](docs/slice-roommate.md).
+
+Routes: `#/` learner slice, `#/data` export / import / erase, `#/dev` developer mode (old spike,
+engine debug output; not linked from the learner UI). Modules, mastery, lab and worksheet are not started.
 
 ## Stack decision (Phase 0)
 

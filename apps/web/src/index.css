@@ -459,3 +459,244 @@ code {
   padding: 0.5rem 0.75rem;
   margin: 0.5rem 0 1rem;
 }
+
+/* ---- Learner slice ---- */
+.flow-head .flow-title {
+  margin: 0.1rem 0 0;
+  font-size: 1.05rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  color: var(--muted);
+}
+
+.step-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 1.1rem 1rem 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.85rem;
+}
+
+.step-card h2 {
+  margin: 0;
+  font-size: 1.25rem;
+  font-weight: 600;
+  line-height: 1.3;
+}
+
+.step-card h2:focus {
+  outline: none;
+}
+
+.step-card h2:focus-visible {
+  outline: 2px solid var(--focus);
+  outline-offset: 4px;
+}
+
+.step-card p {
+  margin: 0;
+}
+
+.step-count {
+  font-size: 0.72rem;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--accent);
+}
+
+.start-card h2 {
+  font-size: 1.15rem;
+}
+
+.btn-large {
+  min-height: 48px;
+  min-width: 48px;
+  font-size: 1rem;
+  padding: 0.65rem 1.1rem;
+}
+
+.step-actions {
+  justify-content: space-between;
+  margin: 0.25rem 0 0;
+}
+
+.step-actions .btn.primary {
+  flex: 1;
+}
+
+.role-statement {
+  font-size: 1.05rem;
+  font-weight: 600;
+  color: var(--accent);
+}
+
+.context-list {
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.7rem;
+}
+
+.context-item dt {
+  font-size: 0.72rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--muted);
+  margin-bottom: 0.1rem;
+}
+
+.context-item dd {
+  margin: 0;
+  font-size: 0.95rem;
+}
+
+.choice-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+}
+
+.choice-btn {
+  min-height: 52px;
+  width: 100%;
+  font-size: 1.05rem;
+  text-align: left;
+  padding: 0.75rem 1rem;
+}
+
+.choice-btn:hover:not(:disabled),
+.choice-btn[aria-pressed='true'],
+.choice-btn.chosen {
+  border-color: var(--accent);
+}
+
+.choice-btn.chosen:disabled {
+  opacity: 1;
+  background: #2a3348;
+}
+
+.reveal-line {
+  font-size: 1.1rem;
+}
+
+.reveal-line strong,
+.summary-item strong {
+  color: var(--accent);
+  font-weight: 600;
+}
+
+.outcome-pair {
+  font-family: var(--mono);
+  font-size: 1.05rem;
+}
+
+.payoff-matrix.read-only .player-head {
+  color: var(--text);
+  font-size: 0.8rem;
+}
+
+.payoff-matrix.read-only thead td.corner {
+  border: none;
+}
+
+.payoff-matrix.read-only th.marked {
+  color: var(--accent);
+}
+
+.payoff-matrix .mark {
+  display: block;
+  font-size: 0.68rem;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--accent);
+}
+
+.matrix-value {
+  border: 1px solid var(--border);
+  background: var(--surface-2);
+  min-width: 4.5rem;
+  height: 3.25rem;
+}
+
+.matrix-value.realised {
+  border: 2px solid var(--accent);
+  background: #2a3348;
+}
+
+.how-to-read {
+  margin: 0;
+  padding-left: 1.1rem;
+  font-size: 0.9rem;
+}
+
+.question {
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 0.75rem;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+}
+
+.question legend {
+  padding: 0 0.25rem;
+  font-weight: 500;
+}
+
+.q-index {
+  color: var(--accent);
+}
+
+.feedback {
+  font-size: 0.92rem;
+  border-left: 2px solid var(--border);
+  padding-left: 0.6rem;
+}
+
+.feedback.ok {
+  border-left-color: var(--accent);
+}
+
+.feedback.miss {
+  border-left-color: var(--danger);
+}
+
+.closing-note {
+  font-size: 0.92rem;
+  color: #c2bdb4;
+  border-top: 1px solid var(--border);
+  padding-top: 0.75rem;
+}
+
+.summary-list {
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.85rem;
+}
+
+.summary-item dt {
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--muted);
+  margin-bottom: 0.15rem;
+}
+
+.summary-item dd {
+  margin: 0;
+  font-size: 0.95rem;
+}
+
+.confidence-scale {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 0.35rem;
+}
+
+.payoff-matrix.read-only {
+  table-layout: fixed;
+}

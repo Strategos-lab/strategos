@@ -1,0 +1,107 @@
+{
+  "id": "roommate-kitchen",
+  "contentVersion": "1.0.0",
+  "title": "The shared kitchen",
+  "roleStatement": "You are Roommate A.",
+  "context": {
+    "situation": "You share a flat with another person. The kitchen needs cleaning. Both of you independently decide whether to Clean or Leave it.",
+    "players": "Two people: you (Roommate A) and the person you share with (Roommate B).",
+    "preferences": "Each of you wants a clean kitchen but would rather not do the work. Best for you: B cleans and you don’t. Next best: you both clean. Then: nobody cleans. Worst: you clean alone while B leaves it. B sees it the same way from B’s side.",
+    "choices": "Each person has the same two options: Clean or Leave it.",
+    "learnerControls": "Only your own choice: Clean or Leave it.",
+    "opponentControls": "Only B’s own choice: Clean or Leave it. Neither of you can force the other.",
+    "knownUnknown": "You know both options and how each combination feels to each of you. You don’t know what B will do; B is deciding at the same time and cares about the same kind of things you do.",
+    "timing": "Simultaneous: you both decide at once, and neither sees the other’s choice before deciding.",
+    "payoffMeaning": "Each outcome gets a number for each person: how good it is for that person on a 0–5 scale. Higher is better. Only the order and size within this situation matter; the numbers are not money.",
+    "task": "First predict what Roommate B will choose and say how confident you are. Then make your own choice. It locks in, and you will see what happened."
+  },
+  "timingKind": "simultaneous",
+  "game": {
+    "kind": "normal",
+    "schemaVersion": 1,
+    "id": "roommate-kitchen",
+    "title": "The shared kitchen",
+    "players": [
+      {
+        "id": "roommate-a",
+        "label": "Roommate A",
+        "actions": [
+          { "id": "clean", "label": "Clean" },
+          { "id": "leave", "label": "Leave it" }
+        ]
+      },
+      {
+        "id": "roommate-b",
+        "label": "Roommate B",
+        "actions": [
+          { "id": "clean", "label": "Clean" },
+          { "id": "leave", "label": "Leave it" }
+        ]
+      }
+    ],
+    "payoffs": [
+      [["3", "3"], ["0", "5"]],
+      [["5", "0"], ["1", "1"]]
+    ],
+    "payoffScale": "cardinal"
+  },
+  "opponentPolicy": {
+    "kind": "fixed-mixed",
+    "probabilities": { "clean": "3/10", "leave": "7/10" },
+    "rngStream": 1,
+    "description": "Roommate B’s choice was drawn by a fixed rule written into this exercise: Leave it 7 times in 10, Clean 3 times in 10. Each attempt has its own seed, so a draw can be replayed exactly. Your decision is never graded on this draw.",
+    "rationale": "B mostly leaves it (Leave it is better for B whatever A does) but sometimes cleans, as real people often do. The mix makes both outcomes in B’s column appear across attempts, so the learner meets the difference between a good decision and a lucky or unlucky outcome. It is consistent with what A is told: A does not know B’s choice; B decides at the same time and cares about the same kind of things."
+  },
+  "prompts": {
+    "predict": "What do you predict Roommate B will choose?",
+    "confidence": "How confident are you that Roommate B will choose {prediction}?",
+    "decide": "What will you choose?",
+    "decideNote": "Roommate B is deciding at the same time and won’t see your choice. Your choice locks in: you can’t change it afterwards."
+  },
+  "outcomes": {
+    "clean|clean": "You both cleaned. The work was shared and the kitchen is spotless. A fair, decent result for each of you.",
+    "clean|leave": "You cleaned while B left it. The kitchen is clean, but you did all the work and B enjoyed it for free.",
+    "leave|clean": "You left it and B cleaned. You get a clean kitchen without lifting a finger; B did all the work.",
+    "leave|leave": "You both left it. Nobody did any work, and the kitchen stays a mess for both of you."
+  },
+  "matrix": {
+    "intro": "Here is the whole situation as a table of every possible combination. It is a model of the story you just played.",
+    "howToRead": [
+      "Each cell is one combination of both choices.",
+      "In each cell the first number is yours (Roommate A) and the second is Roommate B’s.",
+      "You chose a row. B chose a column. Together they landed in the highlighted cell."
+    ]
+  },
+  "questions": [
+    {
+      "id": "if-b-cleans",
+      "kind": "best-reply",
+      "opponentAction": "clean",
+      "prompt": "If Roommate B chooses Clean, which is better for you?"
+    },
+    {
+      "id": "if-b-leaves",
+      "kind": "best-reply",
+      "opponentAction": "leave",
+      "prompt": "If Roommate B chooses Leave it, which is better for you?"
+    },
+    {
+      "id": "either-way",
+      "kind": "dominant-action",
+      "prompt": "Is there one action that gives you more whatever Roommate B does?",
+      "noneLabel": "No, it depends"
+    }
+  ],
+  "feedback": {
+    "rankedItem": "{action} gives you {payoff}",
+    "line": "If Roommate B chooses {opponentAction}: {ranked}.",
+    "bestReplyCorrect": "Yes. {lines}",
+    "bestReplyIncorrect": "Not quite. {lines} So {best} is better for you.",
+    "bestReplyTie": "{lines} Both are equally good for you here.",
+    "dominantCorrect": "Yes. {lines} {dominant} gives you more whatever B does.",
+    "dominantIncorrect": "Not quite. {lines} {dominant} gives you more whatever B does.",
+    "noneCorrect": "Right. {lines} Which is better depends on what B does.",
+    "noneIncorrect": "Not quite. {lines} No single action is better whatever B does; it depends on B."
+  },
+  "closingNote": "{dominant} is better for you either way, and the same holds for B. Yet if both of you reason this way, you each get {mutualYou} instead of {betterYou}."
+}

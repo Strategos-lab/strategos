@@ -4,22 +4,22 @@ import { fileURLToPath } from 'node:url';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
-test.describe('Phase 0 smoke', () => {
-  test('loads home via hash route and shows matrix', async ({ page }) => {
-    await page.goto('./#/');
+test.describe('Developer mode (#/dev) smoke', () => {
+  test('loads dev route via hash and shows the spike matrix', async ({ page }) => {
+    await page.goto('./#/dev');
     await expect(page.getByRole('heading', { name: 'STRATEGOS', exact: true })).toBeVisible();
     await expect(page.getByLabel('Payoff matrix demo')).toBeVisible();
     await expect(page.getByText(/roommates deciding/i)).toBeVisible();
   });
 
-  test('selects a matrix cell', async ({ page }) => {
-    await page.goto('./#/');
+  test('selects a matrix cell (dev spike only)', async ({ page }) => {
+    await page.goto('./#/dev');
     await page.getByRole('button', { name: /Clean vs Leave it/i }).first().click();
     await expect(page.getByTestId('selection-readout')).toContainText('Selected:');
   });
 
   test('confidence control updates', async ({ page }) => {
-    await page.goto('./#/');
+    await page.goto('./#/dev');
     const slider = page.locator('#confidence-slider');
     await slider.fill('85');
     await expect(page.getByTestId('confidence-control')).toContainText('85%');
@@ -30,14 +30,20 @@ test.describe('Phase 0 smoke', () => {
     await expect(page).toHaveURL(/#\/$/);
   });
 
+  test('engine debug output toggles', async ({ page }) => {
+    await page.goto('./#/dev');
+    await page.getByTestId('engine-debug-toggle').check();
+    await expect(page.getByTestId('engine-debug')).toContainText('Row best reply vs Clean: Leave it');
+  });
+
   test('write sample event and list it', async ({ page }) => {
-    await page.goto('./#/');
+    await page.goto('./#/dev');
     await page.getByTestId('btn-write-sample').click();
     await expect(page.getByTestId('events-list')).toContainText('phase0.sample');
   });
 
   test('export downloads learning JSON', async ({ page }) => {
-    await page.goto('./#/');
+    await page.goto('./#/dev');
     await page.getByTestId('btn-write-sample').click();
     await expect(page.getByTestId('events-list')).toBeVisible();
 
@@ -81,10 +87,10 @@ test.describe('Phase 0 install', () => {
     await expect(card.getByRole('heading', { name: 'Install STRATEGOS' })).toBeVisible();
     await expect(card).toContainText('Add it to your home screen for full-screen, offline practice.');
 
-    // Card sits near the top: directly after the hero, before the matrix.
+    // Card sits near the top: directly after the hero, before the Start button.
     const cardBox = await card.boundingBox();
-    const matrixBox = await page.getByLabel('Payoff matrix demo').boundingBox();
-    expect(cardBox!.y).toBeLessThan(matrixBox!.y);
+    const startBox = await page.getByTestId('btn-start').boundingBox();
+    expect(cardBox!.y).toBeLessThan(startBox!.y);
 
     // Touch targets >= 44px.
     const cta = card.getByRole('button', { name: 'Install app' });
@@ -135,8 +141,10 @@ test.describe('Phase 0 install', () => {
     await expect(page.getByTestId('install-card')).toBeVisible();
   });
 
-  test('install troubleshooting help is present', async ({ page }) => {
+  test('install troubleshooting help is present on the data page', async ({ page }) => {
     await page.goto('./#/');
+    await page.getByRole('link', { name: 'Data & app' }).click();
+    await expect(page).toHaveURL(/#\/data$/);
     await page.getByText('Install troubleshooting (Android)').click();
     await expect(page.getByTestId('install-help')).toContainText('app drawer');
   });

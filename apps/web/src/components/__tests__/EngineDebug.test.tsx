@@ -2,7 +2,7 @@ import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { MemoryRouter } from 'react-router-dom';
 import { EngineDebug } from '../EngineDebug';
-import { HomePage } from '../../pages/HomePage';
+import { DevPage } from '../../pages/DevPage';
 
 describe('EngineDebug (engine integration probe)', () => {
   it('shows best replies computed by @strategos/engine', () => {
@@ -21,10 +21,10 @@ describe('EngineDebug (engine integration probe)', () => {
     expect(screen.getByTestId('engine-debug')).not.toHaveTextContent(/nash|dilemma|dominan|equilibri/i);
   });
 
-  it('is hidden until the debug toggle is switched on', async () => {
+  it('is hidden until the debug toggle is switched on (developer mode only)', async () => {
     render(
       <MemoryRouter>
-        <HomePage />
+        <DevPage />
       </MemoryRouter>,
     );
     expect(screen.queryByTestId('engine-debug')).toBeNull();

@@ -66,7 +66,7 @@ Chrome kept a stale installed-app record for the original id (`https://strategos
 
 ## Demo content note
 
-The 2×2 matrix uses a roommates / shared-kitchen story with classic PD numbers **as a visual demo only**. Phase 0 does not teach Prisoner's Dilemma or any module content.
+The 2×2 matrix uses a roommates / shared-kitchen story with classic PD numbers **as a visual demo only**. Phase 0 does not teach Prisoner's Dilemma or any module content. (Since the learner slice, this spike lives in developer mode at `#/dev`; the learner home is the roommate slice — see `docs/slice-roommate.md`.)
 
 ## Out of scope (do not expect yet)
 

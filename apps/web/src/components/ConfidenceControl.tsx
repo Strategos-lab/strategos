@@ -3,18 +3,22 @@ interface ConfidenceControlProps {
   onChange: (value: number) => void;
   min?: number;
   max?: number;
+  step?: number;
+  label?: string;
 }
 
 export function ConfidenceControl({
   value,
   onChange,
   min = 50,
-  max = 99,
+  max = 100,
+  step = 5,
+  label = 'Confidence',
 }: ConfidenceControlProps) {
   return (
     <div className="confidence" data-testid="confidence-control">
       <div className="confidence-header">
-        <label htmlFor="confidence-slider">Prediction confidence (stub)</label>
+        <label htmlFor="confidence-slider">{label}</label>
         <span className="confidence-value" aria-live="polite">
           {value}%
         </span>
@@ -24,16 +28,18 @@ export function ConfidenceControl({
         type="range"
         min={min}
         max={max}
-        step={1}
+        step={step}
         value={value}
         onChange={(e) => onChange(Number(e.target.value))}
         aria-valuemin={min}
         aria-valuemax={max}
         aria-valuenow={value}
+        aria-valuetext={`${value}%`}
       />
-      <p className="muted small">
-        Phase 0 stub — calibration scoring arrives in a later phase.
-      </p>
+      <div className="confidence-scale muted small" aria-hidden="true">
+        <span>{min}% · a guess</span>
+        <span>{max}% · certain</span>
+      </div>
     </div>
   );
 }
