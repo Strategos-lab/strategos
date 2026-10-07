@@ -1,0 +1,2982 @@
+{
+  "provisional": true,
+  "note": "PROVISIONAL held-out set (plan §3.4). Never used in practice; separate structures and stories; three parallel forms A/B/C.",
+  "structures": [
+    {
+      "id": "h.s.m1a",
+      "version": "1.0.0",
+      "module": 1,
+      "discipline": "GT",
+      "sequence": "simultaneous",
+      "presentation": "narrative_only",
+      "scale": "ordinal",
+      "actions": {
+        "A": [
+          "a1",
+          "a2"
+        ],
+        "B": [
+          "b1",
+          "b2"
+        ]
+      },
+      "payoffs": {
+        "a1|b1": [
+          "2",
+          "3"
+        ],
+        "a1|b2": [
+          "0",
+          "1"
+        ],
+        "a2|b1": [
+          "1",
+          "0"
+        ],
+        "a2|b2": [
+          "3",
+          "2"
+        ]
+      },
+      "params": {},
+      "constraints": [],
+      "facts": {
+        "strictlyDominant": {
+          "A": null,
+          "B": null
+        },
+        "weaklyDominantOnly": {
+          "A": null,
+          "B": null
+        },
+        "strictlyDominated": {
+          "A": [],
+          "B": []
+        },
+        "bestResponseDependsOnOpponent": {
+          "A": true,
+          "B": true
+        },
+        "iesdsSolution": null
+      },
+      "heldOut": true
+    },
+    {
+      "id": "h.s.m1b",
+      "version": "1.0.0",
+      "module": 1,
+      "discipline": "GT",
+      "sequence": "sequential_observed",
+      "presentation": "narrative_only",
+      "scale": "ordinal",
+      "actions": {
+        "A": [
+          "a1",
+          "a2"
+        ],
+        "B": [
+          "b1",
+          "b2"
+        ]
+      },
+      "payoffs": {
+        "a1|b1": [
+          "1",
+          "3"
+        ],
+        "a1|b2": [
+          "3",
+          "1"
+        ],
+        "a2|b1": [
+          "0",
+          "2"
+        ],
+        "a2|b2": [
+          "2",
+          "0"
+        ]
+      },
+      "params": {},
+      "constraints": [],
+      "facts": {
+        "strictlyDominant": {
+          "A": "a1",
+          "B": "b1"
+        },
+        "weaklyDominantOnly": {
+          "A": null,
+          "B": null
+        },
+        "strictlyDominated": {
+          "A": [
+            "a2"
+          ],
+          "B": [
+            "b2"
+          ]
+        },
+        "bestResponseDependsOnOpponent": {
+          "A": false,
+          "B": false
+        },
+        "iesdsSolution": [
+          "a1",
+          "b1"
+        ]
+      },
+      "heldOut": true
+    },
+    {
+      "id": "h.s.m2a",
+      "version": "1.0.0",
+      "module": 2,
+      "discipline": "GT",
+      "sequence": "simultaneous",
+      "presentation": "matrix",
+      "scale": "ordinal",
+      "actions": {
+        "A": [
+          "a1",
+          "a2"
+        ],
+        "B": [
+          "b1",
+          "b2"
+        ]
+      },
+      "payoffs": {
+        "a1|b1": [
+          "2",
+          "2"
+        ],
+        "a1|b2": [
+          "0",
+          "1"
+        ],
+        "a2|b1": [
+          "1",
+          "0"
+        ],
+        "a2|b2": [
+          "3",
+          "3"
+        ]
+      },
+      "params": {},
+      "constraints": [],
+      "facts": {
+        "strictlyDominant": {
+          "A": null,
+          "B": null
+        },
+        "weaklyDominantOnly": {
+          "A": null,
+          "B": null
+        },
+        "strictlyDominated": {
+          "A": [],
+          "B": []
+        },
+        "bestResponseDependsOnOpponent": {
+          "A": true,
+          "B": true
+        },
+        "iesdsSolution": null
+      },
+      "heldOut": true
+    },
+    {
+      "id": "h.s.m2b",
+      "version": "1.0.0",
+      "module": 2,
+      "discipline": "GT",
+      "sequence": "simultaneous",
+      "presentation": "matrix",
+      "scale": "cardinal",
+      "actions": {
+        "A": [
+          "a1",
+          "a2"
+        ],
+        "B": [
+          "b1",
+          "b2"
+        ]
+      },
+      "payoffs": {
+        "a1|b1": [
+          "0",
+          "1"
+        ],
+        "a1|b2": [
+          "3",
+          "2"
+        ],
+        "a2|b1": [
+          "2",
+          "0"
+        ],
+        "a2|b2": [
+          "1",
+          "3"
+        ]
+      },
+      "params": {},
+      "constraints": [],
+      "facts": {
+        "strictlyDominant": {
+          "A": null,
+          "B": "b2"
+        },
+        "weaklyDominantOnly": {
+          "A": null,
+          "B": null
+        },
+        "strictlyDominated": {
+          "A": [],
+          "B": [
+            "b1"
+          ]
+        },
+        "bestResponseDependsOnOpponent": {
+          "A": true,
+          "B": false
+        },
+        "iesdsSolution": [
+          "a1",
+          "b2"
+        ]
+      },
+      "heldOut": true
+    },
+    {
+      "id": "h.s.m3a",
+      "version": "1.0.0",
+      "module": 3,
+      "discipline": "GT",
+      "sequence": "simultaneous",
+      "presentation": "matrix",
+      "scale": "ordinal",
+      "actions": {
+        "A": [
+          "a1",
+          "a2"
+        ],
+        "B": [
+          "b1",
+          "b2"
+        ]
+      },
+      "payoffs": {
+        "a1|b1": [
+          "3",
+          "3"
+        ],
+        "a1|b2": [
+          "2",
+          "0"
+        ],
+        "a2|b1": [
+          "0",
+          "2"
+        ],
+        "a2|b2": [
+          "1",
+          "1"
+        ]
+      },
+      "params": {},
+      "constraints": [],
+      "facts": {
+        "strictlyDominant": {
+          "A": "a1",
+          "B": "b1"
+        },
+        "weaklyDominantOnly": {
+          "A": null,
+          "B": null
+        },
+        "strictlyDominated": {
+          "A": [
+            "a2"
+          ],
+          "B": [
+            "b2"
+          ]
+        },
+        "bestResponseDependsOnOpponent": {
+          "A": false,
+          "B": false
+        },
+        "iesdsSolution": [
+          "a1",
+          "b1"
+        ]
+      },
+      "heldOut": true
+    },
+    {
+      "id": "h.s.m3b",
+      "version": "1.0.0",
+      "module": 3,
+      "discipline": "GT",
+      "sequence": "simultaneous",
+      "presentation": "matrix",
+      "scale": "ordinal",
+      "actions": {
+        "A": [
+          "a1",
+          "a2"
+        ],
+        "B": [
+          "b1",
+          "b2"
+        ]
+      },
+      "payoffs": {
+        "a1|b1": [
+          "2",
+          "0"
+        ],
+        "a1|b2": [
+          "3",
+          "2"
+        ],
+        "a2|b1": [
+          "0",
+          "1"
+        ],
+        "a2|b2": [
+          "1",
+          "0"
+        ]
+      },
+      "params": {},
+      "constraints": [],
+      "facts": {
+        "strictlyDominant": {
+          "A": "a1",
+          "B": null
+        },
+        "weaklyDominantOnly": {
+          "A": null,
+          "B": null
+        },
+        "strictlyDominated": {
+          "A": [
+            "a2"
+          ],
+          "B": []
+        },
+        "bestResponseDependsOnOpponent": {
+          "A": false,
+          "B": true
+        },
+        "iesdsSolution": [
+          "a1",
+          "b2"
+        ]
+      },
+      "heldOut": true
+    }
+  ],
+  "skins": [
+    {
+      "id": "hk.m1.courts",
+      "version": "1.0.0",
+      "domain": "sports_games",
+      "tone": "neutral",
+      "title": "Sunday badminton",
+      "structures": [
+        "h.s.m1a"
+      ],
+      "roles": {
+        "you": {
+          "id": "you",
+          "label": "You",
+          "short": "you"
+        },
+        "other": {
+          "id": "mira",
+          "label": "Mira",
+          "short": "Mira"
+        }
+      },
+      "seats": [
+        "A"
+      ],
+      "actionLabels": {
+        "a1": "Outdoor",
+        "a2": "Indoor",
+        "b1": "Outdoor",
+        "b2": "Indoor"
+      },
+      "situation": "You and Mira each book a badminton court for Sunday, the indoor court or the outdoor one. Mr Rane, the club manager, takes bookings from anyone.",
+      "incentives": {
+        "h.s.m1a": "You like the indoor court more; Mira likes the outdoor one more. Each of you would rather play together than alone."
+      },
+      "timing": "You book at the same time. Neither sees the other’s booking.",
+      "information": "You know which court Mira likes. You don’t know which one she will book.",
+      "matrixLabel": "Outcomes for your court and Mira’s court",
+      "nonPlayers": [
+        {
+          "id": "rane",
+          "label": "Mr Rane",
+          "short": "Mr Rane"
+        }
+      ],
+      "heldOut": true
+    },
+    {
+      "id": "hk.m1.slot",
+      "version": "1.0.0",
+      "domain": "work_business",
+      "tone": "neutral",
+      "title": "Presenting the plan",
+      "structures": [
+        "h.s.m1a"
+      ],
+      "roles": {
+        "you": {
+          "id": "you",
+          "label": "You",
+          "short": "you"
+        },
+        "other": {
+          "id": "ajay",
+          "label": "Ajay",
+          "short": "Ajay"
+        }
+      },
+      "seats": [
+        "A"
+      ],
+      "actionLabels": {
+        "a1": "After break",
+        "a2": "Before break",
+        "b1": "After break",
+        "b2": "Before break"
+      },
+      "situation": "You and Ajay each sign up to present the team plan, before the break or after it. Ms Dutta, who chairs the session, keeps both slots open.",
+      "incentives": {
+        "h.s.m1a": "You would rather present before the break; Ajay would rather present after it. Both of you want to present together rather than separately."
+      },
+      "timing": "You sign up at the same time. Neither sees the other’s slot.",
+      "information": "You know what Ajay wants. You don’t know which slot he will take.",
+      "matrixLabel": "Outcomes for your slot and Ajay’s slot",
+      "nonPlayers": [
+        {
+          "id": "dutta",
+          "label": "Ms Dutta",
+          "short": "Ms Dutta"
+        }
+      ],
+      "heldOut": true
+    },
+    {
+      "id": "hk.m1.games",
+      "version": "1.0.0",
+      "domain": "social_interaction",
+      "tone": "neutral",
+      "title": "A weekend game",
+      "structures": [
+        "h.s.m1a"
+      ],
+      "roles": {
+        "you": {
+          "id": "you",
+          "label": "You",
+          "short": "you"
+        },
+        "other": {
+          "id": "tanvi",
+          "label": "Tanvi",
+          "short": "Tanvi"
+        }
+      },
+      "seats": [
+        "A"
+      ],
+      "actionLabels": {
+        "a1": "Cards",
+        "a2": "Chess",
+        "b1": "Cards",
+        "b2": "Chess"
+      },
+      "situation": "You and your friend Tanvi each pick a game for the weekend: chess at the club or cards at home.",
+      "incentives": {
+        "h.s.m1a": "You enjoy chess more; Tanvi enjoys cards more. Each of you would rather play together than alone, so how your weekend goes depends on Tanvi’s pick too."
+      },
+      "timing": "You both pick on Friday, separately.",
+      "information": "You know what Tanvi enjoys. You don’t know what she will pick.",
+      "matrixLabel": "Outcomes for your game and Tanvi’s game",
+      "heldOut": true
+    },
+    {
+      "id": "hk.m1.sign",
+      "version": "1.0.0",
+      "domain": "markets",
+      "tone": "neutral",
+      "title": "The shop sign",
+      "structures": [
+        "h.s.m1b"
+      ],
+      "roles": {
+        "you": {
+          "id": "you",
+          "label": "You",
+          "short": "you"
+        },
+        "other": {
+          "id": "arora",
+          "label": "Mr Arora",
+          "short": "Mr Arora"
+        }
+      },
+      "seats": [
+        "A"
+      ],
+      "actionLabels": {
+        "a1": "Offer delivery",
+        "a2": "No delivery",
+        "b1": "Match it",
+        "b2": "Do nothing"
+      },
+      "situation": "You put up a sign first, offering free delivery or not. Mr Arora, who runs the shop next door, sees your sign and then decides whether to match it.",
+      "incentives": {
+        "h.s.m1b": "What each of you earns depends on both signs."
+      },
+      "timing": "You decide first. Mr Arora decides after seeing your sign.",
+      "information": "Mr Arora sees your sign before choosing. You know how he runs his shop.",
+      "matrixLabel": "Outcomes for your sign and Mr Arora’s reply",
+      "heldOut": true
+    },
+    {
+      "id": "hk.m1.film",
+      "version": "1.0.0",
+      "domain": "everyday_life",
+      "tone": "neutral",
+      "title": "Film night",
+      "structures": [
+        "h.s.m1b"
+      ],
+      "roles": {
+        "you": {
+          "id": "you",
+          "label": "You",
+          "short": "you"
+        },
+        "other": {
+          "id": "diya",
+          "label": "Diya",
+          "short": "Diya"
+        }
+      },
+      "seats": [
+        "A"
+      ],
+      "actionLabels": {
+        "a1": "Comedy",
+        "a2": "Drama",
+        "b1": "Watch",
+        "b2": "Read"
+      },
+      "situation": "You choose first which film to put on, a comedy or a drama. Your sister Diya sees your pick and then decides whether to watch with you or read instead.",
+      "incentives": {
+        "h.s.m1b": "How the evening goes for each of you depends on the film and on Diya’s reply."
+      },
+      "timing": "You choose first. Diya chooses after seeing the film.",
+      "information": "Diya sees your pick before choosing. You know her tastes.",
+      "matrixLabel": "Outcomes for your film and Diya’s reply",
+      "heldOut": true
+    },
+    {
+      "id": "hk.m1.squares",
+      "version": "1.0.0",
+      "domain": "abstract",
+      "tone": "neutral",
+      "title": "Light and dark squares",
+      "structures": [
+        "h.s.m1b"
+      ],
+      "roles": {
+        "you": {
+          "id": "you",
+          "label": "You",
+          "short": "you"
+        },
+        "other": {
+          "id": "other",
+          "label": "The other side",
+          "short": "the other side"
+        }
+      },
+      "seats": [
+        "A"
+      ],
+      "actionLabels": {
+        "a1": "Light square",
+        "a2": "Dark square",
+        "b1": "Light",
+        "b2": "Dark"
+      },
+      "situation": "You place a counter first, on a light square or a dark square. The other side sees where it is, then places theirs on a light or a dark square.",
+      "incentives": {
+        "h.s.m1b": "What each side gets depends on where both counters end up."
+      },
+      "timing": "You place first. The other side places after seeing yours.",
+      "information": "The other side sees your counter before choosing. Each side knows the rules.",
+      "matrixLabel": "Outcomes for your square and the other side’s square",
+      "heldOut": true
+    },
+    {
+      "id": "hk.m2.wholesale",
+      "version": "1.0.0",
+      "domain": "markets",
+      "tone": "neutral",
+      "title": "Market day",
+      "structures": [
+        "h.s.m2a"
+      ],
+      "roles": {
+        "you": {
+          "id": "you",
+          "label": "You",
+          "short": "you"
+        },
+        "other": {
+          "id": "salim",
+          "label": "Salim",
+          "short": "Salim"
+        }
+      },
+      "seats": [
+        "A"
+      ],
+      "actionLabels": {
+        "a1": "Tuesday",
+        "a2": "Friday",
+        "b1": "Tuesday",
+        "b2": "Friday"
+      },
+      "situation": "You and Salim, two wholesalers, each pick which day to bring goods to the weekly market: Tuesday or Friday.",
+      "incentives": {
+        "h.s.m2a": "Buyers come only when both of you are there, so you both want the same day. Friday draws more buyers than Tuesday."
+      },
+      "timing": "You both decide at the start of the week, separately.",
+      "information": "You both know what the other wants. You don’t know Salim’s day.",
+      "matrixLabel": "Outcomes for your day and Salim’s day",
+      "heldOut": true
+    },
+    {
+      "id": "hk.m2.notice",
+      "version": "1.0.0",
+      "domain": "society_collective",
+      "tone": "neutral",
+      "title": "The residents’ meeting",
+      "structures": [
+        "h.s.m2a"
+      ],
+      "roles": {
+        "you": {
+          "id": "you",
+          "label": "You",
+          "short": "you"
+        },
+        "other": {
+          "id": "rekha",
+          "label": "Rekha",
+          "short": "Rekha"
+        }
+      },
+      "seats": [
+        "A"
+      ],
+      "actionLabels": {
+        "a1": "Afternoon",
+        "a2": "Evening",
+        "b1": "Afternoon",
+        "b2": "Evening"
+      },
+      "situation": "You and Rekha are organising a residents’ meeting. Each of you sends out a notice with a time, afternoon or evening, without checking with the other.",
+      "incentives": {
+        "h.s.m2a": "The meeting works only if both notices give the same time. An evening meeting suits both of you better."
+      },
+      "timing": "You both send your notice on the same day.",
+      "information": "You both know what the other wants. You don’t know which time Rekha will send.",
+      "matrixLabel": "Outcomes for your time and Rekha’s time",
+      "heldOut": true
+    },
+    {
+      "id": "hk.m2.buttons",
+      "version": "1.0.0",
+      "domain": "abstract",
+      "tone": "neutral",
+      "title": "Two buttons",
+      "structures": [
+        "h.s.m2a"
+      ],
+      "roles": {
+        "you": {
+          "id": "you",
+          "label": "You",
+          "short": "you"
+        },
+        "other": {
+          "id": "other",
+          "label": "The other side",
+          "short": "the other side"
+        }
+      },
+      "seats": [
+        "A"
+      ],
+      "actionLabels": {
+        "a1": "Round",
+        "a2": "Flat",
+        "b1": "Round",
+        "b2": "Flat"
+      },
+      "situation": "You and the other side each press one of two buttons, round or flat, at the same moment.",
+      "incentives": {
+        "h.s.m2a": "Both of you gain only when you press the same kind. Two flat buttons give each of you more than two round ones."
+      },
+      "timing": "You both press at the same moment.",
+      "information": "Each side knows what the other wants. You don’t know which button will be pressed.",
+      "matrixLabel": "Outcomes for your button and the other side’s button",
+      "heldOut": true
+    },
+    {
+      "id": "hk.m2.race",
+      "version": "1.0.0",
+      "domain": "sports_games",
+      "tone": "neutral",
+      "title": "Training for a race",
+      "structures": [
+        "h.s.m2b"
+      ],
+      "roles": {
+        "you": {
+          "id": "you",
+          "label": "You",
+          "short": "you"
+        },
+        "other": {
+          "id": "nair",
+          "label": "Mr Nair",
+          "short": "Mr Nair"
+        }
+      },
+      "seats": [
+        "A"
+      ],
+      "actionLabels": {
+        "a1": "Hill runs",
+        "a2": "Flat runs",
+        "b1": "Flat course",
+        "b2": "Hilly course"
+      },
+      "situation": "You are training for a local race. You decide whether to practise hill runs or flat runs, while the organiser, Mr Nair, decides whether the course will be flat or hilly.",
+      "incentives": {
+        "h.s.m2b": "Hill practice pays off well on a hilly course and not at all on a flat one; flat runs help a little either way, more on a flat course."
+      },
+      "timing": "You both decide this month, separately.",
+      "information": "You know how Mr Nair plans. You don’t know which course he will set.",
+      "matrixLabel": "Outcomes for your training and the course",
+      "heldOut": true
+    },
+    {
+      "id": "hk.m2.packing",
+      "version": "1.0.0",
+      "domain": "everyday_life",
+      "tone": "neutral",
+      "title": "Packing for a visit",
+      "structures": [
+        "h.s.m2b"
+      ],
+      "roles": {
+        "you": {
+          "id": "you",
+          "label": "You",
+          "short": "you"
+        },
+        "other": {
+          "id": "kapoor",
+          "label": "Mrs Kapoor",
+          "short": "Mrs Kapoor"
+        }
+      },
+      "seats": [
+        "A"
+      ],
+      "actionLabels": {
+        "a1": "Heavy coat",
+        "a2": "Light jacket",
+        "b1": "Indoor day",
+        "b2": "Outdoor day"
+      },
+      "situation": "You are visiting Mrs Kapoor in the hills. You decide whether to pack a heavy coat or a light jacket, while she decides whether to plan an indoor day or an outdoor day.",
+      "incentives": {
+        "h.s.m2b": "The coat is a great help on an outdoor day and a burden indoors; the jacket is fine either way, a little better indoors."
+      },
+      "timing": "You both decide before the visit, separately.",
+      "information": "You know what Mrs Kapoor enjoys. You don’t know which day she will plan.",
+      "matrixLabel": "Outcomes for your packing and her plan",
+      "heldOut": true
+    },
+    {
+      "id": "hk.m2.interview",
+      "version": "1.0.0",
+      "domain": "work_business",
+      "tone": "neutral",
+      "title": "The interview",
+      "structures": [
+        "h.s.m2b"
+      ],
+      "roles": {
+        "you": {
+          "id": "you",
+          "label": "You",
+          "short": "you"
+        },
+        "other": {
+          "id": "sen",
+          "label": "Dr Sen",
+          "short": "Dr Sen"
+        }
+      },
+      "seats": [
+        "A"
+      ],
+      "actionLabels": {
+        "a1": "Technical revision",
+        "a2": "Presentation practice",
+        "b1": "Presentation",
+        "b2": "Technical test"
+      },
+      "situation": "You are preparing for a job interview by revising technical questions or practising a presentation. Dr Sen, who chairs the panel, decides whether the interview will be a presentation or a technical test.",
+      "incentives": {
+        "h.s.m2b": "Technical revision pays off well in a technical test and not at all for a presentation; presentation practice helps a little either way, more for a presentation."
+      },
+      "timing": "You both prepare this week, separately.",
+      "information": "You know how Dr Sen runs panels. You don’t know which format she will choose.",
+      "matrixLabel": "Outcomes for your preparation and the format",
+      "heldOut": true
+    },
+    {
+      "id": "hk.m3.grant",
+      "version": "1.0.0",
+      "domain": "work_business",
+      "tone": "neutral",
+      "title": "The grant report",
+      "structures": [
+        "h.s.m3a"
+      ],
+      "roles": {
+        "you": {
+          "id": "you",
+          "label": "You",
+          "short": "you"
+        },
+        "other": {
+          "id": "bina",
+          "label": "Bina",
+          "short": "Bina"
+        }
+      },
+      "seats": [
+        "A"
+      ],
+      "actionLabels": {
+        "a1": "Template",
+        "a2": "Own layout",
+        "b1": "Template",
+        "b2": "Own layout"
+      },
+      "situation": "You and Bina are each writing half of a grant report. Each of you decides whether to follow the shared template or use your own layout.",
+      "incentives": {
+        "h.s.m3a": "Following the template is quicker for you either way, and the report comes out best when Bina follows it too. The same holds for Bina."
+      },
+      "timing": "You both write this week, separately.",
+      "information": "You both know what is at stake for each other. You don’t know Bina’s choice.",
+      "matrixLabel": "Outcomes for your layout and Bina’s layout",
+      "heldOut": true
+    },
+    {
+      "id": "hk.m3.court",
+      "version": "1.0.0",
+      "domain": "sports_games",
+      "tone": "neutral",
+      "title": "The practice court",
+      "structures": [
+        "h.s.m3a"
+      ],
+      "roles": {
+        "you": {
+          "id": "you",
+          "label": "You",
+          "short": "you"
+        },
+        "other": {
+          "id": "sameer",
+          "label": "Sameer",
+          "short": "Sameer"
+        }
+      },
+      "seats": [
+        "A"
+      ],
+      "actionLabels": {
+        "a1": "Book ahead",
+        "a2": "Turn up",
+        "b1": "Book ahead",
+        "b2": "Turn up"
+      },
+      "situation": "You and Sameer share a practice court. Each of you decides whether to book your slot online in advance or just turn up.",
+      "incentives": {
+        "h.s.m3a": "Booking ahead is better for you either way, and practice goes best when Sameer books ahead too. The same holds for Sameer."
+      },
+      "timing": "You both decide during the week, separately.",
+      "information": "You both know what is at stake for each other. You don’t know Sameer’s choice.",
+      "matrixLabel": "Outcomes for your booking and Sameer’s booking",
+      "heldOut": true
+    },
+    {
+      "id": "hk.m3.bins",
+      "version": "1.0.0",
+      "domain": "everyday_life",
+      "tone": "neutral",
+      "title": "Collection day",
+      "structures": [
+        "h.s.m3a"
+      ],
+      "roles": {
+        "you": {
+          "id": "you",
+          "label": "You",
+          "short": "you"
+        },
+        "other": {
+          "id": "rupa",
+          "label": "Rupa",
+          "short": "Rupa"
+        }
+      },
+      "seats": [
+        "A"
+      ],
+      "actionLabels": {
+        "a1": "Night before",
+        "a2": "Morning",
+        "b1": "Night before",
+        "b2": "Morning"
+      },
+      "situation": "You and your neighbour Rupa each decide whether to put your bins out the night before collection or in the morning.",
+      "incentives": {
+        "h.s.m3a": "Putting your bin out the night before is better for you either way, and the lane is tidiest when Rupa does the same. The same holds for Rupa."
+      },
+      "timing": "You both decide each week, separately.",
+      "information": "You both know what is at stake for each other. You don’t know Rupa’s choice.",
+      "matrixLabel": "Outcomes for your timing and Rupa’s timing",
+      "heldOut": true
+    },
+    {
+      "id": "hk.m3.sweets",
+      "version": "1.0.0",
+      "domain": "markets",
+      "tone": "neutral",
+      "title": "Two sweet shops",
+      "structures": [
+        "h.s.m3b"
+      ],
+      "roles": {
+        "you": {
+          "id": "you",
+          "label": "You",
+          "short": "you"
+        },
+        "other": {
+          "id": "lal",
+          "label": "Mr Lal",
+          "short": "Mr Lal"
+        }
+      },
+      "seats": [
+        "B"
+      ],
+      "actionLabels": {
+        "a1": "This week",
+        "a2": "Next week",
+        "b1": "This week",
+        "b2": "Next week"
+      },
+      "situation": "Mr Lal, who runs the bigger sweet shop, decides whether to hold his sale this week or next. You run a smaller shop and decide whether to hold yours this week or next.",
+      "incentives": {
+        "h.s.m3b@B": "You do better holding your sale in a different week from Mr Lal’s. A sale this week suits Mr Lal better either way, and he does better when yours is next week."
+      },
+      "timing": "You both decide today, separately.",
+      "information": "You know how Mr Lal plans. You don’t know which week he will choose.",
+      "matrixLabel": "Outcomes for Mr Lal’s sale and yours",
+      "heldOut": true
+    },
+    {
+      "id": "hk.m3.evening",
+      "version": "1.0.0",
+      "domain": "society_collective",
+      "tone": "neutral",
+      "title": "Two cultural evenings",
+      "structures": [
+        "h.s.m3b"
+      ],
+      "roles": {
+        "you": {
+          "id": "you",
+          "label": "You",
+          "short": "you"
+        },
+        "other": {
+          "id": "varma",
+          "label": "Mr Varma",
+          "short": "Mr Varma"
+        }
+      },
+      "seats": [
+        "B"
+      ],
+      "actionLabels": {
+        "a1": "Saturday",
+        "a2": "Sunday",
+        "b1": "Saturday",
+        "b2": "Sunday"
+      },
+      "situation": "The bigger residents’ group, led by Mr Varma, decides whether to hold its cultural evening on Saturday or Sunday. Your small group decides which day to hold its own.",
+      "incentives": {
+        "h.s.m3b@B": "Your group does better on a different day from Mr Varma’s. Saturday suits his group better either way, and he does better when yours is on Sunday."
+      },
+      "timing": "Both groups announce at the same meeting.",
+      "information": "You know how Mr Varma’s group plans. You don’t know his day.",
+      "matrixLabel": "Outcomes for Mr Varma’s day and yours",
+      "heldOut": true
+    },
+    {
+      "id": "hk.m3.lamps",
+      "version": "1.0.0",
+      "domain": "abstract",
+      "tone": "neutral",
+      "title": "North and south lamps",
+      "structures": [
+        "h.s.m3b"
+      ],
+      "roles": {
+        "you": {
+          "id": "you",
+          "label": "You",
+          "short": "you"
+        },
+        "other": {
+          "id": "other",
+          "label": "The other side",
+          "short": "the other side"
+        }
+      },
+      "seats": [
+        "B"
+      ],
+      "actionLabels": {
+        "a1": "North",
+        "a2": "South",
+        "b1": "North",
+        "b2": "South"
+      },
+      "situation": "At the same moment, the other side lights the north or the south lamp, and you light the north or the south lamp.",
+      "incentives": {
+        "h.s.m3b@B": "You want your lamp to differ from the other side’s. The north lamp is better for the other side either way, and it does better when yours is south."
+      },
+      "timing": "You both light a lamp at the same moment.",
+      "information": "Each side sees the whole table. You don’t know which lamp the other side will light.",
+      "matrixLabel": "Outcomes for the other side’s lamp and yours",
+      "heldOut": true
+    }
+  ],
+  "variations": [
+    {
+      "id": "hv.m1a",
+      "structure": "h.s.m1a",
+      "params": {},
+      "seat": "A",
+      "purpose": "preserve",
+      "heldOut": true
+    },
+    {
+      "id": "hv.m1b",
+      "structure": "h.s.m1b",
+      "params": {},
+      "seat": "A",
+      "purpose": "preserve",
+      "heldOut": true
+    },
+    {
+      "id": "hv.m2a",
+      "structure": "h.s.m2a",
+      "params": {},
+      "seat": "A",
+      "purpose": "preserve",
+      "heldOut": true
+    },
+    {
+      "id": "hv.m2b.20",
+      "structure": "h.s.m2b",
+      "params": {},
+      "seat": "A",
+      "purpose": "preserve",
+      "belief": {
+        "b1": "1/5",
+        "b2": "4/5"
+      },
+      "heldOut": true
+    },
+    {
+      "id": "hv.m2b.80",
+      "structure": "h.s.m2b",
+      "params": {},
+      "seat": "A",
+      "purpose": "preserve",
+      "belief": {
+        "b1": "4/5",
+        "b2": "1/5"
+      },
+      "heldOut": true
+    },
+    {
+      "id": "hv.m3a",
+      "structure": "h.s.m3a",
+      "params": {},
+      "seat": "A",
+      "purpose": "preserve",
+      "heldOut": true
+    },
+    {
+      "id": "hv.m3b",
+      "structure": "h.s.m3b",
+      "params": {},
+      "seat": "B",
+      "purpose": "preserve",
+      "heldOut": true
+    }
+  ],
+  "items": [
+    {
+      "id": "h.m1.players.a",
+      "version": "1.0.0",
+      "lesson": "m1.l4",
+      "step": "explain",
+      "role": "held_out",
+      "concept": "players",
+      "type": "reason_choice",
+      "structure": "h.s.m1a",
+      "skins": [
+        "hk.m1.courts"
+      ],
+      "variations": [
+        "hv.m1a"
+      ],
+      "exposure": "transfer_hidden",
+      "novelty": "new_structure",
+      "seat": "A",
+      "prompt": "Whose choices decide how this turns out?",
+      "facts": {},
+      "optionSets": [
+        [
+          {
+            "text": "You and {them}: each of your choices changes the result.",
+            "claim": {
+              "t": "playerSet",
+              "actors": [
+                "you",
+                "them"
+              ]
+            },
+            "code": "UNMATCHED"
+          },
+          {
+            "text": "You, {them} and {np:0}, as all of you are in the story.",
+            "claim": {
+              "t": "playerSet",
+              "actors": [
+                "you",
+                "them",
+                "np0"
+              ]
+            },
+            "code": "MODEL_EXTRA_PLAYER"
+          },
+          {
+            "text": "Only you: {them} has no real say in the result.",
+            "claim": {
+              "t": "playerSet",
+              "actors": [
+                "you"
+              ]
+            },
+            "code": "MODEL_MISSING_PLAYER"
+          }
+        ],
+        [
+          {
+            "text": "{Them} and you, because both choices shape what happens.",
+            "claim": {
+              "t": "playerSet",
+              "actors": [
+                "you",
+                "them"
+              ]
+            },
+            "code": "UNMATCHED"
+          },
+          {
+            "text": "Everyone in the story, including {np:0}.",
+            "claim": {
+              "t": "playerSet",
+              "actors": [
+                "you",
+                "them",
+                "np0"
+              ]
+            },
+            "code": "MODEL_EXTRA_PLAYER"
+          },
+          {
+            "text": "Just you, because you are the one deciding.",
+            "claim": {
+              "t": "playerSet",
+              "actors": [
+                "you"
+              ]
+            },
+            "code": "MODEL_MISSING_PLAYER"
+          }
+        ]
+      ],
+      "heldOutForm": "A",
+      "parallelOf": "i.m1.players"
+    },
+    {
+      "id": "h.m1.first.a",
+      "version": "1.0.0",
+      "lesson": "m1.l4",
+      "step": "explain",
+      "role": "held_out",
+      "concept": "timing",
+      "type": "reason_choice",
+      "structure": "h.s.m1b",
+      "skins": [
+        "hk.m1.sign"
+      ],
+      "variations": [
+        "hv.m1b"
+      ],
+      "exposure": "transfer_hidden",
+      "novelty": "new_structure",
+      "seat": "A",
+      "prompt": "Who chooses first?",
+      "facts": {},
+      "optionSets": [
+        [
+          {
+            "text": "You do, and {them} sees your choice.",
+            "claim": {
+              "t": "firstMover",
+              "who": "you"
+            },
+            "code": "UNMATCHED"
+          },
+          {
+            "text": "{Them} does, and you see that choice.",
+            "claim": {
+              "t": "firstMover",
+              "who": "them"
+            },
+            "code": "MODEL_WRONG_TIMING"
+          },
+          {
+            "text": "Nobody: you both choose at once.",
+            "claim": {
+              "t": "simultaneous"
+            },
+            "code": "MODEL_WRONG_TIMING"
+          }
+        ],
+        [
+          {
+            "text": "You choose first; {them} follows.",
+            "claim": {
+              "t": "firstMover",
+              "who": "you"
+            },
+            "code": "UNMATCHED"
+          },
+          {
+            "text": "{Them} chooses first; you follow.",
+            "claim": {
+              "t": "firstMover",
+              "who": "them"
+            },
+            "code": "MODEL_WRONG_TIMING"
+          },
+          {
+            "text": "You both choose at the same moment.",
+            "claim": {
+              "t": "simultaneous"
+            },
+            "code": "MODEL_WRONG_TIMING"
+          }
+        ]
+      ],
+      "heldOutForm": "A",
+      "parallelOf": "i.m1.first"
+    },
+    {
+      "id": "h.m1.players.b",
+      "version": "1.0.0",
+      "lesson": "m1.l4",
+      "step": "explain",
+      "role": "held_out",
+      "concept": "players",
+      "type": "reason_choice",
+      "structure": "h.s.m1a",
+      "skins": [
+        "hk.m1.slot"
+      ],
+      "variations": [
+        "hv.m1a"
+      ],
+      "exposure": "transfer_hidden",
+      "novelty": "new_structure",
+      "seat": "A",
+      "prompt": "Whose choices decide how this turns out?",
+      "facts": {},
+      "optionSets": [
+        [
+          {
+            "text": "You and {them}: each of your choices changes the result.",
+            "claim": {
+              "t": "playerSet",
+              "actors": [
+                "you",
+                "them"
+              ]
+            },
+            "code": "UNMATCHED"
+          },
+          {
+            "text": "You, {them} and {np:0}, as all of you are in the story.",
+            "claim": {
+              "t": "playerSet",
+              "actors": [
+                "you",
+                "them",
+                "np0"
+              ]
+            },
+            "code": "MODEL_EXTRA_PLAYER"
+          },
+          {
+            "text": "Only you: {them} has no real say in the result.",
+            "claim": {
+              "t": "playerSet",
+              "actors": [
+                "you"
+              ]
+            },
+            "code": "MODEL_MISSING_PLAYER"
+          }
+        ],
+        [
+          {
+            "text": "{Them} and you, because both choices shape what happens.",
+            "claim": {
+              "t": "playerSet",
+              "actors": [
+                "you",
+                "them"
+              ]
+            },
+            "code": "UNMATCHED"
+          },
+          {
+            "text": "Everyone in the story, including {np:0}.",
+            "claim": {
+              "t": "playerSet",
+              "actors": [
+                "you",
+                "them",
+                "np0"
+              ]
+            },
+            "code": "MODEL_EXTRA_PLAYER"
+          },
+          {
+            "text": "Just you, because you are the one deciding.",
+            "claim": {
+              "t": "playerSet",
+              "actors": [
+                "you"
+              ]
+            },
+            "code": "MODEL_MISSING_PLAYER"
+          }
+        ]
+      ],
+      "heldOutForm": "B",
+      "parallelOf": "i.m1.players"
+    },
+    {
+      "id": "h.m1.first.b",
+      "version": "1.0.0",
+      "lesson": "m1.l4",
+      "step": "explain",
+      "role": "held_out",
+      "concept": "timing",
+      "type": "reason_choice",
+      "structure": "h.s.m1b",
+      "skins": [
+        "hk.m1.film"
+      ],
+      "variations": [
+        "hv.m1b"
+      ],
+      "exposure": "transfer_hidden",
+      "novelty": "new_structure",
+      "seat": "A",
+      "prompt": "Who chooses first?",
+      "facts": {},
+      "optionSets": [
+        [
+          {
+            "text": "You do, and {them} sees your choice.",
+            "claim": {
+              "t": "firstMover",
+              "who": "you"
+            },
+            "code": "UNMATCHED"
+          },
+          {
+            "text": "{Them} does, and you see that choice.",
+            "claim": {
+              "t": "firstMover",
+              "who": "them"
+            },
+            "code": "MODEL_WRONG_TIMING"
+          },
+          {
+            "text": "Nobody: you both choose at once.",
+            "claim": {
+              "t": "simultaneous"
+            },
+            "code": "MODEL_WRONG_TIMING"
+          }
+        ],
+        [
+          {
+            "text": "You choose first; {them} follows.",
+            "claim": {
+              "t": "firstMover",
+              "who": "you"
+            },
+            "code": "UNMATCHED"
+          },
+          {
+            "text": "{Them} chooses first; you follow.",
+            "claim": {
+              "t": "firstMover",
+              "who": "them"
+            },
+            "code": "MODEL_WRONG_TIMING"
+          },
+          {
+            "text": "You both choose at the same moment.",
+            "claim": {
+              "t": "simultaneous"
+            },
+            "code": "MODEL_WRONG_TIMING"
+          }
+        ]
+      ],
+      "heldOutForm": "B",
+      "parallelOf": "i.m1.first"
+    },
+    {
+      "id": "h.m1.depends.c",
+      "version": "1.0.0",
+      "lesson": "m1.l4",
+      "step": "explain",
+      "role": "held_out",
+      "concept": "strategic_dependence",
+      "type": "reason_choice",
+      "structure": "h.s.m1a",
+      "skins": [
+        "hk.m1.games"
+      ],
+      "variations": [
+        "hv.m1a"
+      ],
+      "exposure": "transfer_hidden",
+      "novelty": "new_structure",
+      "seat": "A",
+      "prompt": "Does how things go for you depend on what {them} chooses?",
+      "facts": {},
+      "optionSets": [
+        [
+          {
+            "text": "Yes: your same choice can go better or worse, depending on {them}.",
+            "claim": {
+              "t": "dependsOnOther",
+              "who": "you"
+            },
+            "code": "UNMATCHED"
+          },
+          {
+            "text": "No: your own choice alone settles how it goes for you.",
+            "claim": {
+              "t": "notDependsOnOther",
+              "who": "you"
+            },
+            "code": "IGNORED_DEPENDENCE"
+          },
+          {
+            "text": "Only if {them} gets to see your choice before deciding.",
+            "claim": {
+              "t": "never"
+            },
+            "code": "MODEL_WRONG_INFO"
+          }
+        ],
+        [
+          {
+            "text": "Yes, because {them}’s choice changes what your choice brings.",
+            "claim": {
+              "t": "dependsOnOther",
+              "who": "you"
+            },
+            "code": "UNMATCHED"
+          },
+          {
+            "text": "No, because only your own choice counts for you here.",
+            "claim": {
+              "t": "notDependsOnOther",
+              "who": "you"
+            },
+            "code": "IGNORED_DEPENDENCE"
+          },
+          {
+            "text": "Only when {them} decides after seeing your choice.",
+            "claim": {
+              "t": "never"
+            },
+            "code": "MODEL_WRONG_INFO"
+          }
+        ]
+      ],
+      "heldOutForm": "C",
+      "parallelOf": "i.m1.depends.three"
+    },
+    {
+      "id": "h.m1.info.c",
+      "version": "1.0.0",
+      "lesson": "m1.l4",
+      "step": "explain",
+      "role": "held_out",
+      "concept": "information",
+      "type": "reason_choice",
+      "structure": "h.s.m1b",
+      "skins": [
+        "hk.m1.squares"
+      ],
+      "variations": [
+        "hv.m1b"
+      ],
+      "exposure": "transfer_hidden",
+      "novelty": "new_structure",
+      "seat": "A",
+      "prompt": "When {them} decides, what does {them} know about your choice?",
+      "facts": {},
+      "optionSets": [
+        [
+          {
+            "text": "{Them} has already seen what you chose.",
+            "claim": {
+              "t": "observes",
+              "who": "them"
+            },
+            "code": "MODEL_WRONG_INFO"
+          },
+          {
+            "text": "{Them} has not seen what you chose.",
+            "claim": {
+              "t": "notObserves",
+              "who": "them"
+            },
+            "code": "MODEL_WRONG_INFO"
+          },
+          {
+            "text": "{Them} decided first, before you did.",
+            "claim": {
+              "t": "firstMover",
+              "who": "them"
+            },
+            "code": "MODEL_WRONG_TIMING"
+          }
+        ],
+        [
+          {
+            "text": "{Them} can see your choice before deciding.",
+            "claim": {
+              "t": "observes",
+              "who": "them"
+            },
+            "code": "MODEL_WRONG_INFO"
+          },
+          {
+            "text": "{Them} decides without seeing your choice.",
+            "claim": {
+              "t": "notObserves",
+              "who": "them"
+            },
+            "code": "MODEL_WRONG_INFO"
+          },
+          {
+            "text": "{Them} decides first, and you see it.",
+            "claim": {
+              "t": "firstMover",
+              "who": "them"
+            },
+            "code": "MODEL_WRONG_TIMING"
+          }
+        ]
+      ],
+      "heldOutForm": "C",
+      "parallelOf": "i.m1.info.turns"
+    },
+    {
+      "id": "h.m2.br.a",
+      "version": "1.0.0",
+      "lesson": "m2.l3",
+      "step": "explain",
+      "role": "held_out",
+      "concept": "best_response",
+      "type": "reason_choice",
+      "structure": "h.s.m2a",
+      "skins": [
+        "hk.m2.wholesale"
+      ],
+      "variations": [
+        "hv.m2a"
+      ],
+      "exposure": "transfer_hidden",
+      "novelty": "new_structure",
+      "seat": "A",
+      "prompt": "If {them} chooses {act:b2}, which choice is better for you?",
+      "facts": {
+        "opp": {
+          "k": "action",
+          "who": "you",
+          "id": "b2"
+        },
+        "best": {
+          "k": "action",
+          "who": "you",
+          "id": "a2"
+        },
+        "bestPay": {
+          "k": "payoff",
+          "who": "you",
+          "profile": [
+            "a2",
+            "b2"
+          ]
+        },
+        "alt": {
+          "k": "action",
+          "who": "you",
+          "id": "a1"
+        },
+        "altPay": {
+          "k": "payoff",
+          "who": "you",
+          "profile": [
+            "a1",
+            "b2"
+          ]
+        }
+      },
+      "optionSets": [
+        [
+          {
+            "text": "{Act:a2}: against {act:b2} it gives you {pay:you:a2:b2} rather than {pay:you:a1:b2}.",
+            "claim": {
+              "t": "br",
+              "who": "you",
+              "against": "b2",
+              "action": "a2"
+            },
+            "code": "UNMATCHED"
+          },
+          {
+            "text": "{Act:a1}: matching on it would give you {pay:you:a1:b1}.",
+            "claim": {
+              "t": "br",
+              "who": "you",
+              "against": "b2",
+              "action": "a1"
+            },
+            "code": "ACROSS_NOT_WITHIN"
+          },
+          {
+            "text": "{Act:a1}: it is better for you whatever {them} does.",
+            "claim": {
+              "t": "strictDom",
+              "who": "you",
+              "action": "a1"
+            },
+            "code": "INCOMPLETE_COMPARISON"
+          }
+        ],
+        [
+          {
+            "text": "{Act:a2}, since against {act:b2} it gets you {pay:you:a2:b2}.",
+            "claim": {
+              "t": "br",
+              "who": "you",
+              "against": "b2",
+              "action": "a2"
+            },
+            "code": "UNMATCHED"
+          },
+          {
+            "text": "{Act:a1}, since with {act:b1} it gets you {pay:you:a1:b1}.",
+            "claim": {
+              "t": "br",
+              "who": "you",
+              "against": "b2",
+              "action": "a1"
+            },
+            "code": "ACROSS_NOT_WITHIN"
+          },
+          {
+            "text": "{Act:a1}, since it beats {act:a2} against anything.",
+            "claim": {
+              "t": "strictDom",
+              "who": "you",
+              "action": "a1"
+            },
+            "code": "INCOMPLETE_COMPARISON"
+          }
+        ]
+      ],
+      "heldOutForm": "A",
+      "parallelOf": "i.m2.br.match"
+    },
+    {
+      "id": "h.m2.belief.a",
+      "version": "1.0.0",
+      "lesson": "m2.l3",
+      "step": "explain",
+      "role": "held_out",
+      "concept": "belief_response",
+      "type": "reason_choice",
+      "structure": "h.s.m2b",
+      "skins": [
+        "hk.m2.race"
+      ],
+      "variations": [
+        "hv.m2b.20"
+      ],
+      "exposure": "transfer_hidden",
+      "novelty": "new_structure",
+      "seat": "A",
+      "prompt": "You think {them} will choose {act:b1} with a chance of {belief:b1}, and {act:b2} otherwise. Which choice gives you more on average?",
+      "facts": {},
+      "optionSets": [
+        [
+          {
+            "text": "{Act:a1}, given how likely each of {them}’s choices is.",
+            "claim": {
+              "t": "brToBelief",
+              "action": "a1"
+            },
+            "code": "NOT_BR_TO_OWN_PREDICTION"
+          },
+          {
+            "text": "{Act:a2}, given how likely each of {them}’s choices is.",
+            "claim": {
+              "t": "brToBelief",
+              "action": "a2"
+            },
+            "code": "NOT_BR_TO_OWN_PREDICTION"
+          },
+          {
+            "text": "Neither: with that belief the two come out level.",
+            "claim": {
+              "t": "beliefTie"
+            },
+            "code": "INCOMPLETE_COMPARISON"
+          }
+        ],
+        [
+          {
+            "text": "{Act:a1}: on average it does better under your belief.",
+            "claim": {
+              "t": "brToBelief",
+              "action": "a1"
+            },
+            "code": "NOT_BR_TO_OWN_PREDICTION"
+          },
+          {
+            "text": "{Act:a2}: on average it does better under your belief.",
+            "claim": {
+              "t": "brToBelief",
+              "action": "a2"
+            },
+            "code": "NOT_BR_TO_OWN_PREDICTION"
+          },
+          {
+            "text": "No difference: on average both give you the same.",
+            "claim": {
+              "t": "beliefTie"
+            },
+            "code": "INCOMPLETE_COMPARISON"
+          }
+        ]
+      ],
+      "heldOutForm": "A",
+      "parallelOf": "i.m2.belief"
+    },
+    {
+      "id": "h.m2.br.b",
+      "version": "1.0.0",
+      "lesson": "m2.l3",
+      "step": "explain",
+      "role": "held_out",
+      "concept": "best_response",
+      "type": "reason_choice",
+      "structure": "h.s.m2a",
+      "skins": [
+        "hk.m2.notice"
+      ],
+      "variations": [
+        "hv.m2a"
+      ],
+      "exposure": "transfer_hidden",
+      "novelty": "new_structure",
+      "seat": "A",
+      "prompt": "If {them} chooses {act:b2}, which choice is better for you?",
+      "facts": {
+        "opp": {
+          "k": "action",
+          "who": "you",
+          "id": "b2"
+        },
+        "best": {
+          "k": "action",
+          "who": "you",
+          "id": "a2"
+        },
+        "bestPay": {
+          "k": "payoff",
+          "who": "you",
+          "profile": [
+            "a2",
+            "b2"
+          ]
+        },
+        "alt": {
+          "k": "action",
+          "who": "you",
+          "id": "a1"
+        },
+        "altPay": {
+          "k": "payoff",
+          "who": "you",
+          "profile": [
+            "a1",
+            "b2"
+          ]
+        }
+      },
+      "optionSets": [
+        [
+          {
+            "text": "{Act:a2}: against {act:b2} it gives you {pay:you:a2:b2} rather than {pay:you:a1:b2}.",
+            "claim": {
+              "t": "br",
+              "who": "you",
+              "against": "b2",
+              "action": "a2"
+            },
+            "code": "UNMATCHED"
+          },
+          {
+            "text": "{Act:a1}: matching on it would give you {pay:you:a1:b1}.",
+            "claim": {
+              "t": "br",
+              "who": "you",
+              "against": "b2",
+              "action": "a1"
+            },
+            "code": "ACROSS_NOT_WITHIN"
+          },
+          {
+            "text": "{Act:a1}: it is better for you whatever {them} does.",
+            "claim": {
+              "t": "strictDom",
+              "who": "you",
+              "action": "a1"
+            },
+            "code": "INCOMPLETE_COMPARISON"
+          }
+        ],
+        [
+          {
+            "text": "{Act:a2}, since against {act:b2} it gets you {pay:you:a2:b2}.",
+            "claim": {
+              "t": "br",
+              "who": "you",
+              "against": "b2",
+              "action": "a2"
+            },
+            "code": "UNMATCHED"
+          },
+          {
+            "text": "{Act:a1}, since with {act:b1} it gets you {pay:you:a1:b1}.",
+            "claim": {
+              "t": "br",
+              "who": "you",
+              "against": "b2",
+              "action": "a1"
+            },
+            "code": "ACROSS_NOT_WITHIN"
+          },
+          {
+            "text": "{Act:a1}, since it beats {act:a2} against anything.",
+            "claim": {
+              "t": "strictDom",
+              "who": "you",
+              "action": "a1"
+            },
+            "code": "INCOMPLETE_COMPARISON"
+          }
+        ]
+      ],
+      "heldOutForm": "B",
+      "parallelOf": "i.m2.br.match"
+    },
+    {
+      "id": "h.m2.belief.b",
+      "version": "1.0.0",
+      "lesson": "m2.l3",
+      "step": "explain",
+      "role": "held_out",
+      "concept": "belief_response",
+      "type": "reason_choice",
+      "structure": "h.s.m2b",
+      "skins": [
+        "hk.m2.packing"
+      ],
+      "variations": [
+        "hv.m2b.80"
+      ],
+      "exposure": "transfer_hidden",
+      "novelty": "new_structure",
+      "seat": "A",
+      "prompt": "You think {them} will choose {act:b1} with a chance of {belief:b1}, and {act:b2} otherwise. Which choice gives you more on average?",
+      "facts": {},
+      "optionSets": [
+        [
+          {
+            "text": "{Act:a1}, given how likely each of {them}’s choices is.",
+            "claim": {
+              "t": "brToBelief",
+              "action": "a1"
+            },
+            "code": "NOT_BR_TO_OWN_PREDICTION"
+          },
+          {
+            "text": "{Act:a2}, given how likely each of {them}’s choices is.",
+            "claim": {
+              "t": "brToBelief",
+              "action": "a2"
+            },
+            "code": "NOT_BR_TO_OWN_PREDICTION"
+          },
+          {
+            "text": "Neither: with that belief the two come out level.",
+            "claim": {
+              "t": "beliefTie"
+            },
+            "code": "INCOMPLETE_COMPARISON"
+          }
+        ],
+        [
+          {
+            "text": "{Act:a1}: on average it does better under your belief.",
+            "claim": {
+              "t": "brToBelief",
+              "action": "a1"
+            },
+            "code": "NOT_BR_TO_OWN_PREDICTION"
+          },
+          {
+            "text": "{Act:a2}: on average it does better under your belief.",
+            "claim": {
+              "t": "brToBelief",
+              "action": "a2"
+            },
+            "code": "NOT_BR_TO_OWN_PREDICTION"
+          },
+          {
+            "text": "No difference: on average both give you the same.",
+            "claim": {
+              "t": "beliefTie"
+            },
+            "code": "INCOMPLETE_COMPARISON"
+          }
+        ]
+      ],
+      "heldOutForm": "B",
+      "parallelOf": "i.m2.belief"
+    },
+    {
+      "id": "h.m2.flip.c",
+      "version": "1.0.0",
+      "lesson": "m2.l3",
+      "step": "explain",
+      "role": "held_out",
+      "concept": "coordination",
+      "type": "reason_choice",
+      "structure": "h.s.m2a",
+      "skins": [
+        "hk.m2.buttons"
+      ],
+      "variations": [
+        "hv.m2a"
+      ],
+      "exposure": "transfer_hidden",
+      "novelty": "new_structure",
+      "seat": "A",
+      "prompt": "Does your better choice depend on what {them} does?",
+      "facts": {
+        "o1": {
+          "k": "action",
+          "who": "you",
+          "id": "b1"
+        },
+        "o2": {
+          "k": "action",
+          "who": "you",
+          "id": "b2"
+        },
+        "r1": {
+          "k": "brLabel",
+          "who": "you",
+          "against": "b1"
+        },
+        "r2": {
+          "k": "brLabel",
+          "who": "you",
+          "against": "b2"
+        }
+      },
+      "optionSets": [
+        [
+          {
+            "text": "Yes: your better choice changes with {them}’s choice.",
+            "claim": {
+              "t": "brDepends",
+              "who": "you"
+            },
+            "code": "UNMATCHED"
+          },
+          {
+            "text": "No: one of your choices is better either way.",
+            "claim": {
+              "t": "brIndependent",
+              "who": "you"
+            },
+            "code": "INCOMPLETE_COMPARISON"
+          },
+          {
+            "text": "Yes, but only because {them} sees your choice.",
+            "claim": {
+              "t": "observes",
+              "who": "them"
+            },
+            "code": "MODEL_WRONG_INFO"
+          }
+        ],
+        [
+          {
+            "text": "It depends: what is better for you shifts with {them}.",
+            "claim": {
+              "t": "brDepends",
+              "who": "you"
+            },
+            "code": "UNMATCHED"
+          },
+          {
+            "text": "It does not: the same choice is better for you every time.",
+            "claim": {
+              "t": "brIndependent",
+              "who": "you"
+            },
+            "code": "INCOMPLETE_COMPARISON"
+          },
+          {
+            "text": "It depends, but only if {them} gets to see your choice.",
+            "claim": {
+              "t": "observes",
+              "who": "them"
+            },
+            "code": "MODEL_WRONG_INFO"
+          }
+        ]
+      ],
+      "heldOutForm": "C",
+      "parallelOf": "i.m2.flip.match"
+    },
+    {
+      "id": "h.m2.belief.c",
+      "version": "1.0.0",
+      "lesson": "m2.l3",
+      "step": "explain",
+      "role": "held_out",
+      "concept": "belief_response",
+      "type": "reason_choice",
+      "structure": "h.s.m2b",
+      "skins": [
+        "hk.m2.interview"
+      ],
+      "variations": [
+        "hv.m2b.20"
+      ],
+      "exposure": "transfer_hidden",
+      "novelty": "new_structure",
+      "seat": "A",
+      "prompt": "You think {them} will choose {act:b1} with a chance of {belief:b1}, and {act:b2} otherwise. Which choice gives you more on average?",
+      "facts": {},
+      "optionSets": [
+        [
+          {
+            "text": "{Act:a1}, given how likely each of {them}’s choices is.",
+            "claim": {
+              "t": "brToBelief",
+              "action": "a1"
+            },
+            "code": "NOT_BR_TO_OWN_PREDICTION"
+          },
+          {
+            "text": "{Act:a2}, given how likely each of {them}’s choices is.",
+            "claim": {
+              "t": "brToBelief",
+              "action": "a2"
+            },
+            "code": "NOT_BR_TO_OWN_PREDICTION"
+          },
+          {
+            "text": "Neither: with that belief the two come out level.",
+            "claim": {
+              "t": "beliefTie"
+            },
+            "code": "INCOMPLETE_COMPARISON"
+          }
+        ],
+        [
+          {
+            "text": "{Act:a1}: on average it does better under your belief.",
+            "claim": {
+              "t": "brToBelief",
+              "action": "a1"
+            },
+            "code": "NOT_BR_TO_OWN_PREDICTION"
+          },
+          {
+            "text": "{Act:a2}: on average it does better under your belief.",
+            "claim": {
+              "t": "brToBelief",
+              "action": "a2"
+            },
+            "code": "NOT_BR_TO_OWN_PREDICTION"
+          },
+          {
+            "text": "No difference: on average both give you the same.",
+            "claim": {
+              "t": "beliefTie"
+            },
+            "code": "INCOMPLETE_COMPARISON"
+          }
+        ]
+      ],
+      "heldOutForm": "C",
+      "parallelOf": "i.m2.belief"
+    },
+    {
+      "id": "h.m3.dom.a",
+      "version": "1.0.0",
+      "lesson": "m3.l5",
+      "step": "explain",
+      "role": "held_out",
+      "concept": "dominant_strategy",
+      "type": "reason_choice",
+      "structure": "h.s.m3a",
+      "skins": [
+        "hk.m3.grant"
+      ],
+      "variations": [
+        "hv.m3a"
+      ],
+      "exposure": "transfer_hidden",
+      "novelty": "new_structure",
+      "seat": "A",
+      "prompt": "Is one of your choices better for you whatever {them} does?",
+      "facts": {
+        "m1": {
+          "k": "action",
+          "who": "you",
+          "id": "a1"
+        },
+        "m2": {
+          "k": "action",
+          "who": "you",
+          "id": "a2"
+        },
+        "o1": {
+          "k": "action",
+          "who": "you",
+          "id": "b1"
+        },
+        "o2": {
+          "k": "action",
+          "who": "you",
+          "id": "b2"
+        },
+        "p11": {
+          "k": "payoff",
+          "who": "you",
+          "profile": [
+            "a1",
+            "b1"
+          ]
+        },
+        "p21": {
+          "k": "payoff",
+          "who": "you",
+          "profile": [
+            "a2",
+            "b1"
+          ]
+        },
+        "p12": {
+          "k": "payoff",
+          "who": "you",
+          "profile": [
+            "a1",
+            "b2"
+          ]
+        },
+        "p22": {
+          "k": "payoff",
+          "who": "you",
+          "profile": [
+            "a2",
+            "b2"
+          ]
+        },
+        "verdict": {
+          "k": "ifDom",
+          "who": "you",
+          "yes": "So {dom:you} gives you more whatever {them} does.",
+          "no": "So neither choice gives you more in both cases."
+        }
+      },
+      "optionSets": [
+        [
+          {
+            "text": "Yes: one of your choices gives you more against each of {them}’s choices.",
+            "claim": {
+              "t": "hasStrictDom",
+              "who": "you"
+            },
+            "code": "INCOMPLETE_COMPARISON"
+          },
+          {
+            "text": "No: which of your choices is better depends on {them}’s choice.",
+            "claim": {
+              "t": "noStrictDom",
+              "who": "you"
+            },
+            "code": "INCOMPLETE_COMPARISON"
+          },
+          {
+            "text": "Yes: the choice that led to the higher payoff the last time.",
+            "claim": {
+              "t": "never"
+            },
+            "code": "DOMINANCE_FROM_OUTCOME"
+          }
+        ],
+        [
+          {
+            "text": "There is: one choice beats the other whatever {them} picks.",
+            "claim": {
+              "t": "hasStrictDom",
+              "who": "you"
+            },
+            "code": "INCOMPLETE_COMPARISON"
+          },
+          {
+            "text": "There is not: the better choice shifts with what {them} picks.",
+            "claim": {
+              "t": "noStrictDom",
+              "who": "you"
+            },
+            "code": "INCOMPLETE_COMPARISON"
+          },
+          {
+            "text": "There is: whichever choice worked out well before.",
+            "claim": {
+              "t": "never"
+            },
+            "code": "DOMINANCE_FROM_OUTCOME"
+          }
+        ]
+      ],
+      "heldOutForm": "A",
+      "parallelOf": "i.m3.contrast.both"
+    },
+    {
+      "id": "h.m3.reply.a",
+      "version": "1.0.0",
+      "lesson": "m3.l5",
+      "step": "explain",
+      "role": "held_out",
+      "concept": "best_response",
+      "type": "reason_choice",
+      "structure": "h.s.m3b",
+      "skins": [
+        "hk.m3.sweets"
+      ],
+      "variations": [
+        "hv.m3b"
+      ],
+      "exposure": "transfer_hidden",
+      "novelty": "new_structure",
+      "seat": "B",
+      "prompt": "If you expect {them} to choose {act:a1}, what is better for you?",
+      "facts": {
+        "opp": {
+          "k": "action",
+          "who": "you",
+          "id": "a1"
+        },
+        "best": {
+          "k": "action",
+          "who": "you",
+          "id": "b2"
+        },
+        "bestPay": {
+          "k": "payoff",
+          "who": "you",
+          "profile": [
+            "a1",
+            "b2"
+          ]
+        },
+        "alt": {
+          "k": "action",
+          "who": "you",
+          "id": "b1"
+        },
+        "altPay": {
+          "k": "payoff",
+          "who": "you",
+          "profile": [
+            "a1",
+            "b1"
+          ]
+        }
+      },
+      "optionSets": [
+        [
+          {
+            "text": "{Act:b2}: against {act:a1} it gives you {pay:you:a1:b2} rather than {pay:you:a1:b1}.",
+            "claim": {
+              "t": "br",
+              "who": "you",
+              "against": "a1",
+              "action": "b2"
+            },
+            "code": "UNMATCHED"
+          },
+          {
+            "text": "{Act:b1}: against {act:a2} it would give you {pay:you:a2:b1}.",
+            "claim": {
+              "t": "br",
+              "who": "you",
+              "against": "a1",
+              "action": "b1"
+            },
+            "code": "ACROSS_NOT_WITHIN"
+          },
+          {
+            "text": "{Act:b1}: it is better for you whatever {them} does.",
+            "claim": {
+              "t": "strictDom",
+              "who": "you",
+              "action": "b1"
+            },
+            "code": "INCOMPLETE_COMPARISON"
+          }
+        ],
+        [
+          {
+            "text": "{Act:b2}, since against {act:a1} it gets you {pay:you:a1:b2}.",
+            "claim": {
+              "t": "br",
+              "who": "you",
+              "against": "a1",
+              "action": "b2"
+            },
+            "code": "UNMATCHED"
+          },
+          {
+            "text": "{Act:b1}, since with {act:a2} it gets you {pay:you:a2:b1}.",
+            "claim": {
+              "t": "br",
+              "who": "you",
+              "against": "a1",
+              "action": "b1"
+            },
+            "code": "ACROSS_NOT_WITHIN"
+          },
+          {
+            "text": "{Act:b1}, since it beats {act:b2} against anything.",
+            "claim": {
+              "t": "strictDom",
+              "who": "you",
+              "action": "b1"
+            },
+            "code": "INCOMPLETE_COMPARISON"
+          }
+        ]
+      ],
+      "heldOutForm": "A",
+      "parallelOf": "i.m3.one.reply"
+    },
+    {
+      "id": "h.m3.dom.b",
+      "version": "1.0.0",
+      "lesson": "m3.l5",
+      "step": "explain",
+      "role": "held_out",
+      "concept": "dominant_strategy",
+      "type": "reason_choice",
+      "structure": "h.s.m3a",
+      "skins": [
+        "hk.m3.court"
+      ],
+      "variations": [
+        "hv.m3a"
+      ],
+      "exposure": "transfer_hidden",
+      "novelty": "new_structure",
+      "seat": "A",
+      "prompt": "Is one of your choices better for you whatever {them} does?",
+      "facts": {
+        "m1": {
+          "k": "action",
+          "who": "you",
+          "id": "a1"
+        },
+        "m2": {
+          "k": "action",
+          "who": "you",
+          "id": "a2"
+        },
+        "o1": {
+          "k": "action",
+          "who": "you",
+          "id": "b1"
+        },
+        "o2": {
+          "k": "action",
+          "who": "you",
+          "id": "b2"
+        },
+        "p11": {
+          "k": "payoff",
+          "who": "you",
+          "profile": [
+            "a1",
+            "b1"
+          ]
+        },
+        "p21": {
+          "k": "payoff",
+          "who": "you",
+          "profile": [
+            "a2",
+            "b1"
+          ]
+        },
+        "p12": {
+          "k": "payoff",
+          "who": "you",
+          "profile": [
+            "a1",
+            "b2"
+          ]
+        },
+        "p22": {
+          "k": "payoff",
+          "who": "you",
+          "profile": [
+            "a2",
+            "b2"
+          ]
+        },
+        "verdict": {
+          "k": "ifDom",
+          "who": "you",
+          "yes": "So {dom:you} gives you more whatever {them} does.",
+          "no": "So neither choice gives you more in both cases."
+        }
+      },
+      "optionSets": [
+        [
+          {
+            "text": "Yes: one of your choices gives you more against each of {them}’s choices.",
+            "claim": {
+              "t": "hasStrictDom",
+              "who": "you"
+            },
+            "code": "INCOMPLETE_COMPARISON"
+          },
+          {
+            "text": "No: which of your choices is better depends on {them}’s choice.",
+            "claim": {
+              "t": "noStrictDom",
+              "who": "you"
+            },
+            "code": "INCOMPLETE_COMPARISON"
+          },
+          {
+            "text": "Yes: the choice that led to the higher payoff the last time.",
+            "claim": {
+              "t": "never"
+            },
+            "code": "DOMINANCE_FROM_OUTCOME"
+          }
+        ],
+        [
+          {
+            "text": "There is: one choice beats the other whatever {them} picks.",
+            "claim": {
+              "t": "hasStrictDom",
+              "who": "you"
+            },
+            "code": "INCOMPLETE_COMPARISON"
+          },
+          {
+            "text": "There is not: the better choice shifts with what {them} picks.",
+            "claim": {
+              "t": "noStrictDom",
+              "who": "you"
+            },
+            "code": "INCOMPLETE_COMPARISON"
+          },
+          {
+            "text": "There is: whichever choice worked out well before.",
+            "claim": {
+              "t": "never"
+            },
+            "code": "DOMINANCE_FROM_OUTCOME"
+          }
+        ]
+      ],
+      "heldOutForm": "B",
+      "parallelOf": "i.m3.contrast.both"
+    },
+    {
+      "id": "h.m3.reply.b",
+      "version": "1.0.0",
+      "lesson": "m3.l5",
+      "step": "explain",
+      "role": "held_out",
+      "concept": "best_response",
+      "type": "reason_choice",
+      "structure": "h.s.m3b",
+      "skins": [
+        "hk.m3.evening"
+      ],
+      "variations": [
+        "hv.m3b"
+      ],
+      "exposure": "transfer_hidden",
+      "novelty": "new_structure",
+      "seat": "B",
+      "prompt": "If you expect {them} to choose {act:a1}, what is better for you?",
+      "facts": {
+        "opp": {
+          "k": "action",
+          "who": "you",
+          "id": "a1"
+        },
+        "best": {
+          "k": "action",
+          "who": "you",
+          "id": "b2"
+        },
+        "bestPay": {
+          "k": "payoff",
+          "who": "you",
+          "profile": [
+            "a1",
+            "b2"
+          ]
+        },
+        "alt": {
+          "k": "action",
+          "who": "you",
+          "id": "b1"
+        },
+        "altPay": {
+          "k": "payoff",
+          "who": "you",
+          "profile": [
+            "a1",
+            "b1"
+          ]
+        }
+      },
+      "optionSets": [
+        [
+          {
+            "text": "{Act:b2}: against {act:a1} it gives you {pay:you:a1:b2} rather than {pay:you:a1:b1}.",
+            "claim": {
+              "t": "br",
+              "who": "you",
+              "against": "a1",
+              "action": "b2"
+            },
+            "code": "UNMATCHED"
+          },
+          {
+            "text": "{Act:b1}: against {act:a2} it would give you {pay:you:a2:b1}.",
+            "claim": {
+              "t": "br",
+              "who": "you",
+              "against": "a1",
+              "action": "b1"
+            },
+            "code": "ACROSS_NOT_WITHIN"
+          },
+          {
+            "text": "{Act:b1}: it is better for you whatever {them} does.",
+            "claim": {
+              "t": "strictDom",
+              "who": "you",
+              "action": "b1"
+            },
+            "code": "INCOMPLETE_COMPARISON"
+          }
+        ],
+        [
+          {
+            "text": "{Act:b2}, since against {act:a1} it gets you {pay:you:a1:b2}.",
+            "claim": {
+              "t": "br",
+              "who": "you",
+              "against": "a1",
+              "action": "b2"
+            },
+            "code": "UNMATCHED"
+          },
+          {
+            "text": "{Act:b1}, since with {act:a2} it gets you {pay:you:a2:b1}.",
+            "claim": {
+              "t": "br",
+              "who": "you",
+              "against": "a1",
+              "action": "b1"
+            },
+            "code": "ACROSS_NOT_WITHIN"
+          },
+          {
+            "text": "{Act:b1}, since it beats {act:b2} against anything.",
+            "claim": {
+              "t": "strictDom",
+              "who": "you",
+              "action": "b1"
+            },
+            "code": "INCOMPLETE_COMPARISON"
+          }
+        ]
+      ],
+      "heldOutForm": "B",
+      "parallelOf": "i.m3.one.reply"
+    },
+    {
+      "id": "h.m3.dom.c",
+      "version": "1.0.0",
+      "lesson": "m3.l5",
+      "step": "explain",
+      "role": "held_out",
+      "concept": "dominant_strategy",
+      "type": "reason_choice",
+      "structure": "h.s.m3a",
+      "skins": [
+        "hk.m3.bins"
+      ],
+      "variations": [
+        "hv.m3a"
+      ],
+      "exposure": "transfer_hidden",
+      "novelty": "new_structure",
+      "seat": "A",
+      "prompt": "Is one of your choices better for you whatever {them} does?",
+      "facts": {
+        "m1": {
+          "k": "action",
+          "who": "you",
+          "id": "a1"
+        },
+        "m2": {
+          "k": "action",
+          "who": "you",
+          "id": "a2"
+        },
+        "o1": {
+          "k": "action",
+          "who": "you",
+          "id": "b1"
+        },
+        "o2": {
+          "k": "action",
+          "who": "you",
+          "id": "b2"
+        },
+        "p11": {
+          "k": "payoff",
+          "who": "you",
+          "profile": [
+            "a1",
+            "b1"
+          ]
+        },
+        "p21": {
+          "k": "payoff",
+          "who": "you",
+          "profile": [
+            "a2",
+            "b1"
+          ]
+        },
+        "p12": {
+          "k": "payoff",
+          "who": "you",
+          "profile": [
+            "a1",
+            "b2"
+          ]
+        },
+        "p22": {
+          "k": "payoff",
+          "who": "you",
+          "profile": [
+            "a2",
+            "b2"
+          ]
+        },
+        "verdict": {
+          "k": "ifDom",
+          "who": "you",
+          "yes": "So {dom:you} gives you more whatever {them} does.",
+          "no": "So neither choice gives you more in both cases."
+        }
+      },
+      "optionSets": [
+        [
+          {
+            "text": "Yes: one of your choices gives you more against each of {them}’s choices.",
+            "claim": {
+              "t": "hasStrictDom",
+              "who": "you"
+            },
+            "code": "INCOMPLETE_COMPARISON"
+          },
+          {
+            "text": "No: which of your choices is better depends on {them}’s choice.",
+            "claim": {
+              "t": "noStrictDom",
+              "who": "you"
+            },
+            "code": "INCOMPLETE_COMPARISON"
+          },
+          {
+            "text": "Yes: the choice that led to the higher payoff the last time.",
+            "claim": {
+              "t": "never"
+            },
+            "code": "DOMINANCE_FROM_OUTCOME"
+          }
+        ],
+        [
+          {
+            "text": "There is: one choice beats the other whatever {them} picks.",
+            "claim": {
+              "t": "hasStrictDom",
+              "who": "you"
+            },
+            "code": "INCOMPLETE_COMPARISON"
+          },
+          {
+            "text": "There is not: the better choice shifts with what {them} picks.",
+            "claim": {
+              "t": "noStrictDom",
+              "who": "you"
+            },
+            "code": "INCOMPLETE_COMPARISON"
+          },
+          {
+            "text": "There is: whichever choice worked out well before.",
+            "claim": {
+              "t": "never"
+            },
+            "code": "DOMINANCE_FROM_OUTCOME"
+          }
+        ]
+      ],
+      "heldOutForm": "C",
+      "parallelOf": "i.m3.contrast.both"
+    },
+    {
+      "id": "h.m3.reply.c",
+      "version": "1.0.0",
+      "lesson": "m3.l5",
+      "step": "explain",
+      "role": "held_out",
+      "concept": "best_response",
+      "type": "reason_choice",
+      "structure": "h.s.m3b",
+      "skins": [
+        "hk.m3.lamps"
+      ],
+      "variations": [
+        "hv.m3b"
+      ],
+      "exposure": "transfer_hidden",
+      "novelty": "new_structure",
+      "seat": "B",
+      "prompt": "If you expect {them} to choose {act:a1}, what is better for you?",
+      "facts": {
+        "opp": {
+          "k": "action",
+          "who": "you",
+          "id": "a1"
+        },
+        "best": {
+          "k": "action",
+          "who": "you",
+          "id": "b2"
+        },
+        "bestPay": {
+          "k": "payoff",
+          "who": "you",
+          "profile": [
+            "a1",
+            "b2"
+          ]
+        },
+        "alt": {
+          "k": "action",
+          "who": "you",
+          "id": "b1"
+        },
+        "altPay": {
+          "k": "payoff",
+          "who": "you",
+          "profile": [
+            "a1",
+            "b1"
+          ]
+        }
+      },
+      "optionSets": [
+        [
+          {
+            "text": "{Act:b2}: against {act:a1} it gives you {pay:you:a1:b2} rather than {pay:you:a1:b1}.",
+            "claim": {
+              "t": "br",
+              "who": "you",
+              "against": "a1",
+              "action": "b2"
+            },
+            "code": "UNMATCHED"
+          },
+          {
+            "text": "{Act:b1}: against {act:a2} it would give you {pay:you:a2:b1}.",
+            "claim": {
+              "t": "br",
+              "who": "you",
+              "against": "a1",
+              "action": "b1"
+            },
+            "code": "ACROSS_NOT_WITHIN"
+          },
+          {
+            "text": "{Act:b1}: it is better for you whatever {them} does.",
+            "claim": {
+              "t": "strictDom",
+              "who": "you",
+              "action": "b1"
+            },
+            "code": "INCOMPLETE_COMPARISON"
+          }
+        ],
+        [
+          {
+            "text": "{Act:b2}, since against {act:a1} it gets you {pay:you:a1:b2}.",
+            "claim": {
+              "t": "br",
+              "who": "you",
+              "against": "a1",
+              "action": "b2"
+            },
+            "code": "UNMATCHED"
+          },
+          {
+            "text": "{Act:b1}, since with {act:a2} it gets you {pay:you:a2:b1}.",
+            "claim": {
+              "t": "br",
+              "who": "you",
+              "against": "a1",
+              "action": "b1"
+            },
+            "code": "ACROSS_NOT_WITHIN"
+          },
+          {
+            "text": "{Act:b1}, since it beats {act:b2} against anything.",
+            "claim": {
+              "t": "strictDom",
+              "who": "you",
+              "action": "b1"
+            },
+            "code": "INCOMPLETE_COMPARISON"
+          }
+        ]
+      ],
+      "heldOutForm": "C",
+      "parallelOf": "i.m3.one.reply"
+    }
+  ]
+}

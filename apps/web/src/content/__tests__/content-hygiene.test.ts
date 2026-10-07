@@ -26,7 +26,7 @@ const BANNED =
 describe('web content hygiene', () => {
   it('authored scenarios and slice docs contain no out-of-scope vocabulary', () => {
     const files = [
-      ...walk(join(src, 'content', 'scenarios')).filter((f) => f.endsWith('.json')),
+      ...walk(join(repo, 'packages', 'content', 'data')).filter((f) => f.endsWith('.json')),
       join(repo, 'docs', 'slice-roommate.md'),
     ];
     expect(files.length).toBeGreaterThan(1);
@@ -45,7 +45,7 @@ describe('web content hygiene', () => {
       'pages/DataPage.tsx',
       'components/StoragePanel.tsx',
       'components/ConfidenceControl.tsx',
-      'content/scenarios/roommate-kitchen.json',
+      '../../../packages/content/data/roommate/roommate-kitchen.json',
     ];
     const devOnly = /Phase 0 stub|calibration scoring|Demo only|Debug: show engine output|Tap a cell|Nash|equilibri/i;
     for (const rel of learner) {

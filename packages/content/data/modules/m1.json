@@ -1,0 +1,1795 @@
+{
+  "module": "m1",
+  "skins": [
+    {
+      "id": "sk.m1.lunch",
+      "version": "1.0.0",
+      "domain": "everyday_life",
+      "tone": "neutral",
+      "title": "Lunch break",
+      "structures": [
+        "m1.s.meet"
+      ],
+      "roles": {
+        "you": {
+          "id": "you",
+          "label": "You",
+          "short": "you"
+        },
+        "other": {
+          "id": "meera",
+          "label": "Meera",
+          "short": "Meera"
+        }
+      },
+      "seats": [
+        "A"
+      ],
+      "actionLabels": {
+        "a1": "Canteen",
+        "a2": "Dhaba",
+        "b1": "Canteen",
+        "b2": "Dhaba"
+      },
+      "situation": "You and Meera take lunch at the same time. Each of you heads either to the canteen or to the dhaba across the road. Your phones are out of charge. The canteen cook serves whoever comes.",
+      "incentives": {
+        "m1.s.meet": "You like the canteen more; Meera likes the dhaba more. Each of you would rather eat together than alone, and eating alone is worse at the other person’s favourite place."
+      },
+      "timing": "You both set off at the same time. Neither of you sees where the other goes.",
+      "information": "You both know what the other likes. You don’t know where Meera will go.",
+      "matrixLabel": "Outcomes for your place and Meera’s place",
+      "nonPlayers": [
+        {
+          "id": "cook",
+          "label": "The canteen cook",
+          "short": "the canteen cook"
+        }
+      ]
+    },
+    {
+      "id": "sk.m1.draft",
+      "version": "1.0.0",
+      "domain": "work_business",
+      "tone": "neutral",
+      "title": "The team update",
+      "structures": [
+        "m1.s.meet"
+      ],
+      "roles": {
+        "you": {
+          "id": "you",
+          "label": "You",
+          "short": "you"
+        },
+        "other": {
+          "id": "ravi",
+          "label": "Ravi",
+          "short": "Ravi"
+        }
+      },
+      "seats": [
+        "A"
+      ],
+      "actionLabels": {
+        "a1": "Document",
+        "a2": "Slides",
+        "b1": "Document",
+        "b2": "Slides"
+      },
+      "situation": "You and Ravi each start this week’s team update, either as a document or as slides. Your manager, Ms Iyer, reads whatever arrives on Friday.",
+      "incentives": {
+        "m1.s.meet": "You work faster in a document; Ravi works faster in slides. You would both rather use one format than two, and two formats are worse when each of you uses the other’s favourite."
+      },
+      "timing": "You both start on the same morning. Neither sees the other’s draft until it is done.",
+      "information": "You both know how the other likes to work. You don’t know which format Ravi will pick.",
+      "matrixLabel": "Outcomes for your format and Ravi’s format",
+      "nonPlayers": [
+        {
+          "id": "iyer",
+          "label": "Ms Iyer",
+          "short": "Ms Iyer"
+        }
+      ]
+    },
+    {
+      "id": "sk.m1.training",
+      "version": "1.0.0",
+      "domain": "sports_games",
+      "tone": "neutral",
+      "title": "Weekend training",
+      "structures": [
+        "m1.s.meet"
+      ],
+      "roles": {
+        "you": {
+          "id": "you",
+          "label": "You",
+          "short": "you"
+        },
+        "other": {
+          "id": "kabir",
+          "label": "Kabir",
+          "short": "Kabir"
+        }
+      },
+      "seats": [
+        "A"
+      ],
+      "actionLabels": {
+        "a1": "Morning",
+        "a2": "Evening",
+        "b1": "Morning",
+        "b2": "Evening"
+      },
+      "situation": "You and Kabir both want to train at the club this weekend, at the morning session or the evening session. Coach Sharma runs both sessions either way.",
+      "incentives": {
+        "m1.s.meet": "You like mornings more; Kabir likes evenings more. Each of you would rather train together than alone, and training alone is worse at the time the other likes."
+      },
+      "timing": "You each sign up at the same time. Neither sees the other’s sign-up.",
+      "information": "You both know which time the other likes. You don’t know which session Kabir will pick.",
+      "matrixLabel": "Outcomes for your session and Kabir’s session",
+      "nonPlayers": [
+        {
+          "id": "coach",
+          "label": "Coach Sharma",
+          "short": "Coach Sharma"
+        }
+      ]
+    },
+    {
+      "id": "sk.m1.stall",
+      "version": "1.0.0",
+      "domain": "markets",
+      "tone": "neutral",
+      "title": "The craft stall",
+      "structures": [
+        "m1.s.meet"
+      ],
+      "roles": {
+        "you": {
+          "id": "you",
+          "label": "You",
+          "short": "you"
+        },
+        "other": {
+          "id": "tara",
+          "label": "Tara",
+          "short": "Tara"
+        }
+      },
+      "seats": [
+        "A"
+      ],
+      "actionLabels": {
+        "a1": "Town mela",
+        "a2": "Riverside",
+        "b1": "Town mela",
+        "b2": "Riverside"
+      },
+      "situation": "You and Tara sell handmade crafts and share one van. This weekend each of you books a stall at either the town mela or the riverside market. The organisers rent stalls to anyone.",
+      "incentives": {
+        "m1.s.meet": "You sell more at the town mela; Tara sells more by the river. Sharing the van to one place beats going to two, and going alone is worse at the other’s favourite place."
+      },
+      "timing": "You both book at the same time. Neither sees the other’s booking.",
+      "information": "You both know where the other sells best. You don’t know where Tara will book.",
+      "matrixLabel": "Outcomes for your market and Tara’s market",
+      "nonPlayers": [
+        {
+          "id": "organisers",
+          "label": "The organisers",
+          "short": "the organisers"
+        }
+      ]
+    },
+    {
+      "id": "sk.m1.cleanup",
+      "version": "1.0.0",
+      "domain": "society_collective",
+      "tone": "neutral",
+      "title": "The park clean-up",
+      "structures": [
+        "m1.s.turns"
+      ],
+      "roles": {
+        "you": {
+          "id": "you",
+          "label": "You",
+          "short": "you"
+        },
+        "other": {
+          "id": "asha",
+          "label": "Asha",
+          "short": "Asha"
+        }
+      },
+      "seats": [
+        "A"
+      ],
+      "actionLabels": {
+        "a1": "Weekday",
+        "a2": "Weekend",
+        "b1": "Join you",
+        "b2": "Own event"
+      },
+      "situation": "Your housing society is planning a park clean-up. You fix the date first: a weekday or the weekend. Asha, who leads a volunteer group, reads your notice and then decides whether her group joins yours or holds its own event later.",
+      "incentives": {
+        "m1.s.turns": "You can lead only on a weekday, and either way you want Asha’s group to join. Her group is free at weekends: on a weekend date they want to join; on a weekday they would rather hold their own event."
+      },
+      "timing": "You choose first. Asha chooses after reading your notice.",
+      "information": "Asha sees your date before deciding. You know what Asha’s group wants.",
+      "matrixLabel": "Outcomes for your date and Asha’s reply"
+    },
+    {
+      "id": "sk.m1.dial",
+      "version": "1.0.0",
+      "domain": "abstract",
+      "tone": "neutral",
+      "title": "Token and dial",
+      "structures": [
+        "m1.s.turns"
+      ],
+      "roles": {
+        "you": {
+          "id": "you",
+          "label": "You",
+          "short": "you"
+        },
+        "other": {
+          "id": "other",
+          "label": "The other side",
+          "short": "the other side"
+        }
+      },
+      "seats": [
+        "A"
+      ],
+      "actionLabels": {
+        "a1": "Left",
+        "a2": "Right",
+        "b1": "Up",
+        "b2": "Down"
+      },
+      "situation": "A two-step puzzle. You move a token first, left or right. The other side sees your move, then turns a dial up or down.",
+      "incentives": {
+        "m1.s.turns": "Left is better for you whichever way the dial turns, and you want the dial up. The other side wants the dial down after left and up after right, and likes right-then-up best."
+      },
+      "timing": "You move first. The other side moves after seeing yours.",
+      "information": "The other side sees your move before choosing. Each side knows what the other wants.",
+      "matrixLabel": "Outcomes for your move and the dial"
+    },
+    {
+      "id": "sk.m1.dinner",
+      "version": "1.0.0",
+      "domain": "everyday_life",
+      "tone": "neutral",
+      "title": "Cooking dinner",
+      "structures": [
+        "m1.s.turns"
+      ],
+      "roles": {
+        "you": {
+          "id": "you",
+          "label": "You",
+          "short": "you"
+        },
+        "other": {
+          "id": "sahil",
+          "label": "Sahil",
+          "short": "Sahil"
+        }
+      },
+      "seats": [
+        "A"
+      ],
+      "actionLabels": {
+        "a1": "Rice",
+        "a2": "Rotis",
+        "b1": "Dal",
+        "b2": "Curry"
+      },
+      "situation": "You are cooking dinner. You decide first whether to make rice or rotis. Your brother Sahil sees what you started and then makes dal or a curry to go with it.",
+      "incentives": {
+        "m1.s.turns": "You prefer making rice, and you prefer dal with either. Sahil likes curry with rice but dal with rotis, and rotis with dal is his favourite meal."
+      },
+      "timing": "You choose first. Sahil chooses after seeing what you are making.",
+      "information": "Sahil knows what you started before choosing. You both know each other’s tastes.",
+      "matrixLabel": "Outcomes for your dish and Sahil’s side dish"
+    },
+    {
+      "id": "sk.m1.van",
+      "version": "1.0.0",
+      "domain": "work_business",
+      "tone": "neutral",
+      "title": "The delivery van",
+      "structures": [
+        "m1.s.turns"
+      ],
+      "roles": {
+        "you": {
+          "id": "you",
+          "label": "You",
+          "short": "you"
+        },
+        "other": {
+          "id": "lina",
+          "label": "Lina",
+          "short": "Lina"
+        }
+      },
+      "seats": [
+        "A"
+      ],
+      "actionLabels": {
+        "a1": "Early van",
+        "a2": "Late van",
+        "b1": "Help load",
+        "b2": "Own list"
+      },
+      "situation": "You run a small online shop. You first book the early van or the late van for today’s orders. Lina at the warehouse sees your booking and then decides whether to help load it or work through her own list.",
+      "incentives": {
+        "m1.s.turns": "The early van suits you better either way, and you want Lina’s help. Lina is free in the evening: she would help with the late van but keep to her own list for the early one."
+      },
+      "timing": "You book first. Lina decides after seeing which van you booked.",
+      "information": "Lina knows your booking before choosing. You know her timetable.",
+      "matrixLabel": "Outcomes for your van and Lina’s choice"
+    },
+    {
+      "id": "sk.m1.sunday",
+      "version": "1.0.0",
+      "domain": "everyday_life",
+      "tone": "neutral",
+      "title": "Planning Sunday",
+      "structures": [
+        "m1.s.three"
+      ],
+      "roles": {
+        "you": {
+          "id": "you",
+          "label": "You",
+          "short": "you"
+        },
+        "other": {
+          "id": "nikhil",
+          "label": "Nikhil",
+          "short": "Nikhil"
+        }
+      },
+      "seats": [
+        "A"
+      ],
+      "actionLabels": {
+        "a1": "Museum",
+        "a2": "Lake",
+        "b1": "Morning",
+        "b2": "Noon",
+        "b3": "Evening"
+      },
+      "situation": "You and Nikhil are planning Sunday. At the same moment, you post the place, the museum or the lake, and Nikhil posts the start time: morning, noon or evening. His sister Pooja will drive them, wherever and whenever.",
+      "incentives": {
+        "m1.s.three": "You most want the museum in the morning, and how the day goes for you depends on the time Nikhil picks. Nikhil most wants the museum at noon."
+      },
+      "timing": "You both post at the same moment. Neither sees the other’s post first.",
+      "information": "You know what Nikhil likes. You don’t know which time he will post.",
+      "matrixLabel": "Outcomes for your place and Nikhil’s start time",
+      "nonPlayers": [
+        {
+          "id": "pooja",
+          "label": "Pooja",
+          "short": "Pooja"
+        }
+      ]
+    },
+    {
+      "id": "sk.m1.circle",
+      "version": "1.0.0",
+      "domain": "social_interaction",
+      "tone": "neutral",
+      "title": "The reading circle",
+      "structures": [
+        "m1.s.three"
+      ],
+      "roles": {
+        "you": {
+          "id": "you",
+          "label": "You",
+          "short": "you"
+        },
+        "other": {
+          "id": "zoya",
+          "label": "Zoya",
+          "short": "Zoya"
+        }
+      },
+      "seats": [
+        "A"
+      ],
+      "actionLabels": {
+        "a1": "In person",
+        "a2": "Online",
+        "b1": "Short story",
+        "b2": "Novel",
+        "b3": "Play"
+      },
+      "situation": "Your reading circle meets this week. You choose whether it meets in person or online. At the same time Zoya chooses what to read: a short story, a novel or a play. Mr Das, who owns the café, hosts whatever is chosen.",
+      "incentives": {
+        "m1.s.three": "You enjoy meeting in person most when the reading is a short story, and how the evening goes for you depends on what Zoya picks. Zoya enjoys a novel in person most."
+      },
+      "timing": "You and Zoya decide at the same time. Neither sees the other’s choice first.",
+      "information": "You know what Zoya enjoys. You don’t know what she will pick.",
+      "matrixLabel": "Outcomes for your format and Zoya’s reading",
+      "nonPlayers": [
+        {
+          "id": "das",
+          "label": "Mr Das",
+          "short": "Mr Das"
+        }
+      ]
+    },
+    {
+      "id": "sk.m1.tiffin",
+      "version": "1.0.0",
+      "domain": "markets",
+      "tone": "neutral",
+      "title": "Two tiffin services",
+      "structures": [
+        "m1.s.three"
+      ],
+      "roles": {
+        "you": {
+          "id": "you",
+          "label": "You",
+          "short": "you"
+        },
+        "other": {
+          "id": "hari",
+          "label": "Hari",
+          "short": "Hari"
+        }
+      },
+      "seats": [
+        "A"
+      ],
+      "actionLabels": {
+        "a1": "Regular",
+        "a2": "Discount",
+        "b1": "Simple",
+        "b2": "Mixed",
+        "b3": "Special"
+      },
+      "situation": "You and Hari run tiffin services in the same lane. Today you set your price, regular or discount, while Hari sets his menu: simple, mixed or special. One delivery rider carries both services’ boxes.",
+      "incentives": {
+        "m1.s.three": "You earn most at your regular price when Hari offers the simple menu, and how your day goes depends on his menu. Hari earns most when you keep the regular price and he offers mixed."
+      },
+      "timing": "You both decide in the morning at the same time. Neither knows the other’s choice until lunch.",
+      "information": "You know how Hari’s customers think. You don’t know which menu he will offer.",
+      "matrixLabel": "Outcomes for your price and Hari’s menu",
+      "nonPlayers": [
+        {
+          "id": "rider",
+          "label": "The delivery rider",
+          "short": "the delivery rider"
+        }
+      ]
+    },
+    {
+      "id": "sk.m1.cricket",
+      "version": "1.0.0",
+      "domain": "sports_games",
+      "tone": "neutral",
+      "title": "A friendly match",
+      "structures": [
+        "m1.s.three"
+      ],
+      "roles": {
+        "you": {
+          "id": "you",
+          "label": "You",
+          "short": "you"
+        },
+        "other": {
+          "id": "jaya",
+          "label": "Jaya",
+          "short": "Jaya"
+        }
+      },
+      "seats": [
+        "A"
+      ],
+      "actionLabels": {
+        "a1": "Attacking",
+        "a2": "Defensive",
+        "b1": "Aggressive",
+        "b2": "Steady",
+        "b3": "Cautious"
+      },
+      "situation": "In a friendly cricket match you captain the fielding side and set an attacking or a defensive field. At the same time Jaya, the batting captain, sets her order: aggressive, steady or cautious. The umpire runs the game whatever you both choose.",
+      "incentives": {
+        "m1.s.three": "You do best with an attacking field against an aggressive order, and your result depends on Jaya’s order. Jaya does best with a steady order against an attacking field."
+      },
+      "timing": "Both of you decide before the first ball. Neither sees the other’s plan.",
+      "information": "You know how Jaya likes to bat. You don’t know which order she will choose.",
+      "matrixLabel": "Outcomes for your field and Jaya’s batting order",
+      "nonPlayers": [
+        {
+          "id": "umpire",
+          "label": "The umpire",
+          "short": "the umpire"
+        }
+      ]
+    },
+    {
+      "id": "sk.m1.t.library",
+      "version": "1.0.0",
+      "domain": "society_collective",
+      "tone": "neutral",
+      "title": "Library volunteers",
+      "structures": [
+        "m1.s.meet"
+      ],
+      "roles": {
+        "you": {
+          "id": "you",
+          "label": "You",
+          "short": "you"
+        },
+        "other": {
+          "id": "kiran",
+          "label": "Kiran",
+          "short": "Kiran"
+        }
+      },
+      "seats": [
+        "A"
+      ],
+      "actionLabels": {
+        "a1": "Opening",
+        "a2": "Closing",
+        "b1": "Opening",
+        "b2": "Closing"
+      },
+      "situation": "You and Kiran volunteer at the community library. This Saturday each of you signs up for one shift, opening or closing. Mrs Pillai, the librarian, keeps the doors open all day regardless.",
+      "incentives": {
+        "m1.s.meet": "You like the opening shift more; Kiran likes closing more. Both of you enjoy a shared shift more than a lone one, and a lone shift is worse when it is the one the other likes."
+      },
+      "timing": "You sign up at the same time. Neither sees the other’s name on the sheet.",
+      "information": "You know which shift Kiran likes. You don’t know which one Kiran will take.",
+      "matrixLabel": "Outcomes for your shift and Kiran’s shift",
+      "nonPlayers": [
+        {
+          "id": "pillai",
+          "label": "Mrs Pillai",
+          "short": "Mrs Pillai"
+        }
+      ]
+    },
+    {
+      "id": "sk.m1.t.books",
+      "version": "1.0.0",
+      "domain": "markets",
+      "tone": "neutral",
+      "title": "The book stall",
+      "structures": [
+        "m1.s.turns"
+      ],
+      "roles": {
+        "you": {
+          "id": "you",
+          "label": "You",
+          "short": "you"
+        },
+        "other": {
+          "id": "anil",
+          "label": "Anil",
+          "short": "Anil"
+        }
+      },
+      "seats": [
+        "A"
+      ],
+      "actionLabels": {
+        "a1": "High price",
+        "a2": "Low price",
+        "b1": "Buy now",
+        "b2": "Wait"
+      },
+      "situation": "At your second-hand book stall you name your asking price first, high or low. Anil, a regular buyer, hears your price and then decides to buy now or wait until next week.",
+      "incentives": {
+        "m1.s.turns": "A high price is better for you either way, and you want Anil to buy now. Anil would wait at a high price but buy now at a low price, which suits him best."
+      },
+      "timing": "You name a price first. Anil decides after hearing it.",
+      "information": "Anil hears your price before deciding. You know how he shops.",
+      "matrixLabel": "Outcomes for your price and Anil’s reply"
+    }
+  ],
+  "variations": [
+    {
+      "id": "v.m1.meet",
+      "structure": "m1.s.meet",
+      "params": {},
+      "seat": "A",
+      "purpose": "preserve"
+    },
+    {
+      "id": "v.m1.turns",
+      "structure": "m1.s.turns",
+      "params": {},
+      "seat": "A",
+      "purpose": "preserve"
+    },
+    {
+      "id": "v.m1.three",
+      "structure": "m1.s.three",
+      "params": {},
+      "seat": "A",
+      "purpose": "preserve"
+    }
+  ],
+  "items": [
+    {
+      "id": "i.m1.players",
+      "version": "1.0.0",
+      "lesson": "m1.l1",
+      "step": "explain",
+      "role": "discovery",
+      "concept": "players",
+      "type": "reason_choice",
+      "structure": "m1.s.meet",
+      "skins": [
+        "sk.m1.lunch",
+        "sk.m1.draft",
+        "sk.m1.training",
+        "sk.m1.stall"
+      ],
+      "variations": [
+        "v.m1.meet"
+      ],
+      "exposure": "undisclosed",
+      "novelty": "seen",
+      "seat": "A",
+      "prompt": "Whose choices decide how this turns out?",
+      "facts": {},
+      "optionSets": [
+        [
+          {
+            "text": "You and {them}: each of your choices changes the result.",
+            "claim": {
+              "t": "playerSet",
+              "actors": [
+                "you",
+                "them"
+              ]
+            },
+            "code": "UNMATCHED"
+          },
+          {
+            "text": "You, {them} and {np:0}, as all of you are in the story.",
+            "claim": {
+              "t": "playerSet",
+              "actors": [
+                "you",
+                "them",
+                "np0"
+              ]
+            },
+            "code": "MODEL_EXTRA_PLAYER"
+          },
+          {
+            "text": "Only you: {them} has no real say in the result.",
+            "claim": {
+              "t": "playerSet",
+              "actors": [
+                "you"
+              ]
+            },
+            "code": "MODEL_MISSING_PLAYER"
+          }
+        ],
+        [
+          {
+            "text": "{Them} and you, because both choices shape what happens.",
+            "claim": {
+              "t": "playerSet",
+              "actors": [
+                "you",
+                "them"
+              ]
+            },
+            "code": "UNMATCHED"
+          },
+          {
+            "text": "Everyone in the story, including {np:0}.",
+            "claim": {
+              "t": "playerSet",
+              "actors": [
+                "you",
+                "them",
+                "np0"
+              ]
+            },
+            "code": "MODEL_EXTRA_PLAYER"
+          },
+          {
+            "text": "Just you, because you are the one deciding.",
+            "claim": {
+              "t": "playerSet",
+              "actors": [
+                "you"
+              ]
+            },
+            "code": "MODEL_MISSING_PLAYER"
+          }
+        ]
+      ]
+    },
+    {
+      "id": "i.m1.actions",
+      "version": "1.0.0",
+      "lesson": "m1.l1",
+      "step": "explain",
+      "role": "practice",
+      "concept": "actions",
+      "type": "reason_choice",
+      "structure": "m1.s.three",
+      "skins": [
+        "sk.m1.sunday",
+        "sk.m1.circle",
+        "sk.m1.tiffin",
+        "sk.m1.cricket"
+      ],
+      "variations": [
+        "v.m1.three"
+      ],
+      "exposure": "undisclosed",
+      "novelty": "seen",
+      "seat": "A",
+      "prompt": "What can {them} choose from?",
+      "facts": {},
+      "optionSets": [
+        [
+          {
+            "text": "{Act:b1}, {act:b2} or {act:b3}, any of them.",
+            "claim": {
+              "t": "actionSet",
+              "who": "them",
+              "actions": [
+                "b1",
+                "b2",
+                "b3"
+              ]
+            },
+            "code": "UNMATCHED"
+          },
+          {
+            "text": "Only {act:b1} or {act:b2}, nothing else.",
+            "claim": {
+              "t": "actionSet",
+              "who": "them",
+              "actions": [
+                "b1",
+                "b2"
+              ]
+            },
+            "code": "MODEL_MISSING_ACTION"
+          },
+          {
+            "text": "Only {act:b2} or {act:b3}, nothing else.",
+            "claim": {
+              "t": "actionSet",
+              "who": "them",
+              "actions": [
+                "b2",
+                "b3"
+              ]
+            },
+            "code": "MODEL_MISSING_ACTION"
+          }
+        ],
+        [
+          {
+            "text": "Any of {act:b1}, {act:b2} and {act:b3}.",
+            "claim": {
+              "t": "actionSet",
+              "who": "them",
+              "actions": [
+                "b1",
+                "b2",
+                "b3"
+              ]
+            },
+            "code": "UNMATCHED"
+          },
+          {
+            "text": "Only {act:b1} or {act:b3}; no other option.",
+            "claim": {
+              "t": "actionSet",
+              "who": "them",
+              "actions": [
+                "b1",
+                "b3"
+              ]
+            },
+            "code": "MODEL_MISSING_ACTION"
+          },
+          {
+            "text": "Only {act:b2} or {act:b3}; no other option.",
+            "claim": {
+              "t": "actionSet",
+              "who": "them",
+              "actions": [
+                "b2",
+                "b3"
+              ]
+            },
+            "code": "MODEL_MISSING_ACTION"
+          }
+        ]
+      ]
+    },
+    {
+      "id": "i.m1.ranking",
+      "version": "1.0.0",
+      "lesson": "m1.l2",
+      "step": "explain",
+      "role": "discovery",
+      "concept": "preferences",
+      "type": "reason_choice",
+      "structure": "m1.s.meet",
+      "skins": [
+        "sk.m1.lunch",
+        "sk.m1.draft",
+        "sk.m1.training",
+        "sk.m1.stall"
+      ],
+      "variations": [
+        "v.m1.meet"
+      ],
+      "exposure": "undisclosed",
+      "novelty": "seen",
+      "seat": "A",
+      "prompt": "Which outcome does {them} like most?",
+      "facts": {},
+      "optionSets": [
+        [
+          {
+            "text": "You choose {act:a2} and {them} chooses {act:b2}.",
+            "claim": {
+              "t": "topOutcome",
+              "who": "them",
+              "profile": [
+                "a2",
+                "b2"
+              ]
+            },
+            "code": "UNMATCHED"
+          },
+          {
+            "text": "You choose {act:a1} and {them} chooses {act:b1}.",
+            "claim": {
+              "t": "topOutcome",
+              "who": "them",
+              "profile": [
+                "a1",
+                "b1"
+              ]
+            },
+            "code": "MISREAD_PAYOFF_OWNER"
+          },
+          {
+            "text": "You choose {act:a2} and {them} chooses {act:b1}.",
+            "claim": {
+              "t": "topOutcome",
+              "who": "them",
+              "profile": [
+                "a2",
+                "b1"
+              ]
+            },
+            "code": "MODEL_WRONG_RANKING"
+          }
+        ],
+        [
+          {
+            "text": "Both of you end up at {act:b2}.",
+            "claim": {
+              "t": "topOutcome",
+              "who": "them",
+              "profile": [
+                "a2",
+                "b2"
+              ]
+            },
+            "code": "UNMATCHED"
+          },
+          {
+            "text": "Both of you end up at {act:b1}.",
+            "claim": {
+              "t": "topOutcome",
+              "who": "them",
+              "profile": [
+                "a1",
+                "b1"
+              ]
+            },
+            "code": "MISREAD_PAYOFF_OWNER"
+          },
+          {
+            "text": "You at {act:a2}, {them} at {act:b1}.",
+            "claim": {
+              "t": "topOutcome",
+              "who": "them",
+              "profile": [
+                "a2",
+                "b1"
+              ]
+            },
+            "code": "MODEL_WRONG_RANKING"
+          }
+        ]
+      ]
+    },
+    {
+      "id": "i.m1.payoff",
+      "version": "1.0.0",
+      "lesson": "m1.l2",
+      "step": "explain",
+      "role": "practice",
+      "concept": "payoff",
+      "type": "fill_in",
+      "structure": "m1.s.meet",
+      "skins": [
+        "sk.m1.lunch",
+        "sk.m1.draft",
+        "sk.m1.training",
+        "sk.m1.stall"
+      ],
+      "variations": [
+        "v.m1.meet"
+      ],
+      "exposure": "undisclosed",
+      "novelty": "seen",
+      "seat": "A",
+      "prompt": "In the table, when you choose {act:a1} and {them} chooses {act:b1}, your payoff is {slot:s1} and {them}’s payoff is {slot:s2}.",
+      "facts": {},
+      "slots": [
+        {
+          "id": "s1",
+          "answer": {
+            "k": "payoff",
+            "who": "you",
+            "profile": [
+              "a1",
+              "b1"
+            ]
+          },
+          "knownWrong": [
+            {
+              "value": {
+                "k": "payoff",
+                "who": "them",
+                "profile": [
+                  "a1",
+                  "b1"
+                ]
+              },
+              "code": "MISREAD_PAYOFF_OWNER"
+            }
+          ]
+        },
+        {
+          "id": "s2",
+          "answer": {
+            "k": "payoff",
+            "who": "them",
+            "profile": [
+              "a1",
+              "b1"
+            ]
+          },
+          "knownWrong": [
+            {
+              "value": {
+                "k": "payoff",
+                "who": "you",
+                "profile": [
+                  "a1",
+                  "b1"
+                ]
+              },
+              "code": "MISREAD_PAYOFF_OWNER"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "i.m1.info.meet",
+      "version": "1.0.0",
+      "lesson": "m1.l3",
+      "step": "explain",
+      "role": "practice",
+      "concept": "information",
+      "type": "reason_choice",
+      "structure": "m1.s.meet",
+      "skins": [
+        "sk.m1.lunch",
+        "sk.m1.draft",
+        "sk.m1.training",
+        "sk.m1.stall"
+      ],
+      "variations": [
+        "v.m1.meet"
+      ],
+      "exposure": "undisclosed",
+      "novelty": "seen",
+      "seat": "A",
+      "prompt": "When {them} decides, what does {them} know about your choice?",
+      "facts": {},
+      "optionSets": [
+        [
+          {
+            "text": "{Them} has already seen what you chose.",
+            "claim": {
+              "t": "observes",
+              "who": "them"
+            },
+            "code": "MODEL_WRONG_INFO"
+          },
+          {
+            "text": "{Them} has not seen what you chose.",
+            "claim": {
+              "t": "notObserves",
+              "who": "them"
+            },
+            "code": "MODEL_WRONG_INFO"
+          },
+          {
+            "text": "{Them} decided first, before you did.",
+            "claim": {
+              "t": "firstMover",
+              "who": "them"
+            },
+            "code": "MODEL_WRONG_TIMING"
+          }
+        ],
+        [
+          {
+            "text": "{Them} can see your choice before deciding.",
+            "claim": {
+              "t": "observes",
+              "who": "them"
+            },
+            "code": "MODEL_WRONG_INFO"
+          },
+          {
+            "text": "{Them} decides without seeing your choice.",
+            "claim": {
+              "t": "notObserves",
+              "who": "them"
+            },
+            "code": "MODEL_WRONG_INFO"
+          },
+          {
+            "text": "{Them} decides first, and you see it.",
+            "claim": {
+              "t": "firstMover",
+              "who": "them"
+            },
+            "code": "MODEL_WRONG_TIMING"
+          }
+        ]
+      ]
+    },
+    {
+      "id": "i.m1.info.turns",
+      "version": "1.0.0",
+      "lesson": "m1.l3",
+      "step": "explain",
+      "role": "discovery",
+      "concept": "information",
+      "type": "reason_choice",
+      "structure": "m1.s.turns",
+      "skins": [
+        "sk.m1.cleanup",
+        "sk.m1.dial",
+        "sk.m1.dinner",
+        "sk.m1.van"
+      ],
+      "variations": [
+        "v.m1.turns"
+      ],
+      "exposure": "undisclosed",
+      "novelty": "seen",
+      "seat": "A",
+      "prompt": "When {them} decides, what does {them} know about your choice?",
+      "facts": {},
+      "optionSets": [
+        [
+          {
+            "text": "{Them} has already seen what you chose.",
+            "claim": {
+              "t": "observes",
+              "who": "them"
+            },
+            "code": "MODEL_WRONG_INFO"
+          },
+          {
+            "text": "{Them} has not seen what you chose.",
+            "claim": {
+              "t": "notObserves",
+              "who": "them"
+            },
+            "code": "MODEL_WRONG_INFO"
+          },
+          {
+            "text": "{Them} decided first, before you did.",
+            "claim": {
+              "t": "firstMover",
+              "who": "them"
+            },
+            "code": "MODEL_WRONG_TIMING"
+          }
+        ],
+        [
+          {
+            "text": "{Them} can see your choice before deciding.",
+            "claim": {
+              "t": "observes",
+              "who": "them"
+            },
+            "code": "MODEL_WRONG_INFO"
+          },
+          {
+            "text": "{Them} decides without seeing your choice.",
+            "claim": {
+              "t": "notObserves",
+              "who": "them"
+            },
+            "code": "MODEL_WRONG_INFO"
+          },
+          {
+            "text": "{Them} decides first, and you see it.",
+            "claim": {
+              "t": "firstMover",
+              "who": "them"
+            },
+            "code": "MODEL_WRONG_TIMING"
+          }
+        ]
+      ]
+    },
+    {
+      "id": "i.m1.first",
+      "version": "1.0.0",
+      "lesson": "m1.l3",
+      "step": "explain",
+      "role": "practice",
+      "concept": "timing",
+      "type": "reason_choice",
+      "structure": "m1.s.turns",
+      "skins": [
+        "sk.m1.cleanup",
+        "sk.m1.dial",
+        "sk.m1.dinner",
+        "sk.m1.van"
+      ],
+      "variations": [
+        "v.m1.turns"
+      ],
+      "exposure": "undisclosed",
+      "novelty": "seen",
+      "seat": "A",
+      "prompt": "Who chooses first?",
+      "facts": {},
+      "optionSets": [
+        [
+          {
+            "text": "You do, and {them} sees your choice.",
+            "claim": {
+              "t": "firstMover",
+              "who": "you"
+            },
+            "code": "UNMATCHED"
+          },
+          {
+            "text": "{Them} does, and you see that choice.",
+            "claim": {
+              "t": "firstMover",
+              "who": "them"
+            },
+            "code": "MODEL_WRONG_TIMING"
+          },
+          {
+            "text": "Nobody: you both choose at once.",
+            "claim": {
+              "t": "simultaneous"
+            },
+            "code": "MODEL_WRONG_TIMING"
+          }
+        ],
+        [
+          {
+            "text": "You choose first; {them} follows.",
+            "claim": {
+              "t": "firstMover",
+              "who": "you"
+            },
+            "code": "UNMATCHED"
+          },
+          {
+            "text": "{Them} chooses first; you follow.",
+            "claim": {
+              "t": "firstMover",
+              "who": "them"
+            },
+            "code": "MODEL_WRONG_TIMING"
+          },
+          {
+            "text": "You both choose at the same moment.",
+            "claim": {
+              "t": "simultaneous"
+            },
+            "code": "MODEL_WRONG_TIMING"
+          }
+        ]
+      ]
+    },
+    {
+      "id": "i.m1.depends.three",
+      "version": "1.0.0",
+      "lesson": "m1.l4",
+      "step": "explain",
+      "role": "discovery",
+      "concept": "strategic_dependence",
+      "type": "reason_choice",
+      "structure": "m1.s.three",
+      "skins": [
+        "sk.m1.sunday",
+        "sk.m1.circle",
+        "sk.m1.tiffin",
+        "sk.m1.cricket"
+      ],
+      "variations": [
+        "v.m1.three"
+      ],
+      "exposure": "undisclosed",
+      "novelty": "seen",
+      "seat": "A",
+      "prompt": "Does how things go for you depend on what {them} chooses?",
+      "facts": {},
+      "optionSets": [
+        [
+          {
+            "text": "Yes: your same choice can go better or worse, depending on {them}.",
+            "claim": {
+              "t": "dependsOnOther",
+              "who": "you"
+            },
+            "code": "UNMATCHED"
+          },
+          {
+            "text": "No: your own choice alone settles how it goes for you.",
+            "claim": {
+              "t": "notDependsOnOther",
+              "who": "you"
+            },
+            "code": "IGNORED_DEPENDENCE"
+          },
+          {
+            "text": "Only if {them} gets to see your choice before deciding.",
+            "claim": {
+              "t": "never"
+            },
+            "code": "MODEL_WRONG_INFO"
+          }
+        ],
+        [
+          {
+            "text": "Yes, because {them}’s choice changes what your choice brings.",
+            "claim": {
+              "t": "dependsOnOther",
+              "who": "you"
+            },
+            "code": "UNMATCHED"
+          },
+          {
+            "text": "No, because only your own choice counts for you here.",
+            "claim": {
+              "t": "notDependsOnOther",
+              "who": "you"
+            },
+            "code": "IGNORED_DEPENDENCE"
+          },
+          {
+            "text": "Only when {them} decides after seeing your choice.",
+            "claim": {
+              "t": "never"
+            },
+            "code": "MODEL_WRONG_INFO"
+          }
+        ]
+      ]
+    },
+    {
+      "id": "i.m1.depends.turns",
+      "version": "1.0.0",
+      "lesson": "m1.l4",
+      "step": "explain",
+      "role": "practice",
+      "concept": "strategic_dependence",
+      "type": "reason_choice",
+      "structure": "m1.s.turns",
+      "skins": [
+        "sk.m1.cleanup",
+        "sk.m1.dial",
+        "sk.m1.dinner",
+        "sk.m1.van"
+      ],
+      "variations": [
+        "v.m1.turns"
+      ],
+      "exposure": "undisclosed",
+      "novelty": "seen",
+      "seat": "A",
+      "prompt": "Does how things go for you depend on what {them} chooses?",
+      "facts": {},
+      "optionSets": [
+        [
+          {
+            "text": "Yes: your same choice can go better or worse, depending on {them}.",
+            "claim": {
+              "t": "dependsOnOther",
+              "who": "you"
+            },
+            "code": "UNMATCHED"
+          },
+          {
+            "text": "No: your own choice alone settles how it goes for you.",
+            "claim": {
+              "t": "notDependsOnOther",
+              "who": "you"
+            },
+            "code": "IGNORED_DEPENDENCE"
+          },
+          {
+            "text": "Only if {them} gets to see your choice before deciding.",
+            "claim": {
+              "t": "never"
+            },
+            "code": "MODEL_WRONG_INFO"
+          }
+        ],
+        [
+          {
+            "text": "Yes, because {them}’s choice changes what your choice brings.",
+            "claim": {
+              "t": "dependsOnOther",
+              "who": "you"
+            },
+            "code": "UNMATCHED"
+          },
+          {
+            "text": "No, because only your own choice counts for you here.",
+            "claim": {
+              "t": "notDependsOnOther",
+              "who": "you"
+            },
+            "code": "IGNORED_DEPENDENCE"
+          },
+          {
+            "text": "Only when {them} decides after seeing your choice.",
+            "claim": {
+              "t": "never"
+            },
+            "code": "MODEL_WRONG_INFO"
+          }
+        ]
+      ]
+    },
+    {
+      "id": "i.m1.words",
+      "version": "1.0.0",
+      "lesson": "m1.l4",
+      "step": "explain",
+      "role": "practice",
+      "concept": "strategic_dependence",
+      "type": "own_words",
+      "structure": "m1.s.meet",
+      "skins": [
+        "sk.m1.lunch",
+        "sk.m1.draft",
+        "sk.m1.training",
+        "sk.m1.stall"
+      ],
+      "variations": [
+        "v.m1.meet"
+      ],
+      "exposure": "undisclosed",
+      "novelty": "seen",
+      "seat": "A",
+      "prompt": "Describe this situation in your own words: who decides, what each can choose, who knows what, and what each wants.",
+      "facts": {},
+      "rubric": "rb.m1.model"
+    },
+    {
+      "id": "i.m1.t.players",
+      "version": "1.0.0",
+      "lesson": "m1.l4",
+      "step": "explain",
+      "role": "transfer",
+      "concept": "players",
+      "type": "reason_choice",
+      "structure": "m1.s.meet",
+      "skins": [
+        "sk.m1.t.library"
+      ],
+      "variations": [
+        "v.m1.meet"
+      ],
+      "exposure": "transfer_hidden",
+      "novelty": "new_skin",
+      "seat": "A",
+      "prompt": "Whose choices decide how this turns out?",
+      "facts": {},
+      "optionSets": [
+        [
+          {
+            "text": "You and {them}: each of your choices changes the result.",
+            "claim": {
+              "t": "playerSet",
+              "actors": [
+                "you",
+                "them"
+              ]
+            },
+            "code": "UNMATCHED"
+          },
+          {
+            "text": "You, {them} and {np:0}, as all of you are in the story.",
+            "claim": {
+              "t": "playerSet",
+              "actors": [
+                "you",
+                "them",
+                "np0"
+              ]
+            },
+            "code": "MODEL_EXTRA_PLAYER"
+          },
+          {
+            "text": "Only you: {them} has no real say in the result.",
+            "claim": {
+              "t": "playerSet",
+              "actors": [
+                "you"
+              ]
+            },
+            "code": "MODEL_MISSING_PLAYER"
+          }
+        ],
+        [
+          {
+            "text": "{Them} and you, because both choices shape what happens.",
+            "claim": {
+              "t": "playerSet",
+              "actors": [
+                "you",
+                "them"
+              ]
+            },
+            "code": "UNMATCHED"
+          },
+          {
+            "text": "Everyone in the story, including {np:0}.",
+            "claim": {
+              "t": "playerSet",
+              "actors": [
+                "you",
+                "them",
+                "np0"
+              ]
+            },
+            "code": "MODEL_EXTRA_PLAYER"
+          },
+          {
+            "text": "Just you, because you are the one deciding.",
+            "claim": {
+              "t": "playerSet",
+              "actors": [
+                "you"
+              ]
+            },
+            "code": "MODEL_MISSING_PLAYER"
+          }
+        ]
+      ]
+    },
+    {
+      "id": "i.m1.t.timing",
+      "version": "1.0.0",
+      "lesson": "m1.l4",
+      "step": "explain",
+      "role": "transfer",
+      "concept": "timing",
+      "type": "reason_choice",
+      "structure": "m1.s.turns",
+      "skins": [
+        "sk.m1.t.books"
+      ],
+      "variations": [
+        "v.m1.turns"
+      ],
+      "exposure": "transfer_hidden",
+      "novelty": "new_skin",
+      "seat": "A",
+      "prompt": "Who chooses first?",
+      "facts": {},
+      "optionSets": [
+        [
+          {
+            "text": "You do, and {them} sees your choice.",
+            "claim": {
+              "t": "firstMover",
+              "who": "you"
+            },
+            "code": "UNMATCHED"
+          },
+          {
+            "text": "{Them} does, and you see that choice.",
+            "claim": {
+              "t": "firstMover",
+              "who": "them"
+            },
+            "code": "MODEL_WRONG_TIMING"
+          },
+          {
+            "text": "Nobody: you both choose at once.",
+            "claim": {
+              "t": "simultaneous"
+            },
+            "code": "MODEL_WRONG_TIMING"
+          }
+        ],
+        [
+          {
+            "text": "You choose first; {them} follows.",
+            "claim": {
+              "t": "firstMover",
+              "who": "you"
+            },
+            "code": "UNMATCHED"
+          },
+          {
+            "text": "{Them} chooses first; you follow.",
+            "claim": {
+              "t": "firstMover",
+              "who": "them"
+            },
+            "code": "MODEL_WRONG_TIMING"
+          },
+          {
+            "text": "You both choose at the same moment.",
+            "claim": {
+              "t": "simultaneous"
+            },
+            "code": "MODEL_WRONG_TIMING"
+          }
+        ]
+      ]
+    }
+  ],
+  "feedback": [
+    {
+      "concept": "players",
+      "type": "reason_choice",
+      "code": "CORRECT",
+      "phrasings": [
+        "{Them}’s choice and yours both change what happens; {np:0} makes no choice that changes it. So the people deciding are you and {them}.",
+        "Two choices shape the result here: yours and {them}’s. {Np:0} is in the story but decides nothing that changes it."
+      ],
+      "term": "People whose choices affect the outcome are the players."
+    },
+    {
+      "concept": "players",
+      "type": "reason_choice",
+      "code": "MODEL_EXTRA_PLAYER",
+      "phrasings": [
+        "{Np:0} is in the story but makes no choice that changes the result. Only you and {them} decide.",
+        "Nothing {np:0} does changes how it turns out for you or {them}. Count only the people who decide."
+      ]
+    },
+    {
+      "concept": "players",
+      "type": "reason_choice",
+      "code": "MODEL_MISSING_PLAYER",
+      "phrasings": [
+        "{Them} also makes a choice, and it changes what happens to you. Both you and {them} decide.",
+        "Your result depends on {them}’s choice too. Leaving {them} out misses half of the situation."
+      ]
+    },
+    {
+      "concept": "actions",
+      "type": "reason_choice",
+      "code": "CORRECT",
+      "phrasings": [
+        "{Them} can choose {act:b1}, {act:b2} or {act:b3}. All three are open, so all three belong in the picture.",
+        "The story gives {them} three options: {act:b1}, {act:b2} and {act:b3}."
+      ],
+      "term": "Each option a person can choose is an action."
+    },
+    {
+      "concept": "actions",
+      "type": "reason_choice",
+      "code": "MODEL_MISSING_ACTION",
+      "phrasings": [
+        "{Them} can choose {act:b1}, {act:b2} or {act:b3}. Leaving one out changes the situation.",
+        "The story lists {act:b1}, {act:b2} and {act:b3} for {them}. Every option counts, even one that seems unlikely."
+      ]
+    },
+    {
+      "concept": "preferences",
+      "type": "reason_choice",
+      "code": "CORRECT",
+      "phrasings": [
+        "{Them} likes it most when you choose {act:a2} and {them} chooses {act:b2}. That is what the story says matters to {them}.",
+        "The story says: {story:incentive} So {them}’s top outcome is {act:a2} with {act:b2}."
+      ],
+      "term": "A ranking of outcomes for one person describes their preferences."
+    },
+    {
+      "concept": "preferences",
+      "type": "reason_choice",
+      "code": "MISREAD_PAYOFF_OWNER",
+      "phrasings": [
+        "You choosing {act:a1} with {them} on {act:b1} is your favourite, not {them}’s. {Them} likes {act:a2} with {act:b2} best.",
+        "{Act:a1} with {act:b1} is the outcome you like most. Read what {them} cares about: {them} likes {act:a2} with {act:b2} best."
+      ]
+    },
+    {
+      "concept": "preferences",
+      "type": "reason_choice",
+      "code": "MODEL_WRONG_RANKING",
+      "phrasings": [
+        "With you on {act:a2} and {them} on {act:b1}, you end up apart, which neither of you likes most. {Them} likes {act:a2} with {act:b2} best.",
+        "The story says: {story:incentive} {Them} ranks {act:a2} with {act:b2} at the top."
+      ]
+    },
+    {
+      "concept": "payoff",
+      "type": "fill_in",
+      "code": "CORRECT",
+      "phrasings": [
+        "The cell for {act:a1} and {act:b1} shows {pay:you:a1:b1} for you and {pay:them:a1:b1} for {them}. The first number is yours, the second is {them}’s.",
+        "In that cell your payoff is {pay:you:a1:b1} and {them}’s is {pay:them:a1:b1}."
+      ],
+      "term": "Each number is a payoff: how much that person likes that outcome."
+    },
+    {
+      "concept": "payoff",
+      "type": "fill_in",
+      "code": "MISREAD_PAYOFF_OWNER",
+      "phrasings": [
+        "In the cell for {act:a1} and {act:b1}, the first number, {pay:you:a1:b1}, is yours and the second, {pay:them:a1:b1}, is {them}’s. The two were swapped.",
+        "Your payoff in that cell is {pay:you:a1:b1}; {pay:them:a1:b1} belongs to {them}. Each cell lists yours first."
+      ]
+    },
+    {
+      "concept": "payoff",
+      "type": "fill_in",
+      "code": "UNMATCHED",
+      "phrasings": [
+        "Find the row for {act:a1} and the column for {act:b1}. That cell shows {pay:you:a1:b1} for you and {pay:them:a1:b1} for {them}.",
+        "The cell where you choose {act:a1} and {them} chooses {act:b1} holds {pay:you:a1:b1}, then {pay:them:a1:b1}."
+      ]
+    },
+    {
+      "concept": "information",
+      "type": "reason_choice",
+      "code": "CORRECT",
+      "phrasings": [
+        "The story says: {story:information} That is what {them} knows when deciding.",
+        "{Story:timing} So what {them} knows about your choice follows from the order of choices."
+      ],
+      "term": "What each person knows when choosing is the information in the situation."
+    },
+    {
+      "concept": "information",
+      "type": "reason_choice",
+      "code": "MODEL_WRONG_INFO",
+      "phrasings": [
+        "The story says: {story:information} Check what {them} can see at the moment of deciding.",
+        "{Story:timing} That fixes whether {them} has seen your choice."
+      ]
+    },
+    {
+      "concept": "information",
+      "type": "reason_choice",
+      "code": "MODEL_WRONG_TIMING",
+      "phrasings": [
+        "{Story:timing} So {them} does not choose before you.",
+        "The story says: {story:timing} {Them} is not the first to choose."
+      ]
+    },
+    {
+      "concept": "timing",
+      "type": "reason_choice",
+      "code": "CORRECT",
+      "phrasings": [
+        "The story says: {story:timing} You choose first, and {them} chooses after seeing it.",
+        "{Story:timing} So the order is: you, then {them}."
+      ],
+      "term": "Who chooses when is the timing of the situation."
+    },
+    {
+      "concept": "timing",
+      "type": "reason_choice",
+      "code": "MODEL_WRONG_TIMING",
+      "phrasings": [
+        "The story says: {story:timing} You choose first; {them} follows.",
+        "{Story:timing} The choices are not made at once: you go first, then {them}."
+      ]
+    },
+    {
+      "concept": "strategic_dependence",
+      "type": "reason_choice",
+      "code": "CORRECT",
+      "phrasings": [
+        "{Story:incentive} So your result depends on {them}’s choice as well as yours.",
+        "{Story:incentive} The same choice of yours can turn out differently, depending on {them}."
+      ],
+      "term": "When your result depends on another person’s choice, there is strategic dependence."
+    },
+    {
+      "concept": "strategic_dependence",
+      "type": "reason_choice",
+      "code": "IGNORED_DEPENDENCE",
+      "phrasings": [
+        "{Story:incentive} The same choice of yours turns out differently depending on {them}.",
+        "{Story:incentive} Your result is not settled by your choice alone."
+      ]
+    },
+    {
+      "concept": "strategic_dependence",
+      "type": "reason_choice",
+      "code": "MODEL_WRONG_INFO",
+      "phrasings": [
+        "{Story:incentive} That holds whether or not {them} sees your choice first.",
+        "{Story:timing} Your result depends on {them}’s choice either way."
+      ]
+    }
+  ],
+  "rubrics": [
+    {
+      "id": "rb.m1.model",
+      "concept": "strategic_dependence",
+      "prompt": "Describe this situation in your own words: who decides, what each can choose, who knows what, and what each wants.",
+      "criteria": [
+        {
+          "id": "deciders",
+          "text": "Names everyone whose choice changes the result, and nobody else.",
+          "meets": "“Meera and I each pick where to eat.”",
+          "misses": "“The cook, Meera and I are all involved.”"
+        },
+        {
+          "id": "options",
+          "text": "Lists the options open to each person.",
+          "meets": "“Each of us can go to the canteen or the dhaba.”",
+          "misses": "“I can go to the canteen.”"
+        },
+        {
+          "id": "knowledge",
+          "text": "Says who knows what, and whether anyone sees the other’s choice first.",
+          "meets": "“We choose at the same time without seeing each other.”",
+          "misses": "“I will see where she goes.”"
+        },
+        {
+          "id": "wants",
+          "text": "States what each person wants, including how the other’s choice matters to them.",
+          "meets": "“I like the canteen more, but we both want to eat together.”",
+          "misses": "“I want the canteen.”"
+        }
+      ],
+      "selfAssessmentWeight": 0,
+      "corroborationRequired": true
+    }
+  ]
+}

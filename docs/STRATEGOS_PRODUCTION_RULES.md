@@ -224,8 +224,10 @@ learning.
 
 Recorded for later phases; do not build ad hoc:
 
-- **Phase 2:** dependency allow-list enforced in CI (B); content-lint concept gating, so formal
-  terms such as "dominant" or "equilibrium" are blocked in pre-reveal copy (V1 Plan §2.11, §10.4).
+- **Phase 2 (implemented; see `docs/phase2.md`):** dependency allow-list enforced in CI
+  (`config/dependency-allowlist.json`, `scripts/check-dependencies.mjs`) (B); content-lint concept
+  gating and content validation in `packages/content` (`src/gating.ts`, `src/lint.ts`,
+  `src/validate.ts`) (V1 Plan §2.11, §10.4).
 - **Phase 3:** discipline label (GT / DT / behavioural) shown on reveal (V1 Plan §2.5); expected
   payoffs of each action under the declared belief shown after a single outcome (V1 Plan §2.13).
 

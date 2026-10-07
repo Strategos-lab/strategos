@@ -1,0 +1,87 @@
+[
+  {
+    "code": "MISREAD_PAYOFF_OWNER",
+    "source": "plan",
+    "definition": "Used the other player’s payoff as one’s own."
+  },
+  {
+    "code": "INCOMPLETE_COMPARISON",
+    "source": "plan",
+    "definition": "Compared payoffs for only one of the other player’s actions."
+  },
+  {
+    "code": "ACROSS_NOT_WITHIN",
+    "source": "plan",
+    "definition": "Compared cells across the other player’s actions instead of within one."
+  },
+  {
+    "code": "IGNORED_OPPONENT_INCENTIVE",
+    "source": "plan",
+    "definition": "Expected the other player to pick an action that is worse for them whatever happens."
+  },
+  {
+    "code": "NOT_BR_TO_OWN_PREDICTION",
+    "source": "plan",
+    "definition": "Chose an action that is not a best response to one’s own stated prediction or belief."
+  },
+  {
+    "code": "DOMINANCE_FROM_OUTCOME",
+    "source": "plan",
+    "definition": "Called an action better whatever happens because it led to a good outcome once."
+  },
+  {
+    "code": "OUTCOME_BIAS",
+    "source": "plan",
+    "definition": "Judged a decision by its realised outcome."
+  },
+  {
+    "code": "MODEL_MISSING_PLAYER",
+    "source": "plan",
+    "definition": "Left out someone whose choice affects the outcome."
+  },
+  {
+    "code": "MODEL_EXTRA_PLAYER",
+    "source": "plan",
+    "definition": "Included someone who makes no choice that affects the outcome."
+  },
+  {
+    "code": "MODEL_WRONG_TIMING",
+    "source": "plan",
+    "definition": "Wrong order of choices."
+  },
+  {
+    "code": "MODEL_WRONG_INFO",
+    "source": "plan",
+    "definition": "Wrong account of who knows or sees what when choosing."
+  },
+  {
+    "code": "MODEL_WRONG_RANKING",
+    "source": "plan",
+    "definition": "Misordered a player’s preferences over outcomes."
+  },
+  {
+    "code": "MODEL_MISSING_ACTION",
+    "source": "content",
+    "definition": "Left out an action a player can take."
+  },
+  {
+    "code": "IGNORED_DEPENDENCE",
+    "source": "content",
+    "definition": "Treated one’s result as depending only on one’s own choice."
+  },
+  {
+    "code": "WEAK_AS_STRICT",
+    "source": "content",
+    "definition": "Treated a tie as if one action were strictly better."
+  },
+  {
+    "code": "ELIMINATED_UNDOMINATED",
+    "source": "content",
+    "definition": "Set aside an action that is not worse in every case."
+  },
+  {
+    "code": "UNMATCHED",
+    "source": "content",
+    "definition": "A wrong answer that matches no known misconception."
+  }
+]

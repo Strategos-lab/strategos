@@ -1,0 +1,32 @@
+{
+  "$comment": "Every third-party package the workspace may depend on, with the reason. Production and dev lists are separate: a package approved for development only fails if it appears in dependencies. Internal @strategos/* workspace packages are always allowed. Checked by scripts/check-dependencies.mjs in `pnpm test` and in CI before deploy (Production Rules: no AI/LLM, no telemetry, no network services).",
+  "dependencies": {
+    "dexie": "IndexedDB wrapper for on-device, namespaced learner storage (no network).",
+    "react": "UI library.",
+    "react-dom": "React renderer for the browser.",
+    "react-router-dom": "Client-side routing (HashRouter) for the static PWA."
+  },
+  "devDependencies": {
+    "@playwright/test": "End-to-end tests (Chromium and WebKit).",
+    "@testing-library/jest-dom": "DOM assertions in unit tests.",
+    "@testing-library/react": "Component tests.",
+    "@testing-library/user-event": "Simulated user input in component tests.",
+    "@types/node": "Node type definitions for tests and build scripts.",
+    "@types/react": "React type definitions.",
+    "@types/react-dom": "React DOM type definitions.",
+    "@vitejs/plugin-react": "Vite React plugin (build only).",
+    "@vitest/coverage-v8": "Engine coverage gate.",
+    "fake-indexeddb": "In-memory IndexedDB for storage unit tests.",
+    "fast-check": "Property-based engine tests.",
+    "happy-dom": "DOM environment for unit tests.",
+    "oxlint": "Static lint.",
+    "playwright": "Browser automation for e2e and screenshot scripts.",
+    "rolldown": "Engine bundle-size check.",
+    "sharp": "Icon generation script (build-time only).",
+    "typescript": "Type checking and engine build.",
+    "vite": "Build tool and dev server.",
+    "vite-plugin-pwa": "Service worker and web manifest generation (build only).",
+    "vitest": "Unit test runner.",
+    "workbox-window": "Service-worker update prompt helper."
+  }
+}

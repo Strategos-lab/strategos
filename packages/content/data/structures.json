@@ -1,0 +1,802 @@
+[
+  {
+    "id": "m1.s.meet",
+    "version": "1.0.0",
+    "module": 1,
+    "discipline": "GT",
+    "sequence": "simultaneous",
+    "presentation": "matrix",
+    "scale": "ordinal",
+    "actions": {
+      "A": [
+        "a1",
+        "a2"
+      ],
+      "B": [
+        "b1",
+        "b2"
+      ]
+    },
+    "payoffs": {
+      "a1|b1": [
+        "3",
+        "2"
+      ],
+      "a1|b2": [
+        "1",
+        "1"
+      ],
+      "a2|b1": [
+        "0",
+        "0"
+      ],
+      "a2|b2": [
+        "2",
+        "3"
+      ]
+    },
+    "params": {},
+    "constraints": [],
+    "facts": {
+      "strictlyDominant": {
+        "A": null,
+        "B": null
+      },
+      "weaklyDominantOnly": {
+        "A": null,
+        "B": null
+      },
+      "strictlyDominated": {
+        "A": [],
+        "B": []
+      },
+      "bestResponseDependsOnOpponent": {
+        "A": true,
+        "B": true
+      },
+      "iesdsSolution": null
+    },
+    "notes": "Simultaneous; both care about the other’s choice; their favourite outcomes differ."
+  },
+  {
+    "id": "m1.s.turns",
+    "version": "1.0.0",
+    "module": 1,
+    "discipline": "GT",
+    "sequence": "sequential_observed",
+    "presentation": "narrative_only",
+    "scale": "ordinal",
+    "actions": {
+      "A": [
+        "a1",
+        "a2"
+      ],
+      "B": [
+        "b1",
+        "b2"
+      ]
+    },
+    "payoffs": {
+      "a1|b1": [
+        "3",
+        "1"
+      ],
+      "a1|b2": [
+        "1",
+        "2"
+      ],
+      "a2|b1": [
+        "2",
+        "3"
+      ],
+      "a2|b2": [
+        "0",
+        "0"
+      ]
+    },
+    "params": {},
+    "constraints": [],
+    "facts": {
+      "strictlyDominant": {
+        "A": "a1",
+        "B": null
+      },
+      "weaklyDominantOnly": {
+        "A": null,
+        "B": null
+      },
+      "strictlyDominated": {
+        "A": [
+          "a2"
+        ],
+        "B": []
+      },
+      "bestResponseDependsOnOpponent": {
+        "A": false,
+        "B": true
+      },
+      "iesdsSolution": [
+        "a1",
+        "b2"
+      ]
+    },
+    "notes": "A chooses first; B sees A’s choice. Identification only (no backward induction)."
+  },
+  {
+    "id": "m1.s.three",
+    "version": "1.0.0",
+    "module": 1,
+    "discipline": "GT",
+    "sequence": "simultaneous",
+    "presentation": "narrative_only",
+    "scale": "ordinal",
+    "actions": {
+      "A": [
+        "a1",
+        "a2"
+      ],
+      "B": [
+        "b1",
+        "b2",
+        "b3"
+      ]
+    },
+    "payoffs": {
+      "a1|b1": [
+        "3",
+        "1"
+      ],
+      "a1|b2": [
+        "1",
+        "3"
+      ],
+      "a1|b3": [
+        "2",
+        "2"
+      ],
+      "a2|b1": [
+        "0",
+        "2"
+      ],
+      "a2|b2": [
+        "2",
+        "1"
+      ],
+      "a2|b3": [
+        "1",
+        "0"
+      ]
+    },
+    "params": {},
+    "constraints": [],
+    "facts": {
+      "strictlyDominant": {
+        "A": null,
+        "B": null
+      },
+      "weaklyDominantOnly": {
+        "A": null,
+        "B": null
+      },
+      "strictlyDominated": {
+        "A": [],
+        "B": [
+          "b3"
+        ]
+      },
+      "bestResponseDependsOnOpponent": {
+        "A": true,
+        "B": true
+      },
+      "iesdsSolution": null
+    },
+    "notes": "Other side has three actions (missing-action items)."
+  },
+  {
+    "id": "m2.s.match",
+    "version": "1.0.0",
+    "module": 2,
+    "discipline": "GT",
+    "sequence": "simultaneous",
+    "presentation": "matrix",
+    "scale": "ordinal",
+    "actions": {
+      "A": [
+        "a1",
+        "a2"
+      ],
+      "B": [
+        "b1",
+        "b2"
+      ]
+    },
+    "payoffs": {
+      "a1|b1": [
+        "H",
+        "H"
+      ],
+      "a1|b2": [
+        "0",
+        "0"
+      ],
+      "a2|b1": [
+        "0",
+        "0"
+      ],
+      "a2|b2": [
+        "L",
+        "L"
+      ]
+    },
+    "params": {
+      "H": [
+        3,
+        4
+      ],
+      "L": [
+        1,
+        2
+      ]
+    },
+    "constraints": [
+      "H > L"
+    ],
+    "facts": {
+      "strictlyDominant": {
+        "A": null,
+        "B": null
+      },
+      "weaklyDominantOnly": {
+        "A": null,
+        "B": null
+      },
+      "strictlyDominated": {
+        "A": [],
+        "B": []
+      },
+      "bestResponseDependsOnOpponent": {
+        "A": true,
+        "B": true
+      },
+      "iesdsSolution": null
+    },
+    "notes": "Matching is better; one match better than the other. No action is better whatever the other does."
+  },
+  {
+    "id": "m2.s.apart",
+    "version": "1.0.0",
+    "module": 2,
+    "discipline": "GT",
+    "sequence": "simultaneous",
+    "presentation": "matrix",
+    "scale": "ordinal",
+    "actions": {
+      "A": [
+        "a1",
+        "a2"
+      ],
+      "B": [
+        "b1",
+        "b2"
+      ]
+    },
+    "payoffs": {
+      "a1|b1": [
+        "0",
+        "0"
+      ],
+      "a1|b2": [
+        "3",
+        "2"
+      ],
+      "a2|b1": [
+        "2",
+        "3"
+      ],
+      "a2|b2": [
+        "1",
+        "1"
+      ]
+    },
+    "params": {},
+    "constraints": [],
+    "facts": {
+      "strictlyDominant": {
+        "A": null,
+        "B": null
+      },
+      "weaklyDominantOnly": {
+        "A": null,
+        "B": null
+      },
+      "strictlyDominated": {
+        "A": [],
+        "B": []
+      },
+      "bestResponseDependsOnOpponent": {
+        "A": true,
+        "B": true
+      },
+      "iesdsSolution": null
+    },
+    "notes": "Differing is better. Best response flips with the other’s choice."
+  },
+  {
+    "id": "m2.s.three",
+    "version": "1.0.0",
+    "module": 2,
+    "discipline": "GT",
+    "sequence": "simultaneous",
+    "presentation": "matrix",
+    "scale": "ordinal",
+    "actions": {
+      "A": [
+        "a1",
+        "a2",
+        "a3"
+      ],
+      "B": [
+        "b1",
+        "b2"
+      ]
+    },
+    "payoffs": {
+      "a1|b1": [
+        "4",
+        "1"
+      ],
+      "a1|b2": [
+        "1",
+        "2"
+      ],
+      "a2|b1": [
+        "1",
+        "2"
+      ],
+      "a2|b2": [
+        "4",
+        "1"
+      ],
+      "a3|b1": [
+        "2",
+        "1"
+      ],
+      "a3|b2": [
+        "2",
+        "1"
+      ]
+    },
+    "params": {},
+    "constraints": [],
+    "facts": {
+      "strictlyDominant": {
+        "A": null,
+        "B": null
+      },
+      "weaklyDominantOnly": {
+        "A": null,
+        "B": null
+      },
+      "strictlyDominated": {
+        "A": [],
+        "B": []
+      },
+      "bestResponseDependsOnOpponent": {
+        "A": true,
+        "B": true
+      },
+      "iesdsSolution": null
+    },
+    "notes": "Asymmetric 3×2: A wants to differ from B, B wants to match A; A’s middle action a3 is never a best response, but nothing is dominated."
+  },
+  {
+    "id": "m2.s.belief",
+    "version": "1.0.0",
+    "module": 2,
+    "discipline": "GT",
+    "sequence": "simultaneous",
+    "presentation": "matrix",
+    "scale": "cardinal",
+    "actions": {
+      "A": [
+        "a1",
+        "a2"
+      ],
+      "B": [
+        "b1",
+        "b2"
+      ]
+    },
+    "payoffs": {
+      "a1|b1": [
+        "4",
+        "2"
+      ],
+      "a1|b2": [
+        "0",
+        "1"
+      ],
+      "a2|b1": [
+        "1",
+        "0"
+      ],
+      "a2|b2": [
+        "2",
+        "3"
+      ]
+    },
+    "params": {},
+    "constraints": [],
+    "facts": {
+      "strictlyDominant": {
+        "A": null,
+        "B": null
+      },
+      "weaklyDominantOnly": {
+        "A": null,
+        "B": null
+      },
+      "strictlyDominated": {
+        "A": [],
+        "B": []
+      },
+      "bestResponseDependsOnOpponent": {
+        "A": true,
+        "B": true
+      },
+      "iesdsSolution": null
+    },
+    "notes": "Best response to a stated belief; threshold at 2/5 on b1 (no variation sits on it)."
+  },
+  {
+    "id": "m3.s.roommate",
+    "version": "1.0.0",
+    "module": 3,
+    "discipline": "GT",
+    "sequence": "simultaneous",
+    "presentation": "matrix",
+    "scale": "cardinal",
+    "actions": {
+      "A": [
+        "clean",
+        "leave"
+      ],
+      "B": [
+        "clean",
+        "leave"
+      ]
+    },
+    "payoffs": {
+      "clean|clean": [
+        "3",
+        "3"
+      ],
+      "clean|leave": [
+        "0",
+        "5"
+      ],
+      "leave|clean": [
+        "5",
+        "0"
+      ],
+      "leave|leave": [
+        "1",
+        "1"
+      ]
+    },
+    "params": {},
+    "constraints": [],
+    "facts": {
+      "strictlyDominant": {
+        "A": "leave",
+        "B": "leave"
+      },
+      "weaklyDominantOnly": {
+        "A": null,
+        "B": null
+      },
+      "strictlyDominated": {
+        "A": [
+          "clean"
+        ],
+        "B": [
+          "clean"
+        ]
+      },
+      "bestResponseDependsOnOpponent": {
+        "A": false,
+        "B": false
+      },
+      "iesdsSolution": [
+        "leave",
+        "leave"
+      ]
+    },
+    "notes": "Reference structure of the roommate slice (fixed payoffs; do not change)."
+  },
+  {
+    "id": "m3.s.both",
+    "version": "1.0.0",
+    "module": 3,
+    "discipline": "GT",
+    "sequence": "simultaneous",
+    "presentation": "matrix",
+    "scale": "ordinal",
+    "actions": {
+      "A": [
+        "a1",
+        "a2"
+      ],
+      "B": [
+        "b1",
+        "b2"
+      ]
+    },
+    "payoffs": {
+      "a1|b1": [
+        "H",
+        "H"
+      ],
+      "a1|b2": [
+        "2",
+        "1"
+      ],
+      "a2|b1": [
+        "1",
+        "2"
+      ],
+      "a2|b2": [
+        "0",
+        "0"
+      ]
+    },
+    "params": {
+      "H": [
+        3,
+        4
+      ]
+    },
+    "constraints": [],
+    "facts": {
+      "strictlyDominant": {
+        "A": "a1",
+        "B": "b1"
+      },
+      "weaklyDominantOnly": {
+        "A": null,
+        "B": null
+      },
+      "strictlyDominated": {
+        "A": [
+          "a2"
+        ],
+        "B": [
+          "b2"
+        ]
+      },
+      "bestResponseDependsOnOpponent": {
+        "A": false,
+        "B": false
+      },
+      "iesdsSolution": [
+        "a1",
+        "b1"
+      ]
+    },
+    "notes": "Both players have the same strictly better action, and it also gives both their best outcome."
+  },
+  {
+    "id": "m3.s.one",
+    "version": "1.0.0",
+    "module": 3,
+    "discipline": "GT",
+    "sequence": "simultaneous",
+    "presentation": "matrix",
+    "scale": "ordinal",
+    "actions": {
+      "A": [
+        "a1",
+        "a2"
+      ],
+      "B": [
+        "b1",
+        "b2"
+      ]
+    },
+    "payoffs": {
+      "a1|b1": [
+        "T",
+        "2"
+      ],
+      "a1|b2": [
+        "2",
+        "0"
+      ],
+      "a2|b1": [
+        "1",
+        "0"
+      ],
+      "a2|b2": [
+        "0",
+        "1"
+      ]
+    },
+    "params": {
+      "T": [
+        3,
+        4
+      ]
+    },
+    "constraints": [],
+    "facts": {
+      "strictlyDominant": {
+        "A": "a1",
+        "B": null
+      },
+      "weaklyDominantOnly": {
+        "A": null,
+        "B": null
+      },
+      "strictlyDominated": {
+        "A": [
+          "a2"
+        ],
+        "B": []
+      },
+      "bestResponseDependsOnOpponent": {
+        "A": false,
+        "B": true
+      },
+      "iesdsSolution": [
+        "a1",
+        "b1"
+      ]
+    },
+    "notes": "Only A has a strictly better action; B’s best response depends on A. Seat rotation: learner as A or as B."
+  },
+  {
+    "id": "m3.s.elim",
+    "version": "1.0.0",
+    "module": 3,
+    "discipline": "GT",
+    "sequence": "simultaneous",
+    "presentation": "matrix",
+    "scale": "ordinal",
+    "actions": {
+      "A": [
+        "a1",
+        "a2",
+        "a3"
+      ],
+      "B": [
+        "b1",
+        "b2",
+        "b3"
+      ]
+    },
+    "payoffs": {
+      "a1|b1": [
+        "2",
+        "1"
+      ],
+      "a1|b2": [
+        "3",
+        "2"
+      ],
+      "a1|b3": [
+        "0",
+        "0"
+      ],
+      "a2|b1": [
+        "3",
+        "1"
+      ],
+      "a2|b2": [
+        "1",
+        "3"
+      ],
+      "a2|b3": [
+        "1",
+        "2"
+      ],
+      "a3|b1": [
+        "1",
+        "3"
+      ],
+      "a3|b2": [
+        "2",
+        "1"
+      ],
+      "a3|b3": [
+        "4",
+        "0"
+      ]
+    },
+    "params": {},
+    "constraints": [],
+    "facts": {
+      "strictlyDominant": {
+        "A": null,
+        "B": null
+      },
+      "weaklyDominantOnly": {
+        "A": null,
+        "B": null
+      },
+      "strictlyDominated": {
+        "A": [],
+        "B": [
+          "b3"
+        ]
+      },
+      "bestResponseDependsOnOpponent": {
+        "A": true,
+        "B": true
+      },
+      "iesdsSolution": [
+        "a1",
+        "b2"
+      ]
+    },
+    "notes": "No player has a strictly better action; removing never-better actions in rounds leaves (a1, b2)."
+  },
+  {
+    "id": "m3.s.weak",
+    "version": "1.0.0",
+    "module": 3,
+    "discipline": "GT",
+    "sequence": "simultaneous",
+    "presentation": "matrix",
+    "scale": "ordinal",
+    "actions": {
+      "A": [
+        "a1",
+        "a2"
+      ],
+      "B": [
+        "b1",
+        "b2"
+      ]
+    },
+    "payoffs": {
+      "a1|b1": [
+        "2",
+        "1"
+      ],
+      "a1|b2": [
+        "1",
+        "0"
+      ],
+      "a2|b1": [
+        "2",
+        "0"
+      ],
+      "a2|b2": [
+        "0",
+        "1"
+      ]
+    },
+    "params": {},
+    "constraints": [],
+    "facts": {
+      "strictlyDominant": {
+        "A": null,
+        "B": null
+      },
+      "weaklyDominantOnly": {
+        "A": "a1",
+        "B": null
+      },
+      "strictlyDominated": {
+        "A": [],
+        "B": []
+      },
+      "bestResponseDependsOnOpponent": {
+        "A": true,
+        "B": true
+      },
+      "iesdsSolution": null
+    },
+    "notes": "Edge case: a1 is never worse than a2 and better once (a tie at b1)."
+  }
+]

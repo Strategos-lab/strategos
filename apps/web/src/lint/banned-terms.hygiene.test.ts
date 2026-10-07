@@ -86,11 +86,17 @@ export function lintTargets(repo: string): string[] {
   const files = [
     ...walk(join(repo, 'apps', 'web', 'src')),
     ...walk(join(repo, 'packages', 'engine', 'src')),
+    ...walk(join(repo, 'packages', 'content', 'src')),
+    ...walk(join(repo, 'packages', 'content', 'data')),
+    ...walk(join(repo, 'packages', 'content', 'test')),
+    ...walk(join(repo, 'scripts')),
+    ...walk(join(repo, 'config')),
     ...walk(join(repo, 'docs')),
     join(repo, 'README.md'),
     join(repo, 'apps', 'web', 'README.md'),
     join(repo, 'apps', 'web', 'index.html'),
     join(repo, 'packages', 'engine', 'README.md'),
+    join(repo, 'packages', 'content', 'README.md'),
   ];
   return files.filter((f) => existsSync(f) && SCANNED_EXT.test(f) && !f.includes(`${sep}node_modules${sep}`));
 }
@@ -151,10 +157,15 @@ describe('banned-terms lint', () => {
     expect(lintText('docs/x.md', "The Prisoner's Dilemma and prisoners_dilemma.")).toEqual([]);
   });
 
-  it('covers web src (incl. scenarios), engine src, all docs, READMEs and the rules file', () => {
+  it('covers web src, engine src, content package (src, data, held-out), scripts, config, all docs, READMEs and the rules file', () => {
     const rel = lintTargets(repo).map((f) => f.slice(repo.length + 1).split('\\').join('/'));
     for (const must of [
-      'apps/web/src/content/scenarios/roommate-kitchen.json',
+      'packages/content/data/roommate/roommate-kitchen.json',
+      'packages/content/data/modules/m1.json',
+      'packages/content/data/held-out/provisional.json',
+      'packages/content/src/validate.ts',
+      'scripts/check-dependencies.mjs',
+      'config/dependency-allowlist.json',
       'apps/web/src/pages/SlicePage.tsx',
       'packages/engine/src/index.ts',
       'docs/STRATEGOS_PRODUCTION_RULES.md',

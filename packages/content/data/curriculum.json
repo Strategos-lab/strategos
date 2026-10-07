@@ -1,0 +1,317 @@
+{
+  "contentVersion": "2.0.0",
+  "modules": [
+    {
+      "id": "m1",
+      "number": 1,
+      "workingTitle": "Who decides what",
+      "formalTitle": "Seeing the Game",
+      "lessons": [
+        {
+          "id": "m1.l1",
+          "workingTitle": "Who is deciding?",
+          "objective": "Identify the people whose choices affect the outcome, and the options each has.",
+          "introduces": [
+            "players",
+            "actions"
+          ],
+          "requires": [],
+          "items": [
+            "i.m1.players",
+            "i.m1.actions"
+          ],
+          "reveal": {
+            "concept": "players",
+            "discipline": "GT",
+            "body": [
+              "The people whose choices affect the outcome are the players. Someone in the story who makes no such choice is not a player.",
+              "The options each player can choose are their actions."
+            ]
+          }
+        },
+        {
+          "id": "m1.l2",
+          "workingTitle": "What each person wants",
+          "objective": "Rank outcomes for each person and read the numbers that stand for those rankings.",
+          "introduces": [
+            "preferences",
+            "payoff"
+          ],
+          "requires": [
+            "players",
+            "actions"
+          ],
+          "items": [
+            "i.m1.ranking",
+            "i.m1.payoff"
+          ],
+          "reveal": {
+            "concept": "payoff",
+            "discipline": "GT",
+            "body": [
+              "How a person ranks the outcomes is their preferences.",
+              "A payoff is a number for how much a player likes an outcome. Only the order and size within one situation matter; payoffs are not money."
+            ]
+          }
+        },
+        {
+          "id": "m1.l3",
+          "workingTitle": "Who chooses when",
+          "objective": "Tell whether choices are made at the same time or in turn, and what each person has seen when choosing.",
+          "introduces": [
+            "timing",
+            "information"
+          ],
+          "requires": [
+            "players",
+            "actions"
+          ],
+          "items": [
+            "i.m1.info.meet",
+            "i.m1.info.turns",
+            "i.m1.first"
+          ],
+          "reveal": {
+            "concept": "timing",
+            "discipline": "GT",
+            "body": [
+              "When everyone chooses without seeing the others, the choices are simultaneous. When one person chooses after seeing another’s choice, they are sequential.",
+              "What each player knows when choosing is their information."
+            ]
+          }
+        },
+        {
+          "id": "m1.l4",
+          "workingTitle": "When your result is not yours alone",
+          "objective": "Recognise when your result depends on another person’s choice, and describe a situation completely.",
+          "introduces": [
+            "strategic_dependence"
+          ],
+          "requires": [
+            "players",
+            "actions",
+            "payoff"
+          ],
+          "items": [
+            "i.m1.depends.three",
+            "i.m1.depends.turns",
+            "i.m1.words",
+            "i.m1.t.players",
+            "i.m1.t.timing"
+          ],
+          "reveal": {
+            "concept": "strategic_dependence",
+            "discipline": "GT",
+            "body": [
+              "When your result depends on someone else’s choice as well as your own, there is strategic dependence.",
+              "Players, actions, payoffs, timing and information together describe the game."
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "id": "m2",
+      "number": 2,
+      "workingTitle": "Responding to a choice",
+      "formalTitle": "Best Response",
+      "lessons": [
+        {
+          "id": "m2.l1",
+          "workingTitle": "If you knew their choice",
+          "objective": "Find the action that gives you the most against a known choice of the other person, comparing within that choice.",
+          "introduces": [
+            "best_response"
+          ],
+          "requires": [
+            "payoff",
+            "strategic_dependence"
+          ],
+          "items": [
+            "i.m2.br.match",
+            "i.m2.br.apart",
+            "i.m2.br.three",
+            "i.m2.br.fill"
+          ],
+          "reveal": {
+            "concept": "best_response",
+            "discipline": "GT",
+            "body": [
+              "The action that gives you the highest payoff, given the other player’s choice, is your best response to that choice.",
+              "Compare your options within one choice of theirs, never across their choices."
+            ]
+          }
+        },
+        {
+          "id": "m2.l2",
+          "workingTitle": "When the better choice flips",
+          "objective": "See that your better choice can change with the other person’s choice, as when matching or differing is what pays.",
+          "introduces": [
+            "coordination"
+          ],
+          "requires": [
+            "best_response"
+          ],
+          "items": [
+            "i.m2.flip.match",
+            "i.m2.flip.apart",
+            "i.m2.flip.three",
+            "i.m2.pattern.match",
+            "i.m2.pattern.apart"
+          ],
+          "reveal": {
+            "concept": "coordination",
+            "discipline": "GT",
+            "body": [
+              "When your best response is to match the other player’s choice, the situation is a coordination game. When it is to differ, it is an anti-coordination game.",
+              "In both, no single action is best for you against everything: your best response depends on theirs."
+            ]
+          }
+        },
+        {
+          "id": "m2.l3",
+          "workingTitle": "Acting on what you believe",
+          "objective": "Choose the action that does best on average under your stated belief about the other person’s choice.",
+          "introduces": [
+            "belief_response"
+          ],
+          "requires": [
+            "best_response"
+          ],
+          "items": [
+            "i.m2.belief",
+            "i.m2.words",
+            "i.m2.t.br",
+            "i.m2.t.belief"
+          ],
+          "reveal": {
+            "concept": "belief_response",
+            "discipline": "DT",
+            "body": [
+              "When you are unsure what the other player will do, weight each of their choices by how likely you think it is. The weighted average is your expected payoff.",
+              "The action with the highest expected payoff is your best response to your belief."
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "id": "m3",
+      "number": 3,
+      "workingTitle": "Choices and counter-choices",
+      "formalTitle": "Dominant Strategies",
+      "lessons": [
+        {
+          "id": "m3.l1",
+          "workingTitle": "Better whatever they do",
+          "objective": "Recognise a choice that gives you more against every choice of the other person, checking each case.",
+          "introduces": [
+            "dominant_strategy"
+          ],
+          "requires": [
+            "best_response"
+          ],
+          "items": [
+            "i.m3.dom.reason",
+            "i.m3.dom.fill"
+          ],
+          "scenario": "roommate-kitchen",
+          "reveal": {
+            "concept": "dominant_strategy",
+            "discipline": "GT",
+            "body": [
+              "An action that gives you a higher payoff than any other, whatever the other player does, is a dominant strategy.",
+              "To find one, compare your options within each of the other player’s choices. One case is not enough."
+            ]
+          }
+        },
+        {
+          "id": "m3.l2",
+          "workingTitle": "When only one side has a sure choice",
+          "objective": "Use the other person’s sure choice to predict them, then respond to that prediction.",
+          "introduces": [],
+          "requires": [
+            "dominant_strategy",
+            "best_response"
+          ],
+          "items": [
+            "i.m3.one.you",
+            "i.m3.one.them",
+            "i.m3.one.reply"
+          ]
+        },
+        {
+          "id": "m3.l3",
+          "workingTitle": "Choices that never pay",
+          "objective": "Tell apart situations with and without a choice that is better in every case, and spot a choice that is never better.",
+          "introduces": [
+            "dominated_action"
+          ],
+          "requires": [
+            "dominant_strategy"
+          ],
+          "items": [
+            "i.m3.contrast.match",
+            "i.m3.contrast.both",
+            "i.m3.dominated"
+          ],
+          "reveal": {
+            "concept": "dominated_action",
+            "discipline": "GT",
+            "body": [
+              "An action is dominated when another action gives a higher payoff whatever the other player does.",
+              "Many situations have no dominant strategy at all; then your best response depends on the other player."
+            ]
+          }
+        },
+        {
+          "id": "m3.l4",
+          "workingTitle": "Set aside, then look again",
+          "objective": "Remove never-better choices one round at a time and check again what is left.",
+          "introduces": [
+            "iesds"
+          ],
+          "requires": [
+            "dominated_action"
+          ],
+          "items": [
+            "i.m3.iesds.step",
+            "i.m3.iesds",
+            "i.m3.words"
+          ],
+          "reveal": {
+            "concept": "iesds",
+            "discipline": "GT",
+            "body": [
+              "Iterated elimination of dominated strategies removes dominated actions in rounds. After each round, check again: an action that was not dominated before may be now.",
+              "When one pair is left, the game is solved this way. Often nothing can be removed at all."
+            ]
+          }
+        },
+        {
+          "id": "m3.l5",
+          "workingTitle": "A tie in one case",
+          "objective": "Distinguish never worse and sometimes better from better in every case.",
+          "introduces": [
+            "weak_dominance"
+          ],
+          "requires": [
+            "dominant_strategy"
+          ],
+          "items": [
+            "i.m3.weak",
+            "i.m3.t.dom",
+            "i.m3.t.one"
+          ],
+          "reveal": {
+            "concept": "weak_dominance",
+            "discipline": "GT",
+            "body": [
+              "An action that is never worse and sometimes better weakly dominates the other. This is an edge case: removing weakly dominated actions can depend on the order, so it is used with care."
+            ]
+          }
+        }
+      ]
+    }
+  ]
+}

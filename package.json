@@ -2,18 +2,20 @@
   "name": "strategos",
   "private": true,
   "version": "0.0.1",
-  "description": "STRATEGOS \u2014 strategic decision laboratory (static PWA)",
+  "description": "STRATEGOS — strategic decision laboratory (static PWA)",
   "scripts": {
     "dev": "pnpm build:engine && pnpm --filter @strategos/web dev",
     "build:engine": "pnpm --filter @strategos/engine build",
     "build": "pnpm build:engine && pnpm --filter @strategos/web build",
     "preview": "pnpm --filter @strategos/web preview",
-    "test": "pnpm build:engine && pnpm test:engine && pnpm --filter @strategos/web test",
+    "test": "pnpm check:deps && pnpm build:engine && pnpm test:engine && pnpm test:content && pnpm --filter @strategos/web test",
     "test:engine": "pnpm --filter @strategos/engine test",
     "test:engine:coverage": "pnpm --filter @strategos/engine test:coverage",
     "size:engine": "pnpm --filter @strategos/engine size",
     "test:e2e": "pnpm --filter @strategos/web test:e2e",
-    "typecheck": "pnpm build:engine && pnpm --filter @strategos/engine typecheck && pnpm --filter @strategos/web typecheck"
+    "typecheck": "pnpm build:engine && pnpm --filter @strategos/engine typecheck && pnpm --filter @strategos/content typecheck && pnpm --filter @strategos/web typecheck",
+    "check:deps": "node scripts/check-dependencies.mjs && node --test scripts/check-dependencies.test.mjs",
+    "test:content": "pnpm --filter @strategos/content test"
   },
   "engines": {
     "node": ">=20"

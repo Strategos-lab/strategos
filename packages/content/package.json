@@ -1,0 +1,24 @@
+{
+  "name": "@strategos/content",
+  "version": "1.0.0",
+  "private": true,
+  "description": "STRATEGOS authored content system: typed schema, validator, content lint, concept gating, instance generator, deterministic feedback. No AI, no I/O at runtime.",
+  "type": "module",
+  "sideEffects": false,
+  "exports": {
+    ".": "./src/index.ts",
+    "./slice": "./src/slice.ts"
+  },
+  "scripts": {
+    "typecheck": "tsc -p tsconfig.json --noEmit",
+    "test": "vitest run"
+  },
+  "dependencies": {
+    "@strategos/engine": "workspace:*"
+  },
+  "devDependencies": {
+    "@types/node": "^24.19.1",
+    "typescript": "~6.0.3",
+    "vitest": "5.0.3"
+  }
+}

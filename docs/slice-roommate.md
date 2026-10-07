@@ -27,8 +27,9 @@ Focus moves to each step’s heading. Buttons are at least 48 px tall.
 
 ## Content (data-driven)
 
-`apps/web/src/content/scenarios/roommate-kitchen.json` (contentVersion 1.2.0), validated by
-`content/schema.ts`. A scenario must provide all ten context items, a valid engine `NormalGame`, the
+`packages/content/data/roommate/roommate-kitchen.json` (skin + slice data; structure `m3.s.roommate` in
+`packages/content/data/structures.json`), composed by `@strategos/content/slice` into the scenario the app
+loads (deep-equal to the pre-Phase-2 scenario, contentVersion 1.2.0) and validated by `content/schema.ts`. A scenario must provide all ten context items, a valid engine `NormalGame`, the
 opponent policy, prompts, story text for every outcome cell, matrix notes, structured questions and
 feedback templates.
 

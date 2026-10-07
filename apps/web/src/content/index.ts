@@ -1,5 +1,8 @@
 import { assertValidScenario, type Scenario } from './schema';
-import roommateKitchen from './scenarios/roommate-kitchen.json';
+import { composeSliceScenario } from '@strategos/content/slice';
+
+/** The roommate slice, composed by the shared content system (structure × skin × presentation). */
+const roommateKitchen = composeSliceScenario();
 
 /** All authored scenarios (validated at load). */
 export const SCENARIOS: readonly Scenario[] = [assertValidScenario(roommateKitchen)];

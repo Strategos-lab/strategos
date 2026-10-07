@@ -10,6 +10,8 @@ Strategic decision laboratory — a **static, installable PWA** for learning to 
 
 - **Phase 0** — decisions, Pages deploy, PWA shell, IndexedDB spike, design-language prototype ([`docs/phase0.md`](docs/phase0.md)).
 - **Phase 1** — exact game-theory engine `@strategos/engine` ([`docs/phase1.md`](docs/phase1.md)).
+- **Phase 2** — content system `@strategos/content` + Modules 1–3 content and a provisional held-out set
+  (data and validation only; no new lesson UI) ([`docs/phase2.md`](docs/phase2.md)).
 - **Learner slice** — the first learner-facing experience: one complete roommate / shared-kitchen
   encounter (situation → predict → confidence → decide → B’s response → outcome in words → matrix
   reveal → engine-checked reasoning questions → summary separating decision quality from outcome).

@@ -1,0 +1,284 @@
+[
+  {
+    "id": "players",
+    "term": "player",
+    "forbidden": [
+      "player"
+    ],
+    "prerequisites": [],
+    "module": 1,
+    "introducedIn": "m1.l1",
+    "revealStep": "feedback",
+    "definition": "A player is anyone whose choice affects the outcome. People who make no choice are not players."
+  },
+  {
+    "id": "actions",
+    "term": "action",
+    "forbidden": [
+      "strategy",
+      "strategies",
+      "action set",
+      "strategy set"
+    ],
+    "prerequisites": [
+      "players"
+    ],
+    "module": 1,
+    "introducedIn": "m1.l1",
+    "revealStep": "feedback",
+    "definition": "An action is one of the choices a player can make."
+  },
+  {
+    "id": "preferences",
+    "term": "preferences",
+    "forbidden": [
+      "utility",
+      "utilities",
+      "preference ordering"
+    ],
+    "prerequisites": [
+      "players"
+    ],
+    "module": 1,
+    "introducedIn": "m1.l2",
+    "revealStep": "feedback",
+    "definition": "Preferences rank the outcomes for one player, from the one they like most to the one they like least."
+  },
+  {
+    "id": "payoff",
+    "term": "payoff",
+    "forbidden": [
+      "payoff"
+    ],
+    "prerequisites": [
+      "preferences",
+      "actions"
+    ],
+    "module": 1,
+    "introducedIn": "m1.l2",
+    "revealStep": "matrix",
+    "definition": "A payoff is a number for how much a player likes an outcome. Higher means better for that player."
+  },
+  {
+    "id": "timing",
+    "term": "timing",
+    "forbidden": [
+      "simultaneous",
+      "sequential",
+      "move order"
+    ],
+    "prerequisites": [
+      "actions"
+    ],
+    "module": 1,
+    "introducedIn": "m1.l3",
+    "revealStep": "feedback",
+    "definition": "Timing says who chooses when: at the same time, or one after another."
+  },
+  {
+    "id": "information",
+    "term": "information",
+    "forbidden": [
+      "perfect information",
+      "imperfect information",
+      "complete information",
+      "incomplete information",
+      "information set"
+    ],
+    "prerequisites": [
+      "timing"
+    ],
+    "module": 1,
+    "introducedIn": "m1.l3",
+    "revealStep": "feedback",
+    "definition": "Information says what each player knows when choosing, including whether they have seen the other’s choice."
+  },
+  {
+    "id": "strategic_dependence",
+    "term": "strategic dependence",
+    "forbidden": [
+      "strategic dependence",
+      "strategic interdependence",
+      "interdependen"
+    ],
+    "prerequisites": [
+      "payoff",
+      "players"
+    ],
+    "module": 1,
+    "introducedIn": "m1.l4",
+    "revealStep": "feedback",
+    "definition": "There is strategic dependence when your result depends on someone else’s choice as well as your own."
+  },
+  {
+    "id": "best_response",
+    "term": "best response",
+    "forbidden": [
+      "best response",
+      "best reply",
+      "best replies",
+      "best-response"
+    ],
+    "prerequisites": [
+      "strategic_dependence",
+      "payoff"
+    ],
+    "module": 2,
+    "introducedIn": "m2.l1",
+    "revealStep": "feedback",
+    "definition": "A best response is the action that gives you the highest payoff given the other player’s choice."
+  },
+  {
+    "id": "coordination",
+    "term": "coordination",
+    "forbidden": [
+      "coordination game",
+      "anti-coordination",
+      "coordination problem"
+    ],
+    "prerequisites": [
+      "best_response"
+    ],
+    "module": 2,
+    "introducedIn": "m2.l2",
+    "revealStep": "feedback",
+    "definition": "In a coordination situation, your best response is to match the other’s choice; in an anti-coordination situation, to differ from it."
+  },
+  {
+    "id": "belief_response",
+    "term": "best response to a belief",
+    "forbidden": [
+      "expected payoff",
+      "expected value",
+      "expected utility"
+    ],
+    "prerequisites": [
+      "best_response"
+    ],
+    "module": 2,
+    "introducedIn": "m2.l3",
+    "revealStep": "feedback",
+    "definition": "When you are unsure what the other will do, a best response to your belief is the action with the highest average payoff, weighting each of their choices by how likely you think it is."
+  },
+  {
+    "id": "dominant_strategy",
+    "term": "dominant strategy",
+    "forbidden": [
+      "dominant",
+      "dominance",
+      "dominates",
+      "dominating"
+    ],
+    "prerequisites": [
+      "best_response"
+    ],
+    "module": 3,
+    "introducedIn": "m3.l1",
+    "revealStep": "feedback",
+    "definition": "A dominant strategy gives you a higher payoff than any other action, whatever the other player does."
+  },
+  {
+    "id": "dominated_action",
+    "term": "dominated action",
+    "forbidden": [
+      "dominated"
+    ],
+    "prerequisites": [
+      "dominant_strategy"
+    ],
+    "module": 3,
+    "introducedIn": "m3.l3",
+    "revealStep": "feedback",
+    "definition": "An action is dominated when another action gives you a higher payoff whatever the other player does."
+  },
+  {
+    "id": "iesds",
+    "term": "iterated elimination of dominated strategies",
+    "forbidden": [
+      "iterated elimination",
+      "iesds",
+      "successive elimination"
+    ],
+    "prerequisites": [
+      "dominated_action"
+    ],
+    "module": 3,
+    "introducedIn": "m3.l4",
+    "revealStep": "feedback",
+    "definition": "Iterated elimination removes dominated actions one round at a time, then checks again in what is left."
+  },
+  {
+    "id": "weak_dominance",
+    "term": "weak dominance",
+    "forbidden": [
+      "weakly",
+      "weak dominance"
+    ],
+    "prerequisites": [
+      "dominant_strategy"
+    ],
+    "module": 3,
+    "introducedIn": "m3.l5",
+    "revealStep": "feedback",
+    "definition": "An action weakly dominates another when it is never worse and sometimes better. Weak dominance is a weaker claim than strict dominance."
+  },
+  {
+    "id": "nash_equilibrium",
+    "term": "Nash equilibrium",
+    "forbidden": [
+      "nash",
+      "equilibri"
+    ],
+    "prerequisites": [
+      "best_response"
+    ],
+    "module": 4,
+    "introducedIn": null,
+    "revealStep": "reveal",
+    "definition": "A pair of actions where each is a best response to the other."
+  },
+  {
+    "id": "social_dilemma",
+    "term": "social dilemma",
+    "forbidden": [
+      "dilemma"
+    ],
+    "prerequisites": [
+      "dominant_strategy"
+    ],
+    "module": 5,
+    "introducedIn": null,
+    "revealStep": "reveal",
+    "definition": "A situation where individually better choices lead to an outcome worse for everyone."
+  },
+  {
+    "id": "pareto",
+    "term": "Pareto efficiency",
+    "forbidden": [
+      "pareto"
+    ],
+    "prerequisites": [
+      "payoff"
+    ],
+    "module": 5,
+    "introducedIn": null,
+    "revealStep": "reveal",
+    "definition": "An outcome is Pareto efficient when no other outcome makes someone better off without making someone worse off."
+  },
+  {
+    "id": "mixed_strategy",
+    "term": "mixed strategy",
+    "forbidden": [
+      "mixed strategy",
+      "mixed strategies",
+      "randomis"
+    ],
+    "prerequisites": [
+      "nash_equilibrium"
+    ],
+    "module": 4,
+    "introducedIn": null,
+    "revealStep": "reveal",
+    "definition": "Choosing between actions with set probabilities."
+  }
+]
