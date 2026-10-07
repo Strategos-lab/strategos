@@ -55,7 +55,7 @@ Browser storage (IndexedDB, Cache Storage, localStorage) is keyed by **origin** 
 ## Android install troubleshooting
 
 - Manifest `id` is `/strategos/?app=strategos-2`; `start_url` and `scope` are `/strategos/`. Orientation lock removed (not needed).
-- In-app **Install STRATEGOS** button appears when Chrome fires `beforeinstallprompt`. It is hidden when running standalone (a “Running as installed app” note shows instead) and after `appinstalled`.
+- In-app **install card** (icon, “Install STRATEGOS”, **Install app** button, × close) sits below the hero. Chromium/Android: shown once `beforeinstallprompt` is captured; the button calls `promptInstall()`. iOS (not standalone): the button expands Share → Add to Home Screen steps. Hidden when standalone (a “Running as installed app” note shows instead), after `appinstalled`, and when no install path exists (e.g. desktop Firefox). × stores `strategos:v1:installCardDismissedAt` in localStorage; the card returns after 14 days.
 - “Already installed” with no icon: check the app drawer; otherwise uninstall the stale STRATEGOS from Settings → Apps and reinstall from Chrome.
 
 ### Manifest id: do not change it again

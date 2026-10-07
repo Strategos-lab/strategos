@@ -2,8 +2,7 @@ import { useState } from 'react';
 import { PayoffMatrix, type CellCoord } from '../components/PayoffMatrix';
 import { ConfidenceControl } from '../components/ConfidenceControl';
 import { StoragePanel } from '../components/StoragePanel';
-import { IosInstallHint } from '../components/IosInstallHint';
-import { InstallControl } from '../components/InstallControl';
+import { InstallCard } from '../components/InstallCard';
 import { InstallHelp } from '../components/InstallHelp';
 
 /** Classic PD numbers, labelled only as a demo — do not teach PD yet. */
@@ -36,8 +35,7 @@ export function HomePage() {
         </p>
       </header>
 
-      <InstallControl />
-      <IosInstallHint />
+      <InstallCard />
 
       <PayoffMatrix
         rowPlayerLabel="You (roommate A)"

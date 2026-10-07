@@ -17,7 +17,7 @@ export function InstallHelp() {
           (a stale copy from an earlier install), and <strong>Uninstall</strong> it.
         </li>
         <li>
-          Return to Chrome, reload this page, then use <em>Install STRATEGOS</em> above
+          Return to Chrome, reload this page, then use <em>Install app</em> above
           or Chrome menu (⋮) → <em>Install app</em>.
         </li>
       </ol>

@@ -109,8 +109,7 @@ code {
 
 .matrix-panel,
 .confidence,
-.storage-panel,
-.ios-hint {
+.storage-panel {
   background: var(--surface);
   border: 1px solid var(--border);
   border-radius: var(--radius);
@@ -222,8 +221,7 @@ code {
 }
 
 .storage-panel h2,
-.storage-panel h3,
-.ios-hint h2 {
+.storage-panel h3 {
   margin: 0 0 0.5rem;
   font-size: 1.05rem;
   font-weight: 600;
@@ -317,29 +315,6 @@ code {
   gap: 0.4rem;
 }
 
-.ios-hint {
-  position: relative;
-  border-color: var(--accent-dim);
-}
-
-.ios-hint ol {
-  margin: 0.5rem 0;
-  padding-left: 1.2rem;
-  font-size: 0.9rem;
-}
-
-.ios-hint-dismiss {
-  position: absolute;
-  top: 0.4rem;
-  right: 0.5rem;
-  border: none;
-  background: transparent;
-  color: var(--muted);
-  font-size: 1.25rem;
-  line-height: 1;
-  cursor: pointer;
-}
-
 .site-footer {
   padding-top: 0.5rem;
   border-top: 1px solid var(--border);
@@ -352,17 +327,100 @@ code {
   }
 }
 
-.install-control {
+.install-card {
+  background: var(--surface);
+  border: 1px solid var(--accent-dim);
+  border-radius: var(--radius);
+  padding: 1rem;
   display: flex;
   flex-direction: column;
-  gap: 0.35rem;
+  gap: 0.85rem;
 }
 
-.install-btn {
-  align-self: flex-start;
-  border-color: var(--accent-dim);
-  color: var(--accent);
-  font-size: 0.85rem;
+.install-card-head {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.75rem;
+}
+
+.install-card-icon {
+  flex: none;
+  width: 48px;
+  height: 48px;
+  border-radius: 10px;
+  border: 1px solid var(--border);
+}
+
+.install-card-text {
+  flex: 1;
+  min-width: 0;
+}
+
+.install-card-text h2 {
+  margin: 0 0 0.2rem;
+  font-size: 1.05rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+}
+
+.install-card-text p {
+  margin: 0;
+  font-size: 0.875rem;
+  color: #c2bdb4;
+}
+
+.install-card-close {
+  flex: none;
+  width: 44px;
+  height: 44px;
+  margin: -0.5rem -0.5rem 0 0;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  border-radius: 8px;
+  background: transparent;
+  color: var(--muted);
+  font-size: 1.5rem;
+  line-height: 1;
+  cursor: pointer;
+}
+
+.install-card-close:hover {
+  color: var(--text);
+  background: var(--surface-2);
+}
+
+.install-card-close:focus-visible {
+  outline: 2px solid var(--focus);
+  outline-offset: 2px;
+}
+
+.install-card-cta {
+  min-height: 44px;
+  width: 100%;
+  font-size: 0.95rem;
+  padding: 0.6rem 1rem;
+}
+
+.install-card-cta:hover {
+  background: #d1b484;
+}
+
+.install-card-steps {
+  border-top: 1px solid var(--border);
+  padding-top: 0.75rem;
+}
+
+.install-card-steps ol {
+  margin: 0 0 0.5rem;
+  padding-left: 1.2rem;
+  font-size: 0.9rem;
+}
+
+.install-card-steps p,
+.install-card-note {
+  margin: 0;
 }
 
 .install-status {

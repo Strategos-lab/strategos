@@ -57,7 +57,7 @@ Within the Phase 0 / V1 shell budget. See CI job summary on each deploy for the 
 
 1. Look in the **app drawer** (swipe up). Chrome often installs the app there without a home-screen icon; long-press → *Add to Home screen*.
 2. Otherwise open **Settings → Apps**, find **STRATEGOS** (a stale copy) and **Uninstall** it. Export learning data first if the installed copy holds any.
-3. Back in Chrome, reload the page and tap **Install STRATEGOS** (in-app button) or Chrome menu ⋮ → **Install app**.
+3. Back in Chrome, reload the page and tap **Install app** on the in-app install card or Chrome menu ⋮ → **Install app**.
 
 The manifest has a stable `id: "/strategos/"` (with `start_url` and `scope` both `/strategos/`). The app is hosted under the dedicated `Strategos-lab` organisation, so its origin `https://strategos-lab.github.io` is not shared with any other app. Never change the `id` once installed.
 
