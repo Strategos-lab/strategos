@@ -5,17 +5,17 @@ import { InstallHelp } from '../components/InstallHelp';
 /** Small settings/data page: export, import, erase. Reached from an unobtrusive footer link. */
 export function DataPage() {
   return (
-    <main className="home">
-      <header className="hero">
-        <p className="eyebrow">STRATEGOS</p>
-        <h1>Data &amp; app</h1>
+    <main className="page page-data">
+      <header className="flow-head">
+        <p className="wordmark">STRATEGOS</p>
       </header>
+      <h1 className="step-heading-title">Data &amp; app</h1>
       <StoragePanel />
       <InstallHelp />
-      <footer className="site-footer">
-        <p className="small">
-          <Link to="/">Back</Link>
-        </p>
+      <footer className="page-foot">
+        <Link to="/" className="quiet-link">
+          Back
+        </Link>
       </footer>
     </main>
   );

@@ -43,13 +43,14 @@ pnpm test:e2e     # Playwright (builds + preview)
 ## Bundle budget
 
 Target (plan): app shell ≤ ~200 KB JS compressed.  
-**Phase 0 measured (local production build, no source maps):**
+**Measured (local production build, no source maps; updated with the v2 visual design):**
 
 | Asset | Raw | Gzip |
 |---|---:|---:|
-| Main JS (`index-*.js`) | ~367 KB | ~117 KB |
-| CSS | ~4.6 KB | ~1.6 KB |
-| `dist/` total (precached shell) | ~460 KB | — |
+| Main JS (`index-*.js`) | ~427 KB | ~136 KB |
+| CSS | ~23 KB | ~4.9 KB |
+| Fonts (Inter + JetBrains Mono, latin, variable woff2; separate assets) | ~87 KB | (already compressed) |
+| Precache (service worker) | ~565 KB | — |
 
 Within the Phase 0 / V1 shell budget. See CI job summary on each deploy for the latest figures.
 

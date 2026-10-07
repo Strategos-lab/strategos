@@ -23,6 +23,8 @@ export interface PayoffMatrixProps {
   /** read-only: marker text for the highlighted row / column headers. */
   rowMark?: string;
   colMark?: string;
+  /** read-only: short visible label for the row player's axis (e.g. "You"). */
+  rowAxisLabel?: string;
   /** read-only: accessible label for the highlighted cell. */
   highlightLabel?: string;
   demoNote?: string;
@@ -36,6 +38,7 @@ export function PayoffMatrix(props: PayoffMatrixProps) {
 function ReadOnlyMatrix({
   rowPlayerLabel,
   colPlayerLabel,
+  rowAxisLabel,
   rowActions,
   colActions,
   payoffs,
@@ -46,58 +49,54 @@ function ReadOnlyMatrix({
   ariaLabel = 'Payoff table',
 }: PayoffMatrixProps) {
   return (
-    <section className="matrix-panel" aria-label={ariaLabel} data-testid="payoff-matrix">
-      <div className="matrix-scroll">
-        <table className="payoff-matrix read-only">
-          <caption className="sr-only">
-            Rows are {rowPlayerLabel}&apos;s choices; columns are {colPlayerLabel}&apos;s choices. Each cell
-            shows {rowPlayerLabel}&apos;s number first, then {colPlayerLabel}&apos;s.
-          </caption>
-          <thead>
-            <tr>
-              <td className="corner" />
-              <th scope="colgroup" colSpan={colActions.length} className="player-head">
-                {colPlayerLabel}
+    <section className="matrix" aria-label={ariaLabel} data-testid="payoff-matrix">
+      <table className="matrix-table">
+        <caption className="sr-only">
+          Rows are {rowPlayerLabel}&apos;s choices; columns are {colPlayerLabel}&apos;s choices. Each cell
+          shows {rowPlayerLabel}&apos;s number first, then {colPlayerLabel}&apos;s.
+        </caption>
+        <thead>
+          <tr>
+            <td className="m-corner" />
+            <th scope="colgroup" colSpan={colActions.length} className="m-axis m-axis-col">
+              {colPlayerLabel}
+            </th>
+          </tr>
+          <tr>
+            <td className="m-corner m-axis m-axis-row">{rowAxisLabel ?? rowPlayerLabel}</td>
+            {colActions.map((action, col) => (
+              <th key={action} scope="col" className={`m-col${highlight?.col === col ? ' is-marked' : ''}`}>
+                {action}
+                {highlight?.col === col && colMark ? <span className="m-mark">{colMark}</span> : null}
               </th>
-            </tr>
-            <tr>
-              <th scope="col" className="corner player-head">
-                {rowPlayerLabel}
-              </th>
-              {colActions.map((action, col) => (
-                <th key={action} scope="col" className={highlight?.col === col ? 'marked' : undefined}>
-                  {action}
-                  {highlight?.col === col && colMark ? <span className="mark">{colMark}</span> : null}
-                </th>
-              ))}
-            </tr>
-          </thead>
-          <tbody>
-            {rowActions.map((rowAction, row) => (
-              <tr key={rowAction}>
-                <th scope="row" className={highlight?.row === row ? 'marked' : undefined}>
-                  {rowAction}
-                  {highlight?.row === row && rowMark ? <span className="mark">{rowMark}</span> : null}
-                </th>
-                {colActions.map((_, col) => {
-                  const [r, c] = payoffs[row]![col]!;
-                  const isHit = highlight?.row === row && highlight?.col === col;
-                  return (
-                    <td key={col} className={`matrix-value${isHit ? ' realised' : ''}`} data-testid={isHit ? 'realised-cell' : undefined}>
-                      <span className="payoff-pair">
-                        <span className="payoff-row">{r}</span>
-                        <span className="payoff-sep">,</span>
-                        <span className="payoff-col">{c}</span>
-                      </span>
-                      {isHit && highlightLabel ? <span className="sr-only"> ({highlightLabel})</span> : null}
-                    </td>
-                  );
-                })}
-              </tr>
             ))}
-          </tbody>
-        </table>
-      </div>
+          </tr>
+        </thead>
+        <tbody>
+          {rowActions.map((rowAction, row) => (
+            <tr key={rowAction}>
+              <th scope="row" className={`m-row${highlight?.row === row ? ' is-marked' : ''}`}>
+                {rowAction}
+                {highlight?.row === row && rowMark ? <span className="m-mark">{rowMark}</span> : null}
+              </th>
+              {colActions.map((_, col) => {
+                const [r, c] = payoffs[row]![col]!;
+                const isHit = highlight?.row === row && highlight?.col === col;
+                return (
+                  <td key={col} className={`m-cell${isHit ? ' is-hit' : ''}`} data-testid={isHit ? 'realised-cell' : undefined}>
+                    <span className="m-pair">
+                      <span className="m-you">{r}</span>
+                      <span className="m-sep">,</span>
+                      <span className="m-them">{c}</span>
+                    </span>
+                    {isHit && highlightLabel ? <span className="sr-only"> ({highlightLabel})</span> : null}
+                  </td>
+                );
+              })}
+            </tr>
+          ))}
+        </tbody>
+      </table>
     </section>
   );
 }

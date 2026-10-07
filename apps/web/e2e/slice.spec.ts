@@ -178,3 +178,44 @@ test.describe('Learner slice: the shared kitchen', () => {
     await expect(page.getByTestId('btn-write-sample')).toBeVisible();
   });
 });
+
+test.describe('Privacy / offline assets', () => {
+  test('no request leaves the origin; self-hosted fonts load', async ({ page, baseURL }) => {
+    const origin = new URL(baseURL!).origin;
+    const external: string[] = [];
+    page.on('request', (r) => {
+      const u = new URL(r.url());
+      if (u.protocol !== 'data:' && u.protocol !== 'blob:' && u.origin !== origin) external.push(r.url());
+    });
+    const fontRequests: string[] = [];
+    page.on('requestfinished', (r) => {
+      if (r.url().endsWith('.woff2')) fontRequests.push(r.url());
+    });
+    await page.goto('./#/?seed=3');
+    await page.getByRole('button', { name: 'Start' }).click();
+    await page.getByRole('button', { name: 'Continue' }).click();
+    await page.getByRole('button', { name: 'Leave it' }).click();
+    await page.getByRole('button', { name: 'Continue' }).click();
+    await page.getByRole('button', { name: 'Leave it' }).click();
+    await page.getByRole('button', { name: 'Continue' }).click();
+    await page.getByRole('button', { name: 'Continue' }).click();
+    await expect(page.getByRole('table')).toBeVisible();
+    const loaded = await page.evaluate(async () => {
+      await document.fonts.ready;
+      return [...document.fonts].filter((f) => f.status === 'loaded').map((f) => f.family.replace(/"/g, ''));
+    });
+    expect(loaded).toContain('Inter Variable');
+    expect(loaded).toContain('JetBrains Mono Variable');
+    expect(fontRequests.length).toBeGreaterThanOrEqual(2);
+    for (const f of fontRequests) expect(new URL(f).origin).toBe(origin);
+    expect(external).toEqual([]);
+  });
+
+  test('font licenses ship with the app', async ({ request }) => {
+    for (const name of ['OFL-Inter.txt', 'OFL-JetBrainsMono.txt']) {
+      const res = await request.get(`./licenses/${name}`);
+      expect(res.ok()).toBe(true);
+      expect(await res.text()).toContain('SIL Open Font License');
+    }
+  });
+});

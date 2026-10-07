@@ -83,6 +83,33 @@ confidence, choice, B’s action, outcome payoffs, consistency, answers with cor
 engine version and content version. No schema change or migration was needed (the table already
 stores typed events). Export / import / erase cover these records.
 
+## Visual design (v2)
+
+Presentation only — no change to logic, content text, sequence, persistence or scoring.
+
+- **Principle:** the page is the canvas. Typography, spacing and hairlines carry the structure; the
+  outer step card is gone. Cards remain only for the decision controls, the matrix and the install
+  card. Three levels: L1 the decision (large question heading), L2 context (story, at-a-glance),
+  L3 detail (disclosures, notation, metadata).
+- **Tokens** (`apps/web/src/index.css`): surfaces `--bg`/`--surface-1..3`; lines `--line`,
+  `--line-strong`; text `--text`, `--text-2`, `--text-3` (all ≥ 4.5:1 on every surface, WCAG AA);
+  brass `--accent` / `--accent-soft` / `--accent-line` only for emphasis and selected state; type
+  scale `--fs-xs … --fs-display`; spacing `--space-1 … --space-9`; radii `--radius-sm/md/lg`;
+  `--shadow-1`; motion `--dur` (180 ms) / `--ease`; `--target` 48 px; brass `--focus-ring`.
+- **Fonts:** Inter (variable, latin, 47 KB) and JetBrains Mono (variable, latin, 39 KB) for payoffs,
+  percentages and step numbers. Self-hosted in `apps/web/src/assets/fonts/` with their SIL OFL 1.1
+  licenses (also served at `licenses/`), precached by the service worker; no external requests
+  (asserted in e2e).
+- **Screens:** editorial step indicator (`01 / 09  THE SITUATION`); 68 px decision controls with a
+  brass left rule + tonal shift when selected; confidence as a large mono percentage over a quiet
+  slider; reveal and outcome as typography (big mono scores); the matrix as the one card — gapped
+  cells, strong player labels, your payoff bright / B's dimmer, realised cell in brass; reasoning
+  feedback shows `✓ Correct` / `Not quite` (from the existing correctness flag) plus the authored
+  concluding statement, with the full authored text behind **Why**; summary as a `Your run`
+  label/value list and `What to notice` (decision vs outcome, policy reveal).
+- **Motion:** ≤ 200 ms fade/slide between steps, matrix and realised-cell reveal; all disabled under
+  `prefers-reduced-motion`.
+
 ## Developer mode
 
 The old spike (tap-to-select matrix, engine debug output, sample-event storage tools) lives at
