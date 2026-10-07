@@ -50,3 +50,35 @@ test.describe('Phase 0 smoke', () => {
     await download.saveAs(target);
   });
 });
+
+test.describe('Phase 0 install', () => {
+  test('manifest has stable id and scope', async ({ request }) => {
+    const res = await request.get('./manifest.webmanifest');
+    expect(res.ok()).toBe(true);
+    const m = await res.json();
+    expect(m.id).toBe('/strategos/');
+    expect(m.start_url).toBe('/strategos/');
+    expect(m.scope).toBe('/strategos/');
+  });
+
+  test('install button appears on beforeinstallprompt and hides after appinstalled', async ({ page }) => {
+    await page.goto('./#/');
+    await expect(page.getByTestId('btn-install')).toHaveCount(0);
+    await page.evaluate(() => {
+      const ev = new Event('beforeinstallprompt', { cancelable: true }) as Event & Record<string, unknown>;
+      ev.prompt = () => Promise.resolve();
+      ev.userChoice = Promise.resolve({ outcome: 'dismissed', platform: 'web' });
+      window.dispatchEvent(ev);
+    });
+    await expect(page.getByTestId('btn-install')).toBeVisible();
+    await page.evaluate(() => window.dispatchEvent(new Event('appinstalled')));
+    await expect(page.getByTestId('btn-install')).toHaveCount(0);
+    await expect(page.getByTestId('installed-status')).toBeVisible();
+  });
+
+  test('install troubleshooting help is present', async ({ page }) => {
+    await page.goto('./#/');
+    await page.getByText('Install troubleshooting (Android)').click();
+    await expect(page.getByTestId('install-help')).toContainText('app drawer');
+  });
+});

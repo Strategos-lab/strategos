@@ -52,6 +52,12 @@ Browser storage (IndexedDB, Cache Storage, localStorage) is keyed by **origin** 
 - [ ] After a first online load, confirm shell works offline.
 - [ ] When a new deploy ships, confirm the update banner appears and Reload is opt-in (not silent).
 
+## Android install troubleshooting
+
+- Manifest `id` is `/strategos/`; `start_url` and `scope` are `/strategos/`. Orientation lock removed (not needed).
+- In-app **Install STRATEGOS** button appears when Chrome fires `beforeinstallprompt`. It is hidden when running standalone (a “Running as installed app” note shows instead) and after `appinstalled`.
+- “Already installed” with no icon: check the app drawer; otherwise uninstall the stale STRATEGOS from Settings → Apps and reinstall from Chrome.
+
 ## Demo content note
 
 The 2×2 matrix uses a roommates / shared-kitchen story with classic PD numbers **as a visual demo only**. Phase 0 does not teach Prisoner's Dilemma or any module content.

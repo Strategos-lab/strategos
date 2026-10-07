@@ -1,5 +1,6 @@
 import { StrictMode } from 'react';
 import { createRoot } from 'react-dom/client';
+import './pwa/installPrompt';
 import App from './App';
 import { ensureWorksheetStore } from './storage';
 import './index.css';

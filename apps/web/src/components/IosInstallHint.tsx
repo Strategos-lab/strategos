@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+import { isStandalone } from '../pwa/installPrompt';
 
 const STORAGE_KEY = 'strategos-ios-install-dismissed';
 
@@ -8,14 +9,6 @@ function isIos(): boolean {
   const iOS = /iPad|iPhone|iPod/.test(ua);
   const iPadOs = navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1;
   return iOS || iPadOs;
-}
-
-function isStandalone(): boolean {
-  if (typeof window === 'undefined') return false;
-  const mq = window.matchMedia('(display-mode: standalone)').matches;
-  // iOS Safari legacy
-  const nav = window.navigator as Navigator & { standalone?: boolean };
-  return mq || nav.standalone === true;
 }
 
 export function IosInstallHint() {

@@ -351,3 +351,41 @@ code {
     padding-top: 2rem;
   }
 }
+
+.install-control {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+}
+
+.install-btn {
+  align-self: flex-start;
+  border-color: var(--accent-dim);
+  color: var(--accent);
+  font-size: 0.85rem;
+}
+
+.install-status {
+  margin: 0;
+  font-size: 0.8rem;
+  color: var(--muted);
+  border-left: 2px solid var(--accent-dim);
+  padding-left: 0.6rem;
+}
+
+.install-help {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 0.75rem 1rem;
+}
+
+.install-help summary {
+  cursor: pointer;
+  font-size: 0.9rem;
+  font-weight: 500;
+}
+
+.install-help ol {
+  padding-left: 1.2rem;
+}

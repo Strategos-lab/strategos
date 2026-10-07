@@ -3,6 +3,8 @@ import { PayoffMatrix, type CellCoord } from '../components/PayoffMatrix';
 import { ConfidenceControl } from '../components/ConfidenceControl';
 import { StoragePanel } from '../components/StoragePanel';
 import { IosInstallHint } from '../components/IosInstallHint';
+import { InstallControl } from '../components/InstallControl';
+import { InstallHelp } from '../components/InstallHelp';
 
 /** Classic PD numbers, labelled only as a demo — do not teach PD yet. */
 const DEMO_PAYOFFS: [
@@ -34,6 +36,7 @@ export function HomePage() {
         </p>
       </header>
 
+      <InstallControl />
       <IosInstallHint />
 
       <PayoffMatrix
@@ -50,6 +53,8 @@ export function HomePage() {
       <ConfidenceControl value={confidence} onChange={setConfidence} />
 
       <StoragePanel />
+
+      <InstallHelp />
 
       <footer className="site-footer">
         <p className="muted small">
