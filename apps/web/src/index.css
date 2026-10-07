@@ -1111,6 +1111,27 @@ code {
   color: var(--accent);
 }
 
+.run-row dd .run-pred {
+  margin-right: var(--space-2);
+}
+
+.nowrap {
+  white-space: nowrap;
+}
+
+.question-reveal {
+  animation: step-in var(--dur) var(--ease) both;
+}
+
+.question-prompt:focus {
+  outline: none;
+}
+
+.question-prompt:focus-visible {
+  box-shadow: var(--focus-ring);
+  border-radius: var(--radius-sm);
+}
+
 .run + .disclosure {
   margin-top: var(--space-1);
 }

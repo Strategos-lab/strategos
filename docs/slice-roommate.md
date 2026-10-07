@@ -18,8 +18,8 @@ Home (`#/`): title + **Start** (install card behaviour unchanged). Then:
 | 5 | Opponent response | “You chose X. Roommate B chose Y.” No Back from here on. |
 | 6 | Outcome | Words first (“You get 1. Roommate B gets 1.”), observational story for that cell, then “Outcome: (1, 1)”. |
 | 7 | Matrix reveal | “Here is the whole game as a table.” Read-only matrix plus three how-to-read notes. |
-| 8 | Check your reasoning | (a) If B chooses Clean… (b) If B chooses Leave it… (c) Looking at both comparisons, what pattern do you see? Options: Clean / Leave it is always better / It depends on what B chooses. Feedback is evidence-first (payoff comparison headline), then Why with best-response / dominant-strategy definitions on first use. Closing insight notes the mutual-harm pattern without naming a named dilemma. |
-| 9 | Summary | Compact Your run (prediction · confidence, actual, decision, decision quality vs own prediction, outcome “N for you · M for B”). What to notice: decision judged on what you knew; outcome also depended on B; B’s fixed 70/30 behaviour (after reveal only). **No seed in the learner UI.** **Try again** starts a fresh attempt. |
+| 8 | Check your reasoning | Questions revealed one at a time (focus moves to each new question). (a) If B chooses Clean… (b) If B chooses Leave it… (c) Looking at both comparisons, what pattern do you see? Options: Clean / Leave it is always better / It depends on what B chooses. Feedback is evidence-first (payoff comparison headline), then Why with best-response / dominant-strategy definitions on first use. Closing insight notes the mutual-harm pattern without naming a named dilemma. |
+| 9 | Summary | Compact Your run (prediction · confidence, actual, decision, “Your choice, with the table” — neutral look-back: given the table, was the choice the best response to your own prediction; outcome “N for you · M for B”). What to notice: you chose before seeing the table; outcome also depended on B; B’s fixed 70/30 behaviour (after reveal only). **No seed in the learner UI.** **Try again** starts a fresh attempt. |
 
 Focus moves to each step’s heading. Buttons are at least 48 px tall.
 

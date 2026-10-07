@@ -42,6 +42,10 @@ describe('structured questions are engine-checked', () => {
     const wrong = questionFeedback(S, q('if-b-leaves'), 'clean');
     expect(wrong.correct).toBe(false);
     expect(feedbackParts(wrong.text).headline).toBe('Leave it gives you 1; Clean gives you 0.');
+    // Definition only on first use (Q1).
+    expect(right.text).toContain('A best response is');
+    expect(wrong.text).not.toContain('A best response is');
+    expect(feedbackParts(wrong.text).why).toBe('Because B chose Leave it, Leave it is your best response.');
   });
 
   it('Q3 options and dominant-strategy feedback match the engine', () => {

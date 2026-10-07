@@ -1,6 +1,6 @@
 {
   "id": "roommate-kitchen",
-  "contentVersion": "1.2.0",
+  "contentVersion": "1.3.0",
   "title": "The shared kitchen",
   "roleStatement": "You are Roommate A.",
   "context": {
@@ -135,7 +135,8 @@
     "dominantCorrect": "{lines} {dominant} is a dominant strategy. A dominant strategy gives you a higher payoff no matter what the other player does.",
     "dominantIncorrect": "{lines} {dominant} is a dominant strategy. A dominant strategy gives you a higher payoff no matter what the other player does.",
     "noneCorrect": "{lines} Which is better depends on what B does.",
-    "noneIncorrect": "{lines} No single action is better whatever B does; it depends on B."
+    "noneIncorrect": "{lines} No single action is better whatever B does; it depends on B.",
+    "bestReplyRepeat": "{lines} Because B chose {opponentAction}, {best} is your best response."
   },
   "closingNote": "{dominant} gives each player a higher payoff whatever the other player does. If both choose {dominant}, both get {mutualYou}. If both choose Clean, both get {betterYou}. So each player’s individually better action leads to a result that is worse for both."
 }

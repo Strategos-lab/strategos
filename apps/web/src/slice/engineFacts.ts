@@ -142,7 +142,15 @@ export function questionFeedback(s: Scenario, q: StructuredQuestion, answer: str
       opponentAction: opponentActions(s)[opp]!.label,
       best: best.map((i) => own[i]!.label).join(' / '),
     };
-    const tpl = best.length > 1 ? s.feedback.bestReplyTie : correct ? s.feedback.bestReplyCorrect : s.feedback.bestReplyIncorrect;
+    const firstBestReply = s.questions.find((x) => x.kind === 'best-reply')?.id === q.id;
+    const tpl =
+      best.length > 1
+        ? s.feedback.bestReplyTie
+        : !firstBestReply && s.feedback.bestReplyRepeat
+          ? s.feedback.bestReplyRepeat
+          : correct
+            ? s.feedback.bestReplyCorrect
+            : s.feedback.bestReplyIncorrect;
     return { correct, text: fillTemplate(tpl, values) };
   }
   const d = dominantAction(s);

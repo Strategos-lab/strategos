@@ -445,6 +445,14 @@ function ExplainStep({ scenario: s, state, dispatch, headingRef }: StepProps) {
   const visible = firstOpen === -1 ? s.questions : s.questions.slice(0, firstOpen + 1);
   const done = allAnswered(s, state);
   const note = useMemo(() => (done ? closingNote(s) : null), [done, s]);
+  const answeredCount = Object.keys(state.answers).length;
+  const prevCount = useRef(answeredCount);
+  useEffect(() => {
+    if (answeredCount > prevCount.current && firstOpen !== -1) {
+      document.getElementById(`q-${s.questions[firstOpen]!.id}`)?.focus();
+    }
+    prevCount.current = answeredCount;
+  }, [answeredCount, firstOpen, s]);
   return (
     <StepView step="explain" title="Check your reasoning" variant="title" headingRef={headingRef}>
       <p className="note">Look at the table again and answer from your side ({learnerLabel(s)}).</p>
@@ -454,11 +462,11 @@ function ExplainStep({ scenario: s, state, dispatch, headingRef }: StepProps) {
         const parts = fb ? feedbackParts(fb.text) : null;
         const promptId = `q-${q.id}`;
         return (
-          <section key={q.id} className="question" data-testid={`question-${q.id}`} aria-labelledby={promptId}>
+          <section key={q.id} className={qi > 0 ? 'question question-reveal' : 'question'} data-testid={`question-${q.id}`} aria-labelledby={promptId}>
             <p className="question-num">
               Question {qi + 1} / {s.questions.length}
             </p>
-            <h3 id={promptId} className="question-prompt">
+            <h3 id={promptId} className="question-prompt" tabIndex={-1}>
               {q.prompt}
             </h3>
             <div className="choices choices-compact" role="group" aria-labelledby={promptId}>
@@ -511,6 +519,7 @@ function SummaryStep({ scenario: s, state, dispatch, headingRef, restartSeed }: 
   const actual = opp[state.opponentAction!]!.label;
   const chosen = own[state.choice!]!.label;
   const consistency = decisionConsistency(s, state.prediction!, state.confidence, state.choice!);
+  const bestToPrediction = consistency.best.map((i) => own[i]!.label).join(' / ');
   const [you, them] = state.outcome!.payoffs;
   return (
     <StepView step="summary" title="Summary" variant="label" headingRef={headingRef}>
@@ -522,7 +531,7 @@ function SummaryStep({ scenario: s, state, dispatch, headingRef, restartSeed }: 
           <div className="run-row" data-testid="summary-prediction">
             <dt>Prediction</dt>
             <dd>
-              {predicted} <span className="mono-dim">· {state.confidence}% confident</span>
+              <span className="run-pred">{predicted}</span> <span className="mono-dim nowrap">{state.confidence}% confident</span>
             </dd>
           </div>
           <div className="run-row">
@@ -536,9 +545,11 @@ function SummaryStep({ scenario: s, state, dispatch, headingRef, restartSeed }: 
             <dd>{chosen}</dd>
           </div>
           <div className="run-row">
-            <dt>Decision quality</dt>
-            <dd className="emph" data-testid="summary-decision-quality">
-              {consistency.consistent ? 'Best response to your prediction' : 'Not the best response to your prediction'}
+            <dt>Your choice, with the table</dt>
+            <dd data-testid="summary-decision-quality">
+              {consistency.consistent
+                ? `Given the table, ${chosen} was the best response to your prediction.`
+                : `Given the table, ${bestToPrediction} would have been the best response to your prediction.`}
             </dd>
           </div>
           <div className="run-row">
@@ -559,7 +570,7 @@ function SummaryStep({ scenario: s, state, dispatch, headingRef, restartSeed }: 
         <div className="notice">
           <div className="notice-item" data-testid="summary-decision">
             <p className="notice-head">Decision</p>
-            <p>Your decision is judged using what you knew before B chose.</p>
+            <p>You chose before seeing the table. Looking back with it shows how your choice fits your prediction.</p>
           </div>
           <div className="notice-item" data-testid="summary-outcome">
             <p className="notice-head">Outcome</p>

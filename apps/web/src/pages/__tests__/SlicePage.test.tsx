@@ -99,12 +99,21 @@ describe('SlicePage (learner vertical slice)', () => {
     expect(heading()).toHaveTextContent('Check your reasoning');
     const cont = screen.getByTestId('btn-continue');
     expect(cont).toBeDisabled();
+    expect(screen.queryByTestId('question-if-b-leaves')).toBeNull();
+    expect(screen.queryByTestId('question-either-way')).toBeNull();
     await userEvent.click(within(screen.getByTestId('question-if-b-cleans')).getByRole('button', { name: 'Leave it' }));
     expect(screen.getByTestId('feedback-if-b-cleans')).toHaveTextContent('Leave it gives you 5; Clean gives you 3.');
     expect(screen.getByTestId('feedback-if-b-cleans').querySelector('.feedback-headline')!.textContent).toBe(
       'Leave it gives you 5; Clean gives you 3.',
     );
+    expect(screen.queryByTestId('question-either-way')).toBeNull();
+    expect(screen.getByRole('heading', { name: 'If B chooses Leave it, which is better for you?' })).toHaveFocus();
     await userEvent.click(within(screen.getByTestId('question-if-b-leaves')).getByRole('button', { name: 'Clean' }));
+    expect(screen.getByTestId('feedback-if-b-leaves')).toHaveTextContent('Because B chose Leave it, Leave it is your best response.');
+    expect(screen.getByTestId('feedback-if-b-leaves').querySelector('.why')!.textContent).not.toMatch(/A best response is/);
+    expect(screen.getByTestId('feedback-if-b-cleans').querySelector('.why')!.textContent).toMatch(/A best response is/);
+    expect(screen.getByRole('heading', { name: /what pattern do you see/ })).toHaveFocus();
+    expect(cont).toBeDisabled();
     expect(screen.getByTestId('feedback-if-b-leaves')).toHaveTextContent('Not quite');
     await userEvent.click(
       within(screen.getByTestId('question-either-way')).getByRole('button', { name: 'Leave it is always better.' }),
@@ -119,8 +128,14 @@ describe('SlicePage (learner vertical slice)', () => {
     expect(heading()).toHaveFocus();
     expect(screen.getByTestId('summary-prediction')).toHaveTextContent('Leave it');
     expect(screen.getByTestId('summary-prediction')).toHaveTextContent('75% confident');
-    expect(screen.getByTestId('summary-decision-quality')).toHaveTextContent('Not the best response to your prediction');
-    expect(screen.getByTestId('summary-decision')).toHaveTextContent('judged using what you knew before B chose');
+    expect(screen.getByTestId('summary-decision-quality')).toHaveTextContent(
+      'Given the table, Leave it would have been the best response to your prediction.',
+    );
+    expect(screen.getByTestId('summary-decision-quality')).not.toHaveClass('emph');
+    expect(screen.getByTestId('summary-decision')).toHaveTextContent(
+      'You chose before seeing the table. Looking back with it shows how your choice fits your prediction.',
+    );
+    expect(document.body.textContent).not.toMatch(/decision quality|judged|grade|score/i);
     expect(screen.getByTestId('summary-outcome')).toHaveTextContent('depended on what B actually chose');
     expect(screen.getByTestId('summary-outcome-pair')).toHaveTextContent('0 for you');
     expect(screen.getByTestId('summary-outcome-pair')).toHaveTextContent('5 for B');

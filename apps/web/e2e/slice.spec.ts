@@ -163,13 +163,19 @@ test.describe('Learner slice: the shared kitchen', () => {
     // 8 Structured explanation
     await expectFocusedHeading(page, 'Check your reasoning');
     await expect(page.getByTestId('btn-continue')).toBeDisabled();
+    await expect(page.getByTestId('question-if-b-leaves')).toHaveCount(0);
+    await expect(page.getByTestId('question-either-way')).toHaveCount(0);
     await page.getByTestId('question-if-b-cleans').getByRole('button', { name: 'Leave it' }).click();
     await expect(page.getByTestId('feedback-if-b-cleans')).toContainText('Leave it gives you 5; Clean gives you 3.');
     await expect(page.getByTestId('feedback-if-b-cleans').locator('.feedback-headline')).toHaveText(
       'Leave it gives you 5; Clean gives you 3.',
     );
+    await expect(page.getByTestId('question-either-way')).toHaveCount(0);
+    await expect(page.getByRole('heading', { name: 'If B chooses Leave it, which is better for you?' })).toBeFocused();
     await page.getByTestId('question-if-b-leaves').getByRole('button', { name: 'Leave it' }).click();
     await expect(page.getByTestId('feedback-if-b-leaves')).toContainText('Leave it gives you 1; Clean gives you 0.');
+    await expect(page.getByRole('heading', { name: /what pattern do you see/ })).toBeFocused();
+    await expect(page.getByTestId('btn-continue')).toBeDisabled();
     const q3 = page.getByTestId('question-either-way');
     await expect(q3.getByRole('button')).toHaveText([
       'Clean is always better.',
@@ -185,8 +191,10 @@ test.describe('Learner slice: the shared kitchen', () => {
     // 9 Summary
     await expectFocusedHeading(page, 'Summary');
     await expect(page.getByTestId('summary-prediction')).toContainText('80% confident');
-    await expect(page.getByTestId('summary-decision-quality')).toContainText('Best response to your prediction');
-    await expect(page.getByTestId('summary-decision')).toContainText('judged using what you knew before B chose');
+    await expect(page.getByTestId('summary-decision-quality')).toHaveText(
+      'Given the table, Leave it was the best response to your prediction.',
+    );
+    await expect(page.getByTestId('summary-decision')).toContainText('You chose before seeing the table.');
     await expect(page.getByTestId('summary-outcome')).toContainText('depended on what B actually chose');
     await expect(page.getByTestId('summary-policy')).toContainText('70% Leave it, 30% Clean');
     await expect(page.getByTestId('save-note')).toContainText('saved on this device');

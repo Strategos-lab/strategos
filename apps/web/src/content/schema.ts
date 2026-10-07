@@ -79,6 +79,8 @@ export interface FeedbackTemplates {
   bestReplyIncorrect: string;
   /** Used when several actions tie as best. */
   bestReplyTie: string;
+  /** Optional: later best-reply questions use the term without re-defining it. */
+  bestReplyRepeat?: string;
   dominantCorrect: string;
   dominantIncorrect: string;
   noneCorrect: string;
