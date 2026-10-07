@@ -1,0 +1,120 @@
+{
+  "name": "stag-hunt-joint-project",
+  "story": "Two colleagues choose between a joint big project (needs both) and a safe solo task.",
+  "handVerified": true,
+  "game": {
+    "kind": "normal",
+    "schemaVersion": 1,
+    "id": "sh-project",
+    "title": "Joint project",
+    "players": [
+      {
+        "id": "a",
+        "label": "Colleague A",
+        "actions": [
+          {
+            "id": "big_project",
+            "label": "Big project"
+          },
+          {
+            "id": "solo_task",
+            "label": "Solo task"
+          }
+        ]
+      },
+      {
+        "id": "b",
+        "label": "Colleague B",
+        "actions": [
+          {
+            "id": "big_project",
+            "label": "Big project"
+          },
+          {
+            "id": "solo_task",
+            "label": "Solo task"
+          }
+        ]
+      }
+    ],
+    "payoffs": [
+      [
+        [
+          "4",
+          "4"
+        ],
+        [
+          "0",
+          "3"
+        ]
+      ],
+      [
+        [
+          "3",
+          "0"
+        ],
+        [
+          "2",
+          "2"
+        ]
+      ]
+    ],
+    "payoffScale": "cardinal"
+  },
+  "expected": {
+    "pureNE": [
+      [
+        "big_project",
+        "big_project"
+      ],
+      [
+        "solo_task",
+        "solo_task"
+      ]
+    ],
+    "mixedNE": [
+      [
+        [
+          "2/3",
+          "1/3"
+        ],
+        [
+          "2/3",
+          "1/3"
+        ]
+      ]
+    ],
+    "continua": [],
+    "degenerate": false,
+    "finite": true,
+    "family": "stag_hunt",
+    "strictlyDominant": {
+      "row": null,
+      "col": null
+    },
+    "iesdsSurviving": {
+      "row": [
+        "big_project",
+        "solo_task"
+      ],
+      "col": [
+        "big_project",
+        "solo_task"
+      ]
+    },
+    "iesdsSteps": [],
+    "paretoEfficient": [
+      [
+        "big_project",
+        "big_project"
+      ]
+    ],
+    "everyEquilibriumParetoDominated": false,
+    "mixedPayoffs": [
+      [
+        "8/3",
+        "8/3"
+      ]
+    ]
+  }
+}

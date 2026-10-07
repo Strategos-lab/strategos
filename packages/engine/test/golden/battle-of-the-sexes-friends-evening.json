@@ -1,0 +1,124 @@
+{
+  "name": "battle-of-the-sexes-friends-evening",
+  "story": "Two friends want to spend the evening together but prefer different outings.",
+  "handVerified": true,
+  "game": {
+    "kind": "normal",
+    "schemaVersion": 1,
+    "id": "bos-evening",
+    "title": "Evening out",
+    "players": [
+      {
+        "id": "a",
+        "label": "Friend A",
+        "actions": [
+          {
+            "id": "concert",
+            "label": "Concert"
+          },
+          {
+            "id": "film",
+            "label": "Film"
+          }
+        ]
+      },
+      {
+        "id": "b",
+        "label": "Friend B",
+        "actions": [
+          {
+            "id": "concert",
+            "label": "Concert"
+          },
+          {
+            "id": "film",
+            "label": "Film"
+          }
+        ]
+      }
+    ],
+    "payoffs": [
+      [
+        [
+          "2",
+          "1"
+        ],
+        [
+          "0",
+          "0"
+        ]
+      ],
+      [
+        [
+          "0",
+          "0"
+        ],
+        [
+          "1",
+          "2"
+        ]
+      ]
+    ],
+    "payoffScale": "cardinal"
+  },
+  "expected": {
+    "pureNE": [
+      [
+        "concert",
+        "concert"
+      ],
+      [
+        "film",
+        "film"
+      ]
+    ],
+    "mixedNE": [
+      [
+        [
+          "2/3",
+          "1/3"
+        ],
+        [
+          "1/3",
+          "2/3"
+        ]
+      ]
+    ],
+    "continua": [],
+    "degenerate": false,
+    "finite": true,
+    "family": "battle_of_the_sexes",
+    "strictlyDominant": {
+      "row": null,
+      "col": null
+    },
+    "iesdsSurviving": {
+      "row": [
+        "concert",
+        "film"
+      ],
+      "col": [
+        "concert",
+        "film"
+      ]
+    },
+    "iesdsSteps": [],
+    "paretoEfficient": [
+      [
+        "concert",
+        "concert"
+      ],
+      [
+        "film",
+        "film"
+      ]
+    ],
+    "everyEquilibriumParetoDominated": false,
+    "mixedPayoffs": [
+      [
+        "2/3",
+        "2/3"
+      ]
+    ]
+  }
+}

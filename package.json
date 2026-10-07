@@ -2,14 +2,18 @@
   "name": "strategos",
   "private": true,
   "version": "0.0.1",
-  "description": "STRATEGOS — strategic decision laboratory (static PWA)",
+  "description": "STRATEGOS \u2014 strategic decision laboratory (static PWA)",
   "scripts": {
-    "dev": "pnpm --filter @strategos/web dev",
-    "build": "pnpm --filter @strategos/web build",
+    "dev": "pnpm build:engine && pnpm --filter @strategos/web dev",
+    "build:engine": "pnpm --filter @strategos/engine build",
+    "build": "pnpm build:engine && pnpm --filter @strategos/web build",
     "preview": "pnpm --filter @strategos/web preview",
-    "test": "pnpm --filter @strategos/web test",
+    "test": "pnpm build:engine && pnpm test:engine && pnpm --filter @strategos/web test",
+    "test:engine": "pnpm --filter @strategos/engine test",
+    "test:engine:coverage": "pnpm --filter @strategos/engine test:coverage",
+    "size:engine": "pnpm --filter @strategos/engine size",
     "test:e2e": "pnpm --filter @strategos/web test:e2e",
-    "typecheck": "pnpm --filter @strategos/web typecheck"
+    "typecheck": "pnpm build:engine && pnpm --filter @strategos/engine typecheck && pnpm --filter @strategos/web typecheck"
   },
   "engines": {
     "node": ">=20"

@@ -1,0 +1,123 @@
+{
+  "name": "degenerate-continuum-picnic-spot",
+  "story": "Two friends pick a picnic spot; one of them is indifferent between spots when the other goes left.",
+  "handVerified": true,
+  "game": {
+    "kind": "normal",
+    "schemaVersion": 1,
+    "id": "degenerate-picnic",
+    "title": "Picnic spot",
+    "players": [
+      {
+        "id": "a",
+        "label": "Friend A",
+        "actions": [
+          {
+            "id": "top",
+            "label": "Top"
+          },
+          {
+            "id": "bottom",
+            "label": "Bottom"
+          }
+        ]
+      },
+      {
+        "id": "b",
+        "label": "Friend B",
+        "actions": [
+          {
+            "id": "left",
+            "label": "Left"
+          },
+          {
+            "id": "right",
+            "label": "Right"
+          }
+        ]
+      }
+    ],
+    "payoffs": [
+      [
+        [
+          "2",
+          "1"
+        ],
+        [
+          "0",
+          "0"
+        ]
+      ],
+      [
+        [
+          "2",
+          "0"
+        ],
+        [
+          "1",
+          "1"
+        ]
+      ]
+    ],
+    "payoffScale": "cardinal"
+  },
+  "expected": {
+    "pureNE": [
+      [
+        "top",
+        "left"
+      ],
+      [
+        "bottom",
+        "right"
+      ]
+    ],
+    "mixedNE": [],
+    "continua": [
+      {
+        "row": [
+          [
+            "1",
+            "0"
+          ],
+          [
+            "1/2",
+            "1/2"
+          ]
+        ],
+        "col": [
+          [
+            "1",
+            "0"
+          ]
+        ]
+      }
+    ],
+    "degenerate": true,
+    "finite": false,
+    "family": "other",
+    "strictlyDominant": {
+      "row": null,
+      "col": null
+    },
+    "iesdsSurviving": {
+      "row": [
+        "top",
+        "bottom"
+      ],
+      "col": [
+        "left",
+        "right"
+      ]
+    },
+    "iesdsSteps": [],
+    "paretoEfficient": [
+      [
+        "top",
+        "left"
+      ]
+    ],
+    "everyEquilibriumParetoDominated": false,
+    "mixedPayoffs": []
+  }
+}

@@ -1,0 +1,115 @@
+{
+  "name": "harmony-shared-garden",
+  "story": "Two neighbours tending a shared garden; caring for it is best for each regardless.",
+  "handVerified": true,
+  "game": {
+    "kind": "normal",
+    "schemaVersion": 1,
+    "id": "harmony-garden",
+    "title": "Shared garden",
+    "players": [
+      {
+        "id": "a",
+        "label": "Neighbour A",
+        "actions": [
+          {
+            "id": "water_daily",
+            "label": "Water daily"
+          },
+          {
+            "id": "skip",
+            "label": "Skip"
+          }
+        ]
+      },
+      {
+        "id": "b",
+        "label": "Neighbour B",
+        "actions": [
+          {
+            "id": "water_daily",
+            "label": "Water daily"
+          },
+          {
+            "id": "skip",
+            "label": "Skip"
+          }
+        ]
+      }
+    ],
+    "payoffs": [
+      [
+        [
+          "4",
+          "4"
+        ],
+        [
+          "2",
+          "3"
+        ]
+      ],
+      [
+        [
+          "3",
+          "2"
+        ],
+        [
+          "1",
+          "1"
+        ]
+      ]
+    ],
+    "payoffScale": "cardinal"
+  },
+  "expected": {
+    "pureNE": [
+      [
+        "water_daily",
+        "water_daily"
+      ]
+    ],
+    "mixedNE": [],
+    "continua": [],
+    "degenerate": false,
+    "finite": true,
+    "family": "harmony",
+    "strictlyDominant": {
+      "row": "water_daily",
+      "col": "water_daily"
+    },
+    "iesdsSurviving": {
+      "row": [
+        "water_daily"
+      ],
+      "col": [
+        "water_daily"
+      ]
+    },
+    "iesdsSteps": [
+      {
+        "round": 1,
+        "player": 0,
+        "action": "skip",
+        "dominatedBy": [
+          "water_daily"
+        ]
+      },
+      {
+        "round": 1,
+        "player": 1,
+        "action": "skip",
+        "dominatedBy": [
+          "water_daily"
+        ]
+      }
+    ],
+    "paretoEfficient": [
+      [
+        "water_daily",
+        "water_daily"
+      ]
+    ],
+    "everyEquilibriumParetoDominated": false,
+    "mixedPayoffs": []
+  }
+}

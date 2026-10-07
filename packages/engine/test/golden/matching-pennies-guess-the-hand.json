@@ -1,0 +1,123 @@
+{
+  "name": "matching-pennies-guess-the-hand",
+  "story": "One child hides a coin in a hand; the other guesses which hand.",
+  "handVerified": true,
+  "game": {
+    "kind": "normal",
+    "schemaVersion": 1,
+    "id": "mp-hand",
+    "title": "Guess the hand",
+    "players": [
+      {
+        "id": "g",
+        "label": "Guesser",
+        "actions": [
+          {
+            "id": "left",
+            "label": "Left"
+          },
+          {
+            "id": "right",
+            "label": "Right"
+          }
+        ]
+      },
+      {
+        "id": "h",
+        "label": "Hider",
+        "actions": [
+          {
+            "id": "left",
+            "label": "Left"
+          },
+          {
+            "id": "right",
+            "label": "Right"
+          }
+        ]
+      }
+    ],
+    "payoffs": [
+      [
+        [
+          "1",
+          "-1"
+        ],
+        [
+          "-1",
+          "1"
+        ]
+      ],
+      [
+        [
+          "-1",
+          "1"
+        ],
+        [
+          "1",
+          "-1"
+        ]
+      ]
+    ],
+    "payoffScale": "cardinal"
+  },
+  "expected": {
+    "pureNE": [],
+    "mixedNE": [
+      [
+        [
+          "1/2",
+          "1/2"
+        ],
+        [
+          "1/2",
+          "1/2"
+        ]
+      ]
+    ],
+    "continua": [],
+    "degenerate": false,
+    "finite": true,
+    "family": "matching_pennies",
+    "strictlyDominant": {
+      "row": null,
+      "col": null
+    },
+    "iesdsSurviving": {
+      "row": [
+        "left",
+        "right"
+      ],
+      "col": [
+        "left",
+        "right"
+      ]
+    },
+    "iesdsSteps": [],
+    "paretoEfficient": [
+      [
+        "left",
+        "left"
+      ],
+      [
+        "left",
+        "right"
+      ],
+      [
+        "right",
+        "left"
+      ],
+      [
+        "right",
+        "right"
+      ]
+    ],
+    "everyEquilibriumParetoDominated": false,
+    "mixedPayoffs": [
+      [
+        "0",
+        "0"
+      ]
+    ]
+  }
+}

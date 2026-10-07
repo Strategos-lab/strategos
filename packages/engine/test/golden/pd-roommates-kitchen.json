@@ -1,0 +1,124 @@
+{
+  "name": "pd-roommates-kitchen",
+  "story": "Two roommates each decide whether to clean the shared kitchen.",
+  "handVerified": true,
+  "game": {
+    "kind": "normal",
+    "schemaVersion": 1,
+    "id": "pd-roommates",
+    "title": "Shared kitchen",
+    "players": [
+      {
+        "id": "a",
+        "label": "Roommate A",
+        "actions": [
+          {
+            "id": "clean",
+            "label": "Clean"
+          },
+          {
+            "id": "leave_it",
+            "label": "Leave it"
+          }
+        ]
+      },
+      {
+        "id": "b",
+        "label": "Roommate B",
+        "actions": [
+          {
+            "id": "clean",
+            "label": "Clean"
+          },
+          {
+            "id": "leave_it",
+            "label": "Leave it"
+          }
+        ]
+      }
+    ],
+    "payoffs": [
+      [
+        [
+          "3",
+          "3"
+        ],
+        [
+          "0",
+          "5"
+        ]
+      ],
+      [
+        [
+          "5",
+          "0"
+        ],
+        [
+          "1",
+          "1"
+        ]
+      ]
+    ],
+    "payoffScale": "cardinal"
+  },
+  "expected": {
+    "pureNE": [
+      [
+        "leave_it",
+        "leave_it"
+      ]
+    ],
+    "mixedNE": [],
+    "continua": [],
+    "degenerate": false,
+    "finite": true,
+    "family": "prisoners_dilemma",
+    "pdRepeatedCondition": true,
+    "strictlyDominant": {
+      "row": "leave_it",
+      "col": "leave_it"
+    },
+    "iesdsSurviving": {
+      "row": [
+        "leave_it"
+      ],
+      "col": [
+        "leave_it"
+      ]
+    },
+    "iesdsSteps": [
+      {
+        "round": 1,
+        "player": 0,
+        "action": "clean",
+        "dominatedBy": [
+          "leave_it"
+        ]
+      },
+      {
+        "round": 1,
+        "player": 1,
+        "action": "clean",
+        "dominatedBy": [
+          "leave_it"
+        ]
+      }
+    ],
+    "paretoEfficient": [
+      [
+        "clean",
+        "clean"
+      ],
+      [
+        "clean",
+        "leave_it"
+      ],
+      [
+        "leave_it",
+        "clean"
+      ]
+    ],
+    "everyEquilibriumParetoDominated": true,
+    "mixedPayoffs": []
+  }
+}

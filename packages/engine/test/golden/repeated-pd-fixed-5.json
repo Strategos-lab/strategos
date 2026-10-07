@@ -1,0 +1,100 @@
+{
+  "name": "repeated-pd-fixed-5",
+  "story": "Repeated shared-kitchen game.",
+  "handVerified": true,
+  "game": {
+    "kind": "repeated",
+    "schemaVersion": 1,
+    "id": "rep-pd-fixed",
+    "stage": {
+      "kind": "normal",
+      "schemaVersion": 1,
+      "id": "pd-stage",
+      "title": "Shared kitchen",
+      "players": [
+        {
+          "id": "a",
+          "label": "Roommate A",
+          "actions": [
+            {
+              "id": "clean",
+              "label": "Clean"
+            },
+            {
+              "id": "leave_it",
+              "label": "Leave it"
+            }
+          ]
+        },
+        {
+          "id": "b",
+          "label": "Roommate B",
+          "actions": [
+            {
+              "id": "clean",
+              "label": "Clean"
+            },
+            {
+              "id": "leave_it",
+              "label": "Leave it"
+            }
+          ]
+        }
+      ],
+      "payoffs": [
+        [
+          [
+            "3",
+            "3"
+          ],
+          [
+            "0",
+            "5"
+          ]
+        ],
+        [
+          [
+            "5",
+            "0"
+          ],
+          [
+            "1",
+            "1"
+          ]
+        ]
+      ],
+      "payoffScale": "cardinal"
+    },
+    "horizon": {
+      "type": "fixed",
+      "rounds": 5
+    },
+    "monitoring": "perfect"
+  },
+  "expected": {
+    "deltaStar": "1/2",
+    "perPlayer": [
+      "1/2",
+      "1/2"
+    ],
+    "sustainable": null,
+    "finiteHorizonApplies": true,
+    "stageEquilibrium": [
+      [
+        "0",
+        "1"
+      ],
+      [
+        "0",
+        "1"
+      ]
+    ],
+    "unravelRounds": [
+      5,
+      4,
+      3,
+      2,
+      1
+    ]
+  }
+}

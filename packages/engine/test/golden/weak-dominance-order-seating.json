@@ -1,0 +1,248 @@
+{
+  "name": "weak-dominance-order-seating",
+  "story": "Two guests choose seats; some choices are never better and sometimes worse (Samuelson's example).",
+  "handVerified": true,
+  "game": {
+    "kind": "normal",
+    "schemaVersion": 1,
+    "id": "iwds-seating",
+    "title": "Seating choice",
+    "players": [
+      {
+        "id": "a",
+        "label": "Guest A",
+        "actions": [
+          {
+            "id": "top",
+            "label": "Top"
+          },
+          {
+            "id": "middle",
+            "label": "Middle"
+          },
+          {
+            "id": "bottom",
+            "label": "Bottom"
+          }
+        ]
+      },
+      {
+        "id": "b",
+        "label": "Guest B",
+        "actions": [
+          {
+            "id": "left",
+            "label": "Left"
+          },
+          {
+            "id": "right",
+            "label": "Right"
+          }
+        ]
+      }
+    ],
+    "payoffs": [
+      [
+        [
+          "1",
+          "1"
+        ],
+        [
+          "0",
+          "0"
+        ]
+      ],
+      [
+        [
+          "1",
+          "1"
+        ],
+        [
+          "2",
+          "1"
+        ]
+      ],
+      [
+        [
+          "0",
+          "0"
+        ],
+        [
+          "2",
+          "1"
+        ]
+      ]
+    ],
+    "payoffScale": "cardinal"
+  },
+  "expected": {
+    "pureNE": [
+      [
+        "top",
+        "left"
+      ],
+      [
+        "middle",
+        "left"
+      ],
+      [
+        "middle",
+        "right"
+      ],
+      [
+        "bottom",
+        "right"
+      ]
+    ],
+    "mixedNE": [],
+    "continua": [
+      {
+        "row": [
+          [
+            "1",
+            "0",
+            "0"
+          ],
+          [
+            "0",
+            "1",
+            "0"
+          ]
+        ],
+        "col": [
+          [
+            "1",
+            "0"
+          ]
+        ]
+      },
+      {
+        "row": [
+          [
+            "0",
+            "1",
+            "0"
+          ],
+          [
+            "0",
+            "0",
+            "1"
+          ]
+        ],
+        "col": [
+          [
+            "0",
+            "1"
+          ]
+        ]
+      },
+      {
+        "row": [
+          [
+            "0",
+            "1",
+            "0"
+          ]
+        ],
+        "col": [
+          [
+            "1",
+            "0"
+          ],
+          [
+            "0",
+            "1"
+          ]
+        ]
+      }
+    ],
+    "degenerate": true,
+    "finite": false,
+    "family": "other",
+    "familyApplicable": false,
+    "strictlyDominant": {
+      "row": null,
+      "col": null
+    },
+    "iesdsSurviving": {
+      "row": [
+        "top",
+        "middle",
+        "bottom"
+      ],
+      "col": [
+        "left",
+        "right"
+      ]
+    },
+    "iesdsSteps": [],
+    "iwdsSurviving": {
+      "row": [
+        "middle"
+      ],
+      "col": [
+        "left",
+        "right"
+      ]
+    },
+    "iwdsOrderDependent": true,
+    "iwdsPossibleResults": [
+      {
+        "row": [
+          "middle"
+        ],
+        "col": [
+          "left",
+          "right"
+        ]
+      },
+      {
+        "row": [
+          "middle",
+          "bottom"
+        ],
+        "col": [
+          "right"
+        ]
+      },
+      {
+        "row": [
+          "top",
+          "middle"
+        ],
+        "col": [
+          "left"
+        ]
+      },
+      {
+        "row": [
+          "middle"
+        ],
+        "col": [
+          "right"
+        ]
+      },
+      {
+        "row": [
+          "middle"
+        ],
+        "col": [
+          "left"
+        ]
+      }
+    ],
+    "paretoEfficient": [
+      [
+        "middle",
+        "right"
+      ],
+      [
+        "bottom",
+        "right"
+      ]
+    ],
+    "everyEquilibriumParetoDominated": false,
+    "mixedPayoffs": [],
+    "iwdsNote": "Orders may remove any subset of currently weakly dominated actions per step. From {top} removed: removing bottom and left together gives {middle}x{right}; symmetric for {middle}x{left}. Five distinct final results (hand-enumerated)."
+  }
+}

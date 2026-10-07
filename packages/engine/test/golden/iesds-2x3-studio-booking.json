@@ -1,0 +1,144 @@
+{
+  "name": "iesds-2x3-studio-booking",
+  "story": "Two bands book rehearsal slots; one slot option is always worse for the second band.",
+  "handVerified": true,
+  "game": {
+    "kind": "normal",
+    "schemaVersion": 1,
+    "id": "iesds-studio",
+    "title": "Studio booking",
+    "players": [
+      {
+        "id": "a",
+        "label": "Band A",
+        "actions": [
+          {
+            "id": "up",
+            "label": "Up"
+          },
+          {
+            "id": "down",
+            "label": "Down"
+          }
+        ]
+      },
+      {
+        "id": "b",
+        "label": "Band B",
+        "actions": [
+          {
+            "id": "left",
+            "label": "Left"
+          },
+          {
+            "id": "middle",
+            "label": "Middle"
+          },
+          {
+            "id": "right",
+            "label": "Right"
+          }
+        ]
+      }
+    ],
+    "payoffs": [
+      [
+        [
+          "1",
+          "0"
+        ],
+        [
+          "1",
+          "2"
+        ],
+        [
+          "0",
+          "1"
+        ]
+      ],
+      [
+        [
+          "0",
+          "3"
+        ],
+        [
+          "0",
+          "1"
+        ],
+        [
+          "2",
+          "0"
+        ]
+      ]
+    ],
+    "payoffScale": "cardinal"
+  },
+  "expected": {
+    "pureNE": [
+      [
+        "up",
+        "middle"
+      ]
+    ],
+    "mixedNE": [],
+    "continua": [],
+    "degenerate": false,
+    "finite": true,
+    "family": "other",
+    "familyApplicable": false,
+    "strictlyDominant": {
+      "row": null,
+      "col": null
+    },
+    "iesdsSurviving": {
+      "row": [
+        "up"
+      ],
+      "col": [
+        "middle"
+      ]
+    },
+    "iesdsSteps": [
+      {
+        "round": 1,
+        "player": 1,
+        "action": "right",
+        "dominatedBy": [
+          "middle"
+        ]
+      },
+      {
+        "round": 2,
+        "player": 0,
+        "action": "down",
+        "dominatedBy": [
+          "up"
+        ]
+      },
+      {
+        "round": 3,
+        "player": 1,
+        "action": "left",
+        "dominatedBy": [
+          "middle"
+        ]
+      }
+    ],
+    "paretoEfficient": [
+      [
+        "up",
+        "middle"
+      ],
+      [
+        "down",
+        "left"
+      ],
+      [
+        "down",
+        "right"
+      ]
+    ],
+    "everyEquilibriumParetoDominated": false,
+    "mixedPayoffs": []
+  }
+}

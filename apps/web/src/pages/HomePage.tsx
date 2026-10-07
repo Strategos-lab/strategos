@@ -4,6 +4,7 @@ import { ConfidenceControl } from '../components/ConfidenceControl';
 import { StoragePanel } from '../components/StoragePanel';
 import { InstallCard } from '../components/InstallCard';
 import { InstallHelp } from '../components/InstallHelp';
+import { EngineDebug } from '../components/EngineDebug';
 
 /** Classic PD numbers, labelled only as a demo — do not teach PD yet. */
 const DEMO_PAYOFFS: [
@@ -23,6 +24,7 @@ const DEMO_PAYOFFS: [
 export function HomePage() {
   const [selected, setSelected] = useState<CellCoord | null>(null);
   const [confidence, setConfidence] = useState(70);
+  const [showEngine, setShowEngine] = useState(false);
 
   return (
     <main className="home">
@@ -47,6 +49,19 @@ export function HomePage() {
         onSelect={setSelected}
         demoNote="Demo only: roommates deciding whether to clean a shared kitchen. Numbers are illustrative — concepts are not taught yet."
       />
+
+      <label className="debug-toggle muted small">
+        <input
+          type="checkbox"
+          checked={showEngine}
+          onChange={(e) => setShowEngine(e.target.checked)}
+          data-testid="engine-debug-toggle"
+        />{' '}
+        Debug: show engine output
+      </label>
+      {showEngine ? (
+        <EngineDebug rowActions={['Clean', 'Leave it']} colActions={['Clean', 'Leave it']} payoffs={DEMO_PAYOFFS} />
+      ) : null}
 
       <ConfidenceControl value={confidence} onChange={setConfidence} />
 

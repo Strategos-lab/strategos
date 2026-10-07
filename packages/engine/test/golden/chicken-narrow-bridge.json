@@ -1,0 +1,128 @@
+{
+  "name": "chicken-narrow-bridge",
+  "story": "Two drivers meet at a single-lane bridge; each can yield or proceed.",
+  "handVerified": true,
+  "game": {
+    "kind": "normal",
+    "schemaVersion": 1,
+    "id": "chicken-bridge",
+    "title": "Narrow bridge",
+    "players": [
+      {
+        "id": "a",
+        "label": "Driver A",
+        "actions": [
+          {
+            "id": "yield",
+            "label": "Yield"
+          },
+          {
+            "id": "proceed",
+            "label": "Proceed"
+          }
+        ]
+      },
+      {
+        "id": "b",
+        "label": "Driver B",
+        "actions": [
+          {
+            "id": "yield",
+            "label": "Yield"
+          },
+          {
+            "id": "proceed",
+            "label": "Proceed"
+          }
+        ]
+      }
+    ],
+    "payoffs": [
+      [
+        [
+          "3",
+          "3"
+        ],
+        [
+          "1",
+          "4"
+        ]
+      ],
+      [
+        [
+          "4",
+          "1"
+        ],
+        [
+          "0",
+          "0"
+        ]
+      ]
+    ],
+    "payoffScale": "cardinal"
+  },
+  "expected": {
+    "pureNE": [
+      [
+        "yield",
+        "proceed"
+      ],
+      [
+        "proceed",
+        "yield"
+      ]
+    ],
+    "mixedNE": [
+      [
+        [
+          "1/2",
+          "1/2"
+        ],
+        [
+          "1/2",
+          "1/2"
+        ]
+      ]
+    ],
+    "continua": [],
+    "degenerate": false,
+    "finite": true,
+    "family": "chicken",
+    "strictlyDominant": {
+      "row": null,
+      "col": null
+    },
+    "iesdsSurviving": {
+      "row": [
+        "yield",
+        "proceed"
+      ],
+      "col": [
+        "yield",
+        "proceed"
+      ]
+    },
+    "iesdsSteps": [],
+    "paretoEfficient": [
+      [
+        "yield",
+        "yield"
+      ],
+      [
+        "yield",
+        "proceed"
+      ],
+      [
+        "proceed",
+        "yield"
+      ]
+    ],
+    "everyEquilibriumParetoDominated": false,
+    "mixedPayoffs": [
+      [
+        "2",
+        "2"
+      ]
+    ]
+  }
+}

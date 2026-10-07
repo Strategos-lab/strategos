@@ -1,0 +1,178 @@
+{
+  "name": "rock-paper-scissors",
+  "story": "The playground hand game.",
+  "handVerified": true,
+  "game": {
+    "kind": "normal",
+    "schemaVersion": 1,
+    "id": "rps",
+    "title": "Rock, paper, scissors",
+    "players": [
+      {
+        "id": "a",
+        "label": "Player A",
+        "actions": [
+          {
+            "id": "rock",
+            "label": "Rock"
+          },
+          {
+            "id": "paper",
+            "label": "Paper"
+          },
+          {
+            "id": "scissors",
+            "label": "Scissors"
+          }
+        ]
+      },
+      {
+        "id": "b",
+        "label": "Player B",
+        "actions": [
+          {
+            "id": "rock",
+            "label": "Rock"
+          },
+          {
+            "id": "paper",
+            "label": "Paper"
+          },
+          {
+            "id": "scissors",
+            "label": "Scissors"
+          }
+        ]
+      }
+    ],
+    "payoffs": [
+      [
+        [
+          "0",
+          "0"
+        ],
+        [
+          "-1",
+          "1"
+        ],
+        [
+          "1",
+          "-1"
+        ]
+      ],
+      [
+        [
+          "1",
+          "-1"
+        ],
+        [
+          "0",
+          "0"
+        ],
+        [
+          "-1",
+          "1"
+        ]
+      ],
+      [
+        [
+          "-1",
+          "1"
+        ],
+        [
+          "1",
+          "-1"
+        ],
+        [
+          "0",
+          "0"
+        ]
+      ]
+    ],
+    "payoffScale": "cardinal"
+  },
+  "expected": {
+    "pureNE": [],
+    "mixedNE": [
+      [
+        [
+          "1/3",
+          "1/3",
+          "1/3"
+        ],
+        [
+          "1/3",
+          "1/3",
+          "1/3"
+        ]
+      ]
+    ],
+    "continua": [],
+    "degenerate": false,
+    "finite": true,
+    "family": "other",
+    "familyApplicable": false,
+    "strictlyDominant": {
+      "row": null,
+      "col": null
+    },
+    "iesdsSurviving": {
+      "row": [
+        "rock",
+        "paper",
+        "scissors"
+      ],
+      "col": [
+        "rock",
+        "paper",
+        "scissors"
+      ]
+    },
+    "iesdsSteps": [],
+    "paretoEfficient": [
+      [
+        "rock",
+        "rock"
+      ],
+      [
+        "rock",
+        "paper"
+      ],
+      [
+        "rock",
+        "scissors"
+      ],
+      [
+        "paper",
+        "rock"
+      ],
+      [
+        "paper",
+        "paper"
+      ],
+      [
+        "paper",
+        "scissors"
+      ],
+      [
+        "scissors",
+        "rock"
+      ],
+      [
+        "scissors",
+        "paper"
+      ],
+      [
+        "scissors",
+        "scissors"
+      ]
+    ],
+    "everyEquilibriumParetoDominated": false,
+    "mixedPayoffs": [
+      [
+        "0",
+        "0"
+      ]
+    ]
+  }
+}

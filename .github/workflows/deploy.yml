@@ -33,11 +33,32 @@ jobs:
       - name: Install
         run: pnpm install --frozen-lockfile
 
+      - name: Build engine
+        run: pnpm build:engine
+
       - name: Typecheck
         run: pnpm typecheck
 
-      - name: Unit tests
-        run: pnpm test
+      - name: Engine tests + coverage (thresholds enforced; failure blocks deploy)
+        run: pnpm test:engine:coverage
+
+      - name: Engine coverage summary
+        if: always()
+        run: |
+          test -f packages/engine/coverage/coverage-summary.json || exit 0
+          {
+            echo "## Engine coverage"
+            echo ""
+            echo '```'
+            node -e "const s=require('./packages/engine/coverage/coverage-summary.json').total; for (const k of ['lines','statements','functions','branches']) console.log(k.padEnd(11), s[k].pct + '%', '(' + s[k].covered + '/' + s[k].total + ')')"
+            echo '```'
+          } >> "$GITHUB_STEP_SUMMARY"
+
+      - name: Engine bundle size (budget 40 KB gzipped)
+        run: pnpm size:engine | tee -a "$GITHUB_STEP_SUMMARY"
+
+      - name: Web unit tests
+        run: pnpm --filter @strategos/web test
 
       - name: Build
         run: pnpm build

@@ -1,0 +1,123 @@
+{
+  "name": "deadlock-neighbouring-stalls",
+  "story": "Two market stalls decide whether to share a delivery van; each prefers keeping its own.",
+  "handVerified": true,
+  "game": {
+    "kind": "normal",
+    "schemaVersion": 1,
+    "id": "deadlock-stalls",
+    "title": "Neighbouring stalls",
+    "players": [
+      {
+        "id": "a",
+        "label": "Stall A",
+        "actions": [
+          {
+            "id": "share",
+            "label": "Share"
+          },
+          {
+            "id": "keep",
+            "label": "Keep"
+          }
+        ]
+      },
+      {
+        "id": "b",
+        "label": "Stall B",
+        "actions": [
+          {
+            "id": "share",
+            "label": "Share"
+          },
+          {
+            "id": "keep",
+            "label": "Keep"
+          }
+        ]
+      }
+    ],
+    "payoffs": [
+      [
+        [
+          "2",
+          "2"
+        ],
+        [
+          "1",
+          "4"
+        ]
+      ],
+      [
+        [
+          "4",
+          "1"
+        ],
+        [
+          "3",
+          "3"
+        ]
+      ]
+    ],
+    "payoffScale": "cardinal"
+  },
+  "expected": {
+    "pureNE": [
+      [
+        "keep",
+        "keep"
+      ]
+    ],
+    "mixedNE": [],
+    "continua": [],
+    "degenerate": false,
+    "finite": true,
+    "family": "deadlock",
+    "strictlyDominant": {
+      "row": "keep",
+      "col": "keep"
+    },
+    "iesdsSurviving": {
+      "row": [
+        "keep"
+      ],
+      "col": [
+        "keep"
+      ]
+    },
+    "iesdsSteps": [
+      {
+        "round": 1,
+        "player": 0,
+        "action": "share",
+        "dominatedBy": [
+          "keep"
+        ]
+      },
+      {
+        "round": 1,
+        "player": 1,
+        "action": "share",
+        "dominatedBy": [
+          "keep"
+        ]
+      }
+    ],
+    "paretoEfficient": [
+      [
+        "share",
+        "keep"
+      ],
+      [
+        "keep",
+        "share"
+      ],
+      [
+        "keep",
+        "keep"
+      ]
+    ],
+    "everyEquilibriumParetoDominated": false,
+    "mixedPayoffs": []
+  }
+}

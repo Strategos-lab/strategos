@@ -1,0 +1,91 @@
+{
+  "name": "repeated-pd-continuation",
+  "story": "Repeated shared-kitchen game.",
+  "handVerified": true,
+  "game": {
+    "kind": "repeated",
+    "schemaVersion": 1,
+    "id": "rep-pd-cont",
+    "stage": {
+      "kind": "normal",
+      "schemaVersion": 1,
+      "id": "pd-stage",
+      "title": "Shared kitchen",
+      "players": [
+        {
+          "id": "a",
+          "label": "Roommate A",
+          "actions": [
+            {
+              "id": "clean",
+              "label": "Clean"
+            },
+            {
+              "id": "leave_it",
+              "label": "Leave it"
+            }
+          ]
+        },
+        {
+          "id": "b",
+          "label": "Roommate B",
+          "actions": [
+            {
+              "id": "clean",
+              "label": "Clean"
+            },
+            {
+              "id": "leave_it",
+              "label": "Leave it"
+            }
+          ]
+        }
+      ],
+      "payoffs": [
+        [
+          [
+            "3",
+            "3"
+          ],
+          [
+            "0",
+            "5"
+          ]
+        ],
+        [
+          [
+            "5",
+            "0"
+          ],
+          [
+            "1",
+            "1"
+          ]
+        ]
+      ],
+      "payoffScale": "cardinal"
+    },
+    "horizon": {
+      "type": "continuation",
+      "delta": "9/10"
+    },
+    "monitoring": "perfect"
+  },
+  "expected": {
+    "deltaStar": "1/2",
+    "perPlayer": [
+      "1/2",
+      "1/2"
+    ],
+    "sustainable": true,
+    "cooperateValue": [
+      "30",
+      "30"
+    ],
+    "deviateValue": [
+      "14",
+      "14"
+    ],
+    "finiteHorizonApplies": false
+  }
+}

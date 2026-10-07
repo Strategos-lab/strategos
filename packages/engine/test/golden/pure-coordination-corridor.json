@@ -1,0 +1,125 @@
+{
+  "name": "pure-coordination-corridor",
+  "story": "Two people approaching in a corridor each choose a side to pass on.",
+  "handVerified": true,
+  "game": {
+    "kind": "normal",
+    "schemaVersion": 1,
+    "id": "coord-corridor",
+    "title": "Corridor",
+    "players": [
+      {
+        "id": "a",
+        "label": "Walker A",
+        "actions": [
+          {
+            "id": "keep_left",
+            "label": "Keep left"
+          },
+          {
+            "id": "keep_right",
+            "label": "Keep right"
+          }
+        ]
+      },
+      {
+        "id": "b",
+        "label": "Walker B",
+        "actions": [
+          {
+            "id": "keep_left",
+            "label": "Keep left"
+          },
+          {
+            "id": "keep_right",
+            "label": "Keep right"
+          }
+        ]
+      }
+    ],
+    "payoffs": [
+      [
+        [
+          "1",
+          "1"
+        ],
+        [
+          "0",
+          "0"
+        ]
+      ],
+      [
+        [
+          "0",
+          "0"
+        ],
+        [
+          "1",
+          "1"
+        ]
+      ]
+    ],
+    "payoffScale": "cardinal"
+  },
+  "expected": {
+    "pureNE": [
+      [
+        "keep_left",
+        "keep_left"
+      ],
+      [
+        "keep_right",
+        "keep_right"
+      ]
+    ],
+    "mixedNE": [
+      [
+        [
+          "1/2",
+          "1/2"
+        ],
+        [
+          "1/2",
+          "1/2"
+        ]
+      ]
+    ],
+    "continua": [],
+    "degenerate": false,
+    "finite": true,
+    "family": "pure_coordination",
+    "subtype": "equal-equilibria",
+    "strictlyDominant": {
+      "row": null,
+      "col": null
+    },
+    "iesdsSurviving": {
+      "row": [
+        "keep_left",
+        "keep_right"
+      ],
+      "col": [
+        "keep_left",
+        "keep_right"
+      ]
+    },
+    "iesdsSteps": [],
+    "paretoEfficient": [
+      [
+        "keep_left",
+        "keep_left"
+      ],
+      [
+        "keep_right",
+        "keep_right"
+      ]
+    ],
+    "everyEquilibriumParetoDominated": false,
+    "mixedPayoffs": [
+      [
+        "1/2",
+        "1/2"
+      ]
+    ]
+  }
+}
