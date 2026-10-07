@@ -34,8 +34,16 @@ pnpm test:e2e     # Playwright (builds + preview)
 
 ## Bundle budget
 
-Target (plan): keep Phase 0 lean; full V1 shell ≤ ~200 KB JS compressed.  
-See `docs/phase0.md` and the latest CI summary for **measured** sizes after each deploy.
+Target (plan): app shell ≤ ~200 KB JS compressed.  
+**Phase 0 measured (local production build, no source maps):**
+
+| Asset | Raw | Gzip |
+|---|---:|---:|
+| Main JS (`index-*.js`) | ~367 KB | ~117 KB |
+| CSS | ~4.6 KB | ~1.6 KB |
+| `dist/` total (precached shell) | ~460 KB | — |
+
+Within the Phase 0 / V1 shell budget. See CI job summary on each deploy for the latest figures.
 
 ## Install (PWA)
 
