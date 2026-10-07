@@ -107,3 +107,16 @@ Applies the reviewed decisions; no new Phase 2 content and no UI changes.
   position or a single correct action across parallel forms, and a single action answer per module.
   Option sets rotate by form.
 - **Counts** (`contentCounts`): explanation 17/15/19, transfer 4/4/4.
+
+### Pass B corrections (7 Oct 2026)
+
+- **Dilemma**: i.m3.dilemma now has its own asymmetric 3×3 structure, m3.s.rush, with skins sk.m3.nets
+  and sk.m3.fares. a2 and b3 are strictly dominant, the only pure NE is (a2,b3) = (1,4), and (a1,b1) =
+  (5,5) is better for both. It is not isomorphic to the roommate or pledge (tested). m3.s.pledge now
+  serves only i.m3.three.dom.
+- **Error code**: TREATING_TIE_AS_STRICT is used for the M2 tie. WEAK_AS_STRICT is restricted to M3
+  weak dominance by the `code-scope` validator (CODE_SCOPE).
+- **Held-out distribution**: per-item rotation overrides, and h.s.m3e/h.s.m3f relabelled, so M3
+  answers are a1/a2/b2/(a3,b1). New `held-out-answers` rules: no position covers more than 40% of a
+  module (n ≥ 5), no form puts every item at the same position, and no action exceeds two-thirds of
+  a module's action answers. `heldOutDistribution` produces the audit table.

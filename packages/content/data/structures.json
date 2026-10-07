@@ -987,6 +987,97 @@
     "notes": "Three effort levels (a1/b1 full, a2/b2 half, a3/b3 none): each unit of your effort costs you 1 and gives the other 2. Each player’s a3/b3 beats both alternatives in every case, yet (a1, b1) gives both more than (a3, b3)."
   },
   {
+    "id": "m3.s.rush",
+    "version": "1.0.0",
+    "module": 3,
+    "discipline": "GT",
+    "sequence": "simultaneous",
+    "presentation": "matrix",
+    "scale": "ordinal",
+    "actions": {
+      "A": [
+        "a1",
+        "a2",
+        "a3"
+      ],
+      "B": [
+        "b1",
+        "b2",
+        "b3"
+      ]
+    },
+    "payoffs": {
+      "a1|b1": [
+        "5",
+        "5"
+      ],
+      "a1|b2": [
+        "2",
+        "4"
+      ],
+      "a1|b3": [
+        "0",
+        "6"
+      ],
+      "a2|b1": [
+        "6",
+        "1"
+      ],
+      "a2|b2": [
+        "4",
+        "3"
+      ],
+      "a2|b3": [
+        "1",
+        "4"
+      ],
+      "a3|b1": [
+        "4",
+        "2"
+      ],
+      "a3|b2": [
+        "3",
+        "3"
+      ],
+      "a3|b3": [
+        "0",
+        "5"
+      ]
+    },
+    "params": {},
+    "constraints": [],
+    "facts": {
+      "strictlyDominant": {
+        "A": "a2",
+        "B": "b3"
+      },
+      "weaklyDominantOnly": {
+        "A": null,
+        "B": null
+      },
+      "strictlyDominated": {
+        "A": [
+          "a1",
+          "a3"
+        ],
+        "B": [
+          "b1",
+          "b2"
+        ]
+      },
+      "bestResponseDependsOnOpponent": {
+        "A": false,
+        "B": false
+      },
+      "iesdsSolution": [
+        "a2",
+        "b3"
+      ],
+      "familyCode": "o"
+    },
+    "notes": "Dilemma, asymmetric 3×3: a2 is strictly dominant for A and b3 for B; their outcome (1, 4) is worse for both than (a1, b1) at (5, 5). Not a relabelled roommate or pledge matrix."
+  },
+  {
     "id": "m3.s.weak",
     "version": "1.0.0",
     "module": 3,

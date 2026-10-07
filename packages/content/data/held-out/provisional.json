@@ -466,40 +466,40 @@
       },
       "payoffs": {
         "a1|b1": [
-          "0",
-          "0"
+          "2",
+          "2"
         ],
         "a1|b2": [
-          "1",
-          "3"
+          "2",
+          "1"
         ],
         "a1|b3": [
           "1",
-          "1"
+          "3"
         ],
         "a2|b1": [
-          "2",
+          "1",
           "1"
         ],
         "a2|b2": [
-          "0",
-          "0"
-        ],
-        "a2|b3": [
-          "3",
-          "2"
-        ],
-        "a3|b1": [
           "1",
           "3"
         ],
+        "a2|b3": [
+          "0",
+          "0"
+        ],
+        "a3|b1": [
+          "3",
+          "2"
+        ],
         "a3|b2": [
-          "2",
-          "1"
+          "0",
+          "0"
         ],
         "a3|b3": [
           "2",
-          "2"
+          "1"
         ]
       },
       "params": {},
@@ -515,7 +515,7 @@
         },
         "strictlyDominated": {
           "A": [
-            "a1"
+            "a2"
           ],
           "B": []
         },
@@ -524,13 +524,13 @@
           "B": true
         },
         "iesdsSolution": [
-          "a2",
-          "b3"
+          "a3",
+          "b1"
         ],
         "familyCode": "o"
       },
       "heldOut": true,
-      "notes": "Elimination starts with the learner’s a1, then b2, a3, b1; leaves (a2, b3)."
+      "notes": "Elimination starts with the learner’s a2, then b2, a1, b3; leaves (a3, b1). Rows/columns relabelled in the distribution audit so the answers are not a2/(a2,b3)."
     },
     {
       "id": "h.s.m3f",
@@ -553,19 +553,19 @@
       "payoffs": {
         "a1|b1": [
           "1",
-          "2"
+          "0"
         ],
         "a1|b2": [
-          "0",
-          "0"
+          "2",
+          "1"
         ],
         "a2|b1": [
           "1",
-          "0"
+          "2"
         ],
         "a2|b2": [
-          "2",
-          "1"
+          "0",
+          "0"
         ]
       },
       "params": {},
@@ -576,7 +576,7 @@
           "B": null
         },
         "weaklyDominantOnly": {
-          "A": "a2",
+          "A": "a1",
           "B": null
         },
         "strictlyDominated": {
@@ -591,7 +591,7 @@
         "familyCode": "o"
       },
       "heldOut": true,
-      "notes": "Weak dominance for the learner on a2 (tie at b1); the other side’s better choice depends on yours."
+      "notes": "Weak dominance for the learner on a1 (tie at b1); the other side’s better choice depends on yours."
     }
   ],
   "skins": [
@@ -1258,12 +1258,12 @@
         "A"
       ],
       "actionLabels": {
-        "a1": "Plain thali",
-        "a2": "Special thali",
-        "a3": "Mini thali",
-        "b1": "Buttermilk",
+        "a1": "Mini thali",
+        "a2": "Plain thali",
+        "a3": "Special thali",
+        "b1": "Lime water",
         "b2": "Soda",
-        "b3": "Lime water"
+        "b3": "Buttermilk"
       },
       "situation": "You run a thali counter at a food court and Mr Kumar runs the drinks counter next to it. This month you choose which thali to promote, and he chooses which drink to promote.",
       "incentives": {
@@ -1308,7 +1308,7 @@
       },
       "situation": "A board holds nine tiles in three rows and three columns. At the same moment, you call out a row and the other side calls out a column; the tile where they cross is scored.",
       "incentives": {
-        "h.s.m3e": "Points go to each side separately. You score highest on the second row, column three tile; the other side scores highest on two tiles: first row, column two, and third row, column one."
+        "h.s.m3e": "Points go to each side separately. You score highest on the third row, column one tile; the other side scores highest on two tiles: first row, column three, and second row, column two."
       },
       "timing": "You both pick at the same moment.",
       "information": "Each side sees the whole table. You don’t know the other side’s column.",
@@ -1340,8 +1340,8 @@
         "A"
       ],
       "actionLabels": {
-        "a1": "Close at six",
-        "a2": "Stay open late",
+        "a1": "Stay open late",
+        "a2": "Close at six",
         "b1": "Morning",
         "b2": "Evening"
       },
@@ -1576,6 +1576,13 @@
       "optionSets": [
         [
           {
+            "text": "Nobody: you both choose at once.",
+            "claim": {
+              "t": "simultaneous"
+            },
+            "code": "MODEL_WRONG_TIMING"
+          },
+          {
             "text": "You do, and {them} sees your choice.",
             "claim": {
               "t": "firstMover",
@@ -1590,16 +1597,16 @@
               "who": "them"
             },
             "code": "MODEL_WRONG_TIMING"
-          },
+          }
+        ],
+        [
           {
-            "text": "Nobody: you both choose at once.",
+            "text": "You both choose at the same moment.",
             "claim": {
               "t": "simultaneous"
             },
             "code": "MODEL_WRONG_TIMING"
-          }
-        ],
-        [
+          },
           {
             "text": "You choose first; {them} follows.",
             "claim": {
@@ -1613,13 +1620,6 @@
             "claim": {
               "t": "firstMover",
               "who": "them"
-            },
-            "code": "MODEL_WRONG_TIMING"
-          },
-          {
-            "text": "You both choose at the same moment.",
-            "claim": {
-              "t": "simultaneous"
             },
             "code": "MODEL_WRONG_TIMING"
           }
@@ -1746,6 +1746,14 @@
       "optionSets": [
         [
           {
+            "text": "You do, and {them} sees your choice.",
+            "claim": {
+              "t": "firstMover",
+              "who": "you"
+            },
+            "code": "UNMATCHED"
+          },
+          {
             "text": "{Them} does, and you see that choice.",
             "claim": {
               "t": "firstMover",
@@ -1759,17 +1767,17 @@
               "t": "simultaneous"
             },
             "code": "MODEL_WRONG_TIMING"
-          },
+          }
+        ],
+        [
           {
-            "text": "You do, and {them} sees your choice.",
+            "text": "You choose first; {them} follows.",
             "claim": {
               "t": "firstMover",
               "who": "you"
             },
             "code": "UNMATCHED"
-          }
-        ],
-        [
+          },
           {
             "text": "{Them} chooses first; you follow.",
             "claim": {
@@ -1784,14 +1792,6 @@
               "t": "simultaneous"
             },
             "code": "MODEL_WRONG_TIMING"
-          },
-          {
-            "text": "You choose first; {them} follows.",
-            "claim": {
-              "t": "firstMover",
-              "who": "you"
-            },
-            "code": "UNMATCHED"
           }
         ]
       ],
@@ -1896,6 +1896,14 @@
       "optionSets": [
         [
           {
+            "text": "{Them} has not seen what you chose.",
+            "claim": {
+              "t": "notObserves",
+              "who": "them"
+            },
+            "code": "MODEL_WRONG_INFO"
+          },
+          {
             "text": "{Them} decided first, before you did.",
             "claim": {
               "t": "firstMover",
@@ -1910,17 +1918,17 @@
               "who": "them"
             },
             "code": "MODEL_WRONG_INFO"
-          },
+          }
+        ],
+        [
           {
-            "text": "{Them} has not seen what you chose.",
+            "text": "{Them} decides without seeing your choice.",
             "claim": {
               "t": "notObserves",
               "who": "them"
             },
             "code": "MODEL_WRONG_INFO"
-          }
-        ],
-        [
+          },
           {
             "text": "{Them} decides first, and you see it.",
             "claim": {
@@ -1933,14 +1941,6 @@
             "text": "{Them} can see your choice before deciding.",
             "claim": {
               "t": "observes",
-              "who": "them"
-            },
-            "code": "MODEL_WRONG_INFO"
-          },
-          {
-            "text": "{Them} decides without seeing your choice.",
-            "claim": {
-              "t": "notObserves",
               "who": "them"
             },
             "code": "MODEL_WRONG_INFO"
@@ -2005,6 +2005,15 @@
       "optionSets": [
         [
           {
+            "text": "{Act:a1}: it is better for you whatever {them} does.",
+            "claim": {
+              "t": "strictDom",
+              "who": "you",
+              "action": "a1"
+            },
+            "code": "INCOMPLETE_COMPARISON"
+          },
+          {
             "text": "{Act:a2}: against {act:b2} it gives you {pay:you:a2:b2} rather than {pay:you:a1:b2}.",
             "claim": {
               "t": "br",
@@ -2023,18 +2032,18 @@
               "action": "a1"
             },
             "code": "ACROSS_NOT_WITHIN"
-          },
+          }
+        ],
+        [
           {
-            "text": "{Act:a1}: it is better for you whatever {them} does.",
+            "text": "{Act:a1}, since it beats {act:a2} against anything.",
             "claim": {
               "t": "strictDom",
               "who": "you",
               "action": "a1"
             },
             "code": "INCOMPLETE_COMPARISON"
-          }
-        ],
-        [
+          },
           {
             "text": "{Act:a2}, since against {act:b2} it gets you {pay:you:a2:b2}.",
             "claim": {
@@ -2054,15 +2063,6 @@
               "action": "a1"
             },
             "code": "ACROSS_NOT_WITHIN"
-          },
-          {
-            "text": "{Act:a1}, since it beats {act:a2} against anything.",
-            "claim": {
-              "t": "strictDom",
-              "who": "you",
-              "action": "a1"
-            },
-            "code": "INCOMPLETE_COMPARISON"
           }
         ]
       ],
@@ -2092,14 +2092,6 @@
       "optionSets": [
         [
           {
-            "text": "{Act:a1}, given how likely each of {them}’s choices is.",
-            "claim": {
-              "t": "brToBelief",
-              "action": "a1"
-            },
-            "code": "NOT_BR_TO_OWN_PREDICTION"
-          },
-          {
             "text": "{Act:a2}, given how likely each of {them}’s choices is.",
             "claim": {
               "t": "brToBelief",
@@ -2113,17 +2105,17 @@
               "t": "beliefTie"
             },
             "code": "INCOMPLETE_COMPARISON"
-          }
-        ],
-        [
+          },
           {
-            "text": "{Act:a1}: on average it does better under your belief.",
+            "text": "{Act:a1}, given how likely each of {them}’s choices is.",
             "claim": {
               "t": "brToBelief",
               "action": "a1"
             },
             "code": "NOT_BR_TO_OWN_PREDICTION"
-          },
+          }
+        ],
+        [
           {
             "text": "{Act:a2}: on average it does better under your belief.",
             "claim": {
@@ -2138,6 +2130,14 @@
               "t": "beliefTie"
             },
             "code": "INCOMPLETE_COMPARISON"
+          },
+          {
+            "text": "{Act:a1}: on average it does better under your belief.",
+            "claim": {
+              "t": "brToBelief",
+              "action": "a1"
+            },
+            "code": "NOT_BR_TO_OWN_PREDICTION"
           }
         ]
       ],
@@ -2199,6 +2199,16 @@
       "optionSets": [
         [
           {
+            "text": "{Act:a1}: against {act:b1} it gives you {pay:you:a1:b1} rather than {pay:you:a2:b1}.",
+            "claim": {
+              "t": "br",
+              "who": "you",
+              "against": "b1",
+              "action": "a1"
+            },
+            "code": "UNMATCHED"
+          },
+          {
             "text": "{Act:a2}: matching on it would give you {pay:you:a2:b2}.",
             "claim": {
               "t": "br",
@@ -2216,9 +2226,11 @@
               "action": "a2"
             },
             "code": "INCOMPLETE_COMPARISON"
-          },
+          }
+        ],
+        [
           {
-            "text": "{Act:a1}: against {act:b1} it gives you {pay:you:a1:b1} rather than {pay:you:a2:b1}.",
+            "text": "{Act:a1}, since against {act:b1} it gets you {pay:you:a1:b1}.",
             "claim": {
               "t": "br",
               "who": "you",
@@ -2226,9 +2238,7 @@
               "action": "a1"
             },
             "code": "UNMATCHED"
-          }
-        ],
-        [
+          },
           {
             "text": "{Act:a2}, since with {act:b2} it gets you {pay:you:a2:b2}.",
             "claim": {
@@ -2247,16 +2257,6 @@
               "action": "a2"
             },
             "code": "INCOMPLETE_COMPARISON"
-          },
-          {
-            "text": "{Act:a1}, since against {act:b1} it gets you {pay:you:a1:b1}.",
-            "claim": {
-              "t": "br",
-              "who": "you",
-              "against": "b1",
-              "action": "a1"
-            },
-            "code": "UNMATCHED"
           }
         ]
       ],
@@ -2286,6 +2286,14 @@
       "optionSets": [
         [
           {
+            "text": "{Act:a1}, given how likely each of {them}’s choices is.",
+            "claim": {
+              "t": "brToBelief",
+              "action": "a1"
+            },
+            "code": "NOT_BR_TO_OWN_PREDICTION"
+          },
+          {
             "text": "{Act:a2}, given how likely each of {them}’s choices is.",
             "claim": {
               "t": "brToBelief",
@@ -2299,17 +2307,17 @@
               "t": "beliefTie"
             },
             "code": "INCOMPLETE_COMPARISON"
-          },
+          }
+        ],
+        [
           {
-            "text": "{Act:a1}, given how likely each of {them}’s choices is.",
+            "text": "{Act:a1}: on average it does better under your belief.",
             "claim": {
               "t": "brToBelief",
               "action": "a1"
             },
             "code": "NOT_BR_TO_OWN_PREDICTION"
-          }
-        ],
-        [
+          },
           {
             "text": "{Act:a2}: on average it does better under your belief.",
             "claim": {
@@ -2324,14 +2332,6 @@
               "t": "beliefTie"
             },
             "code": "INCOMPLETE_COMPARISON"
-          },
-          {
-            "text": "{Act:a1}: on average it does better under your belief.",
-            "claim": {
-              "t": "brToBelief",
-              "action": "a1"
-            },
-            "code": "NOT_BR_TO_OWN_PREDICTION"
           }
         ]
       ],
@@ -2382,6 +2382,14 @@
       "optionSets": [
         [
           {
+            "text": "No: one of your choices is better either way.",
+            "claim": {
+              "t": "brIndependent",
+              "who": "you"
+            },
+            "code": "INCOMPLETE_COMPARISON"
+          },
+          {
             "text": "Yes, but only because {them} sees your choice.",
             "claim": {
               "t": "observes",
@@ -2396,17 +2404,17 @@
               "who": "you"
             },
             "code": "UNMATCHED"
-          },
+          }
+        ],
+        [
           {
-            "text": "No: one of your choices is better either way.",
+            "text": "It does not: the same choice is better for you every time.",
             "claim": {
               "t": "brIndependent",
               "who": "you"
             },
             "code": "INCOMPLETE_COMPARISON"
-          }
-        ],
-        [
+          },
           {
             "text": "It depends, but only if {them} gets to see your choice.",
             "claim": {
@@ -2422,14 +2430,6 @@
               "who": "you"
             },
             "code": "UNMATCHED"
-          },
-          {
-            "text": "It does not: the same choice is better for you every time.",
-            "claim": {
-              "t": "brIndependent",
-              "who": "you"
-            },
-            "code": "INCOMPLETE_COMPARISON"
           }
         ]
       ],
@@ -2459,13 +2459,6 @@
       "optionSets": [
         [
           {
-            "text": "Neither: with that belief the two come out level.",
-            "claim": {
-              "t": "beliefTie"
-            },
-            "code": "INCOMPLETE_COMPARISON"
-          },
-          {
             "text": "{Act:a1}, given how likely each of {them}’s choices is.",
             "claim": {
               "t": "brToBelief",
@@ -2480,16 +2473,16 @@
               "action": "a2"
             },
             "code": "NOT_BR_TO_OWN_PREDICTION"
-          }
-        ],
-        [
+          },
           {
-            "text": "No difference: on average both give you the same.",
+            "text": "Neither: with that belief the two come out level.",
             "claim": {
               "t": "beliefTie"
             },
             "code": "INCOMPLETE_COMPARISON"
-          },
+          }
+        ],
+        [
           {
             "text": "{Act:a1}: on average it does better under your belief.",
             "claim": {
@@ -2505,6 +2498,13 @@
               "action": "a2"
             },
             "code": "NOT_BR_TO_OWN_PREDICTION"
+          },
+          {
+            "text": "No difference: on average both give you the same.",
+            "claim": {
+              "t": "beliefTie"
+            },
+            "code": "INCOMPLETE_COMPARISON"
           }
         ]
       ],
@@ -2593,6 +2593,13 @@
       "optionSets": [
         [
           {
+            "text": "Yes: the choice that led to the higher payoff the last time.",
+            "claim": {
+              "t": "never"
+            },
+            "code": "DOMINANCE_FROM_OUTCOME"
+          },
+          {
             "text": "Yes: one of your choices gives you more against each of {them}’s choices.",
             "claim": {
               "t": "hasStrictDom",
@@ -2607,16 +2614,16 @@
               "who": "you"
             },
             "code": "INCOMPLETE_COMPARISON"
-          },
+          }
+        ],
+        [
           {
-            "text": "Yes: the choice that led to the higher payoff the last time.",
+            "text": "There is: whichever choice worked out well before.",
             "claim": {
               "t": "never"
             },
             "code": "DOMINANCE_FROM_OUTCOME"
-          }
-        ],
-        [
+          },
           {
             "text": "There is: one choice beats the other whatever {them} picks.",
             "claim": {
@@ -2632,13 +2639,6 @@
               "who": "you"
             },
             "code": "INCOMPLETE_COMPARISON"
-          },
-          {
-            "text": "There is: whichever choice worked out well before.",
-            "claim": {
-              "t": "never"
-            },
-            "code": "DOMINANCE_FROM_OUTCOME"
           }
         ]
       ],
@@ -2675,33 +2675,22 @@
       "optionSets": [
         [
           {
-            "text": "{Act:a2} for you and {act:b3} for {them}.",
+            "text": "{Act:a1} for you and {act:b3} for {them}.",
             "claim": {
               "t": "iesds",
               "profile": [
-                "a2",
+                "a1",
                 "b3"
-              ]
-            },
-            "code": "UNMATCHED"
-          },
-          {
-            "text": "{Act:a3} for you and {act:b1} for {them}.",
-            "claim": {
-              "t": "iesds",
-              "profile": [
-                "a3",
-                "b1"
               ]
             },
             "code": "ACROSS_NOT_WITHIN"
           },
           {
-            "text": "{Act:a1} for you and {act:b2} for {them}.",
+            "text": "{Act:a2} for you and {act:b2} for {them}.",
             "claim": {
               "t": "iesds",
               "profile": [
-                "a1",
+                "a2",
                 "b2"
               ]
             },
@@ -2713,22 +2702,9 @@
               "t": "iesdsUnsolved"
             },
             "code": "INCOMPLETE_COMPARISON"
-          }
-        ],
-        [
-          {
-            "text": "You on {act:a2}, {them} on {act:b3}.",
-            "claim": {
-              "t": "iesds",
-              "profile": [
-                "a2",
-                "b3"
-              ]
-            },
-            "code": "UNMATCHED"
           },
           {
-            "text": "You on {act:a3}, {them} on {act:b1}.",
+            "text": "{Act:a3} for you and {act:b1} for {them}.",
             "claim": {
               "t": "iesds",
               "profile": [
@@ -2736,14 +2712,27 @@
                 "b1"
               ]
             },
-            "code": "ACROSS_NOT_WITHIN"
-          },
+            "code": "UNMATCHED"
+          }
+        ],
+        [
           {
-            "text": "You on {act:a1}, {them} on {act:b2}.",
+            "text": "You on {act:a1}, {them} on {act:b3}.",
             "claim": {
               "t": "iesds",
               "profile": [
                 "a1",
+                "b3"
+              ]
+            },
+            "code": "ACROSS_NOT_WITHIN"
+          },
+          {
+            "text": "You on {act:a2}, {them} on {act:b2}.",
+            "claim": {
+              "t": "iesds",
+              "profile": [
+                "a2",
                 "b2"
               ]
             },
@@ -2755,6 +2744,17 @@
               "t": "iesdsUnsolved"
             },
             "code": "INCOMPLETE_COMPARISON"
+          },
+          {
+            "text": "You on {act:a3}, {them} on {act:b1}.",
+            "claim": {
+              "t": "iesds",
+              "profile": [
+                "a3",
+                "b1"
+              ]
+            },
+            "code": "UNMATCHED"
           }
         ]
       ],
@@ -2820,60 +2820,60 @@
       "optionSets": [
         [
           {
-            "text": "{Act:a2} is never worse, and better if {them} picks {act:b2}.",
+            "text": "{Act:a1} is better against both of {them}’s choices.",
+            "claim": {
+              "t": "strictDom",
+              "who": "you",
+              "action": "a1"
+            },
+            "code": "WEAK_AS_STRICT"
+          },
+          {
+            "text": "{Act:a2} is never worse, and better if {them} picks {act:b1}.",
             "claim": {
               "t": "weakDomOnly",
               "who": "you",
               "action": "a2"
             },
-            "code": "UNMATCHED"
+            "code": "INCOMPLETE_COMPARISON"
           },
           {
-            "text": "{Act:a2} is better against both of {them}’s choices.",
-            "claim": {
-              "t": "strictDom",
-              "who": "you",
-              "action": "a2"
-            },
-            "code": "WEAK_AS_STRICT"
-          },
-          {
-            "text": "{Act:a1} is never worse, and better if {them} picks {act:b1}.",
+            "text": "{Act:a1} is never worse, and better if {them} picks {act:b2}.",
             "claim": {
               "t": "weakDomOnly",
               "who": "you",
               "action": "a1"
             },
-            "code": "INCOMPLETE_COMPARISON"
+            "code": "UNMATCHED"
           }
         ],
         [
           {
-            "text": "{Act:a2} ties against {act:b1} and wins against {act:b2}.",
+            "text": "{Act:a1} wins against {act:b1} and against {act:b2}.",
+            "claim": {
+              "t": "strictDom",
+              "who": "you",
+              "action": "a1"
+            },
+            "code": "WEAK_AS_STRICT"
+          },
+          {
+            "text": "{Act:a2} ties against {act:b2} and wins against {act:b1}.",
             "claim": {
               "t": "weakDomOnly",
               "who": "you",
               "action": "a2"
             },
-            "code": "UNMATCHED"
+            "code": "INCOMPLETE_COMPARISON"
           },
           {
-            "text": "{Act:a2} wins against {act:b1} and against {act:b2}.",
-            "claim": {
-              "t": "strictDom",
-              "who": "you",
-              "action": "a2"
-            },
-            "code": "WEAK_AS_STRICT"
-          },
-          {
-            "text": "{Act:a1} ties against {act:b2} and wins against {act:b1}.",
+            "text": "{Act:a1} ties against {act:b1} and wins against {act:b2}.",
             "claim": {
               "t": "weakDomOnly",
               "who": "you",
               "action": "a1"
             },
-            "code": "INCOMPLETE_COMPARISON"
+            "code": "UNMATCHED"
           }
         ]
       ],
@@ -2962,6 +2962,14 @@
       "optionSets": [
         [
           {
+            "text": "Yes: one of your choices gives you more against each of {them}’s choices.",
+            "claim": {
+              "t": "hasStrictDom",
+              "who": "you"
+            },
+            "code": "INCOMPLETE_COMPARISON"
+          },
+          {
             "text": "No: which of your choices is better depends on {them}’s choice.",
             "claim": {
               "t": "noStrictDom",
@@ -2975,17 +2983,17 @@
               "t": "never"
             },
             "code": "DOMINANCE_FROM_OUTCOME"
-          },
+          }
+        ],
+        [
           {
-            "text": "Yes: one of your choices gives you more against each of {them}’s choices.",
+            "text": "There is: one choice beats the other whatever {them} picks.",
             "claim": {
               "t": "hasStrictDom",
               "who": "you"
             },
             "code": "INCOMPLETE_COMPARISON"
-          }
-        ],
-        [
+          },
           {
             "text": "There is not: the better choice shifts with what {them} picks.",
             "claim": {
@@ -3000,14 +3008,6 @@
               "t": "never"
             },
             "code": "DOMINANCE_FROM_OUTCOME"
-          },
-          {
-            "text": "There is: one choice beats the other whatever {them} picks.",
-            "claim": {
-              "t": "hasStrictDom",
-              "who": "you"
-            },
-            "code": "INCOMPLETE_COMPARISON"
           }
         ]
       ],
@@ -3069,16 +3069,6 @@
       "optionSets": [
         [
           {
-            "text": "{Act:b1}: against {act:a2} it would give you {pay:you:a2:b1}.",
-            "claim": {
-              "t": "br",
-              "who": "you",
-              "against": "a1",
-              "action": "b1"
-            },
-            "code": "ACROSS_NOT_WITHIN"
-          },
-          {
             "text": "{Act:b1}: it is better for you whatever {them} does.",
             "claim": {
               "t": "strictDom",
@@ -3096,11 +3086,9 @@
               "action": "b2"
             },
             "code": "UNMATCHED"
-          }
-        ],
-        [
+          },
           {
-            "text": "{Act:b1}, since with {act:a2} it gets you {pay:you:a2:b1}.",
+            "text": "{Act:b1}: against {act:a2} it would give you {pay:you:a2:b1}.",
             "claim": {
               "t": "br",
               "who": "you",
@@ -3108,7 +3096,9 @@
               "action": "b1"
             },
             "code": "ACROSS_NOT_WITHIN"
-          },
+          }
+        ],
+        [
           {
             "text": "{Act:b1}, since it beats {act:b2} against anything.",
             "claim": {
@@ -3127,6 +3117,16 @@
               "action": "b2"
             },
             "code": "UNMATCHED"
+          },
+          {
+            "text": "{Act:b1}, since with {act:a2} it gets you {pay:you:a2:b1}.",
+            "claim": {
+              "t": "br",
+              "who": "you",
+              "against": "a1",
+              "action": "b1"
+            },
+            "code": "ACROSS_NOT_WITHIN"
           }
         ]
       ],
@@ -3290,34 +3290,34 @@
         "dd": {
           "k": "action",
           "who": "you",
-          "id": "a1"
+          "id": "a2"
         },
         "by": {
           "k": "action",
           "who": "you",
-          "id": "a3"
+          "id": "a1"
         },
         "p1": {
           "k": "payoff",
           "who": "you",
           "profile": [
-            "a1",
-            "b1"
+            "a2",
+            "b3"
           ]
         },
         "q1": {
           "k": "payoff",
           "who": "you",
           "profile": [
-            "a3",
-            "b1"
+            "a1",
+            "b3"
           ]
         },
         "p2": {
           "k": "payoff",
           "who": "you",
           "profile": [
-            "a1",
+            "a2",
             "b2"
           ]
         },
@@ -3325,7 +3325,7 @@
           "k": "payoff",
           "who": "you",
           "profile": [
-            "a3",
+            "a1",
             "b2"
           ]
         },
@@ -3333,76 +3333,76 @@
           "k": "payoff",
           "who": "you",
           "profile": [
-            "a1",
-            "b3"
+            "a2",
+            "b1"
           ]
         },
         "q3": {
           "k": "payoff",
           "who": "you",
           "profile": [
-            "a3",
-            "b3"
+            "a1",
+            "b1"
           ]
         }
       },
       "optionSets": [
         [
           {
-            "text": "{Act:a3}: it gives {them} a lot, so you will stay away from it.",
-            "claim": {
-              "t": "strictlyDominated",
-              "who": "you",
-              "action": "a3"
-            },
-            "code": "MISREAD_PAYOFF_OWNER"
-          },
-          {
-            "text": "{Act:a1}: {act:a3} gives you more against each of {them}’s choices.",
-            "claim": {
-              "t": "strictlyDominated",
-              "who": "you",
-              "action": "a1"
-            },
-            "code": "UNMATCHED"
-          },
-          {
-            "text": "{Act:a2}: it gives you little when {them} picks {act:b2}.",
+            "text": "{Act:a2}: {act:a1} gives you more against each of {them}’s choices.",
             "claim": {
               "t": "strictlyDominated",
               "who": "you",
               "action": "a2"
             },
+            "code": "UNMATCHED"
+          },
+          {
+            "text": "{Act:a3}: it gives you little when {them} picks {act:b2}.",
+            "claim": {
+              "t": "strictlyDominated",
+              "who": "you",
+              "action": "a3"
+            },
             "code": "INCOMPLETE_COMPARISON"
+          },
+          {
+            "text": "{Act:a1}: it gives {them} a lot, so you will stay away from it.",
+            "claim": {
+              "t": "strictlyDominated",
+              "who": "you",
+              "action": "a1"
+            },
+            "code": "MISREAD_PAYOFF_OWNER"
           }
         ],
         [
           {
-            "text": "{Act:a3}, since it hands {them} high numbers in most columns.",
-            "claim": {
-              "t": "strictlyDominated",
-              "who": "you",
-              "action": "a3"
-            },
-            "code": "MISREAD_PAYOFF_OWNER"
-          },
-          {
-            "text": "{Act:a1}, since {act:a3} beats it for you in every column.",
-            "claim": {
-              "t": "strictlyDominated",
-              "who": "you",
-              "action": "a1"
-            },
-            "code": "UNMATCHED"
-          },
-          {
-            "text": "{Act:a2}, since it is weak for you against {act:b2}.",
+            "text": "{Act:a2}, since {act:a1} beats it for you in every column.",
             "claim": {
               "t": "strictlyDominated",
               "who": "you",
               "action": "a2"
             },
+            "code": "UNMATCHED"
+          },
+          {
+            "text": "{Act:a3}, since it is weak for you against {act:b2}.",
+            "claim": {
+              "t": "strictlyDominated",
+              "who": "you",
+              "action": "a3"
+            },
             "code": "INCOMPLETE_COMPARISON"
+          },
+          {
+            "text": "{Act:a1}, since it hands {them} high numbers in most columns.",
+            "claim": {
+              "t": "strictlyDominated",
+              "who": "you",
+              "action": "a1"
+            },
+            "code": "MISREAD_PAYOFF_OWNER"
           }
         ]
       ],

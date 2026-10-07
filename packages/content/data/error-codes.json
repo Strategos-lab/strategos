@@ -72,7 +72,12 @@
   {
     "code": "WEAK_AS_STRICT",
     "source": "content",
-    "definition": "Treated a tie as if one action were strictly better."
+    "definition": "Called a weakly dominant action strictly dominant: treated a tie as a win when comparing across all of the other’s choices."
+  },
+  {
+    "code": "TREATING_TIE_AS_STRICT",
+    "source": "content",
+    "definition": "Treated equal payoffs as though one action were strictly better."
   },
   {
     "code": "ELIMINATED_UNDOMINATED",

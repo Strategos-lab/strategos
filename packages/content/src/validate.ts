@@ -383,6 +383,7 @@ export function validateContent(b: ContentBundle, opts: { extraTexts?: GatedText
   validateItems(b.items, b, look, issues, false);
   validateFeedbackLibrary(b, issues);
   validateTransfer(b, issues);
+  validateCodeScope(b, opts.heldOut, issues);
   validateScenarioItems(b, opts.scenarioQuestions ?? { [ROOMMATE_SLICE.id]: ROOMMATE_SLICE.questions.map((q) => String(q.id)) }, issues);
   for (const g of checkGating(gatedTexts(b, opts.extraTexts ?? [], opts.heldOut), b.concepts, b.curriculum)) issues.push({ rule: 'gating', ...g });
   if (opts.heldOut) validateHeldOut(b, opts.heldOut, issues);
@@ -513,6 +514,22 @@ export function claimAnswer(c: Claim): string | null {
   }
 }
 
+/**
+ * Error codes reserved for one concept. WEAK_AS_STRICT is the M3 weak-vs-strict dominance error; a tie in a
+ * best-response comparison is TREATING_TIE_AS_STRICT instead.
+ */
+export const CODE_SCOPE: Record<string, string[]> = { WEAK_AS_STRICT: ['weak_dominance'] };
+export function validateCodeScope(b: ContentBundle, h: HeldOutBundle | undefined, issues: Issue[]) {
+  for (const item of [...b.items, ...(h?.items ?? [])]) for (const set of item.optionSets ?? []) for (const o of set) {
+    const ok = o.code ? CODE_SCOPE[o.code] : undefined;
+    if (ok && !(ok.includes(item.concept) && item.lesson.startsWith('m3.'))) issues.push({ rule: 'code-scope', where: `item:${item.id}`, message: `${o.code} is reserved for ${ok.join(', ')} in Module 3 (item concept ${item.concept})` });
+  }
+  for (const k of b.feedback) {
+    const ok = CODE_SCOPE[k.code];
+    if (ok && !ok.includes(k.concept)) issues.push({ rule: 'code-scope', where: `feedback:${k.concept}/${k.code}`, message: `${k.code} is reserved for ${ok.join(', ')}` });
+  }
+}
+
 export interface HeldAnswer { item: string; form: string; group: string; module: string; positions: number[]; answers: (string | null)[] }
 
 /** Engine-evaluated correct option position and answer of every held-out item (all instances, all option sets). */
@@ -533,6 +550,29 @@ export function heldOutAnswers(h: HeldOutBundle): HeldAnswer[] {
     out.push({ item: item.id, form: item.heldOutForm ?? '?', group: item.parallelOf ?? item.id, module: item.lesson.split('.')[0]!, positions, answers });
   }
   return out;
+}
+
+function mode<T>(xs: T[]): T | undefined {
+  const c = new Map<T, number>();
+  for (const x of xs) c.set(x, (c.get(x) ?? 0) + 1);
+  return [...c].sort((a, b) => b[1] - a[1])[0]?.[0];
+}
+function maxShare<T>(xs: T[]): { v: T | undefined; n: number } {
+  const c = new Map<T, number>();
+  for (const x of xs) c.set(x, (c.get(x) ?? 0) + 1);
+  const [v, n] = [...c].sort((a, b) => b[1] - a[1])[0] ?? [undefined, 0];
+  return { v, n };
+}
+
+export interface HeldDistributionRow { item: string; family: string; form: string; module: string; seat: string; concept: string; domain: string; positions: number[]; answers: string[] }
+/** Audit table: form × correct action × position × seat × concept × domain for every held-out item. */
+export function heldOutDistribution(h: HeldOutBundle): HeldDistributionRow[] {
+  return heldOutAnswers(h).map((r) => {
+    const it = h.items.find((i) => i.id === r.item)!;
+    const sk = h.skins.find((k) => k.id === it.skins[0]);
+    return { item: r.item, family: r.group, form: r.form, module: r.module, seat: it.seat ?? 'A', concept: it.concept, domain: sk?.domain ?? '?',
+      positions: [...new Set(r.positions)], answers: [...new Set(r.answers.map((a) => a ?? 'yes/no/none'))] };
+  });
 }
 
 /**
@@ -557,6 +597,21 @@ export function heldOutAnswerShortcuts(h: HeldOutBundle): { where: string; messa
   const mods = new Map<string, string[]>();
   for (const r of rows) for (const a of r.answers) if (a !== null && !a.includes('|') && !a.includes('+')) mods.set(r.module, [...(mods.get(r.module) ?? []), a]);
   for (const [m, as] of mods) if (as.length > 1 && new Set(as).size < 2) out.push({ where: `held-out module ${m}`, message: `every action answer is ${as[0]}` });
+  // Across families within a module: no single correct position or action may dominate.
+  const byMod = new Map<string, HeldAnswer[]>();
+  for (const r of rows) byMod.set(r.module, [...(byMod.get(r.module) ?? []), r]);
+  for (const [m, rs] of byMod) {
+    const pos = rs.map((r) => mode(r.positions));
+    const top = maxShare(pos);
+    if (rs.length >= 5 && top.n * 5 > rs.length * 2) out.push({ where: `held-out module ${m}`, message: `the correct option is at position ${top.v} in ${top.n} of ${rs.length} items` });
+    for (const f of ['A', 'B', 'C']) {
+      const fp = rs.filter((r) => r.form === f).map((r) => mode(r.positions));
+      if (fp.length >= 2 && new Set(fp).size < 2) out.push({ where: `held-out module ${m} form ${f}`, message: `every correct option in this form is at position ${fp[0]}` });
+    }
+    const acts = rs.map((r) => mode(r.answers.filter((a): a is string => a !== null && !a.includes('|') && !a.includes('+')))).filter((a) => a !== undefined);
+    const ta = maxShare(acts);
+    if (acts.length >= 3 && ta.n * 3 > acts.length * 2) out.push({ where: `held-out module ${m}`, message: `${ta.n} of ${acts.length} action answers are ${ta.v}` });
+  }
   return out;
 }
 

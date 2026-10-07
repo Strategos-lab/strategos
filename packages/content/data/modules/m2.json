@@ -1619,7 +1619,7 @@
               "against": "a3",
               "action": "b2"
             },
-            "code": "WEAK_AS_STRICT"
+            "code": "TREATING_TIE_AS_STRICT"
           }
         ],
         [
@@ -1654,7 +1654,7 @@
               "against": "a3",
               "action": "b2"
             },
-            "code": "WEAK_AS_STRICT"
+            "code": "TREATING_TIE_AS_STRICT"
           }
         ]
       ]
@@ -3012,7 +3012,7 @@
     {
       "concept": "best_response",
       "type": "reason_choice",
-      "code": "WEAK_AS_STRICT",
+      "code": "TREATING_TIE_AS_STRICT",
       "items": [
         "i.m2.br.tie"
       ],

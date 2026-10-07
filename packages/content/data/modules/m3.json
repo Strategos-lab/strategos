@@ -780,6 +780,86 @@
       "matrixLabel": "Outcomes for your row and the other side’s column"
     },
     {
+      "id": "sk.m3.nets",
+      "version": "1.0.0",
+      "domain": "society_collective",
+      "tone": "neutral",
+      "title": "Nets on the lake",
+      "structures": [
+        "m3.s.rush"
+      ],
+      "roles": {
+        "you": {
+          "id": "you",
+          "label": "You",
+          "short": "you"
+        },
+        "other": {
+          "id": "iyer",
+          "label": "Mr Iyer",
+          "short": "Mr Iyer"
+        }
+      },
+      "seats": [
+        "A"
+      ],
+      "actionLabels": {
+        "a1": "One small net",
+        "a2": "One large net",
+        "a3": "Two small nets",
+        "b1": "Small net",
+        "b2": "Medium net",
+        "b3": "Large net"
+      },
+      "situation": "You and Mr Iyer each run a boat on the same small lake. Before the season each of you picks the nets you will use.",
+      "incentives": {
+        "m3.s.rush": "A bigger net lands more fish for the boat using it, but large nets thin out next season’s fish for both boats. Two small nets are slower to haul than one large one."
+      },
+      "timing": "You both buy nets before the season, separately.",
+      "information": "You both know the lake and each other’s costs. You don’t know which nets Mr Iyer will buy.",
+      "matrixLabel": "Outcomes for your nets and Mr Iyer’s nets"
+    },
+    {
+      "id": "sk.m3.fares",
+      "version": "1.0.0",
+      "domain": "markets",
+      "tone": "neutral",
+      "title": "Fares on the hill route",
+      "structures": [
+        "m3.s.rush"
+      ],
+      "roles": {
+        "you": {
+          "id": "you",
+          "label": "You",
+          "short": "you"
+        },
+        "other": {
+          "id": "bose",
+          "label": "Mrs Bose",
+          "short": "Mrs Bose"
+        }
+      },
+      "seats": [
+        "A"
+      ],
+      "actionLabels": {
+        "a1": "Usual fare",
+        "a2": "Deep cut",
+        "a3": "Small cut",
+        "b1": "Usual fare",
+        "b2": "Small cut",
+        "b3": "Deep cut"
+      },
+      "situation": "You and Mrs Bose run the only two minibuses on a hill route. This month each of you sets your fare.",
+      "incentives": {
+        "m3.s.rush": "A lower fare draws riders from the other minibus, but deep cuts leave both of you short of money for fuel and repairs. Riders barely notice a small cut."
+      },
+      "timing": "You both post fares on the first, separately.",
+      "information": "You both know the route and each other’s costs. You don’t know Mrs Bose’s fare.",
+      "matrixLabel": "Outcomes for your fare and Mrs Bose’s fare"
+    },
+    {
       "id": "sk.m3.canal",
       "version": "1.0.0",
       "domain": "society_collective",
@@ -1249,6 +1329,13 @@
     {
       "id": "v.m3.pledge",
       "structure": "m3.s.pledge",
+      "params": {},
+      "seat": "A",
+      "purpose": "preserve"
+    },
+    {
+      "id": "v.m3.rush",
+      "structure": "m3.s.rush",
       "params": {},
       "seat": "A",
       "purpose": "preserve"
@@ -1935,25 +2022,23 @@
       "role": "practice",
       "concept": "dominant_strategy",
       "type": "reason_choice",
-      "structure": "m3.s.pledge",
+      "structure": "m3.s.rush",
       "skins": [
-        "sk.m3.canal",
-        "sk.m3.referrals",
-        "sk.m3.coaches",
-        "sk.m3.posters"
+        "sk.m3.nets",
+        "sk.m3.fares"
       ],
       "variations": [
-        "v.m3.pledge"
+        "v.m3.rush"
       ],
       "exposure": "undisclosed",
       "novelty": "seen",
       "seat": "A",
-      "prompt": "Suppose you each pick the choice that is better for you whatever the other does. How does that compare with both choosing {act:a1}?",
+      "prompt": "Suppose you each pick the choice that is better for you whatever the other does. How does that compare with {act:a1} and {act:b1}?",
       "facts": {},
       "optionSets": [
         [
           {
-            "text": "Both of you get less: {pay:you:a3:b3} each, instead of {pay:you:a1:b1} each with {act:a1}.",
+            "text": "Both of you get less: {pay:you:a2:b3} and {pay:them:a2:b3}, instead of {pay:you:a1:b1} and {pay:them:a1:b1} with {act:a1}.",
             "claim": {
               "t": "domOutcomeImprovable",
               "than": [
@@ -1971,7 +2056,7 @@
             "code": "INDIVIDUAL_AS_JOINT"
           },
           {
-            "text": "{Them} picks {act:b1}, so you end up with {pay:you:a3:b1}.",
+            "text": "{Them} will pick {act:b1}, so with {act:a2} you end up with {pay:you:a2:b1}.",
             "claim": {
               "t": "strictDom",
               "who": "them",
@@ -1982,7 +2067,7 @@
         ],
         [
           {
-            "text": "Worse for both: {pay:you:a3:b3} and {pay:them:a3:b3}, against {pay:you:a1:b1} and {pay:them:a1:b1} with {act:a1}.",
+            "text": "Worse for both: {pay:you:a2:b3} and {pay:them:a2:b3}, against {pay:you:a1:b1} and {pay:them:a1:b1} with {act:a1}.",
             "claim": {
               "t": "domOutcomeImprovable",
               "than": [
@@ -2000,7 +2085,7 @@
             "code": "INDIVIDUAL_AS_JOINT"
           },
           {
-            "text": "{Them} will give the most, {act:b1}, so you come out on top.",
+            "text": "{Them} will choose {act:b1}, so you come out well ahead.",
             "claim": {
               "t": "strictDom",
               "who": "them",
@@ -3695,8 +3780,8 @@
         "i.m3.dilemma"
       ],
       "phrasings": [
-        "{Act:a3} with {act:b3} gives you {pay:you:a3:b3} and {them} {pay:them:a3:b3}; {act:a1} with {act:b1} gives you {pay:you:a1:b1} and {them} {pay:them:a1:b1}. Each sure choice leads to an outcome worse for both.",
-        "Each of you does better with {act:a3} or {act:b3} whatever the other does, yet together that gives {pay:you:a3:b3} each, against {pay:you:a1:b1} each for {act:a1} with {act:b1}."
+        "{Act:a2} with {act:b3} gives you {pay:you:a2:b3} and {them} {pay:them:a2:b3}; {act:a1} with {act:b1} gives you {pay:you:a1:b1} and {them} {pay:them:a1:b1}. Each sure choice leads to an outcome worse for both.",
+        "You do better with {act:a2} and {them} with {act:b3} whatever the other does, yet together that gives {pay:you:a2:b3} and {pay:them:a2:b3}, against {pay:you:a1:b1} and {pay:them:a1:b1}."
       ],
       "term": "A choice can be better for you whatever the other does and still leave both of you worse off than another outcome."
     },
@@ -3708,8 +3793,8 @@
         "i.m3.dilemma"
       ],
       "phrasings": [
-        "{Act:a1} with {act:b1} gives you {pay:you:a1:b1} and {them} {pay:them:a1:b1}, more than {pay:you:a3:b3} and {pay:them:a3:b3}. Better for each is not the same as best for both.",
-        "Both of you get more with {act:a1} and {act:b1}: {pay:you:a1:b1} and {pay:them:a1:b1}, against {pay:you:a3:b3} and {pay:them:a3:b3}."
+        "{Act:a1} with {act:b1} gives you {pay:you:a1:b1} and {them} {pay:them:a1:b1}, more than {pay:you:a2:b3} and {pay:them:a2:b3}. Better for each is not the same as best for both.",
+        "Both of you get more with {act:a1} and {act:b1}: {pay:you:a1:b1} and {pay:them:a1:b1}, against {pay:you:a2:b3} and {pay:them:a2:b3}."
       ]
     },
     {
@@ -3720,8 +3805,8 @@
         "i.m3.dilemma"
       ],
       "phrasings": [
-        "For {them}, {act:b3} gives {pay:them:a3:b3} against your {act:a3}, more than {act:b1} gives ({pay:them:a3:b1}). {Them} has the same sure choice you do.",
-        "{Them} gets more from {act:b3} than from {act:b1} in every case, e.g. {pay:them:a3:b3} to {pay:them:a3:b1}. Expect {act:b3}."
+        "For {them}, {act:b3} gives {pay:them:a2:b3} against your {act:a2}, more than {act:b1} gives ({pay:them:a2:b1}). {Them} has a sure choice too.",
+        "{Them} gets more from {act:b3} than from {act:b1} in every case, e.g. {pay:them:a2:b3} to {pay:them:a2:b1}. Expect {act:b3}."
       ]
     }
   ],

@@ -1,7 +1,7 @@
 import { describe, expect, it } from 'vitest';
 import {
   CONTENT, HELD_OUT, allInstances, bestResponseRecap, claimAnswer, contentCounts, evaluateClaim, heldOutAnswerShortcuts, heldOutAnswers,
-  makeLookup, render, validateScenarioItems, ROOMMATE_SLICE, type Claim, type Issue,
+  makeLookup, render, validateScenarioItems, ROOMMATE_SLICE, heldOutDistribution, heldOutIsomorphisms, sliceStructure, type Claim, type Issue,
 } from '../src/index.ts';
 import { clone, has, run } from './helpers.ts';
 
@@ -115,5 +115,71 @@ describe('Pass B: engine-derived claims and slots', () => {
 describe('Pass B: best-response recap', () => {
   it('is unchanged and comes from the engine table', () => {
     expect(bestResponseRecap()).toBe('Leave it is your best response to Clean and also to Leave it.');
+  });
+});
+
+describe('Pass B final: dilemma structure', () => {
+  const s = CONTENT.structures.find((x) => x.id === 'm3.s.rush')!;
+  it('i.m3.dilemma uses its own structure; pledge keeps only the three-action dominant item', () => {
+    expect(CONTENT.items.find((i) => i.id === 'i.m3.dilemma')!.structure).toBe('m3.s.rush');
+    expect(CONTENT.items.filter((i) => i.structure === 'm3.s.pledge').map((i) => i.id)).toEqual(['i.m3.three.dom']);
+  });
+  it('both players have a strictly dominant action whose outcome is worse for both than another', () => {
+    const i = inst('i.m3.dilemma');
+    expect(evaluateClaim({ t: 'strictDom', who: 'you', action: 'a2' } as Claim, i)).toBe(true);
+    expect(evaluateClaim({ t: 'strictDom', who: 'them', action: 'b3' } as Claim, i)).toBe(true);
+    expect(evaluateClaim({ t: 'domOutcomeImprovable', than: ['a1', 'b1'] } as Claim, i)).toBe(true);
+  });
+  it('is not isomorphic to the roommate or pledge matrices', () => {
+    const others = CONTENT.structures.filter((x) => x.id === 'm3.s.pledge' || x.id === sliceStructure().id);
+    expect(others).toHaveLength(2);
+    expect(heldOutIsomorphisms(others, [s])).toEqual([]);
+  });
+});
+
+describe('Pass B final: tie code scope', () => {
+  it('the M2 tie item uses TREATING_TIE_AS_STRICT, not WEAK_AS_STRICT', () => {
+    const codes = CONTENT.items.find((i) => i.id === 'i.m2.br.tie')!.optionSets!.flat().map((o) => o.code);
+    expect(codes).toContain('TREATING_TIE_AS_STRICT');
+    expect(codes).not.toContain('WEAK_AS_STRICT');
+    expect(CONTENT.errorCodes.some((e) => e.code === 'TREATING_TIE_AS_STRICT')).toBe(true);
+  });
+  it('flags WEAK_AS_STRICT outside M3 weak dominance (options and feedback)', () => {
+    const issues = run((b) => {
+      const o = b.items.find((i) => i.id === 'i.m2.br.tie')!.optionSets![0]!.find((x) => x.code === 'TREATING_TIE_AS_STRICT')!;
+      o.code = 'WEAK_AS_STRICT';
+      b.feedback.find((k) => k.code === 'TREATING_TIE_AS_STRICT')!.code = 'WEAK_AS_STRICT';
+    });
+    expect(has(issues, 'code-scope', /item:i\.m2\.br\.tie/)).toBe(true);
+    expect(has(issues, 'code-scope', /feedback:best_response\/WEAK_AS_STRICT/)).toBe(true);
+  });
+});
+
+describe('Pass B final: held-out distribution', () => {
+  const rows = heldOutDistribution(HELD_OUT);
+  it('within each module, no position holds more than 40% of items and no form repeats one position', () => {
+    for (const m of ['m1', 'm2', 'm3']) {
+      const ps = rows.filter((r) => r.module === m).map((r) => r.positions[0]);
+      const max = Math.max(...[0, 1, 2, 3].map((p) => ps.filter((x) => x === p).length));
+      expect(max * 5, m).toBeLessThanOrEqual(ps.length * 2);
+      for (const f of ['A', 'B', 'C']) {
+        const fp = rows.filter((r) => r.module === m && r.form === f).map((r) => r.positions[0]);
+        if (fp.length > 1) expect(new Set(fp).size, `${m} ${f}`).toBeGreaterThan(1);
+      }
+    }
+  });
+  it('M3 action answers are spread (no a2 lean)', () => {
+    const acts = rows.filter((r) => r.module === 'm3').flatMap((r) => r.answers).filter((a) => /^[ab][123]$/.test(a));
+    expect(new Set(acts).size).toBe(acts.length);
+  });
+  it('flags a module-level position concentration', () => {
+    const issues = run((_b, h) => {
+      const hl = makeLookup(h as never);
+      for (const i of h.items) if (i.lesson.startsWith('m2.')) {
+        const x = allInstances(i, hl)[0]!;
+        i.optionSets = i.optionSets!.map((st) => [...st.filter((o) => evaluateClaim(o.claim, x)), ...st.filter((o) => !evaluateClaim(o.claim, x))]);
+      }
+    });
+    expect(has(issues, 'held-out-answers', /held-out module m2/)).toBe(true);
   });
 });
