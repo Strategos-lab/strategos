@@ -78,15 +78,15 @@ describe('scenario content validation', () => {
     expect(s.context.knownUnknown).toMatch(/understand what is at stake for each other/);
     expect(s.context.payoffMeaning).toMatch(/0–5 scale/);
     expect(s.context.payoffMeaning).toMatch(/not money/);
+    expect(validateScenario({ ...clone(RAW_SCENARIOS[0]!) as object, contextDetails: { mood: 'x' } }).map((i) => i.path)).toContain('contextDetails.mood');
   });
 });
 
 describe('encounter layout and wording', () => {
-  it('places all ten items: story (1), at-a-glance (4), collapsed details (5)', () => {
+  it('places all ten items: story (1), at-a-glance (5), collapsed details (4, control grouped)', () => {
     expect(contextFieldsAt('story').map((f) => f.key)).toEqual(['situation']);
-    expect(contextFieldsAt('glance').map((f) => f.key)).toEqual(['players', 'choices', 'timing', 'task']);
+    expect(contextFieldsAt('glance').map((f) => f.key)).toEqual(['players', 'preferences', 'choices', 'timing', 'task']);
     expect(contextFieldsAt('details').map((f) => f.key)).toEqual([
-      'preferences',
       'learnerControls',
       'opponentControls',
       'knownUnknown',
@@ -104,6 +104,7 @@ describe('encounter layout and wording', () => {
   const preRevealCopy = (s: Scenario): [string, string][] => [
     ['roleStatement', s.roleStatement],
     ...CONTEXT_FIELDS.map(({ key }) => [`context.${key}`, s.context[key]] as [string, string]),
+    ...Object.entries(s.contextDetails ?? {}).map(([k, v]) => [`contextDetails.${k}`, v!] as [string, string]),
     ...Object.entries(s.prompts).map(([k, v]) => [`prompts.${k}`, v] as [string, string]),
     ...Object.entries(s.outcomes).map(([k, v]) => [`outcomes.${k}`, v] as [string, string]),
     ['matrix.intro', s.matrix.intro],
@@ -121,6 +122,16 @@ describe('encounter layout and wording', () => {
     });
   }
 
+  it('learner copy has no fair/unfair or trait/moral labels', () => {
+    const EDITORIAL = /\b(fair|unfair|fairly|selfish\w*|greedy|lazy|decent|bad choice|right thing)\b/i;
+    for (const s of SCENARIOS) {
+      for (const [path, text] of preRevealCopy(s)) expect(text, path).not.toMatch(EDITORIAL);
+      expect(s.opponentPolicy.description).not.toMatch(EDITORIAL);
+      for (const [k, v] of Object.entries(s.feedback)) expect(v, `feedback.${k}`).not.toMatch(EDITORIAL);
+      expect(s.closingNote ?? '').not.toMatch(EDITORIAL);
+    }
+  });
+
   it('outcome stories are observational (no editorial verdict words)', () => {
     const BANNED_OUTCOME = /\b(fair|decent|enjoyed it for free|good outcome|bad outcome|spotless)\b/i;
     for (const s of SCENARIOS) {
@@ -133,10 +144,12 @@ describe('encounter layout and wording', () => {
   it('roommate motivations are qualitative and consistent with the payoffs', () => {
     const s = SCENARIOS.find((x) => x.id === 'roommate-kitchen')!;
     const p = s.context.preferences;
-    expect(p).toMatch(/clean kitchen/);
-    expect(p).toMatch(/effort/);
-    expect(p).toMatch(/unfair/);
-    expect(p).toMatch(/same kinds of feelings/);
+    expect(p).toBe('You both want a clean kitchen, but cleaning takes effort.');
+    const detail = s.contextDetails!.preferences!;
+    expect(detail).toMatch(/Cleaning alone .* means doing all the work/);
+    expect(detail).toMatch(/same kinds of feelings/);
+    // Expose incentives, not the conclusion: nothing says free-riding beats sharing.
+    expect(`${p} ${detail}`).not.toMatch(/without (doing|lifting)|for free|instead of sharing/i);
     // "Cleaning while the other relaxes feels unfair" must match the lone cleaner's lowest number.
     const lone = s.game.payoffs[0]![1]![0]!; // A cleans, B leaves it
     const all = s.game.payoffs.flat().map((c) => Number(c[0]));

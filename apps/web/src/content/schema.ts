@@ -15,15 +15,24 @@ import { Rational, validateGame, type NormalGame } from '@strategos/engine';
 export const CONTEXT_FIELDS = [
   { key: 'situation', label: 'What is happening', shortLabel: 'Story', placement: 'story' },
   { key: 'players', label: 'Who is involved', shortLabel: 'Players', placement: 'glance' },
-  { key: 'preferences', label: 'What each person cares about', shortLabel: 'What you each care about', placement: 'details' },
+  { key: 'preferences', label: 'What each person cares about', shortLabel: 'What matters', placement: 'glance', detailLabel: 'What you each care about' },
   { key: 'choices', label: 'Choices available', shortLabel: 'Choices', placement: 'glance' },
-  { key: 'learnerControls', label: 'What you control', shortLabel: 'What you control', placement: 'details' },
-  { key: 'opponentControls', label: 'What the other person controls', shortLabel: 'What B controls', placement: 'details' },
+  { key: 'learnerControls', label: 'What you control', shortLabel: 'Control', placement: 'details', group: 'control' },
+  { key: 'opponentControls', label: 'What the other person controls', shortLabel: 'Control', placement: 'details', group: 'control' },
   { key: 'knownUnknown', label: 'What you know and don’t know', shortLabel: 'What you know', placement: 'details' },
   { key: 'timing', label: 'Timing', shortLabel: 'Timing', placement: 'glance' },
   { key: 'payoffMeaning', label: 'What the numbers mean', shortLabel: 'What the numbers mean', placement: 'details' },
   { key: 'task', label: 'What you are asked to do', shortLabel: 'Your task', placement: 'glance' },
-] as const;
+] as const satisfies readonly {
+  key: string;
+  label: string;
+  shortLabel: string;
+  placement: 'story' | 'glance' | 'details';
+  /** Disclosure label for an optional elaboration (`contextDetails`) of a glance item. */
+  detailLabel?: string;
+  /** Items sharing a group render as one disclosure (each item still required). */
+  group?: string;
+}[];
 
 export type ContextPlacement = (typeof CONTEXT_FIELDS)[number]['placement'];
 export const contextFieldsAt = (placement: ContextPlacement) => CONTEXT_FIELDS.filter((f) => f.placement === placement);
@@ -81,6 +90,12 @@ export interface FeedbackTemplates {
   bestReplyTie: string;
   /** Optional: later best-reply questions use the term without re-defining it. */
   bestReplyRepeat?: string;
+  /** Optional one-time definition shown in Why on the first best-reply question. */
+  bestReplyDefinition?: string;
+  /** Optional per-opponent-action line for dominance evidence, e.g. "If B chooses {opponentAction}: {ranked}." */
+  conditionalLine?: string;
+  /** Optional Why text for the dominance question; {lines} = conditional lines. */
+  dominantWhy?: string;
   dominantCorrect: string;
   dominantIncorrect: string;
   noneCorrect: string;
@@ -94,6 +109,8 @@ export interface Scenario {
   /** e.g. "You are Roommate A." */
   roleStatement: string;
   context: ScenarioContext;
+  /** Optional longer elaboration of a context item, shown in a disclosure. */
+  contextDetails?: Partial<Record<ContextKey, string>>;
   /** Must agree with the game kind: 'simultaneous' ⇔ kind 'normal'. */
   timingKind: 'simultaneous';
   game: NormalGame;
@@ -147,6 +164,13 @@ export function validateScenario(raw: unknown): ContentIssue[] {
     }
     for (const k of Object.keys(s.context)) {
       if (!CONTEXT_FIELDS.some((f) => f.key === k)) add(`context.${k}`, 'unknown context item');
+    }
+  }
+
+  if (s.contextDetails !== undefined) {
+    for (const [k, v] of Object.entries(s.contextDetails)) {
+      if (!CONTEXT_FIELDS.some((f) => f.key === k)) add(`contextDetails.${k}`, 'unknown context item');
+      else if (!nonEmpty(v)) add(`contextDetails.${k}`, 'must be non-empty when present');
     }
   }
 

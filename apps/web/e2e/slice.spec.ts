@@ -41,6 +41,18 @@ test.describe('Learner slice: the shared kitchen', () => {
     await expectLearnerClean(page);
   });
 
+  test('home: Start comes before the quieter install card', async ({ page }) => {
+    await page.setViewportSize({ width: 360, height: 740 });
+    await page.goto('./#/');
+    const start = page.getByRole('button', { name: 'Start' });
+    await expect(start).toBeInViewport({ ratio: 1 });
+    const card = page.getByTestId('install-card');
+    if (await card.count()) {
+      const [s, c] = [await start.boundingBox(), await card.boundingBox()];
+      expect(c!.y).toBeGreaterThan(s!.y);
+    }
+  });
+
   test('encounter: story + at-a-glance + Continue fit a 390×844 screen; details collapsed and expandable', async ({ page }) => {
     await page.setViewportSize({ width: 390, height: 844 });
     await page.goto('./#/');
@@ -50,21 +62,34 @@ test.describe('Learner slice: the shared kitchen', () => {
     await expect(page.getByTestId('role-statement')).toBeInViewport({ ratio: 1 });
     await expect(page.getByTestId('glance')).toBeInViewport({ ratio: 1 });
     await expect(page.getByRole('button', { name: 'Continue' })).toBeInViewport({ ratio: 1 });
+    // Strategically necessary info is visible without expanding anything.
+    const matters = page.getByTestId('context-preferences');
+    await expect(matters).toBeVisible();
+    await expect(matters.locator('dd')).toBeInViewport({ ratio: 1 });
+    await expect(matters).toContainText('What matters');
+    await expect(matters).toContainText('You both want a clean kitchen, but cleaning takes effort.');
+    await expect(page.locator('body')).not.toContainText(/\b(fair|unfair)\b/i);
 
     const details = page.locator('details.disclosure');
-    await expect(details).toHaveCount(5);
+    await expect(details).toHaveCount(4);
+    const control = page.getByTestId('group-control');
+    await expect(control.locator('summary')).toHaveText('Control');
+    await control.locator('summary').click();
+    await expect(page.getByTestId('context-learnerControls')).toHaveText('You choose your action.');
+    await expect(page.getByTestId('context-opponentControls')).toContainText('B chooses B’s action.');
+    await control.locator('summary').click();
     for (const d of await details.all()) {
       await expect(d).not.toHaveAttribute('open', /.*/);
       const box = await d.locator('summary').boundingBox();
       // Subpixel rounding on some Chromium builds yields 47.999… for a 48px min-height.
       expect(Math.round(box!.height)).toBeGreaterThanOrEqual(48);
     }
-    const prefs = page.getByTestId('context-preferences');
+    const prefs = page.getByTestId('detail-preferences');
     await expect(prefs.locator('p')).toBeHidden();
     await prefs.getByText('What you each care about').click();
     await expect(prefs).toHaveAttribute('open', '');
     await expect(prefs.locator('p')).toBeVisible();
-    await expect(prefs.locator('p')).toContainText('feels unfair');
+    await expect(prefs.locator('p')).toContainText('Cleaning alone while the other doesn’t means doing all the work.');
     await expect(prefs.locator('p')).not.toContainText(/best|worst/i);
     const known = page.getByTestId('context-knownUnknown');
     await known.locator('summary').focus();
@@ -141,10 +166,14 @@ test.describe('Learner slice: the shared kitchen', () => {
 
     // 6 Outcome in words first
     await expectFocusedHeading(page, 'What happened');
-    await expect(page.getByTestId('outcome-words')).toHaveText('You get 1. Roommate B gets 1.');
+    await expect(page.getByTestId('outcome-words')).toHaveText('Your payoff 1. B’s payoff 1.');
+    const order = await page.evaluate(() => ['outcome-story', 'outcome-words', 'outcome-pair'].map((id) =>
+      document.querySelector(`[data-testid="${id}"]`)!.getBoundingClientRect().top));
+    expect(order[0]).toBeLessThan(order[1]!);
+    expect(order[1]).toBeLessThan(order[2]!);
     await expect(page.getByTestId('outcome-story')).toHaveText('Neither of you cleaned. The kitchen stays messy.');
     await expect(page.getByTestId('outcome-story')).not.toContainText(/fair|decent|enjoyed it for free/i);
-    await expect(page.getByTestId('outcome-pair')).toHaveText('Outcome: (1, 1)');
+    await expect(page.getByTestId('outcome-pair')).toHaveText('(1, 1)');
     await expect(page.locator('table')).toHaveCount(0);
     await page.getByRole('button', { name: 'Continue' }).click();
 
@@ -168,12 +197,16 @@ test.describe('Learner slice: the shared kitchen', () => {
     await page.getByTestId('question-if-b-cleans').getByRole('button', { name: 'Leave it' }).click();
     await expect(page.getByTestId('feedback-if-b-cleans')).toContainText('Leave it gives you 5; Clean gives you 3.');
     await expect(page.getByTestId('feedback-if-b-cleans').locator('.feedback-headline')).toHaveText(
-      'Leave it gives you 5; Clean gives you 3.',
+      'Leave it gives you 5; Clean gives you 3. Leave it is your best response.',
     );
+    await expect(page.getByTestId('feedback-if-b-cleans').locator('.why')).toContainText('A best response is');
     await expect(page.getByTestId('question-either-way')).toHaveCount(0);
     await expect(page.getByRole('heading', { name: 'If B chooses Leave it, which is better for you?' })).toBeFocused();
     await page.getByTestId('question-if-b-leaves').getByRole('button', { name: 'Leave it' }).click();
-    await expect(page.getByTestId('feedback-if-b-leaves')).toContainText('Leave it gives you 1; Clean gives you 0.');
+    await expect(page.getByTestId('feedback-if-b-leaves').locator('.feedback-headline')).toHaveText(
+      'Leave it gives you 1; Clean gives you 0. So Leave it is again your best response.',
+    );
+    await expect(page.getByTestId('feedback-if-b-leaves').locator('.why')).toHaveCount(0);
     await expect(page.getByRole('heading', { name: /what pattern do you see/ })).toBeFocused();
     await expect(page.getByTestId('btn-continue')).toBeDisabled();
     const q3 = page.getByTestId('question-either-way');
@@ -184,17 +217,24 @@ test.describe('Learner slice: the shared kitchen', () => {
     ]);
     await q3.getByRole('button', { name: 'It depends on what B chooses.' }).click();
     await expect(page.getByTestId('feedback-either-way')).toContainText('Not quite');
-    await expect(page.getByTestId('feedback-either-way')).toContainText('Leave it is a dominant strategy');
-    await expect(page.getByTestId('closing-note')).toContainText('individually better action leads to a result that is worse for both');
+    await expect(page.getByTestId('feedback-either-way').locator('.feedback-headline')).toHaveText(
+      'Leave it is better in both comparisons. That makes Leave it a dominant strategy.',
+    );
+    await expect(page.getByTestId('closing-note')).toHaveText(
+      'If both choose the individually higher-payoff action, they reach (1, 1), even though (3, 3) would make both better off.',
+    );
     await page.getByRole('button', { name: 'Continue' }).click();
 
     // 9 Summary
     await expectFocusedHeading(page, 'Summary');
     await expect(page.getByTestId('summary-prediction')).toContainText('80% confident');
-    await expect(page.getByTestId('summary-decision-quality')).toHaveText(
-      'Given the table, Leave it was the best response to your prediction.',
+    await expect(page.getByText('Decision check', { exact: true })).toBeVisible();
+    await expect(page.getByTestId('summary-decision-quality')).toHaveText('Leave it was the best response to your prediction.');
+    await expect(page.getByTestId('summary-decision')).toContainText(
+      'Your decision is checked against your own prediction, not against what B did.',
     );
-    await expect(page.getByTestId('summary-decision')).toContainText('You chose before seeing the table.');
+    await expect(page.locator('body')).not.toContainText('How B decided');
+    await expect(page.getByTestId('summary-policy')).toContainText('B’s behaviour in this exercise');
     await expect(page.getByTestId('summary-outcome')).toContainText('depended on what B actually chose');
     await expect(page.getByTestId('summary-policy')).toContainText('70% Leave it, 30% Clean');
     await expect(page.getByTestId('save-note')).toContainText('saved on this device');
@@ -224,7 +264,7 @@ test.describe('Learner slice: the shared kitchen', () => {
     await expect(page.getByTestId('response-text')).toHaveText('You chose Clean. Roommate B chose Clean.');
     await expect(page.getByRole('button', { name: 'Back' })).toHaveCount(0);
     await page.getByRole('button', { name: 'Continue' }).click();
-    await expect(page.getByTestId('outcome-words')).toHaveText('You get 3. Roommate B gets 3.');
+    await expect(page.getByTestId('outcome-words')).toHaveText('Your payoff 3. B’s payoff 3.');
     await expect(page.getByTestId('outcome-story')).toHaveText(
       'You both cleaned. The work was shared, and the kitchen is clean.',
     );

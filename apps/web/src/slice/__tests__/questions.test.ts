@@ -37,15 +37,16 @@ describe('structured questions are engine-checked', () => {
     expect(right.correct).toBe(true);
     expect(right.text).not.toMatch(/^(Yes|Right|Correct|Not quite)\b/i);
     const parts = feedbackParts(right.text);
-    expect(parts.headline).toBe('Leave it gives you 5; Clean gives you 3.');
-    expect(parts.why).toMatch(/best response/);
+    expect(right.text).toBe('Leave it gives you 5; Clean gives you 3. Leave it is your best response.');
+    expect(right.why).toBe('A best response is the action that gives you the highest payoff given the other player’s choice.');
+    expect(parts.headline).toBe(right.text);
     const wrong = questionFeedback(S, q('if-b-leaves'), 'clean');
     expect(wrong.correct).toBe(false);
-    expect(feedbackParts(wrong.text).headline).toBe('Leave it gives you 1; Clean gives you 0.');
-    // Definition only on first use (Q1).
-    expect(right.text).toContain('A best response is');
-    expect(wrong.text).not.toContain('A best response is');
-    expect(feedbackParts(wrong.text).why).toBe('Because B chose Leave it, Leave it is your best response.');
+    // Q2: evidence + concept, no repeated definition (correct and wrong answers alike).
+    expect(wrong.text).toBe('Leave it gives you 1; Clean gives you 0. So Leave it is again your best response.');
+    expect(wrong.why).toBe('');
+    expect(questionFeedback(S, q('if-b-leaves'), 'leave').why).toBe('');
+    expect(questionFeedback(S, q('if-b-cleans'), 'clean').why).toContain('A best response is');
   });
 
   it('Q3 options and dominant-strategy feedback match the engine', () => {
@@ -59,10 +60,10 @@ describe('structured questions are engine-checked', () => {
     ]);
     const fb = questionFeedback(S, q('either-way'), NONE_OPTION);
     expect(fb.correct).toBe(false);
-    expect(fb.text).toContain('Leave it is a dominant strategy');
-    expect(fb.text).toContain('higher payoff no matter what the other player does');
-    expect(fb.text).toContain('Leave it gives you 5; Clean gives you 3');
-    expect(fb.text).toContain('Leave it gives you 1; Clean gives you 0');
+    expect(fb.text).toBe('Leave it is better in both comparisons. That makes Leave it a dominant strategy.');
+    expect(fb.why).toBe(
+      'If B chooses Clean: Leave it gives you 5; Clean gives you 3. If B chooses Leave it: Leave it gives you 1; Clean gives you 0. A dominant strategy gives you a higher payoff no matter what the other player does.',
+    );
     expect(fb.text).not.toMatch(/nash|equilibri|dilemma/i);
   });
 
@@ -70,10 +71,11 @@ describe('structured questions are engine-checked', () => {
     for (const question of S.questions) {
       for (const o of questionOptions(S, question)) {
         expect(questionFeedback(S, question, o.id).text).not.toMatch(/[{}]/);
+        expect(questionFeedback(S, question, o.id).why).not.toMatch(/[{}]/);
       }
     }
     expect(closingNote(S)).toBe(
-      'Leave it gives each player a higher payoff whatever the other player does. If both choose Leave it, both get 1. If both choose Clean, both get 3. So each player’s individually better action leads to a result that is worse for both.',
+      'If both choose the individually higher-payoff action, they reach (1, 1), even though (3, 3) would make both better off.',
     );
   });
 

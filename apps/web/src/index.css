@@ -1209,15 +1209,14 @@ code {
   padding: 0;
 }
 
-/* Install card: quiet, hairline */
+/* Install card: secondary to Start — no box, top hairline only, smaller type */
 .install-card {
-  border: 1px solid var(--line-strong);
-  border-radius: var(--radius-lg);
-  padding: var(--space-4);
+  border-top: 1px solid var(--line);
+  padding: var(--space-4) 0 0;
   display: flex;
   flex-direction: column;
   gap: var(--space-3);
-  background: var(--surface-1);
+  background: transparent;
 }
 
 .install-card-head {
@@ -1228,8 +1227,8 @@ code {
 
 .install-card-icon {
   flex: none;
-  width: 44px;
-  height: 44px;
+  width: 32px;
+  height: 32px;
   border-radius: var(--radius-md);
 }
 
@@ -1240,8 +1239,9 @@ code {
 
 .install-card-text h2 {
   margin: 0 0 var(--space-1);
-  font-size: var(--fs-base);
-  font-weight: 600;
+  font-size: var(--fs-sm);
+  font-weight: 500;
+  color: var(--text-2);
 }
 
 .install-card-text p {
@@ -1278,7 +1278,8 @@ code {
 
 .install-card .install-card-cta {
   min-height: 44px;
-  width: 100%;
+  width: auto;
+  align-self: flex-start;
   font-size: var(--fs-sm);
   background: transparent;
   color: var(--text);

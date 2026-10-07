@@ -98,7 +98,6 @@ export function SlicePage({ scenario = FIRST_SCENARIO }: { scenario?: Scenario }
             happened. Runs on this device only.
           </p>
         </header>
-        <InstallCard />
         <section className="start" aria-labelledby="start-heading">
           <p className="label">First situation</p>
           <h2 id="start-heading" className="start-title">
@@ -113,6 +112,7 @@ export function SlicePage({ scenario = FIRST_SCENARIO }: { scenario?: Scenario }
             Start
           </button>
         </section>
+        <InstallCard />
         <Footer />
       </main>
     );
@@ -135,6 +135,35 @@ export function SlicePage({ scenario = FIRST_SCENARIO }: { scenario?: Scenario }
       <Footer />
     </main>
   );
+}
+
+interface Disclosure {
+  id: string;
+  label: string;
+  testId?: string;
+  items: { key: string; text: string; testId?: string }[];
+}
+
+/**
+ * Encounter disclosures (presentation only): elaborations of glance items (`contextDetails`) first,
+ * then detail items; items sharing a `group` render as one disclosure. Every context item still has
+ * exactly one `context-<key>` element.
+ */
+function encounterDisclosures(s: Scenario): Disclosure[] {
+  const out: Disclosure[] = [];
+  for (const f of contextFieldsAt('glance')) {
+    const detail = s.contextDetails?.[f.key];
+    if (detail && 'detailLabel' in f) out.push({ id: `detail-${f.key}`, label: f.detailLabel, testId: `detail-${f.key}`, items: [{ key: f.key, text: detail }] });
+  }
+  for (const f of contextFieldsAt('details')) {
+    const group = 'group' in f ? f.group : undefined;
+    const existing = group ? out.find((d) => d.id === `group-${group}`) : undefined;
+    const item = { key: f.key, text: s.context[f.key], testId: `context-${f.key}` };
+    if (existing) existing.items.push(item);
+    else if (group) out.push({ id: `group-${group}`, label: f.shortLabel, testId: `group-${group}`, items: [item] });
+    else out.push({ id: f.key, label: f.shortLabel, items: [{ ...item, testId: undefined }], testId: `context-${f.key}` });
+  }
+  return out;
 }
 
 function Footer() {
@@ -270,10 +299,14 @@ function StepBody({ scenario: s, state, dispatch, headingRef, restartSeed }: Ste
               More about the situation
             </h3>
             <div className="disclosures">
-              {contextFieldsAt('details').map(({ key, shortLabel }) => (
-                <details key={key} className="disclosure" data-testid={`context-${key}`}>
-                  <summary>{shortLabel}</summary>
-                  <p>{s.context[key]}</p>
+              {encounterDisclosures(s).map((d) => (
+                <details key={d.id} className="disclosure" data-testid={d.testId}>
+                  <summary>{d.label}</summary>
+                  {d.items.map((it) => (
+                    <p key={it.key} data-testid={it.testId}>
+                      {it.text}
+                    </p>
+                  ))}
                 </details>
               ))}
             </div>
@@ -370,27 +403,22 @@ function StepBody({ scenario: s, state, dispatch, headingRef, restartSeed }: Ste
       const key = `${own[state.choice!]!.id}|${opp[state.opponentAction!]!.id}`;
       return (
         <StepView step="outcome" title="What happened" variant="title" headingRef={headingRef}>
+          <p className="prose-lead" data-testid="outcome-story">
+            {s.outcomes[key]}
+          </p>
           <div className="scores" data-testid="outcome-words">
             <div className="score score-you">
-              <span className="said-label">You get</span> <strong className="score-value">{you}</strong>
+              <span className="said-label">Your payoff</span> <strong className="score-value">{you}</strong>
               <span className="sr-only">.</span>
             </div>{' '}
             <div className="score score-them">
-              <span className="said-label">{B} gets</span> <strong className="score-value">{them}</strong>
+              <span className="said-label">B’s payoff</span> <strong className="score-value">{them}</strong>
               <span className="sr-only">.</span>
             </div>
           </div>
-          <p className="prose" data-testid="outcome-story">
-            {s.outcomes[key]}
+          <p className="mono-meta" data-testid="outcome-pair">
+            ({you}, {them})
           </p>
-          <div className="notation">
-            <p className="mono-meta" data-testid="outcome-pair">
-              Outcome: ({you}, {them})
-            </p>
-            <p className="meta">
-              The first number is yours ({A}); the second is {B}’s.
-            </p>
-          </div>
           <Actions>
             <ContinueButton onClick={() => dispatch({ type: 'CONTINUE' })} />
           </Actions>
@@ -459,7 +487,7 @@ function ExplainStep({ scenario: s, state, dispatch, headingRef }: StepProps) {
       {visible.map((q, qi) => {
         const answer = state.answers[q.id];
         const fb = answer !== undefined ? questionFeedback(s, q, answer) : null;
-        const parts = fb ? feedbackParts(fb.text) : null;
+        const parts = fb ? feedbackParts(fb.text, fb.why) : null;
         const promptId = `q-${q.id}`;
         return (
           <section key={q.id} className={qi > 0 ? 'question question-reveal' : 'question'} data-testid={`question-${q.id}`} aria-labelledby={promptId}>
@@ -493,7 +521,6 @@ function ExplainStep({ scenario: s, state, dispatch, headingRef }: StepProps) {
                     <p>{parts.why}</p>
                   </details>
                 ) : null}
-                <span className="sr-only">{parts.full}</span>
               </div>
             ) : null}
           </section>
@@ -545,11 +572,11 @@ function SummaryStep({ scenario: s, state, dispatch, headingRef, restartSeed }: 
             <dd>{chosen}</dd>
           </div>
           <div className="run-row">
-            <dt>Your choice, with the table</dt>
+            <dt>Decision check</dt>
             <dd data-testid="summary-decision-quality">
               {consistency.consistent
-                ? `Given the table, ${chosen} was the best response to your prediction.`
-                : `Given the table, ${bestToPrediction} would have been the best response to your prediction.`}
+                ? `${chosen} was the best response to your prediction.`
+                : `${bestToPrediction} would have been the best response to your prediction.`}
             </dd>
           </div>
           <div className="run-row">
@@ -570,14 +597,14 @@ function SummaryStep({ scenario: s, state, dispatch, headingRef, restartSeed }: 
         <div className="notice">
           <div className="notice-item" data-testid="summary-decision">
             <p className="notice-head">Decision</p>
-            <p>You chose before seeing the table. Looking back with it shows how your choice fits your prediction.</p>
+            <p>Your decision is checked against your own prediction, not against what B did.</p>
           </div>
           <div className="notice-item" data-testid="summary-outcome">
             <p className="notice-head">Outcome</p>
             <p>The result also depended on what B actually chose.</p>
           </div>
           <div className="notice-item" data-testid="summary-policy">
-            <p className="notice-head">How B decided</p>
+            <p className="notice-head">B’s behaviour in this exercise</p>
             <p className="dim">{s.opponentPolicy.description}</p>
           </div>
         </div>

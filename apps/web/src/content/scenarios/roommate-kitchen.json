@@ -1,15 +1,15 @@
 {
   "id": "roommate-kitchen",
-  "contentVersion": "1.3.0",
+  "contentVersion": "1.4.0",
   "title": "The shared kitchen",
   "roleStatement": "You are Roommate A.",
   "context": {
     "situation": "You share a flat with Roommate B. The kitchen needs cleaning. You both decide whether to clean it or leave it.",
     "players": "You and Roommate B.",
-    "preferences": "You both want a clean kitchen. Cleaning takes effort and nobody enjoys it. Cleaning while the other relaxes and still enjoys the clean kitchen feels unfair. Roommate B has the same kinds of feelings.",
+    "preferences": "You both want a clean kitchen, but cleaning takes effort.",
     "choices": "Clean or Leave it.",
-    "learnerControls": "Only your own choice: Clean or Leave it.",
-    "opponentControls": "Only B’s own choice. Neither of you can force the other.",
+    "learnerControls": "You choose your action.",
+    "opponentControls": "B chooses B’s action. Neither of you can force the other.",
     "knownUnknown": "You both understand what is at stake for each other. You don’t know what B will choose.",
     "timing": "You choose at the same time. Neither sees the other’s choice.",
     "payoffMeaning": "Each outcome gets a number for each person on a 0–5 scale. A higher number means that person is happier with the outcome. Only the order and size within this situation matter; the numbers are not money.",
@@ -82,7 +82,7 @@
       "leave": "7/10"
     },
     "rngStream": 1,
-    "description": "B’s behaviour in this exercise was fixed: 70% Leave it, 30% Clean. That behaviour is separate from the payoff structure of the game.",
+    "description": "Fixed for this exercise: 70% Leave it, 30% Clean. This behaviour is separate from the payoff structure of the game.",
     "rationale": "B mostly leaves it (Leave it gives B a higher payoff whatever A does) but sometimes cleans, as people often do. The mix makes both of B’s columns appear across attempts, so the learner meets the difference between a good decision and a lucky or unlucky outcome. It matches what A is told: A does not know B’s choice. The mix is an authored exercise rule, not a prediction about what theory says players will do."
   },
   "prompts": {
@@ -129,14 +129,20 @@
   "feedback": {
     "rankedItem": "{action} gives you {payoff}",
     "line": "{ranked}.",
-    "bestReplyCorrect": "{lines} Because B chose {opponentAction}, {best} is your best response. A best response is the action that gives you the higher payoff against what the other player chose.",
-    "bestReplyIncorrect": "{lines} Because B chose {opponentAction}, {best} is your best response. A best response is the action that gives you the higher payoff against what the other player chose.",
+    "bestReplyCorrect": "{lines} {best} is your best response.",
+    "bestReplyIncorrect": "{lines} {best} is your best response.",
     "bestReplyTie": "{lines} Both are equally good for you here.",
-    "dominantCorrect": "{lines} {dominant} is a dominant strategy. A dominant strategy gives you a higher payoff no matter what the other player does.",
-    "dominantIncorrect": "{lines} {dominant} is a dominant strategy. A dominant strategy gives you a higher payoff no matter what the other player does.",
+    "dominantCorrect": "{dominant} is better in both comparisons. That makes {dominant} a dominant strategy.",
+    "dominantIncorrect": "{dominant} is better in both comparisons. That makes {dominant} a dominant strategy.",
     "noneCorrect": "{lines} Which is better depends on what B does.",
     "noneIncorrect": "{lines} No single action is better whatever B does; it depends on B.",
-    "bestReplyRepeat": "{lines} Because B chose {opponentAction}, {best} is your best response."
+    "bestReplyRepeat": "{lines} So {best} is again your best response.",
+    "conditionalLine": "If B chooses {opponentAction}: {ranked}.",
+    "bestReplyDefinition": "A best response is the action that gives you the highest payoff given the other player’s choice.",
+    "dominantWhy": "{lines} A dominant strategy gives you a higher payoff no matter what the other player does."
   },
-  "closingNote": "{dominant} gives each player a higher payoff whatever the other player does. If both choose {dominant}, both get {mutualYou}. If both choose Clean, both get {betterYou}. So each player’s individually better action leads to a result that is worse for both."
+  "closingNote": "If both choose the individually higher-payoff action, they reach ({mutualYou}, {mutualThem}), even though ({betterYou}, {betterThem}) would make both better off.",
+  "contextDetails": {
+    "preferences": "Nobody enjoys cleaning. Cleaning alone while the other doesn’t means doing all the work. Roommate B has the same kinds of feelings."
+  }
 }

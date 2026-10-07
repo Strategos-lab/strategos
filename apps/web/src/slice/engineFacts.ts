@@ -130,7 +130,15 @@ export function comparisonLine(s: Scenario, opponentAction: number): string {
   return fillTemplate(s.feedback.line, { opponentAction: opponentActions(s)[opponentAction]!.label, ranked });
 }
 
-export function questionFeedback(s: Scenario, q: StructuredQuestion, answer: string): { correct: boolean; text: string } {
+export interface QuestionFeedback {
+  correct: boolean;
+  /** Evidence-first headline (always shown). */
+  text: string;
+  /** Optional Why text: one-time definitions / supporting evidence. Empty when none. */
+  why: string;
+}
+
+export function questionFeedback(s: Scenario, q: StructuredQuestion, answer: string): QuestionFeedback {
   const own = learnerActions(s);
   const correctIds = correctOptions(s, q);
   const correct = correctIds.includes(answer);
@@ -151,7 +159,9 @@ export function questionFeedback(s: Scenario, q: StructuredQuestion, answer: str
           : correct
             ? s.feedback.bestReplyCorrect
             : s.feedback.bestReplyIncorrect;
-    return { correct, text: fillTemplate(tpl, values) };
+    // Definition only on first use (the first best-reply question), never repeated.
+    const why = firstBestReply && best.length === 1 ? (s.feedback.bestReplyDefinition ?? '') : '';
+    return { correct, text: fillTemplate(tpl, values), why };
   }
   const d = dominantAction(s);
   // One evidence statement (joined with an em dash) so the headline stays evidence-first.
@@ -160,6 +170,13 @@ export function questionFeedback(s: Scenario, q: StructuredQuestion, answer: str
       .map((_, j) => comparisonLine(s, j).replace(/\.$/, ''))
       .join(' — ') + '.';
   const values = { lines, dominant: d === null ? '' : own[d]!.label };
+  const conditional = s.feedback.conditionalLine;
+  const whyLines = conditional
+    ? opponentActions(s)
+        .map((a, j) => fillTemplate(conditional, { opponentAction: a.label, ranked: comparisonLine(s, j).replace(/\.$/, '') }))
+        .join(' ')
+    : lines;
+  const why = d !== null && s.feedback.dominantWhy ? fillTemplate(s.feedback.dominantWhy, { lines: whyLines }) : '';
   const tpl =
     d === null
       ? correct
@@ -168,7 +185,7 @@ export function questionFeedback(s: Scenario, q: StructuredQuestion, answer: str
       : correct
         ? s.feedback.dominantCorrect
         : s.feedback.dominantIncorrect;
-  return { correct, text: fillTemplate(tpl, values) };
+  return { correct, text: fillTemplate(tpl, values), why };
 }
 
 /**
