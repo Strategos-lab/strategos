@@ -31,7 +31,7 @@ describe('provisional held-out set', () => {
     });
     expect(has(issues, 'held-out', /item:i\.m1\.players id overlaps the practice set/)).toBe(true);
     expect(has(issues, 'held-out', /practice item uses held-out hk\.m1\.sign/)).toBe(true);
-    expect(has(issues, 'held-out', /repeat a practised structure/)).toBe(true);
+    expect(has(issues, 'held-out', /isomorphic to practised m1\.s\.meet .*raw duplicate/)).toBe(true);
     expect(has(issues, 'held-out', /hk\.m1\.slot near-duplicate of sk\.m1\.draft/)).toBe(true);
   });
   it('flags unbalanced forms and a parallel form of a different concept', () => {

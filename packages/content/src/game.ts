@@ -1,8 +1,10 @@
 import {
   classifyFamily,
   dominance,
+  backwardInduction,
   bestResponses,
   iesds,
+  pureNash,
   makeNormalGame,
   type NormalGame,
 } from '@strategos/engine';
@@ -116,7 +118,77 @@ export function computeFacts(s: Structure, game: NormalGame): StructuralFacts {
     strictlyDominated: { A: dominated(0), B: dominated(1) },
     bestResponseDependsOnOpponent: { A: depends(0), B: depends(1) },
     iesdsSolution: el.solved ? [ids(0)[el.surviving[0][0]!]!, ids(1)[el.surviving[1][0]!]!] : null,
+    familyCode: familyCode(classifyFamily(game).family),
   };
+}
+
+/**
+ * Stable, non-learner-facing machine id for the engine's 2×2 family label: the initial letter of each
+ * underscore-separated word of the engine id (e.g. "pure_coordination" → "pc"). Formal family names never
+ * appear in authored data (plan §10.4.3 check restored without learner-facing names).
+ */
+export function familyCode(engineFamily: string): string {
+  return engineFamily.split('_').map((w) => w[0] ?? '').join('');
+}
+
+/** Per-player dense ordinal ranks of a payoff matrix (rows = A's actions, cols = B's actions). */
+function ranks(m: number[][]): number[][] {
+  const vals = [...new Set(m.flat())].sort((x, y) => x - y);
+  return m.map((r) => r.map((v) => vals.indexOf(v)));
+}
+
+function permutations(n: number): number[][] {
+  if (n <= 1) return [[...Array(n).keys()]];
+  const out: number[][] = [];
+  for (const p of permutations(n - 1)) for (let i = 0; i <= p.length; i++) out.push([...p.slice(0, i), n - 1, ...p.slice(i)]);
+  return out;
+}
+
+/** Canonical key of a two-player matrix game's strategic form up to ordinal transformation per player. */
+export function ordinalKey(A: number[][], B: number[][]): string {
+  return JSON.stringify([ranks(A), ranks(B)]);
+}
+
+/**
+ * All ordinal strategic forms of a game under relabelling of each player's actions and, when `swap`,
+ * exchange of the two players (seat swap). Used only to keep held-out structures separate from practice.
+ */
+export function ordinalForms(A: number[][], B: number[][], swap = true): Set<string> {
+  const out = new Set<string>();
+  const variants: [number[][], number[][]][] = [[A, B]];
+  if (swap) variants.push([B[0]!.map((_, j) => B.map((r) => r[j]!)), A[0]!.map((_, j) => A.map((r) => r[j]!))]);
+  for (const [X, Y] of variants) {
+    for (const pr of permutations(X.length)) for (const pc of permutations(X[0]!.length)) {
+      out.add(ordinalKey(pr.map((i) => pc.map((j) => X[i]![j]!)), pr.map((i) => pc.map((j) => Y[i]![j]!))));
+    }
+  }
+  return out;
+}
+
+/** True if the two games are the same strategic form up to ordinal rescaling, action relabelling and seat swap. */
+export function ordinallyIsomorphic(g: { A: number[][]; B: number[][] }, h: { A: number[][]; B: number[][] }): boolean {
+  return ordinalForms(g.A, g.B).has(ordinalKey(h.A, h.B));
+}
+
+/** Payoff matrices of a structure at one parameter combination. */
+export function matrices(s: Structure, params: Params): { A: number[][]; B: number[][] } {
+  const A = s.actions.A.map((a) => s.actions.B.map((b) => evalExpr(s.payoffs[`${a}|${b}`]![0], params)));
+  const B = s.actions.A.map((a) => s.actions.B.map((b) => evalExpr(s.payoffs[`${a}|${b}`]![1], params)));
+  return { A, B };
+}
+
+/**
+ * Sequential (A first, B observes) consistency: the backward-induction outcome(s) must coincide with the
+ * normal-form pure Nash outcome(s), so the normal-form facts never point at a move the sequential story
+ * contradicts. Returns problems (empty = coherent).
+ */
+export function sequentialIssues(s: Structure, params: Params): string[] {
+  if (s.sequence !== 'sequential_observed') return [];
+  const g = buildGame(s, params);
+  const seq = { ...g, kind: 'sequential2' } as unknown as Parameters<typeof backwardInduction>[0];
+  const spe = backwardInduction(seq).outcomes.map(([i, j]) => `${s.actions.A[i]!}|${s.actions.B[j]!}`).sort();
+  const ne = pureNash(g).map(([i, j]) => `${s.actions.A[i]!}|${s.actions.B[j]!}`).sort();
+  return JSON.stringify(spe) === JSON.stringify(ne) ? [] : [`backward-induction outcome ${spe.join(', ')} differs from the normal-form pure outcome(s) ${ne.join(', ') || 'none'}`];
 }
 
 export function factsDiff(declared: StructuralFacts, actual: StructuralFacts): string[] {

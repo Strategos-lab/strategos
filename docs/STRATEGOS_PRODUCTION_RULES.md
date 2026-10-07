@@ -106,6 +106,10 @@ requests.
 - Plain language before formal terms ("higher payoff", "better response given…", "better whatever
   the other player does"). After introducing a formal term, use it consistently and don't redefine
   it repeatedly.
+- Plain-language conclusions ("better either way", "better whatever they do") are gated like the
+  formal term: before the reveal, and in transfer or held-out pre-answer text, the story must give
+  reasons and payoffs, not the conclusion. Answer options and questions are exempt (the learner
+  judges them). Ordinary payoff comparisons are fine.
 - Evidence-first feedback: "Leave it gives you 5; Clean gives you 3." then "So Leave it is your best
   response." No "Correct! Great job!", no motivational filler.
 

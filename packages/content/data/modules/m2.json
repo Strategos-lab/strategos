@@ -493,7 +493,7 @@
       },
       "situation": "You are cooking for yourself and your flatmate Kiran. You decide on a big dinner or a simple one, while Kiran, at work, decides whether to come home early or stay late.",
       "incentives": {
-        "m2.s.belief": "A big dinner is a treat if Kiran comes early and wasted if he stays late; a simple dinner is fine either way, a little better if he is late. Kiran comes early mainly for a big dinner."
+        "m2.s.belief": "A big dinner is a treat if Kiran comes early and wasted if he stays late; a simple dinner is fine either way, a little better if he is late. When Kiran gets away depends on his day at work."
       },
       "timing": "You both decide at the same time. Neither knows the other’s choice in advance.",
       "information": "You know what Kiran wants. You don’t know whether he will come early.",
@@ -531,7 +531,7 @@
       },
       "situation": "You run a flower stall. Tonight you decide whether to stock extra flowers or the usual amount, and tonight the hotel buyer, Mr Bose, decides whether to place a big order or none.",
       "incentives": {
-        "m2.s.belief": "Extra stock pays off well with a big order and is lost without one; usual stock is a little better without his order. Mr Bose orders big more readily from a well-stocked stall."
+        "m2.s.belief": "Extra stock pays off well with a big order and is lost without one; usual stock is a little better without his order. Whether Mr Bose places a big order depends on the hotel’s bookings, which you do not see."
       },
       "timing": "You both decide tonight. Neither knows the other’s decision until morning.",
       "information": "You know how Mr Bose buys. You don’t know whether he will order.",
@@ -569,7 +569,7 @@
       },
       "situation": "Tomorrow you meet a client, Mrs Rao. Tonight you prepare either a full demo or a short summary, and she decides whether to stay for the whole session or only the first part.",
       "incentives": {
-        "m2.s.belief": "A full demo works well if Mrs Rao stays for the whole session and falls flat if she leaves early; a summary works either way, slightly better if she leaves early. She stays longer for a full demo."
+        "m2.s.belief": "A full demo works well if Mrs Rao stays for the whole session and falls flat if she leaves early; a summary works either way, slightly better if she leaves early. How long Mrs Rao stays depends on her own diary."
       },
       "timing": "You both decide tonight, separately.",
       "information": "You know what Mrs Rao wants. You don’t know how long she will stay.",
@@ -607,7 +607,7 @@
       },
       "situation": "You prepare for a badminton match against Imran by practising either long rallies or quick points. At the same time he decides whether to play a patient game or a fast one.",
       "incentives": {
-        "m2.s.belief": "Rally practice pays off well against a patient game and badly against a fast one; quick points give a little either way, more against a fast game. Imran plays patiently more often when you are ready for rallies."
+        "m2.s.belief": "Rally practice pays off well against a patient game and badly against a fast one; quick points give a little either way, more against a fast game. Imran mixes patient and fast matches on his own."
       },
       "timing": "You both prepare at the same time. Neither sees the other’s plan.",
       "information": "You know how Imran plays. You don’t know which game he will choose.",
@@ -683,7 +683,7 @@
       },
       "situation": "You help run a community garden. You decide whether to order many seedlings or a few, while Mr Joshi, who leads the neighbourhood group, decides whether to send many helpers or few.",
       "incentives": {
-        "m2.s.belief": "Many seedlings work out well with many helpers and go to waste with few; a few seedlings are fine either way, a little better with few helpers. Mr Joshi sends more helpers when there is more to plant."
+        "m2.s.belief": "Many seedlings work out well with many helpers and go to waste with few; a few seedlings are fine either way, a little better with few helpers. Mr Joshi’s helpers depend on who is free this week."
       },
       "timing": "You both decide this week, separately.",
       "information": "You know how Mr Joshi plans. You don’t know how many helpers he will send.",

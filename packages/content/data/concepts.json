@@ -175,7 +175,12 @@
     "module": 3,
     "introducedIn": "m3.l1",
     "revealStep": "feedback",
-    "definition": "A dominant strategy gives you a higher payoff than any other action, whatever the other player does."
+    "definition": "A dominant strategy gives you a higher payoff than any other action, whatever the other player does.",
+    "conclusions": [
+      "\\b(?:better|best|more|less|worse|cheaper|quicker|easier|suits?|beats?|wins?)\\b.*\\b(?:either way|whichever (?:way|\\S+ (?:does|do|chooses|choose|picks|pick))|whatever (?:\\S+ )?(?:does|do|chooses|choose|picks|pick|happens)|no matter (?:what|which|how)|regardless|in (?:every|each|both|all) cases?|every time|in any case)",
+      "\\b(?:either way|whichever (?:way|\\S+ (?:does|do|chooses|choose|picks|pick))|whatever (?:\\S+ )?(?:does|do|chooses|choose|picks|pick|happens)|no matter (?:what|which|how)|regardless|in (?:every|each|both|all) cases?|every time|in any case)\\b.*\\b(?:better|best|more|less|worse|cheaper|quicker|easier|suits?|beats?|wins?)\\b",
+      "\\balways (?:better|best|beats?|wins?|gives (?:you |them |\\S+ )?more)\\b"
+    ]
   },
   {
     "id": "dominated_action",
@@ -220,7 +225,12 @@
     "module": 3,
     "introducedIn": "m3.l5",
     "revealStep": "feedback",
-    "definition": "An action weakly dominates another when it is never worse and sometimes better. Weak dominance is a weaker claim than strict dominance."
+    "definition": "An action weakly dominates another when it is never worse and sometimes better. Weak dominance is a weaker claim than strict dominance.",
+    "conclusions": [
+      "\\bnever worse\\b",
+      "\\bat least as (?:good|well)\\b",
+      "\\bnever (?:gives|leaves) (?:you |them |\\S+ )?(?:less|worse)\\b"
+    ]
   },
   {
     "id": "nash_equilibrium",

@@ -185,18 +185,18 @@
       },
       "situation": "You run a bakery, and Mr Paul runs the café across the road and buys your bread. Tonight you decide whether to bake early or late, and Mr Paul decides whether to collect in the morning or the afternoon.",
       "incentives": {
-        "m3.s.one": "Baking early suits you better either way, and you do better when Mr Paul collects in the morning. Mr Paul wants fresh bread: morning pickup if you bake early, afternoon if you bake late."
+        "m3.s.one": "Baking early lets you finish before the shop opens, which matters most to you; you also gain when Mr Paul collects in the morning. Mr Paul wants fresh bread: morning pickup if you bake early, afternoon if you bake late."
       },
       "timing": "You both decide tonight, separately.",
       "information": "You both know what the other wants. You don’t know when Mr Paul will collect.",
       "matrixLabel": "Outcomes for your baking and Mr Paul’s pickup"
     },
     {
-      "id": "sk.m3.bakery.b",
+      "id": "sk.m3.cart",
       "version": "1.0.0",
-      "domain": "work_business",
+      "domain": "markets",
       "tone": "neutral",
-      "title": "Fresh bread",
+      "title": "The vegetable cart",
       "structures": [
         "m3.s.one"
       ],
@@ -207,27 +207,27 @@
           "short": "you"
         },
         "other": {
-          "id": "neha",
-          "label": "Neha",
-          "short": "Neha"
+          "id": "raju",
+          "label": "Raju",
+          "short": "Raju"
         }
       },
       "seats": [
         "B"
       ],
       "actionLabels": {
-        "a1": "Bake early",
-        "a2": "Bake late",
-        "b1": "Morning pickup",
-        "b2": "Afternoon pickup"
+        "a1": "Market square",
+        "a2": "By the park",
+        "b1": "The square",
+        "b2": "The park"
       },
-      "situation": "You run a café and buy bread from Neha’s bakery across the road. Tonight Neha decides whether to bake early or late, and you decide whether to collect in the morning or the afternoon.",
+      "situation": "Raju sells vegetables from a cart, either at the market square or by the park, and decides this evening where to stand. You buy from him and decide where to walk for your vegetables.",
       "incentives": {
-        "m3.s.one@B": "You want fresh bread: a morning pickup is better if Neha bakes early, an afternoon pickup if she bakes late. Baking early suits Neha better either way, and she does better when you collect in the morning."
+        "m3.s.one@B": "You only get your vegetables if you go where the cart is, and the square is nearer your home. The square gets Raju far more passing trade, and he also likes regulars like you to come to the square."
       },
-      "timing": "You both decide tonight, separately.",
-      "information": "You both know what the other wants. You don’t know when Neha will bake.",
-      "matrixLabel": "Outcomes for Neha’s baking and your pickup"
+      "timing": "You both decide this evening, separately. Raju’s phone is switched off.",
+      "information": "You know how Raju’s trade works. You don’t know where he will stand.",
+      "matrixLabel": "Outcomes for Raju’s spot and yours"
     },
     {
       "id": "sk.m3.picnic.a",
@@ -261,7 +261,7 @@
       },
       "situation": "You are meeting your friend Sunil for a picnic. You decide whether to come by bus or by car, and Sunil decides whether to wait for you at the bus stop or at the car park.",
       "incentives": {
-        "m3.s.one": "The bus is cheaper and quicker for you either way, and you would rather Sunil waits at the bus stop. Sunil wants to wait where you will arrive."
+        "m3.s.one": "The bus is cheaper and quicker for you than driving, and you would rather Sunil waits at the bus stop. Sunil wants to wait where you will arrive."
       },
       "timing": "You both set off at the same time. Neither can reach the other.",
       "information": "You both know what the other wants. You don’t know where Sunil will wait.",
@@ -299,11 +299,13 @@
       },
       "situation": "You are meeting your friend Sunil for a picnic. Sunil decides whether to come by bus or by car, and you decide whether to wait for him at the bus stop or at the car park.",
       "incentives": {
-        "m3.s.one@B": "You want to wait where Sunil will arrive. The bus is cheaper and quicker for him either way, and he would rather you wait at the bus stop."
+        "m3.s.one@B": "You want to wait where Sunil will arrive. The bus is cheaper and quicker for him than driving, and he would rather you wait at the bus stop."
       },
       "timing": "You both set off at the same time. Neither can reach the other.",
       "information": "You both know what the other wants. You don’t know how Sunil will travel.",
-      "matrixLabel": "Outcomes for Sunil’s travel and your waiting spot"
+      "matrixLabel": "Outcomes for Sunil’s travel and your waiting spot",
+      "mirrorOf": "sk.m3.picnic.a",
+      "mirrorPurpose": "Seat rotation with a learner-role purpose: in sk.m3.picnic.a the learner holds the sure choice; here the learner must predict the other person from their incentives and then respond (m3.l2 seat-B items)."
     },
     {
       "id": "sk.m3.grid",
@@ -466,11 +468,11 @@
       "matrixLabel": "Outcomes for your plan and Ms Gill’s plan"
     },
     {
-      "id": "sk.m3.ticket",
+      "id": "sk.m3.pricematch",
       "version": "1.0.0",
-      "domain": "everyday_life",
+      "domain": "markets",
       "tone": "neutral",
-      "title": "The show tickets",
+      "title": "The price-match scheme",
       "structures": [
         "m3.s.weak"
       ],
@@ -481,27 +483,27 @@
           "short": "you"
         },
         "other": {
-          "id": "riya",
-          "label": "Riya",
-          "short": "Riya"
+          "id": "khanna",
+          "label": "Mr Khanna",
+          "short": "Mr Khanna"
         }
       },
       "seats": [
         "A"
       ],
       "actionLabels": {
-        "a1": "Flexible",
-        "a2": "Fixed",
-        "b1": "Come",
-        "b2": "Stay home"
+        "a1": "Join the scheme",
+        "a2": "Stay out",
+        "b1": "No sale",
+        "b2": "Run a sale"
       },
-      "situation": "You are booking a seat for a show you hope to see with your friend Riya. You choose a flexible ticket or a fixed one, at the same price, while Riya decides whether to come or stay home.",
+      "situation": "You run a stationery shop in a mall, opposite Mr Khanna’s. This week the mall offers a free price-match scheme: members may match any rival sale price. You decide whether to join, and Mr Khanna decides whether to run a sale.",
       "incentives": {
-        "m3.s.weak": "If Riya comes, either ticket gives you the same evening; if she stays home, a flexible ticket lets you change your plans. Riya is keener to come when you book flexibly, and to stay home with a fixed booking."
+        "m3.s.weak": "Joining is free and changes nothing on a normal week. If Mr Khanna runs a sale, matching it keeps some customers; outside the scheme you lose them. His sale pays him when you stay out, and costs him when you join."
       },
-      "timing": "You both decide today, separately.",
-      "information": "You know what Riya wants. You don’t know whether she will come.",
-      "matrixLabel": "Outcomes for your ticket and Riya’s choice"
+      "timing": "You both decide on Monday, separately. The mall names its members only at the end of the week.",
+      "information": "You both know how the scheme works. You don’t know whether Mr Khanna will run a sale.",
+      "matrixLabel": "Outcomes for your choice and Mr Khanna’s"
     },
     {
       "id": "sk.m3.shapes",
@@ -611,7 +613,7 @@
       },
       "situation": "Your tutor, Mrs Menon, decides whether to hold today’s class online or at her home. At the same time you decide whether to log in from home or travel to her house.",
       "incentives": {
-        "m3.s.one@B": "You want to be wherever the class is held. Holding it online suits Mrs Menon better either way, and she would rather you log in."
+        "m3.s.one@B": "You want to be wherever the class is held. Teaching online saves Mrs Menon setting up her front room for a class, and she would rather you log in."
       },
       "timing": "You both decide this morning, separately.",
       "information": "You know what Mrs Menon prefers. You don’t know where she will hold the class.",
@@ -1070,7 +1072,7 @@
       "type": "reason_choice",
       "structure": "m3.s.one",
       "skins": [
-        "sk.m3.bakery.b",
+        "sk.m3.cart",
         "sk.m3.picnic.b"
       ],
       "variations": [
@@ -1151,7 +1153,7 @@
       "type": "reason_choice",
       "structure": "m3.s.one",
       "skins": [
-        "sk.m3.bakery.b",
+        "sk.m3.cart",
         "sk.m3.picnic.b"
       ],
       "variations": [
@@ -1845,7 +1847,7 @@
       "type": "reason_choice",
       "structure": "m3.s.weak",
       "skins": [
-        "sk.m3.ticket",
+        "sk.m3.pricematch",
         "sk.m3.shapes"
       ],
       "variations": [

@@ -62,3 +62,27 @@ of the same concept and type. Not bundled into the app.
 
 Edit the JSON in `packages/content/data` and run `pnpm test:content`. Declared facts must match the
 engine; the failure message prints the engine's values.
+
+## Corrective pass (7 Oct 2026)
+
+Applies the reviewed decisions; no new Phase 2 content and no UI changes.
+
+- **m1.s.turns** re-parameterised (A: 3,2,1,0; B unchanged), so dominance, IESDS, Nash and backward
+  induction all give (a1, b2). Previously backward induction gave (a2, b1). The validator now checks
+  that sequential-observed structures agree (`sequential`).
+- **Conclusion leakage**: concepts can carry `conclusions` patterns (plain-language forms of the
+  conclusion), which are gated like the term in practice, transfer and held-out text. Options and questions are exempt.
+  Lesson m3.l1 is renamed "Checking each case".
+- **Held-out isomorphism**: held-out structures must not be ordinally isomorphic to practice ones
+  under action relabelling or a seat swap. h.s.m3b is replaced by h.s.m3c, and h.s.m1a's
+  miscoordination cells now tie.
+- **Belief coherence**: a belief may not weight an action that is strictly dominated in a visible
+  matrix. h.s.m2b's B payoffs were changed (A's are unchanged), and hv.m2b.80 is now hv.m2b.30.
+- **Narrative**: "only when both…" wording needs tied miscoordination payoffs.
+- **Family**: `facts.familyCode` (initials of the engine family id) must equal the engine's.
+- **Mirrors**: `mirrorOf` and `mirrorPurpose`. The only mirror is sk.m3.picnic.b, and mirrors are
+  excluded from `skinCounts`.
+- **Roommate**: the first experience is unchanged. `composeSliceM31()` adds the M3.1 recall line and
+  an engine-computed best-response recap, without repeating the definition.
+- **Skins**: sk.m3.ticket is replaced by sk.m3.pricematch, and sk.m3.bakery.b by sk.m3.cart. The
+  REVISE list was applied.

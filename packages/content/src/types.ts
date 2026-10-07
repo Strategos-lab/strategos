@@ -57,6 +57,13 @@ export interface Concept {
   introducedIn: string | null;
   revealStep: Step;
   definition: string;
+  /**
+   * Plain-language equivalents of the concept's conclusion (regex sources, case-insensitive), e.g.
+   * "better … either way". Checked per clause of asserted (non-question) expository text before the
+   * reveal and in transfer / held-out pre-answer text. Answer options are claims the learner judges and
+   * are exempt; ordinary payoff comparisons do not match.
+   */
+  conclusions?: string[];
 }
 
 export interface Lesson {
@@ -94,7 +101,6 @@ export interface Curriculum {
 }
 
 export interface StructuralFacts {
-  /* The engine's game-family label is deliberately not stored in content data (see structureFamily). */
   /** Strictly dominant action id per player, or null. */
   strictlyDominant: { A: string | null; B: string | null };
   /** Weakly (not strictly) dominant action id per player, or null. */
@@ -105,6 +111,8 @@ export interface StructuralFacts {
   bestResponseDependsOnOpponent: { A: boolean; B: boolean };
   /** Unique profile surviving strict IESDS, or null. */
   iesdsSolution: [string, string] | null;
+  /** Engine family as a stable machine code (`familyCode`), never a learner-facing name. */
+  familyCode: string;
 }
 
 export interface Structure {
@@ -166,6 +174,12 @@ export interface Skin {
   /** Accessible name for the matrix (accessibility content). */
   matrixLabel: string;
   outcomes?: Record<string, string>;
+  /**
+   * Seat-rotation mirror: the same story told from the other seat. Allowed only with an explicit
+   * learner-role purpose; mirrors do not count towards skins-per-structure targets.
+   */
+  mirrorOf?: string;
+  mirrorPurpose?: string;
   heldOut?: boolean;
 }
 

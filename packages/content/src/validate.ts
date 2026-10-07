@@ -1,5 +1,5 @@
 import { evaluateClaim } from './claims.ts';
-import { buildGame, computeFacts, factsDiff, paramCombos, payoffOf } from './game.ts';
+import { buildGame, computeFacts, factsDiff, matrices, ordinalForms, ordinalKey, paramCombos, payoffOf, sequentialIssues } from './game.ts';
 import { checkGating, findCycle, lessonOrder, type GatedText } from './gating.ts';
 import { allInstances, makeLookup, type Instance, type Lookup } from './instance.ts';
 import { leadClause, lintField, MAX_LENGTH, similarity, VERDICT_OPENER, type FieldKind, type LintIssue } from './lint.ts';
@@ -64,6 +64,7 @@ export function validateStructures(structures: Structure[], issues: Issue[]) {
       try {
         const diff = factsDiff(s.facts, computeFacts(s, buildGame(s, c)));
         for (const d of diff) issues.push({ rule: 'engine-facts', where: `${w} ${JSON.stringify(c)}`, message: d });
+        for (const d of sequentialIssues(s, c)) issues.push({ rule: 'sequential', where: `${w} ${JSON.stringify(c)}`, message: d });
       } catch (e) {
         issues.push({ rule: 'structure', where: w, message: String((e as Error).message) });
       }
@@ -75,9 +76,6 @@ function payoffSignature(s: Structure, params: Record<string, number>): string {
   return s.actions.A.map((a) => s.actions.B.map((b) => `${payoffOf(s, params, 0, [a, b])},${payoffOf(s, params, 1, [a, b])}`).join(';')).join('/');
 }
 
-function transposedSignature(s: Structure, params: Record<string, number>): string {
-  return s.actions.B.map((b) => s.actions.A.map((a) => `${payoffOf(s, params, 1, [a, b])},${payoffOf(s, params, 0, [a, b])}`).join(';')).join('/');
-}
 
 export function validateSkins(skins: Skin[], structures: Structure[], issues: Issue[], heldOut: boolean) {
   const byId = new Map(structures.map((s) => [s.id, s]));
@@ -337,16 +335,18 @@ export function gatedTexts(b: ContentBundle, extra: GatedText[] = [], hb?: HeldO
   }
   for (const item of [...b.items, ...(hb?.items ?? [])]) {
     const hide = item.exposure === 'transfer_hidden' ? item.concept : undefined;
-    const pre = (text: string, where: string) => out.push({ lesson: item.lesson, step: item.step, text, where, ...(hide ? { hide } : {}) });
+    const assessment = item.role === 'transfer' || item.role === 'held_out' ? { assessment: true } : {};
+    const pre = (text: string, where: string, claim = false) =>
+      out.push({ lesson: item.lesson, step: item.step, text, where, ...(hide ? { hide } : {}), ...assessment, ...(claim ? { claim } : {}) });
     pre(item.prompt, `item:${item.id}.prompt`);
-    for (const set of item.optionSets ?? []) for (const o of set) pre(o.text, `item:${item.id}.option`);
+    for (const set of item.optionSets ?? []) for (const o of set) pre(o.text, `item:${item.id}.option`, true);
     for (const k of item.skins) {
       const skin = look.skin(k);
       if (!skin) continue;
       for (const t of [skin.title, skin.situation, skin.timing, skin.information, ...Object.values(skin.incentives), ...Object.values(skin.actionLabels)]) {
-        out.push({ lesson: item.lesson, step: 'encounter', text: t, where: `skin:${k}`, ...(hide ? { hide } : {}) });
+        out.push({ lesson: item.lesson, step: 'encounter', text: t, where: `skin:${k}`, ...(hide ? { hide } : {}), ...assessment });
       }
-      out.push({ lesson: item.lesson, step: 'matrix', text: skin.matrixLabel, where: `skin:${k}.matrixLabel`, ...(hide ? { hide } : {}) });
+      out.push({ lesson: item.lesson, step: 'matrix', text: skin.matrixLabel, where: `skin:${k}.matrixLabel`, ...(hide ? { hide } : {}), ...assessment });
       for (const t of Object.values(skin.outcomes ?? {})) out.push({ lesson: item.lesson, step: 'outcome', text: t, where: `skin:${k}.outcomes` });
     }
     for (const key of keysFor(b.feedback, item)) {
@@ -374,6 +374,9 @@ export function validateContent(b: ContentBundle, opts: { extraTexts?: GatedText
   for (const s of b.structures) if (s.heldOut) issues.push({ rule: 'held-out', where: `structure:${s.id}`, message: 'held-out structure in the practice bundle' });
   validateSkins(b.skins, b.structures, issues, false);
   validateVariations(b.variations, b.structures, issues, false);
+  validateBeliefCoherence(b.variations, b.structures, issues);
+  validateExclusiveWording(b.skins, b.structures, issues);
+  validateMirrors(b.skins, issues);
   const look = makeLookup(b);
   validateItems(b.items, b, look, issues, false);
   validateFeedbackLibrary(b, issues);
@@ -459,6 +462,9 @@ export function validateHeldOut(b: ContentBundle, h: HeldOutBundle, issues: Issu
   validateStructures(h.structures, issues);
   validateSkins(h.skins, h.structures, issues, true);
   validateVariations(h.variations, h.structures, issues, true);
+  validateBeliefCoherence(h.variations, h.structures, issues);
+  validateExclusiveWording(h.skins, h.structures, issues);
+  validateMirrors(h.skins, issues);
   const look = makeLookup(h);
   for (const i of h.items) {
     if (!i.heldOutForm) issues.push({ rule: 'held-out', where: `item:${i.id}`, message: 'needs heldOutForm A/B/C' });
@@ -470,16 +476,7 @@ export function validateHeldOut(b: ContentBundle, h: HeldOutBundle, issues: Issu
   }
   validateItems(h.items, b, look, issues, true);
   // No practised payoff structure, story or near-duplicate text (plan §3.4, §10.4.7).
-  const sigs = new Set<string>();
-  for (const s of b.structures) for (const c of paramCombos(s)) {
-    const g = buildGame(s, c);
-    void g;
-    sigs.add(payoffSignature(s, c));
-    sigs.add(transposedSignature(s, c));
-  }
-  for (const s of h.structures) for (const c of paramCombos(s)) {
-    if (sigs.has(payoffSignature(s, c))) issues.push({ rule: 'held-out', where: `structure:${s.id}`, message: `payoffs ${JSON.stringify(c)} repeat a practised structure` });
-  }
+  for (const x of heldOutIsomorphisms(b.structures, h.structures)) issues.push({ rule: 'held-out', where: `structure:${x.held}`, message: `strategic form ${JSON.stringify(x.heldParams)} is ordinally isomorphic to practised ${x.practice} ${JSON.stringify(x.practiceParams)} (${x.how})` });
   const texts = b.skins.map((k) => [k.id, skinText(k)] as const);
   const heldTexts: (readonly [string, string])[] = [];
   for (const k of h.skins) {
@@ -494,6 +491,93 @@ export function validateHeldOut(b: ContentBundle, h: HeldOutBundle, issues: Issu
   for (const i of h.items) forms.set(i.heldOutForm ?? '?', (forms.get(i.heldOutForm ?? '?') ?? 0) + 1);
   const counts = ['A', 'B', 'C'].map((f) => forms.get(f) ?? 0);
   if (Math.max(...counts) - Math.min(...counts) > 1) issues.push({ rule: 'held-out', where: 'held-out', message: `parallel forms are unbalanced (${counts.join('/')})` });
+}
+
+/**
+ * Held-out vs practice separation only (plan §3.4, stricter reading): a held-out structure must not be
+ * the same strategic form as a practised one up to ordinal rescaling, relabelling of either player's
+ * actions, or swapping the players' seats. Not applied anywhere else (reuse within practice is legitimate).
+ */
+export function heldOutIsomorphisms(practice: Structure[], held: Structure[]): { held: string; heldParams: Record<string, number>; practice: string; practiceParams: Record<string, number>; how: string }[] {
+  const out: { held: string; heldParams: Record<string, number>; practice: string; practiceParams: Record<string, number>; how: string }[] = [];
+  const forms = practice.flatMap((p) => paramCombos(p).map((c) => {
+    const m = matrices(p, c);
+    return { id: p.id, c, sig: payoffSignature(p, c), relabel: ordinalForms(m.A, m.B, false), any: ordinalForms(m.A, m.B, true) };
+  }));
+  for (const hs of held) for (const hc of paramCombos(hs)) {
+    const m = matrices(hs, hc);
+    const key = ordinalKey(m.A, m.B);
+    for (const f of forms) {
+      if (!f.any.has(key)) continue;
+      const how = payoffSignature(hs, hc) === f.sig ? 'raw duplicate' : f.relabel.has(key) ? 'same form up to action relabelling' : 'same form after a seat swap';
+      out.push({ held: hs.id, heldParams: hc, practice: f.id, practiceParams: f.c, how });
+    }
+  }
+  return out;
+}
+
+/**
+ * A stated belief must not put weight on an action the believed-about player never benefits from
+ * (strictly dominated for them) when the matrix is visible: the belief would contradict the incentives
+ * the learner can read.
+ */
+export function validateBeliefCoherence(vars: ContentBundle['variations'], structures: Structure[], issues: Issue[]) {
+  const byId = new Map(structures.map((s) => [s.id, s]));
+  for (const v of vars) {
+    const s = byId.get(v.structure);
+    if (!v.belief || !s || s.presentation !== 'matrix') continue;
+    const other = v.seat === 'A' ? 'B' : 'A';
+    for (const c of paramCombos(s)) {
+      const dominated = computeFacts(s, buildGame(s, c)).strictlyDominated[other];
+      for (const [id, p] of Object.entries(v.belief)) {
+        if (dominated.includes(id) && p !== '0' && p !== '0/1') issues.push({ rule: 'belief', where: `variation:${v.id}`, message: `belief puts ${p} on ${id}, which is strictly dominated for the other player and visible in the matrix` });
+      }
+    }
+  }
+}
+
+const EXCLUSIVE = /\bonly (?:if|when)\b[^.;]*\b(?:both|same|match|together)\b|\b(?:works|gain|gains|pays|pay|come|comes) only (?:if|when)\b/iu;
+
+/**
+ * Narrative/payoff consistency for 2×2 coordination wording: "works only if both …" claims that every
+ * miscoordinated outcome is equally bad, so each player's two off-diagonal payoffs must tie.
+ */
+export function validateExclusiveWording(skins: Skin[], structures: Structure[], issues: Issue[]) {
+  const byId = new Map(structures.map((s) => [s.id, s]));
+  for (const k of skins) for (const [key, text] of Object.entries(k.incentives)) {
+    const s = byId.get(key.replace(/@B$/, ''));
+    if (!s || s.actions.A.length !== 2 || s.actions.B.length !== 2 || !EXCLUSIVE.test(`${k.situation} ${text}`)) continue;
+    for (const c of paramCombos(s)) {
+      const m = matrices(s, c);
+      for (const [who, M] of [['A', m.A], ['B', m.B]] as const) {
+        if (M[0]![1] !== M[1]![0]) issues.push({ rule: 'narrative', where: `skin:${k.id}`, message: `says the outcome depends only on matching, but ${who}'s two miscoordinated payoffs differ (${M[0]![1]} vs ${M[1]![0]})` });
+      }
+    }
+  }
+}
+
+/** Seat-rotation mirrors: explicit purpose, existing original on the same structure, other seat. */
+export function validateMirrors(skins: Skin[], issues: Issue[]) {
+  const byId = new Map(skins.map((k) => [k.id, k]));
+  for (const k of skins) {
+    if (!k.mirrorOf) {
+      if (k.mirrorPurpose) issues.push({ rule: 'mirror', where: `skin:${k.id}`, message: 'mirrorPurpose without mirrorOf' });
+      continue;
+    }
+    const o = byId.get(k.mirrorOf);
+    if (!o) { issues.push({ rule: 'mirror', where: `skin:${k.id}`, message: `mirrorOf "${k.mirrorOf}" is not a skin` }); continue; }
+    if (!k.mirrorPurpose?.trim()) issues.push({ rule: 'mirror', where: `skin:${k.id}`, message: 'a seat-rotation mirror needs an explicit learner-role purpose' });
+    if (o.mirrorOf) issues.push({ rule: 'mirror', where: `skin:${k.id}`, message: 'mirror of a mirror' });
+    if (!k.structures.every((x) => o.structures.includes(x))) issues.push({ rule: 'mirror', where: `skin:${k.id}`, message: 'mirror must use the original’s structure' });
+    if (k.seats.some((x) => o.seats.includes(x))) issues.push({ rule: 'mirror', where: `skin:${k.id}`, message: 'mirror must put the learner in the other seat' });
+  }
+}
+
+/** Distinct skins per structure (mirrors excluded), for plan §10.6 counts. */
+export function skinCounts(skins: Skin[]): Record<string, number> {
+  const out: Record<string, number> = {};
+  for (const k of skins) if (!k.mirrorOf) for (const s of k.structures) out[s] = (out[s] ?? 0) + 1;
+  return out;
 }
 
 export function formatIssues(issues: Issue[]): string {

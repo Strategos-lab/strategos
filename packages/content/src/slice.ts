@@ -85,11 +85,44 @@ export function composeSliceScenario(slice: SliceData = ROOMMATE_SLICE, skin: Sk
   };
 }
 
+/** Recall line used when the roommate scene returns as M3.1 (the learner already met best responses). */
+export const M31_RECALL = 'Again, compare your choices within B’s choice.';
+
+/** Engine-style statement of the learner's best responses, computed from the payoffs. */
+export function bestResponseRecap(skin: Skin = ROOMMATE_SKIN, structure: Structure = sliceStructure()): string {
+  const { A, B } = structure.actions;
+  const best = B.map((b) => {
+    const top = Math.max(...A.map((a) => Number(structure.payoffs[`${a}|${b}`]![0])));
+    return A.filter((a) => Number(structure.payoffs[`${a}|${b}`]![0]) === top);
+  });
+  const uniq = best.every((x) => x.length === 1) ? new Set(best.map((x) => x[0]!)) : new Set<string>();
+  const label = (id: string) => skin.actionLabels[id]!;
+  if (uniq.size === 1) {
+    const a = [...uniq][0]!;
+    return `${label(a)} is your best response to ${B.map(label).join(' and also to ')}.`;
+  }
+  return B.map((b, i) => `Against ${label(b)}, your best response is ${best[i]!.map(label).join(' or ')}.`).join(' ');
+}
+
+/**
+ * The roommate scene in its second role (M3.1, discovering dominance). Same matrix, policy,
+ * questions and mechanics as the first experience; only two feedback strings change: the
+ * best-response definition becomes a recall line, and the dominance explanation states the
+ * learner's best responses without repeating the formal definition (the lesson reveal gives it).
+ */
+export function composeSliceM31(slice: SliceData = ROOMMATE_SLICE, skin: Skin = ROOMMATE_SKIN, structure: Structure = sliceStructure(slice)): Record<string, unknown> {
+  const base = composeSliceScenario(slice, skin, structure);
+  return {
+    ...base,
+    feedback: { ...slice.feedback, bestReplyDefinition: M31_RECALL, dominantWhy: `{lines} ${bestResponseRecap(skin, structure)}` },
+  };
+}
+
 /** Learner-facing slice strings with the lesson step at which each appears (terminology gating). */
-export function sliceTexts(slice: SliceData = ROOMMATE_SLICE, skin: Skin = ROOMMATE_SKIN): { step: Step; text: string; where: string }[] {
-  const out: { step: Step; text: string; where: string }[] = [];
-  const add = (step: Step, text: unknown, where: string) => {
-    if (typeof text === 'string') out.push({ step, text, where: `slice:${slice.id}.${where}` });
+export function sliceTexts(slice: SliceData = ROOMMATE_SLICE, skin: Skin = ROOMMATE_SKIN): { step: Step; text: string; where: string; claim?: boolean }[] {
+  const out: { step: Step; text: string; where: string; claim?: boolean }[] = [];
+  const add = (step: Step, text: unknown, where: string, claim = false) => {
+    if (typeof text === 'string') out.push({ step, text, where: `slice:${slice.id}.${where}`, ...(claim ? { claim: true } : {}) });
   };
   add('title', skin.title, 'title');
   add('title', slice.roleStatement, 'roleStatement');
@@ -102,7 +135,7 @@ export function sliceTexts(slice: SliceData = ROOMMATE_SLICE, skin: Skin = ROOMM
   for (const [k, v] of Object.entries(skin.outcomes ?? {})) add('outcome', v, `outcomes.${k}`);
   add('matrix', slice.matrix.intro, 'matrix.intro');
   slice.matrix.howToRead.forEach((t, i) => add('matrix', t, `matrix.howToRead.${i}`));
-  for (const q of slice.questions) for (const k of ['prompt', 'noneLabel', 'alwaysLabel']) add('explain', q[k], `questions.${String(q.id)}.${k}`);
+  for (const q of slice.questions) for (const k of ['prompt', 'noneLabel', 'alwaysLabel']) add('explain', q[k], `questions.${String(q.id)}.${k}`, k !== 'prompt');
   for (const [k, v] of Object.entries(slice.feedback)) add('feedback', v, `feedback.${k}`);
   add('summary', slice.closingNote, 'closingNote');
   add('summary', slice.opponentPolicy.description, 'opponentPolicy.description');

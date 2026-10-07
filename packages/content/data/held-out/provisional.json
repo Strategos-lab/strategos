@@ -27,10 +27,10 @@
         ],
         "a1|b2": [
           "0",
-          "1"
+          "0"
         ],
         "a2|b1": [
-          "1",
+          "0",
           "0"
         ],
         "a2|b2": [
@@ -57,9 +57,11 @@
           "A": true,
           "B": true
         },
-        "iesdsSolution": null
+        "iesdsSolution": null,
+        "familyCode": "bots"
       },
-      "heldOut": true
+      "heldOut": true,
+      "notes": "Together-preferring, different favourites; both ways of ending up apart are equally bad (ordinally distinct from every practice structure)."
     },
     {
       "id": "h.s.m1b",
@@ -123,7 +125,8 @@
         "iesdsSolution": [
           "a1",
           "b1"
-        ]
+        ],
+        "familyCode": "o"
       },
       "heldOut": true
     },
@@ -182,7 +185,8 @@
           "A": true,
           "B": true
         },
-        "iesdsSolution": null
+        "iesdsSolution": null,
+        "familyCode": "o"
       },
       "heldOut": true
     },
@@ -207,11 +211,11 @@
       "payoffs": {
         "a1|b1": [
           "0",
-          "1"
+          "2"
         ],
         "a1|b2": [
           "3",
-          "2"
+          "1"
         ],
         "a2|b1": [
           "2",
@@ -227,7 +231,7 @@
       "facts": {
         "strictlyDominant": {
           "A": null,
-          "B": "b2"
+          "B": null
         },
         "weaklyDominantOnly": {
           "A": null,
@@ -235,18 +239,14 @@
         },
         "strictlyDominated": {
           "A": [],
-          "B": [
-            "b1"
-          ]
+          "B": []
         },
         "bestResponseDependsOnOpponent": {
           "A": true,
-          "B": false
+          "B": true
         },
-        "iesdsSolution": [
-          "a1",
-          "b2"
-        ]
+        "iesdsSolution": null,
+        "familyCode": "o"
       },
       "heldOut": true
     },
@@ -312,12 +312,13 @@
         "iesdsSolution": [
           "a1",
           "b1"
-        ]
+        ],
+        "familyCode": "h"
       },
       "heldOut": true
     },
     {
-      "id": "h.s.m3b",
+      "id": "h.s.m3c",
       "version": "1.0.0",
       "module": 3,
       "discipline": "GT",
@@ -341,15 +342,15 @@
         ],
         "a1|b2": [
           "3",
-          "2"
+          "3"
         ],
         "a2|b1": [
           "0",
-          "1"
+          "2"
         ],
         "a2|b2": [
           "1",
-          "0"
+          "1"
         ]
       },
       "params": {},
@@ -376,9 +377,11 @@
         "iesdsSolution": [
           "a1",
           "b2"
-        ]
+        ],
+        "familyCode": "o"
       },
-      "heldOut": true
+      "heldOut": true,
+      "notes": "Replaces h.s.m3b (isomorphic to m3.s.one). Only A has a strictly better action; B wants to differ from A, with no ties."
     }
   ],
   "skins": [
@@ -545,7 +548,7 @@
       },
       "situation": "You put up a sign first, offering free delivery or not. Mr Arora, who runs the shop next door, sees your sign and then decides whether to match it.",
       "incentives": {
-        "h.s.m1b": "What each of you earns depends on both signs."
+        "h.s.m1b": "Free delivery brings you extra orders, but Mr Arora matching it would take away more than it brings. Matching earns Mr Arora customers, and he gains a little more when you offer delivery too."
       },
       "timing": "You decide first. Mr Arora decides after seeing your sign.",
       "information": "Mr Arora sees your sign before choosing. You know how he runs his shop.",
@@ -662,7 +665,7 @@
       },
       "situation": "You and Salim, two wholesalers, each pick which day to bring goods to the weekly market: Tuesday or Friday.",
       "incentives": {
-        "h.s.m2a": "Buyers come only when both of you are there, so you both want the same day. Friday draws more buyers than Tuesday."
+        "h.s.m2a": "Most buyers come on the day both of you are there, and a shared Friday draws more of them than a shared Tuesday. A wholesaler on his own still gets a few buyers on a Friday, but hardly any on a Tuesday."
       },
       "timing": "You both decide at the start of the week, separately.",
       "information": "You both know what the other wants. You don’t know Salim’s day.",
@@ -701,7 +704,7 @@
       },
       "situation": "You and Rekha are organising a residents’ meeting. Each of you sends out a notice with a time, afternoon or evening, without checking with the other.",
       "incentives": {
-        "h.s.m2a": "The meeting works only if both notices give the same time. An evening meeting suits both of you better."
+        "h.s.m2a": "Matching notices fill the room, and a shared evening suits you both better than a shared afternoon. If the notices differ, a few residents still come in the evening, hardly anyone in the afternoon."
       },
       "timing": "You both send your notice on the same day.",
       "information": "You both know what the other wants. You don’t know which time Rekha will send.",
@@ -740,7 +743,7 @@
       },
       "situation": "You and the other side each press one of two buttons, round or flat, at the same moment.",
       "incentives": {
-        "h.s.m2a": "Both of you gain only when you press the same kind. Two flat buttons give each of you more than two round ones."
+        "h.s.m2a": "Matching buttons pay you both, and two flat buttons pay more than two round ones. If the buttons differ, whoever pressed flat still gets a little and whoever pressed round gets nothing."
       },
       "timing": "You both press at the same moment.",
       "information": "Each side knows what the other wants. You don’t know which button will be pressed.",
@@ -896,7 +899,7 @@
       },
       "situation": "You and Bina are each writing half of a grant report. Each of you decides whether to follow the shared template or use your own layout.",
       "incentives": {
-        "h.s.m3a": "Following the template is quicker for you either way, and the report comes out best when Bina follows it too. The same holds for Bina."
+        "h.s.m3a": "The template saves you a day of formatting, and the report reads best when both halves follow it. If only one half uses its own layout, its writer has to redo it to fit. Bina is in the same position."
       },
       "timing": "You both write this week, separately.",
       "information": "You both know what is at stake for each other. You don’t know Bina’s choice.",
@@ -935,7 +938,7 @@
       },
       "situation": "You and Sameer share a practice court. Each of you decides whether to book your slot online in advance or just turn up.",
       "incentives": {
-        "h.s.m3a": "Booking ahead is better for you either way, and practice goes best when Sameer books ahead too. The same holds for Sameer."
+        "h.s.m3a": "Booking ahead guarantees you a slot, and practice is best when you have both booked. If one of you just turns up while the other has booked, the one who turns up finds the court taken. Sameer is in the same position."
       },
       "timing": "You both decide during the week, separately.",
       "information": "You both know what is at stake for each other. You don’t know Sameer’s choice.",
@@ -974,7 +977,7 @@
       },
       "situation": "You and your neighbour Rupa each decide whether to put your bins out the night before collection or in the morning.",
       "incentives": {
-        "h.s.m3a": "Putting your bin out the night before is better for you either way, and the lane is tidiest when Rupa does the same. The same holds for Rupa."
+        "h.s.m3a": "A bin put out the night before catches the early truck, and the lane is tidiest when both bins go out together. A morning bin next to one that stood out all night is usually too late. Rupa is in the same position."
       },
       "timing": "You both decide each week, separately.",
       "information": "You both know what is at stake for each other. You don’t know Rupa’s choice.",
@@ -988,7 +991,7 @@
       "tone": "neutral",
       "title": "Two sweet shops",
       "structures": [
-        "h.s.m3b"
+        "h.s.m3c"
       ],
       "roles": {
         "you": {
@@ -1013,7 +1016,7 @@
       },
       "situation": "Mr Lal, who runs the bigger sweet shop, decides whether to hold his sale this week or next. You run a smaller shop and decide whether to hold yours this week or next.",
       "incentives": {
-        "h.s.m3b@B": "You do better holding your sale in a different week from Mr Lal’s. A sale this week suits Mr Lal better either way, and he does better when yours is next week."
+        "h.s.m3c@B": "Mr Lal’s festival stock arrives this week, so an early sale helps him clear it, and he gains when your sale is next week. You do better in a different week from his; a clash this week is worst for you."
       },
       "timing": "You both decide today, separately.",
       "information": "You know how Mr Lal plans. You don’t know which week he will choose.",
@@ -1027,7 +1030,7 @@
       "tone": "neutral",
       "title": "Two cultural evenings",
       "structures": [
-        "h.s.m3b"
+        "h.s.m3c"
       ],
       "roles": {
         "you": {
@@ -1052,7 +1055,7 @@
       },
       "situation": "The bigger residents’ group, led by Mr Varma, decides whether to hold its cultural evening on Saturday or Sunday. Your small group decides which day to hold its own.",
       "incentives": {
-        "h.s.m3b@B": "Your group does better on a different day from Mr Varma’s. Saturday suits his group better either way, and he does better when yours is on Sunday."
+        "h.s.m3c@B": "Mr Varma’s group has the hall cheaply on Saturday, and gains when your evening is on Sunday. Your group does better on a different day from his; a clash on Saturday is worst for you."
       },
       "timing": "Both groups announce at the same meeting.",
       "information": "You know how Mr Varma’s group plans. You don’t know his day.",
@@ -1066,7 +1069,7 @@
       "tone": "neutral",
       "title": "North and south lamps",
       "structures": [
-        "h.s.m3b"
+        "h.s.m3c"
       ],
       "roles": {
         "you": {
@@ -1091,7 +1094,7 @@
       },
       "situation": "At the same moment, the other side lights the north or the south lamp, and you light the north or the south lamp.",
       "incentives": {
-        "h.s.m3b@B": "You want your lamp to differ from the other side’s. The north lamp is better for the other side either way, and it does better when yours is south."
+        "h.s.m3c@B": "The other side earns a bonus for lighting north, and another when your lamp is south. You gain when your lamp differs from theirs; both lamps on north is the worst for you."
       },
       "timing": "You both light a lamp at the same moment.",
       "information": "Each side sees the whole table. You don’t know which lamp the other side will light.",
@@ -1137,14 +1140,14 @@
       "heldOut": true
     },
     {
-      "id": "hv.m2b.80",
+      "id": "hv.m2b.30",
       "structure": "h.s.m2b",
       "params": {},
       "seat": "A",
       "purpose": "preserve",
       "belief": {
-        "b1": "4/5",
-        "b2": "1/5"
+        "b1": "3/10",
+        "b2": "7/10"
       },
       "heldOut": true
     },
@@ -1157,8 +1160,8 @@
       "heldOut": true
     },
     {
-      "id": "hv.m3b",
-      "structure": "h.s.m3b",
+      "id": "hv.m3c",
+      "structure": "h.s.m3c",
       "params": {},
       "seat": "B",
       "purpose": "preserve",
@@ -1984,7 +1987,7 @@
         "hk.m2.packing"
       ],
       "variations": [
-        "hv.m2b.80"
+        "hv.m2b.30"
       ],
       "exposure": "transfer_hidden",
       "novelty": "new_structure",
@@ -2361,12 +2364,12 @@
       "role": "held_out",
       "concept": "best_response",
       "type": "reason_choice",
-      "structure": "h.s.m3b",
+      "structure": "h.s.m3c",
       "skins": [
         "hk.m3.sweets"
       ],
       "variations": [
-        "hv.m3b"
+        "hv.m3c"
       ],
       "exposure": "transfer_hidden",
       "novelty": "new_structure",
@@ -2614,12 +2617,12 @@
       "role": "held_out",
       "concept": "best_response",
       "type": "reason_choice",
-      "structure": "h.s.m3b",
+      "structure": "h.s.m3c",
       "skins": [
         "hk.m3.evening"
       ],
       "variations": [
-        "hv.m3b"
+        "hv.m3c"
       ],
       "exposure": "transfer_hidden",
       "novelty": "new_structure",
@@ -2867,12 +2870,12 @@
       "role": "held_out",
       "concept": "best_response",
       "type": "reason_choice",
-      "structure": "h.s.m3b",
+      "structure": "h.s.m3c",
       "skins": [
         "hk.m3.lamps"
       ],
       "variations": [
-        "hv.m3b"
+        "hv.m3c"
       ],
       "exposure": "transfer_hidden",
       "novelty": "new_structure",

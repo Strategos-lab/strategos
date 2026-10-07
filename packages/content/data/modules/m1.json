@@ -251,7 +251,7 @@
       },
       "situation": "A two-step puzzle. You move a token first, left or right. The other side sees your move, then turns a dial up or down.",
       "incentives": {
-        "m1.s.turns": "Left is better for you whichever way the dial turns, and you want the dial up. The other side wants the dial down after left and up after right, and likes right-then-up best."
+        "m1.s.turns": "You score a bonus for moving the token left, and a smaller one if the dial ends up. The other side wants the dial down after left and up after right, and likes right-then-up best."
       },
       "timing": "You move first. The other side moves after seeing yours.",
       "information": "The other side sees your move before choosing. Each side knows what the other wants.",
@@ -289,7 +289,7 @@
       },
       "situation": "You are cooking dinner. You decide first whether to make rice or rotis. Your brother Sahil sees what you started and then makes dal or a curry to go with it.",
       "incentives": {
-        "m1.s.turns": "You prefer making rice, and you prefer dal with either. Sahil likes curry with rice but dal with rotis, and rotis with dal is his favourite meal."
+        "m1.s.turns": "Rice is much quicker for you to make, and you also like dal more than curry. Sahil likes curry with rice but dal with rotis, and rotis with dal is his favourite meal."
       },
       "timing": "You choose first. Sahil chooses after seeing what you are making.",
       "information": "Sahil knows what you started before choosing. You both know each other’s tastes.",
@@ -327,7 +327,7 @@
       },
       "situation": "You run a small online shop. You first book the early van or the late van for today’s orders. Lina at the warehouse sees your booking and then decides whether to help load it or work through her own list.",
       "incentives": {
-        "m1.s.turns": "The early van suits you better either way, and you want Lina’s help. Lina is free in the evening: she would help with the late van but keep to her own list for the early one."
+        "m1.s.turns": "The early van costs you much less, and you would also like Lina’s help. Lina is free in the evening: she would help with the late van but keep to her own list for the early one."
       },
       "timing": "You book first. Lina decides after seeing which van you booked.",
       "information": "Lina knows your booking before choosing. You know her timetable.",
@@ -364,7 +364,7 @@
         "b2": "Noon",
         "b3": "Evening"
       },
-      "situation": "You and Nikhil are planning Sunday. At the same moment, you post the place, the museum or the lake, and Nikhil posts the start time: morning, noon or evening. His sister Pooja will drive them, wherever and whenever.",
+      "situation": "You and Nikhil are planning Sunday. At the same moment, you post the place, the museum or the lake, and Nikhil posts the start time: morning, noon or evening. His sister Pooja will drive you both, wherever and whenever.",
       "incentives": {
         "m1.s.three": "You most want the museum in the morning, and how the day goes for you depends on the time Nikhil picks. Nikhil most wants the museum at noon."
       },
@@ -594,7 +594,7 @@
       },
       "situation": "At your second-hand book stall you name your asking price first, high or low. Anil, a regular buyer, hears your price and then decides to buy now or wait until next week.",
       "incentives": {
-        "m1.s.turns": "A high price is better for you either way, and you want Anil to buy now. Anil would wait at a high price but buy now at a low price, which suits him best."
+        "m1.s.turns": "A high price earns you much more on each book, and you would also like Anil to buy now. Anil would wait at a high price but buy now at a low price, which suits him best."
       },
       "timing": "You name a price first. Anil decides after hearing it.",
       "information": "Anil hears your price before deciding. You know how he shops.",
