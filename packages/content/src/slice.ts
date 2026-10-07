@@ -8,6 +8,8 @@
  */
 import roommate from '../data/roommate/roommate-kitchen.json';
 import structures from '../data/structures.json';
+import { bestResponseTable } from '@strategos/engine';
+import { buildGame } from './game.ts';
 import type { Skin, Structure, Step } from './types.ts';
 
 export interface SliceData {
@@ -88,20 +90,17 @@ export function composeSliceScenario(slice: SliceData = ROOMMATE_SLICE, skin: Sk
 /** Recall line used when the roommate scene returns as M3.1 (the learner already met best responses). */
 export const M31_RECALL = 'Again, compare your choices within B’s choice.';
 
-/** Engine-style statement of the learner's best responses, computed from the payoffs. */
+/**
+ * The learner's best responses in words, from the engine's best-response table (no game logic here:
+ * this only formats the engine's sets with the skin's labels).
+ */
 export function bestResponseRecap(skin: Skin = ROOMMATE_SKIN, structure: Structure = sliceStructure()): string {
-  const { A, B } = structure.actions;
-  const best = B.map((b) => {
-    const top = Math.max(...A.map((a) => Number(structure.payoffs[`${a}|${b}`]![0])));
-    return A.filter((a) => Number(structure.payoffs[`${a}|${b}`]![0]) === top);
-  });
-  const uniq = best.every((x) => x.length === 1) ? new Set(best.map((x) => x[0]!)) : new Set<string>();
-  const label = (id: string) => skin.actionLabels[id]!;
-  if (uniq.size === 1) {
-    const a = [...uniq][0]!;
-    return `${label(a)} is your best response to ${B.map(label).join(' and also to ')}.`;
-  }
-  return B.map((b, i) => `Against ${label(b)}, your best response is ${best[i]!.map(label).join(' or ')}.`).join(' ');
+  const rows = bestResponseTable(buildGame(structure, {}), 0);
+  const own = (i: number) => skin.actionLabels[structure.actions.A[i]!]!;
+  const opp = (j: number) => skin.actionLabels[structure.actions.B[j]!]!;
+  const same = rows.every((r) => r.best.length === 1 && r.best[0] === rows[0]!.best[0]);
+  if (same) return `${own(rows[0]!.best[0]!)} is your best response to ${rows.map((r) => opp(r.opponentAction)).join(' and also to ')}.`;
+  return rows.map((r) => `Against ${opp(r.opponentAction)}, your best response is ${r.best.map(own).join(' or ')}.`).join(' ');
 }
 
 /**

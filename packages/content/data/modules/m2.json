@@ -688,6 +688,161 @@
       "timing": "You both decide this week, separately.",
       "information": "You know how Mr Joshi plans. You don’t know how many helpers he will send.",
       "matrixLabel": "Outcomes for your order and Mr Joshi’s helpers"
+    },
+    {
+      "id": "sk.m2.keeper",
+      "version": "1.0.0",
+      "domain": "sports_games",
+      "tone": "neutral",
+      "title": "In goal",
+      "structures": [
+        "m2.s.three"
+      ],
+      "roles": {
+        "you": {
+          "id": "you",
+          "label": "You",
+          "short": "you"
+        },
+        "other": {
+          "id": "kavya",
+          "label": "Kavya",
+          "short": "Kavya"
+        }
+      },
+      "seats": [
+        "B"
+      ],
+      "actionLabels": {
+        "a1": "Aim left",
+        "a2": "Aim right",
+        "a3": "Aim middle",
+        "b1": "Dive right",
+        "b2": "Dive left"
+      },
+      "situation": "You are in goal and Kavya is taking a penalty. She aims left, right or down the middle; at the same moment you dive right or left.",
+      "incentives": {
+        "m2.s.three@B": "You save it more often when you dive the way Kavya aims. A shot down the middle gets past you if you dive right, and also if you dive left. Kavya scores most often when you dive the other way."
+      },
+      "timing": "Kavya shoots and you dive at the same moment.",
+      "information": "You both know what the other wants. You don’t know where Kavya will aim.",
+      "matrixLabel": "Outcomes for Kavya’s aim and your dive"
+    },
+    {
+      "id": "sk.m2.seek",
+      "version": "1.0.0",
+      "domain": "everyday_life",
+      "tone": "neutral",
+      "title": "Hide and seek",
+      "structures": [
+        "m2.s.three"
+      ],
+      "roles": {
+        "you": {
+          "id": "you",
+          "label": "You",
+          "short": "you"
+        },
+        "other": {
+          "id": "dev",
+          "label": "Dev",
+          "short": "Dev"
+        }
+      },
+      "seats": [
+        "B"
+      ],
+      "actionLabels": {
+        "a1": "Behind the shed",
+        "a2": "Behind the tree",
+        "a3": "Keep moving",
+        "b1": "Check the tree",
+        "b2": "Check the shed"
+      },
+      "situation": "You are playing hide and seek with your little brother Dev in the garden. He hides behind the shed, behind the tree, or keeps moving between them. You get one look: at the tree or at the shed.",
+      "incentives": {
+        "m2.s.three@B": "You want to look where Dev is hiding. If he keeps moving, you miss him at the tree, and you also miss him at the shed. Dev wants you to look in the wrong place."
+      },
+      "timing": "Dev hides and you choose where to look before you can see him.",
+      "information": "You both know what the other wants. You don’t know where Dev will hide.",
+      "matrixLabel": "Outcomes for Dev’s hiding place and your look"
+    },
+    {
+      "id": "sk.m2.t.parties",
+      "version": "1.0.0",
+      "domain": "social_interaction",
+      "tone": "neutral",
+      "title": "Two birthday parties",
+      "structures": [
+        "m2.s.apart"
+      ],
+      "roles": {
+        "you": {
+          "id": "you",
+          "label": "You",
+          "short": "you"
+        },
+        "other": {
+          "id": "nisha",
+          "label": "Nisha",
+          "short": "Nisha"
+        }
+      },
+      "seats": [
+        "A"
+      ],
+      "actionLabels": {
+        "a1": "Friday",
+        "a2": "Saturday",
+        "b1": "Friday",
+        "b2": "Saturday"
+      },
+      "situation": "You and your friend Nisha both have birthdays this week and share most of your friends. Each of you picks a night for your party: Friday or Saturday.",
+      "incentives": {
+        "m2.s.apart": "Two parties on one night split the guests, and two Friday parties are worst, since many leave early for work. Each of you does best with Friday to yourself, and next best with Saturday to yourself."
+      },
+      "timing": "You both send invitations on the same morning.",
+      "information": "You both know what the other wants. You don’t know which night Nisha will pick.",
+      "matrixLabel": "Outcomes for your night and Nisha’s night"
+    },
+    {
+      "id": "sk.m2.t.icecream",
+      "version": "1.0.0",
+      "domain": "markets",
+      "tone": "neutral",
+      "title": "The ice-cream carts",
+      "structures": [
+        "m2.s.three"
+      ],
+      "roles": {
+        "you": {
+          "id": "you",
+          "label": "You",
+          "short": "you"
+        },
+        "other": {
+          "id": "ganesh",
+          "label": "Ganesh",
+          "short": "Ganesh"
+        }
+      },
+      "seats": [
+        "A"
+      ],
+      "actionLabels": {
+        "a1": "Beach end",
+        "a2": "Market end",
+        "a3": "Move between",
+        "b1": "Market end",
+        "b2": "Beach end"
+      },
+      "situation": "You sell ice cream from a cart on the seafront. Each afternoon you park at the beach end, at the market end, or keep moving between them. Ganesh, who sells from another cart, parks at the market end or the beach end.",
+      "incentives": {
+        "m2.s.three": "You sell most where Ganesh is not; moving between the ends gives you a middling day wherever he is. Ganesh wants to park where you are, to catch your customers."
+      },
+      "timing": "You both set out at the same time each afternoon.",
+      "information": "You both know what the other wants. You don’t know where Ganesh will park.",
+      "matrixLabel": "Outcomes for your spot and Ganesh’s spot"
     }
   ],
   "variations": [
@@ -724,6 +879,64 @@
       "params": {},
       "seat": "A",
       "purpose": "preserve"
+    },
+    {
+      "id": "v.m2.three.b",
+      "structure": "m2.s.three",
+      "params": {},
+      "seat": "B",
+      "purpose": "preserve"
+    },
+    {
+      "id": "v.m2.belief.none",
+      "structure": "m2.s.belief",
+      "params": {},
+      "seat": "A",
+      "purpose": "preserve"
+    },
+    {
+      "id": "v.m2.belief.35",
+      "structure": "m2.s.belief",
+      "params": {},
+      "seat": "A",
+      "purpose": "preserve",
+      "belief": {
+        "b1": "7/20",
+        "b2": "13/20"
+      }
+    },
+    {
+      "id": "v.m2.belief.45",
+      "structure": "m2.s.belief",
+      "params": {},
+      "seat": "A",
+      "purpose": "preserve",
+      "belief": {
+        "b1": "9/20",
+        "b2": "11/20"
+      }
+    },
+    {
+      "id": "v.m2.three.40",
+      "structure": "m2.s.three",
+      "params": {},
+      "seat": "A",
+      "purpose": "preserve",
+      "belief": {
+        "b1": "2/5",
+        "b2": "3/5"
+      }
+    },
+    {
+      "id": "v.m2.three.70",
+      "structure": "m2.s.three",
+      "params": {},
+      "seat": "A",
+      "purpose": "preserve",
+      "belief": {
+        "b1": "7/10",
+        "b2": "3/10"
+      }
     },
     {
       "id": "v.m2.belief.70",
@@ -1230,6 +1443,220 @@
             }
           ]
         }
+      ]
+    },
+    {
+      "id": "i.m2.br.known",
+      "version": "1.0.0",
+      "lesson": "m2.l1",
+      "step": "explain",
+      "role": "practice",
+      "concept": "best_response",
+      "type": "reason_choice",
+      "structure": "m2.s.belief",
+      "skins": [
+        "sk.m2.dinner",
+        "sk.m2.flowers",
+        "sk.m2.demo",
+        "sk.m2.badminton"
+      ],
+      "variations": [
+        "v.m2.belief.none"
+      ],
+      "exposure": "undisclosed",
+      "novelty": "seen",
+      "seat": "A",
+      "prompt": "Suppose you learn that {them} will choose {act:b2}. Which choice is better for you?",
+      "facts": {
+        "opp": {
+          "k": "action",
+          "who": "you",
+          "id": "b2"
+        },
+        "best": {
+          "k": "action",
+          "who": "you",
+          "id": "a2"
+        },
+        "bestPay": {
+          "k": "payoff",
+          "who": "you",
+          "profile": [
+            "a2",
+            "b2"
+          ]
+        },
+        "alt": {
+          "k": "action",
+          "who": "you",
+          "id": "a1"
+        },
+        "altPay": {
+          "k": "payoff",
+          "who": "you",
+          "profile": [
+            "a1",
+            "b2"
+          ]
+        }
+      },
+      "optionSets": [
+        [
+          {
+            "text": "{Act:a2}: against {act:b2} it gives you {pay:you:a2:b2} rather than {pay:you:a1:b2}.",
+            "claim": {
+              "t": "br",
+              "who": "you",
+              "against": "b2",
+              "action": "a2"
+            },
+            "code": "UNMATCHED"
+          },
+          {
+            "text": "{Act:a1}: with {act:b1} it would give you {pay:you:a1:b1}.",
+            "claim": {
+              "t": "br",
+              "who": "you",
+              "against": "b2",
+              "action": "a1"
+            },
+            "code": "ACROSS_NOT_WITHIN"
+          },
+          {
+            "text": "{Act:a1}: it is better for you whatever {them} does.",
+            "claim": {
+              "t": "strictDom",
+              "who": "you",
+              "action": "a1"
+            },
+            "code": "INCOMPLETE_COMPARISON"
+          }
+        ],
+        [
+          {
+            "text": "{Act:a2}, since against {act:b2} it gets you {pay:you:a2:b2}.",
+            "claim": {
+              "t": "br",
+              "who": "you",
+              "against": "b2",
+              "action": "a2"
+            },
+            "code": "UNMATCHED"
+          },
+          {
+            "text": "{Act:a1}, since with {act:b1} it gets you {pay:you:a1:b1}.",
+            "claim": {
+              "t": "br",
+              "who": "you",
+              "against": "b2",
+              "action": "a1"
+            },
+            "code": "ACROSS_NOT_WITHIN"
+          },
+          {
+            "text": "{Act:a1}, since it beats {act:a2} against anything.",
+            "claim": {
+              "t": "strictDom",
+              "who": "you",
+              "action": "a1"
+            },
+            "code": "INCOMPLETE_COMPARISON"
+          }
+        ]
+      ]
+    },
+    {
+      "id": "i.m2.br.tie",
+      "version": "1.0.0",
+      "lesson": "m2.l1",
+      "step": "explain",
+      "role": "practice",
+      "concept": "best_response",
+      "type": "reason_choice",
+      "structure": "m2.s.three",
+      "skins": [
+        "sk.m2.keeper",
+        "sk.m2.seek"
+      ],
+      "variations": [
+        "v.m2.three.b"
+      ],
+      "exposure": "undisclosed",
+      "novelty": "seen",
+      "seat": "B",
+      "prompt": "If {them} chooses {act:a3}, which is better for you?",
+      "facts": {},
+      "optionSets": [
+        [
+          {
+            "text": "Neither: against {act:a3}, {act:b1} and {act:b2} both give you {pay:you:a3:b1}.",
+            "claim": {
+              "t": "brTie",
+              "who": "you",
+              "against": "a3",
+              "actions": [
+                "b1",
+                "b2"
+              ]
+            },
+            "code": "UNMATCHED"
+          },
+          {
+            "text": "{Act:b1}: against {act:a2} it would give you {pay:you:a2:b1}.",
+            "claim": {
+              "t": "br",
+              "who": "you",
+              "against": "a3",
+              "action": "b1"
+            },
+            "code": "ACROSS_NOT_WITHIN"
+          },
+          {
+            "text": "{Act:b2}: it must edge ahead of {act:b1} against {act:a3}.",
+            "claim": {
+              "t": "br",
+              "who": "you",
+              "against": "a3",
+              "action": "b2"
+            },
+            "code": "WEAK_AS_STRICT"
+          }
+        ],
+        [
+          {
+            "text": "They tie: against {act:a3} each gives you {pay:you:a3:b2}.",
+            "claim": {
+              "t": "brTie",
+              "who": "you",
+              "against": "a3",
+              "actions": [
+                "b1",
+                "b2"
+              ]
+            },
+            "code": "UNMATCHED"
+          },
+          {
+            "text": "{Act:b1}, since with {act:a2} it gets you {pay:you:a2:b1}.",
+            "claim": {
+              "t": "br",
+              "who": "you",
+              "against": "a3",
+              "action": "b1"
+            },
+            "code": "ACROSS_NOT_WITHIN"
+          },
+          {
+            "text": "{Act:b2}, since one of them has to be ahead.",
+            "claim": {
+              "t": "br",
+              "who": "you",
+              "against": "a3",
+              "action": "b2"
+            },
+            "code": "WEAK_AS_STRICT"
+          }
+        ]
       ]
     },
     {
@@ -1856,6 +2283,162 @@
       ]
     },
     {
+      "id": "i.m2.belief.near",
+      "version": "1.0.0",
+      "lesson": "m2.l3",
+      "step": "explain",
+      "role": "practice",
+      "concept": "belief_response",
+      "type": "reason_choice",
+      "structure": "m2.s.belief",
+      "skins": [
+        "sk.m2.dinner",
+        "sk.m2.flowers",
+        "sk.m2.demo",
+        "sk.m2.badminton"
+      ],
+      "variations": [
+        "v.m2.belief.35",
+        "v.m2.belief.45"
+      ],
+      "exposure": "undisclosed",
+      "novelty": "seen",
+      "seat": "A",
+      "prompt": "This time you give {act:b1} a chance of {belief:b1}, and {act:b2} the rest. Work out both averages: which choice gives you more?",
+      "facts": {},
+      "optionSets": [
+        [
+          {
+            "text": "{Act:a1}, given how likely each of {them}’s choices is.",
+            "claim": {
+              "t": "brToBelief",
+              "action": "a1"
+            },
+            "code": "NOT_BR_TO_OWN_PREDICTION"
+          },
+          {
+            "text": "{Act:a2}, given how likely each of {them}’s choices is.",
+            "claim": {
+              "t": "brToBelief",
+              "action": "a2"
+            },
+            "code": "NOT_BR_TO_OWN_PREDICTION"
+          },
+          {
+            "text": "Neither: with that belief the two come out level.",
+            "claim": {
+              "t": "beliefTie"
+            },
+            "code": "INCOMPLETE_COMPARISON"
+          }
+        ],
+        [
+          {
+            "text": "{Act:a1}: on average it does better under your belief.",
+            "claim": {
+              "t": "brToBelief",
+              "action": "a1"
+            },
+            "code": "NOT_BR_TO_OWN_PREDICTION"
+          },
+          {
+            "text": "{Act:a2}: on average it does better under your belief.",
+            "claim": {
+              "t": "brToBelief",
+              "action": "a2"
+            },
+            "code": "NOT_BR_TO_OWN_PREDICTION"
+          },
+          {
+            "text": "No difference: on average both give you the same.",
+            "claim": {
+              "t": "beliefTie"
+            },
+            "code": "INCOMPLETE_COMPARISON"
+          }
+        ]
+      ]
+    },
+    {
+      "id": "i.m2.belief.three",
+      "version": "1.0.0",
+      "lesson": "m2.l3",
+      "step": "explain",
+      "role": "practice",
+      "concept": "belief_response",
+      "type": "reason_choice",
+      "structure": "m2.s.three",
+      "skins": [
+        "sk.m2.penalty",
+        "sk.m2.study",
+        "sk.m2.writing",
+        "sk.m2.cups"
+      ],
+      "variations": [
+        "v.m2.three.40",
+        "v.m2.three.70"
+      ],
+      "exposure": "undisclosed",
+      "novelty": "seen",
+      "seat": "A",
+      "prompt": "You think {them} will choose {act:b1} with a chance of {belief:b1}, and {act:b2} otherwise. Which of your three choices gives you most on average?",
+      "facts": {},
+      "optionSets": [
+        [
+          {
+            "text": "{Act:a1}, given how likely each of {them}’s choices is.",
+            "claim": {
+              "t": "brToBelief",
+              "action": "a1"
+            },
+            "code": "NOT_BR_TO_OWN_PREDICTION"
+          },
+          {
+            "text": "{Act:a2}, given how likely each of {them}’s choices is.",
+            "claim": {
+              "t": "brToBelief",
+              "action": "a2"
+            },
+            "code": "NOT_BR_TO_OWN_PREDICTION"
+          },
+          {
+            "text": "{Act:a3}, since it gives you {pay:you:a3:b1} whatever happens.",
+            "claim": {
+              "t": "brToBelief",
+              "action": "a3"
+            },
+            "code": "NOT_BR_TO_OWN_PREDICTION"
+          }
+        ],
+        [
+          {
+            "text": "{Act:a1}: on average it does best under your belief.",
+            "claim": {
+              "t": "brToBelief",
+              "action": "a1"
+            },
+            "code": "NOT_BR_TO_OWN_PREDICTION"
+          },
+          {
+            "text": "{Act:a2}: on average it does best under your belief.",
+            "claim": {
+              "t": "brToBelief",
+              "action": "a2"
+            },
+            "code": "NOT_BR_TO_OWN_PREDICTION"
+          },
+          {
+            "text": "{Act:a3}: the safe middle, with no risk at all.",
+            "claim": {
+              "t": "brToBelief",
+              "action": "a3"
+            },
+            "code": "NOT_BR_TO_OWN_PREDICTION"
+          }
+        ]
+      ]
+    },
+    {
       "id": "i.m2.words",
       "version": "1.0.0",
       "lesson": "m2.l3",
@@ -2074,6 +2657,221 @@
           }
         ]
       ]
+    },
+    {
+      "id": "i.m2.t.flip",
+      "version": "1.0.0",
+      "lesson": "m2.l3",
+      "step": "explain",
+      "role": "transfer",
+      "concept": "coordination",
+      "type": "reason_choice",
+      "structure": "m2.s.apart",
+      "skins": [
+        "sk.m2.t.parties"
+      ],
+      "variations": [
+        "v.m2.apart"
+      ],
+      "exposure": "transfer_hidden",
+      "novelty": "new_skin",
+      "seat": "A",
+      "prompt": "Does your better choice depend on what {them} does?",
+      "facts": {
+        "o1": {
+          "k": "action",
+          "who": "you",
+          "id": "b1"
+        },
+        "o2": {
+          "k": "action",
+          "who": "you",
+          "id": "b2"
+        },
+        "r1": {
+          "k": "brLabel",
+          "who": "you",
+          "against": "b1"
+        },
+        "r2": {
+          "k": "brLabel",
+          "who": "you",
+          "against": "b2"
+        }
+      },
+      "optionSets": [
+        [
+          {
+            "text": "Yes: your better choice changes with {them}’s choice.",
+            "claim": {
+              "t": "brDepends",
+              "who": "you"
+            },
+            "code": "UNMATCHED"
+          },
+          {
+            "text": "No: one of your choices is better either way.",
+            "claim": {
+              "t": "brIndependent",
+              "who": "you"
+            },
+            "code": "INCOMPLETE_COMPARISON"
+          },
+          {
+            "text": "Yes, but only because {them} sees your choice.",
+            "claim": {
+              "t": "observes",
+              "who": "them"
+            },
+            "code": "MODEL_WRONG_INFO"
+          }
+        ],
+        [
+          {
+            "text": "It depends: what is better for you shifts with {them}.",
+            "claim": {
+              "t": "brDepends",
+              "who": "you"
+            },
+            "code": "UNMATCHED"
+          },
+          {
+            "text": "It does not: the same choice is better for you every time.",
+            "claim": {
+              "t": "brIndependent",
+              "who": "you"
+            },
+            "code": "INCOMPLETE_COMPARISON"
+          },
+          {
+            "text": "It depends, but only if {them} gets to see your choice.",
+            "claim": {
+              "t": "observes",
+              "who": "them"
+            },
+            "code": "MODEL_WRONG_INFO"
+          }
+        ]
+      ]
+    },
+    {
+      "id": "i.m2.t.three",
+      "version": "1.0.0",
+      "lesson": "m2.l3",
+      "step": "explain",
+      "role": "transfer",
+      "concept": "best_response",
+      "type": "reason_choice",
+      "structure": "m2.s.three",
+      "skins": [
+        "sk.m2.t.icecream"
+      ],
+      "variations": [
+        "v.m2.three"
+      ],
+      "exposure": "transfer_hidden",
+      "novelty": "new_skin",
+      "seat": "A",
+      "prompt": "If {them} chooses {act:b2}, which of your three choices is best for you?",
+      "facts": {
+        "opp": {
+          "k": "action",
+          "who": "you",
+          "id": "b2"
+        },
+        "best": {
+          "k": "action",
+          "who": "you",
+          "id": "a2"
+        },
+        "bestPay": {
+          "k": "payoff",
+          "who": "you",
+          "profile": [
+            "a2",
+            "b2"
+          ]
+        },
+        "alt": {
+          "k": "action",
+          "who": "you",
+          "id": "a3"
+        },
+        "altPay": {
+          "k": "payoff",
+          "who": "you",
+          "profile": [
+            "a3",
+            "b2"
+          ]
+        }
+      },
+      "optionSets": [
+        [
+          {
+            "text": "{Act:a2}, which gives you {pay:you:a2:b2} against {act:b2}.",
+            "claim": {
+              "t": "br",
+              "who": "you",
+              "against": "b2",
+              "action": "a2"
+            },
+            "code": "UNMATCHED"
+          },
+          {
+            "text": "{Act:a3}, which gives you {pay:you:a3:b2} either way.",
+            "claim": {
+              "t": "br",
+              "who": "you",
+              "against": "b2",
+              "action": "a3"
+            },
+            "code": "INCOMPLETE_COMPARISON"
+          },
+          {
+            "text": "{Act:a1}, which can give you {pay:you:a1:b1} against {act:b1}.",
+            "claim": {
+              "t": "br",
+              "who": "you",
+              "against": "b2",
+              "action": "a1"
+            },
+            "code": "ACROSS_NOT_WITHIN"
+          }
+        ],
+        [
+          {
+            "text": "{Act:a2}: against {act:b2} nothing beats {pay:you:a2:b2}.",
+            "claim": {
+              "t": "br",
+              "who": "you",
+              "against": "b2",
+              "action": "a2"
+            },
+            "code": "UNMATCHED"
+          },
+          {
+            "text": "{Act:a3}: it is the safe middle, {pay:you:a3:b2} every time.",
+            "claim": {
+              "t": "br",
+              "who": "you",
+              "against": "b2",
+              "action": "a3"
+            },
+            "code": "INCOMPLETE_COMPARISON"
+          },
+          {
+            "text": "{Act:a1}: against {act:b1} it reaches {pay:you:a1:b1}.",
+            "claim": {
+              "t": "br",
+              "who": "you",
+              "against": "b2",
+              "action": "a1"
+            },
+            "code": "ACROSS_NOT_WITHIN"
+          }
+        ]
+      ]
     }
   ],
   "feedback": [
@@ -2196,6 +2994,105 @@
       "phrasings": [
         "With your belief, {act:a1} averages {ev:a1} and {act:a2} averages {ev:a2}. They are not level, so {bbr} is better for you.",
         "Under your belief the averages are {ev:a1} for {act:a1} and {ev:a2} for {act:a2}, so {bbr} does better."
+      ]
+    },
+    {
+      "concept": "best_response",
+      "type": "reason_choice",
+      "code": "CORRECT",
+      "items": [
+        "i.m2.br.tie"
+      ],
+      "phrasings": [
+        "Against {act:a3}, {act:b1} gives you {pay:you:a3:b1} and {act:b2} gives you {pay:you:a3:b2}. Both are equally good for you there.",
+        "If {them} chooses {act:a3}: {act:b1} {pay:you:a3:b1}, {act:b2} {pay:you:a3:b2}. A tie, so either is a best choice."
+      ],
+      "term": "When two actions tie for the highest payoff, both are best responses."
+    },
+    {
+      "concept": "best_response",
+      "type": "reason_choice",
+      "code": "WEAK_AS_STRICT",
+      "items": [
+        "i.m2.br.tie"
+      ],
+      "phrasings": [
+        "Against {act:a3}, {act:b1} gives you {pay:you:a3:b1} and {act:b2} gives you {pay:you:a3:b2}: a tie, so neither is ahead.",
+        "With {them} on {act:a3}, both of your choices give {pay:you:a3:b2}. Neither one beats the other."
+      ]
+    },
+    {
+      "concept": "best_response",
+      "type": "reason_choice",
+      "code": "ACROSS_NOT_WITHIN",
+      "items": [
+        "i.m2.br.tie"
+      ],
+      "phrasings": [
+        "Compare within {act:a3}: {act:b1} gives you {pay:you:a3:b1} and {act:b2} gives you {pay:you:a3:b2}. Payoffs against {act:a2} do not apply here.",
+        "With {them} on {act:a3}, only that row counts: {pay:you:a3:b1} and {pay:you:a3:b2}, a tie."
+      ]
+    },
+    {
+      "concept": "belief_response",
+      "type": "reason_choice",
+      "code": "CORRECT",
+      "items": [
+        "i.m2.belief.near"
+      ],
+      "phrasings": [
+        "With your belief, {act:a1} gives you {ev:a1} on average and {act:a2} gives {ev:a2}. So {bbr} is the better choice for what you believe.",
+        "On average under your belief: {act:a1} {ev:a1}, {act:a2} {ev:a2}. {Bbr} comes out ahead; a slightly different belief could put the other ahead."
+      ],
+      "term": "This average is your expected payoff; the action with the highest expected payoff is your best response to your belief."
+    },
+    {
+      "concept": "belief_response",
+      "type": "reason_choice",
+      "code": "NOT_BR_TO_OWN_PREDICTION",
+      "items": [
+        "i.m2.belief.near"
+      ],
+      "phrasings": [
+        "With your belief, {act:a1} gives you {ev:a1} on average and {act:a2} gives {ev:a2}. Close, but {bbr} is ahead for this belief.",
+        "Under the chance you gave, {act:a1} averages {ev:a1} and {act:a2} averages {ev:a2}. The choice that fits this belief is {bbr}."
+      ]
+    },
+    {
+      "concept": "belief_response",
+      "type": "reason_choice",
+      "code": "INCOMPLETE_COMPARISON",
+      "items": [
+        "i.m2.belief.near"
+      ],
+      "phrasings": [
+        "With your belief, {act:a1} averages {ev:a1} and {act:a2} averages {ev:a2}. Close, but not level, so {bbr} is better for you.",
+        "Under your belief the averages are {ev:a1} for {act:a1} and {ev:a2} for {act:a2}, so {bbr} does better."
+      ]
+    },
+    {
+      "concept": "belief_response",
+      "type": "reason_choice",
+      "code": "CORRECT",
+      "items": [
+        "i.m2.belief.three"
+      ],
+      "phrasings": [
+        "With your belief, {act:a1} gives you {ev:a1} on average, {act:a2} gives {ev:a2} and {act:a3} gives {ev:a3}. So {bbr} is the best of the three for what you believe.",
+        "On average under your belief: {act:a1} {ev:a1}, {act:a2} {ev:a2}, {act:a3} {ev:a3}. {Bbr} comes out ahead."
+      ],
+      "term": "This average is your expected payoff; the action with the highest expected payoff is your best response to your belief."
+    },
+    {
+      "concept": "belief_response",
+      "type": "reason_choice",
+      "code": "NOT_BR_TO_OWN_PREDICTION",
+      "items": [
+        "i.m2.belief.three"
+      ],
+      "phrasings": [
+        "With your belief, {act:a1} gives you {ev:a1} on average, {act:a2} gives {ev:a2} and {act:a3} gives {ev:a3}. Following what you believe points to {bbr}.",
+        "Under the chance you gave: {act:a1} {ev:a1}, {act:a2} {ev:a2}, {act:a3} {ev:a3}. A steady payoff is not the highest average here; {bbr} is."
       ]
     }
   ],

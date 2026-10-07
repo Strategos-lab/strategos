@@ -77,6 +77,11 @@ export interface Lesson {
   items: string[];
   /** Standalone slice scenario taught in this lesson (e.g. the roommate reference). */
   scenario?: string;
+  /**
+   * Slice reasoning questions (`scenarioId#questionId`) that count once towards this lesson's
+   * explanation coverage (plan §10.6). They live in the slice data, not in `items`.
+   */
+  scenarioItems?: string[];
   reveal?: RevealPage;
 }
 
@@ -120,8 +125,12 @@ export interface Structure {
   version: string;
   module: number;
   discipline: 'GT';
-  /** 'sequential_observed': A moves first, B sees A's move (Module 1 identification only). */
-  sequence: 'simultaneous' | 'sequential_observed';
+  /**
+   * 'sequential_observed': A moves first, B sees A's move (Module 1 identification only).
+   * 'sequential_unobserved': A moves first, B moves later without seeing A's move; strategically the
+   * same normal form as a simultaneous choice (Module 1 timing/information identification only).
+   */
+  sequence: 'simultaneous' | 'sequential_observed' | 'sequential_unobserved';
   presentation: 'matrix' | 'narrative_only';
   /** Ordinal: only the order matters. Cardinal: sizes are meaningful (plan §2.13). */
   scale: 'ordinal' | 'cardinal';
@@ -221,6 +230,18 @@ export type Claim =
   | { t: 'firstMover'; who: Who }
   | { t: 'observes'; who: Who }
   | { t: 'notObserves'; who: Who }
+  /** `who` has more than one best response to `against`, exactly the set `actions` (engine best responses). */
+  | { t: 'brTie'; who: Who; against: string; actions: string[] }
+  /** `who` gives the two outcomes the same payoff (a genuine tie in their ranking). */
+  | { t: 'indifferent'; who: Who; profiles: [[string, string], [string, string]] }
+  /** `who` strictly prefers outcome `better` to outcome `worse`. */
+  | { t: 'prefers'; who: Who; better: [string, string]; worse: [string, string] }
+  /** Neither player has a strictly dominated action (nothing can be set aside). */
+  | { t: 'noneDominated' }
+  /** Both players have a strictly dominant action, and the outcome `than` gives both strictly more (engine Pareto analysis). */
+  | { t: 'domOutcomeImprovable'; than: [string, string] }
+  /** Both players have a strictly dominant action, and no outcome gives both at least as much and one more. */
+  | { t: 'domOutcomeUnimprovable' }
   | { t: 'never' };
 
 export interface Option {
@@ -240,7 +261,16 @@ export type SlotExpr =
   | { k: 'expected'; action: string }
   | { k: 'beliefBr' }
   /** Engine-chosen wording: `yes` if `who` has a strictly dominant action, else `no` (both templates). */
-  | { k: 'ifDom'; who: Who; yes: string; no: string };
+  | { k: 'ifDom'; who: Who; yes: string; no: string }
+  /** Engine elimination sequence (strict), as owner-tagged action labels in round order. */
+  | { k: 'iesdsSteps' }
+  /** Engine survivors of strict elimination, as owner-tagged label lists. */
+  | { k: 'iesdsLeft' }
+  /**
+   * Weak-dominance parts for `who` (2 actions each side), from the engine: the weakly dominant action,
+   * the other action, the opponent action where they tie, the one where it wins, and the payoffs there.
+   */
+  | { k: 'weak'; who: Who; part: 'dom' | 'other' | 'tie' | 'win' | 'tiePay' | 'winPay' | 'otherWinPay' };
 
 export interface FillSlot {
   id: string;

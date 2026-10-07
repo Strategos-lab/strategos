@@ -1,4 +1,5 @@
-import { payoffOf, playerIndex, uniqueBestResponse } from './game.ts';
+import { dominance, iesds } from '@strategos/engine';
+import { actionIds, payoffOf, playerIndex, uniqueBestResponse } from './game.ts';
 import { bestToBelief, expectedUnderBelief, type Instance } from './instance.ts';
 import type { SlotExpr, Who } from './types.ts';
 
@@ -77,6 +78,41 @@ export function slotValue(e: SlotExpr, inst: Instance): string {
       const p = playerIndex(inst.seat, e.who);
       const has = inst.facts.strictlyDominant[p === 0 ? 'A' : 'B'] !== null;
       return render(has ? e.yes : e.no, inst);
+    }
+    case 'iesdsSteps':
+    case 'iesdsLeft': {
+      const el = iesds(inst.game);
+      const learner = playerIndex(inst.seat, 'you');
+      const tag = (p: 0 | 1, i: number) => `${p === learner ? 'your' : `${inst.skin.roles.other.short}’s`} ${label(actionIds(inst.structure, p)[i]!)}`;
+      if (e.k === 'iesdsSteps') {
+        if (el.steps.length === 0) throw new RenderError('nothing is eliminated');
+        const rounds = [...new Set(el.steps.map((x) => x.round))];
+        return rounds.map((r) => el.steps.filter((x) => x.round === r).map((x) => tag(x.player, x.action)).join(' and ')).join(', then ');
+      }
+      const side = (p: 0 | 1) => el.surviving[p].map((i) => tag(p, i)).join(' or ');
+      return `${side(learner)}, with ${side((1 - learner) as 0 | 1)}`;
+    }
+    case 'weak': {
+      const p = playerIndex(inst.seat, e.who);
+      const own = actionIds(inst.structure, p);
+      const opp = actionIds(inst.structure, (1 - p) as 0 | 1);
+      const d = dominance(inst.game, p);
+      if (own.length !== 2 || opp.length !== 2 || d.weaklyDominantAction === null || d.strictlyDominantAction !== null) throw new RenderError(`no weak-only dominance for ${e.who} in a 2×2`);
+      const dom = own[d.weaklyDominantAction]!;
+      const other = own[1 - d.weaklyDominantAction]!;
+      const prof = (mine: string, o: string): [string, string] => (p === 0 ? [mine, o] : [o, mine]);
+      const v = (mine: string, o: string) => payoffOf(inst.structure, inst.params, p, prof(mine, o));
+      const tie = opp.find((o) => v(dom, o) === v(other, o))!;
+      const win = opp.find((o) => v(dom, o) > v(other, o))!;
+      switch (e.part) {
+        case 'dom': return label(dom);
+        case 'other': return label(other);
+        case 'tie': return label(tie);
+        case 'win': return label(win);
+        case 'tiePay': return String(v(dom, tie));
+        case 'winPay': return String(v(dom, win));
+        default: return String(v(other, win));
+      }
     }
     case 'belief': {
       const b = inst.variation.belief?.[e.action];

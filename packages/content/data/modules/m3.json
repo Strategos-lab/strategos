@@ -618,6 +618,556 @@
       "timing": "You both decide this morning, separately.",
       "information": "You know what Mrs Menon prefers. You don’t know where she will hold the class.",
       "matrixLabel": "Outcomes for Mrs Menon’s choice and yours"
+    },
+    {
+      "id": "sk.m3.study",
+      "version": "1.0.0",
+      "domain": "social_interaction",
+      "tone": "neutral",
+      "title": "Study for the exam",
+      "structures": [
+        "m3.s.stuck"
+      ],
+      "roles": {
+        "you": {
+          "id": "you",
+          "label": "You",
+          "short": "you"
+        },
+        "other": {
+          "id": "tara",
+          "label": "Tara",
+          "short": "Tara"
+        }
+      },
+      "seats": [
+        "A"
+      ],
+      "actionLabels": {
+        "a1": "Library",
+        "a2": "Café",
+        "a3": "Video call",
+        "b1": "Library",
+        "b2": "Café",
+        "b3": "Video call"
+      },
+      "situation": "You and Tara are revising for the same exam this weekend. Each of you picks where to study: the library, the café, or a video call from home. You decide on Friday night, separately.",
+      "incentives": {
+        "m3.s.stuck": "You both want to study together, and the library and the café suit you equally well. A video call is your favourite if Tara joins one, and useless otherwise. Tara would rather go out than be on a call."
+      },
+      "timing": "You both decide on Friday night, separately.",
+      "information": "You both know what the other wants. You don’t know where Tara will go.",
+      "matrixLabel": "Outcomes for your place and Tara’s place"
+    },
+    {
+      "id": "sk.m3.tools",
+      "version": "1.0.0",
+      "domain": "work_business",
+      "tone": "neutral",
+      "title": "The shared tracker",
+      "structures": [
+        "m3.s.stuck"
+      ],
+      "roles": {
+        "you": {
+          "id": "you",
+          "label": "You",
+          "short": "you"
+        },
+        "other": {
+          "id": "vivek",
+          "label": "Vivek",
+          "short": "Vivek"
+        }
+      },
+      "seats": [
+        "A"
+      ],
+      "actionLabels": {
+        "a1": "Spreadsheet",
+        "a2": "Notebook",
+        "a3": "Own tool",
+        "b1": "Spreadsheet",
+        "b2": "Notebook",
+        "b3": "Your tool"
+      },
+      "situation": "You and Vivek must each keep this quarter’s project tracker in one place: the team spreadsheet, the team notebook, or a custom tool you built. Each of you sets up your part on Monday.",
+      "incentives": {
+        "m3.s.stuck": "Using the same place as Vivek saves you both work, and the spreadsheet and the notebook are equally good. Your tool is your favourite if Vivek uses it too. Vivek finds your tool slow and prefers either team option."
+      },
+      "timing": "You both set up on Monday, separately.",
+      "information": "You both know what the other wants. You don’t know which Vivek will use.",
+      "matrixLabel": "Outcomes for your tracker and Vivek’s tracker"
+    },
+    {
+      "id": "sk.m3.practice",
+      "version": "1.0.0",
+      "domain": "sports_games",
+      "tone": "neutral",
+      "title": "Practice partners",
+      "structures": [
+        "m3.s.stuck"
+      ],
+      "roles": {
+        "you": {
+          "id": "you",
+          "label": "You",
+          "short": "you"
+        },
+        "other": {
+          "id": "ishan",
+          "label": "Ishan",
+          "short": "Ishan"
+        }
+      },
+      "seats": [
+        "A"
+      ],
+      "actionLabels": {
+        "a1": "Court one",
+        "a2": "Court two",
+        "a3": "Gym drills",
+        "b1": "Court one",
+        "b2": "Court two",
+        "b3": "Gym drills"
+      },
+      "situation": "You and Ishan practise tennis together on Saturdays. Each of you heads to court one, court two, or the gym for fitness drills, without checking with the other first.",
+      "incentives": {
+        "m3.s.stuck": "You both want to practise together, and the two courts are equally good. Gym drills are your favourite if Ishan comes, and wasted otherwise. Ishan would rather be on a court than in the gym."
+      },
+      "timing": "You both set off on Saturday morning, separately.",
+      "information": "You both know what the other wants. You don’t know where Ishan will go.",
+      "matrixLabel": "Outcomes for your choice and Ishan’s choice"
+    },
+    {
+      "id": "sk.m3.grid3",
+      "version": "1.0.0",
+      "domain": "abstract",
+      "tone": "neutral",
+      "title": "Three rows, three columns",
+      "structures": [
+        "m3.s.stuck"
+      ],
+      "roles": {
+        "you": {
+          "id": "you",
+          "label": "You",
+          "short": "you"
+        },
+        "other": {
+          "id": "other",
+          "label": "The other side",
+          "short": "the other side"
+        }
+      },
+      "seats": [
+        "A"
+      ],
+      "actionLabels": {
+        "a1": "Top",
+        "a2": "Middle",
+        "a3": "Bottom",
+        "b1": "Left",
+        "b2": "Centre",
+        "b3": "Right"
+      },
+      "situation": "At the same moment, you pick a row, top, middle or bottom, and the other side picks a column, left, centre or right.",
+      "incentives": {
+        "m3.s.stuck": "Each of you wants a high number for yourself. Top-left and middle-centre are good for both. Bottom pays you well only with right, and the other side does worse with right than with left in every row."
+      },
+      "timing": "You both pick at the same moment.",
+      "information": "Each side sees the whole table. You don’t know the other side’s column.",
+      "matrixLabel": "Outcomes for your row and the other side’s column"
+    },
+    {
+      "id": "sk.m3.canal",
+      "version": "1.0.0",
+      "domain": "society_collective",
+      "tone": "neutral",
+      "title": "The shared canal",
+      "structures": [
+        "m3.s.pledge"
+      ],
+      "roles": {
+        "you": {
+          "id": "you",
+          "label": "You",
+          "short": "you"
+        },
+        "other": {
+          "id": "gowda",
+          "label": "Mr Gowda",
+          "short": "Mr Gowda"
+        }
+      },
+      "seats": [
+        "A"
+      ],
+      "actionLabels": {
+        "a1": "Full day",
+        "a2": "Half day",
+        "a3": "No clearing",
+        "b1": "Full day",
+        "b2": "Half day",
+        "b3": "No clearing"
+      },
+      "situation": "You and Mr Gowda farm side by side. The canal stretch next to your field feeds his crops, and the stretch next to his feeds yours. This week each of you decides how long to spend clearing your stretch.",
+      "incentives": {
+        "m3.s.pledge": "Each half day you spend clearing costs you a half day of field work and brings Mr Gowda twice as much in water. His clearing does the same for you. The same holds for Mr Gowda."
+      },
+      "timing": "You both decide on Monday, separately.",
+      "information": "You both know what is at stake for each other. You don’t know how long Mr Gowda will clear.",
+      "matrixLabel": "Outcomes for your clearing and Mr Gowda’s clearing"
+    },
+    {
+      "id": "sk.m3.referrals",
+      "version": "1.0.0",
+      "domain": "work_business",
+      "tone": "neutral",
+      "title": "Client referrals",
+      "structures": [
+        "m3.s.pledge"
+      ],
+      "roles": {
+        "you": {
+          "id": "you",
+          "label": "You",
+          "short": "you"
+        },
+        "other": {
+          "id": "priya",
+          "label": "Priya",
+          "short": "Priya"
+        }
+      },
+      "seats": [
+        "A"
+      ],
+      "actionLabels": {
+        "a1": "Two referrals",
+        "a2": "One referral",
+        "a3": "None",
+        "b1": "Two referrals",
+        "b2": "One referral",
+        "b3": "None"
+      },
+      "situation": "You and Priya are freelance designers. This month each of you decides how many client referrals to write for the other: two, one or none.",
+      "incentives": {
+        "m3.s.pledge": "Each referral you write costs you an afternoon of paid work and brings Priya twice that in new work. Her referrals do the same for you. The same holds for Priya."
+      },
+      "timing": "You both decide at the start of the month, separately.",
+      "information": "You both know what is at stake for each other. You don’t know how many Priya will write.",
+      "matrixLabel": "Outcomes for your referrals and Priya’s referrals"
+    },
+    {
+      "id": "sk.m3.coaches",
+      "version": "1.0.0",
+      "domain": "sports_games",
+      "tone": "neutral",
+      "title": "Lending coaches",
+      "structures": [
+        "m3.s.pledge"
+      ],
+      "roles": {
+        "you": {
+          "id": "you",
+          "label": "You",
+          "short": "you"
+        },
+        "other": {
+          "id": "khan",
+          "label": "Ms Khan",
+          "short": "Ms Khan"
+        }
+      },
+      "seats": [
+        "A"
+      ],
+      "actionLabels": {
+        "a1": "Two coaches",
+        "a2": "One coach",
+        "a3": "No coach",
+        "b1": "Two coaches",
+        "b2": "One coach",
+        "b3": "No coach"
+      },
+      "situation": "Your cricket club and Ms Khan’s club train juniors on the same ground. This season each club decides how many of its coaches to lend to the other club’s juniors: two, one or none.",
+      "incentives": {
+        "m3.s.pledge": "Each coach you lend costs your club a session and gives Ms Khan’s juniors twice that benefit. Her coaches do the same for your juniors. The same holds for Ms Khan."
+      },
+      "timing": "Both clubs decide before the season, separately.",
+      "information": "You both know what is at stake for each other. You don’t know how many coaches Ms Khan will lend.",
+      "matrixLabel": "Outcomes for your lending and Ms Khan’s lending"
+    },
+    {
+      "id": "sk.m3.posters",
+      "version": "1.0.0",
+      "domain": "markets",
+      "tone": "neutral",
+      "title": "Shop posters",
+      "structures": [
+        "m3.s.pledge"
+      ],
+      "roles": {
+        "you": {
+          "id": "you",
+          "label": "You",
+          "short": "you"
+        },
+        "other": {
+          "id": "shah",
+          "label": "Mrs Shah",
+          "short": "Mrs Shah"
+        }
+      },
+      "seats": [
+        "A"
+      ],
+      "actionLabels": {
+        "a1": "Two posters",
+        "a2": "One poster",
+        "a3": "No poster",
+        "b1": "Two posters",
+        "b2": "One poster",
+        "b3": "No poster"
+      },
+      "situation": "You run a tea shop and Mrs Shah runs the bookshop at the other end of the lane. Each of you decides how many posters for the other’s shop to put up in your window: two, one or none.",
+      "incentives": {
+        "m3.s.pledge": "Each poster you put up takes window space you could use, and brings Mrs Shah twice that in customers. Her posters do the same for you. The same holds for Mrs Shah."
+      },
+      "timing": "You both decide this week, separately.",
+      "information": "You both know what is at stake for each other. You don’t know how many posters Mrs Shah will put up.",
+      "matrixLabel": "Outcomes for your posters and Mrs Shah’s posters"
+    },
+    {
+      "id": "sk.m3.generator",
+      "version": "1.0.0",
+      "domain": "markets",
+      "tone": "neutral",
+      "title": "The wedding hall",
+      "structures": [
+        "m3.s.weakb"
+      ],
+      "roles": {
+        "you": {
+          "id": "you",
+          "label": "You",
+          "short": "you"
+        },
+        "other": {
+          "id": "iyer",
+          "label": "Mr Iyer",
+          "short": "Mr Iyer"
+        }
+      },
+      "seats": [
+        "B"
+      ],
+      "actionLabels": {
+        "a1": "Day event",
+        "a2": "Night event",
+        "b1": "Bring generator",
+        "b2": "No generator"
+      },
+      "situation": "You run a catering service. Mr Iyer, who owns a wedding hall, decides whether to book a day event or a night event. At the same time you decide whether to bring your spare generator.",
+      "incentives": {
+        "m3.s.weakb@B": "In daylight the generator stays off, and Mr Iyer pays for it either way. At night, power cuts are common, and a generator saves your service. Mr Iyer prefers a night event only if a generator is there."
+      },
+      "timing": "You both decide this week, separately.",
+      "information": "You know how Mr Iyer plans. You don’t know which event he will book.",
+      "matrixLabel": "Outcomes for Mr Iyer’s booking and your choice"
+    },
+    {
+      "id": "sk.m3.torch",
+      "version": "1.0.0",
+      "domain": "everyday_life",
+      "tone": "neutral",
+      "title": "The evening walk",
+      "structures": [
+        "m3.s.weakb"
+      ],
+      "roles": {
+        "you": {
+          "id": "you",
+          "label": "You",
+          "short": "you"
+        },
+        "other": {
+          "id": "anand",
+          "label": "Anand",
+          "short": "Anand"
+        }
+      },
+      "seats": [
+        "B"
+      ],
+      "actionLabels": {
+        "a1": "Valley path",
+        "a2": "Ridge path",
+        "b1": "Pack a torch",
+        "b2": "No torch"
+      },
+      "situation": "Your friend Anand picks the route for this evening’s walk: the valley path, which ends before dark, or the ridge path, which ends after dark. You pack your bag at the same time.",
+      "incentives": {
+        "m3.s.weakb@B": "On the valley path a torch makes no difference to you. On the ridge path, a torch is what gets you down safely. Anand enjoys the ridge only if someone has a torch; otherwise he prefers the valley."
+      },
+      "timing": "You both decide at home, separately.",
+      "information": "You know what Anand likes. You don’t know which path he will pick.",
+      "matrixLabel": "Outcomes for Anand’s route and your packing"
+    },
+    {
+      "id": "sk.m3.projector",
+      "version": "1.0.0",
+      "domain": "work_business",
+      "tone": "neutral",
+      "title": "The client pitch",
+      "structures": [
+        "m3.s.weakb"
+      ],
+      "roles": {
+        "you": {
+          "id": "you",
+          "label": "You",
+          "short": "you"
+        },
+        "other": {
+          "id": "neel",
+          "label": "Neel",
+          "short": "Neel"
+        }
+      },
+      "seats": [
+        "B"
+      ],
+      "actionLabels": {
+        "a1": "In the office",
+        "a2": "At the client",
+        "b1": "Carry projector",
+        "b2": "Leave it"
+      },
+      "situation": "Your colleague Neel decides whether tomorrow’s pitch happens in your office or at the client’s. You decide whether to carry the team projector with you.",
+      "incentives": {
+        "m3.s.weakb@B": "In your office a projector is already set up, so carrying one changes nothing. At the client’s, your own projector is what makes the pitch work. Neel prefers the client’s office only if you bring it."
+      },
+      "timing": "You both decide this evening, separately.",
+      "information": "You know how Neel plans. You don’t know where he will hold the pitch.",
+      "matrixLabel": "Outcomes for Neel’s venue and your choice"
+    },
+    {
+      "id": "sk.m3.dials",
+      "version": "1.0.0",
+      "domain": "abstract",
+      "tone": "neutral",
+      "title": "Arrow and dial",
+      "structures": [
+        "m3.s.weakb"
+      ],
+      "roles": {
+        "you": {
+          "id": "you",
+          "label": "You",
+          "short": "you"
+        },
+        "other": {
+          "id": "other",
+          "label": "The other side",
+          "short": "the other side"
+        }
+      },
+      "seats": [
+        "B"
+      ],
+      "actionLabels": {
+        "a1": "Up",
+        "a2": "Down",
+        "b1": "Left",
+        "b2": "Right"
+      },
+      "situation": "At the same moment, the other side points an arrow up or down, and you turn a dial left or right.",
+      "incentives": {
+        "m3.s.weakb@B": "With up, left and right give you the same. With down, left gives you more than right. The other side does better with down when you turn left, and with up when you turn right."
+      },
+      "timing": "You both choose at the same moment.",
+      "information": "Each side sees the whole table. You don’t know where the arrow will point.",
+      "matrixLabel": "Outcomes for the arrow and your dial"
+    },
+    {
+      "id": "sk.m3.t.van",
+      "version": "1.0.0",
+      "domain": "social_interaction",
+      "tone": "neutral",
+      "title": "The team outing",
+      "structures": [
+        "m3.s.weakb"
+      ],
+      "roles": {
+        "you": {
+          "id": "you",
+          "label": "You",
+          "short": "you"
+        },
+        "other": {
+          "id": "rina",
+          "label": "Rina",
+          "short": "Rina"
+        }
+      },
+      "seats": [
+        "B"
+      ],
+      "actionLabels": {
+        "a1": "Office lunch",
+        "a2": "Team outing",
+        "b1": "Book the van",
+        "b2": "No van"
+      },
+      "situation": "Rina is planning Friday for your team: lunch in the office, or an outing to the lake. At the same time you decide whether to book the society’s van, which members may book at no charge.",
+      "incentives": {
+        "m3.s.weakb@B": "If lunch is in the office, the van just stays parked. For an outing, the van is the only way the whole team gets there. Rina prefers the outing only if the van is booked."
+      },
+      "timing": "You both decide on Wednesday, separately.",
+      "information": "You know how Rina plans. You don’t know which she will choose.",
+      "matrixLabel": "Outcomes for Rina’s plan and your booking"
+    },
+    {
+      "id": "sk.m3.t.trucks",
+      "version": "1.0.0",
+      "domain": "markets",
+      "tone": "neutral",
+      "title": "Two food trucks",
+      "structures": [
+        "m3.s.stuck"
+      ],
+      "roles": {
+        "you": {
+          "id": "you",
+          "label": "You",
+          "short": "you"
+        },
+        "other": {
+          "id": "rahul",
+          "label": "Rahul",
+          "short": "Rahul"
+        }
+      },
+      "seats": [
+        "A"
+      ],
+      "actionLabels": {
+        "a1": "Stadium",
+        "a2": "College",
+        "a3": "Night market",
+        "b1": "Stadium",
+        "b2": "College",
+        "b3": "Night market"
+      },
+      "situation": "You and Rahul run food trucks and share one generator, so you must park together to open. Each of you picks a spot for Saturday: the stadium, the college, or the night market.",
+      "incentives": {
+        "m3.s.stuck": "Parking together lets you both open, and the stadium and the college are equally good. The night market is your best spot if Rahul comes too. Rahul has no permit there and does worse there than at the stadium."
+      },
+      "timing": "You both decide on Thursday, separately.",
+      "information": "You both know what the other wants. You don’t know where Rahul will park.",
+      "matrixLabel": "Outcomes for your spot and Rahul’s spot"
     }
   ],
   "variations": [
@@ -687,6 +1237,38 @@
       "structure": "m3.s.weak",
       "params": {},
       "seat": "A",
+      "purpose": "preserve"
+    },
+    {
+      "id": "v.m3.stuck",
+      "structure": "m3.s.stuck",
+      "params": {},
+      "seat": "A",
+      "purpose": "preserve"
+    },
+    {
+      "id": "v.m3.pledge",
+      "structure": "m3.s.pledge",
+      "params": {},
+      "seat": "A",
+      "purpose": "preserve"
+    },
+    {
+      "id": "v.m3.weakb.2",
+      "structure": "m3.s.weakb",
+      "params": {
+        "W": 2
+      },
+      "seat": "B",
+      "purpose": "preserve"
+    },
+    {
+      "id": "v.m3.weakb.1",
+      "structure": "m3.s.weakb",
+      "params": {
+        "W": 1
+      },
+      "seat": "B",
       "purpose": "preserve"
     }
   ],
@@ -926,6 +1508,89 @@
           },
           "knownWrong": []
         }
+      ]
+    },
+    {
+      "id": "i.m3.three.dom",
+      "version": "1.0.0",
+      "lesson": "m3.l1",
+      "step": "explain",
+      "role": "practice",
+      "concept": "dominant_strategy",
+      "type": "reason_choice",
+      "structure": "m3.s.pledge",
+      "skins": [
+        "sk.m3.canal",
+        "sk.m3.referrals",
+        "sk.m3.coaches",
+        "sk.m3.posters"
+      ],
+      "variations": [
+        "v.m3.pledge"
+      ],
+      "exposure": "undisclosed",
+      "novelty": "seen",
+      "seat": "A",
+      "prompt": "Is one of your three choices better for you than each of the others, whatever {them} does?",
+      "facts": {},
+      "optionSets": [
+        [
+          {
+            "text": "Yes, {act:a3}: against each of {them}’s choices it beats both {act:a1} and {act:a2}.",
+            "claim": {
+              "t": "strictDom",
+              "who": "you",
+              "action": "a3"
+            },
+            "code": "UNMATCHED"
+          },
+          {
+            "text": "Yes, {act:a2}: against each of {them}’s choices it beats {act:a1}.",
+            "claim": {
+              "t": "strictDom",
+              "who": "you",
+              "action": "a2"
+            },
+            "code": "INCOMPLETE_COMPARISON"
+          },
+          {
+            "text": "No: which of your choices is better depends on what {them} does.",
+            "claim": {
+              "t": "noStrictDom",
+              "who": "you"
+            },
+            "code": "INCOMPLETE_COMPARISON"
+          }
+        ],
+        [
+          {
+            "text": "{Act:a3}, since it gives you more than either alternative in every case.",
+            "claim": {
+              "t": "strictDom",
+              "who": "you",
+              "action": "a3"
+            },
+            "code": "UNMATCHED"
+          },
+          {
+            "text": "{Act:a2}, since it gives you more than {act:a1} in every case.",
+            "claim": {
+              "t": "strictDom",
+              "who": "you",
+              "action": "a2"
+            },
+            "code": "INCOMPLETE_COMPARISON"
+          },
+          {
+            "text": "{Act:a1}, since {act:a1} with {act:b1} is good for both of you.",
+            "claim": {
+              "t": "strictDom",
+              "who": "you",
+              "action": "a1"
+            },
+            "code": "ACROSS_NOT_WITHIN"
+          }
+        ]
       ]
     },
     {
@@ -1258,6 +1923,90 @@
               "action": "b2"
             },
             "code": "INCOMPLETE_COMPARISON"
+          }
+        ]
+      ]
+    },
+    {
+      "id": "i.m3.dilemma",
+      "version": "1.0.0",
+      "lesson": "m3.l2",
+      "step": "explain",
+      "role": "practice",
+      "concept": "dominant_strategy",
+      "type": "reason_choice",
+      "structure": "m3.s.pledge",
+      "skins": [
+        "sk.m3.canal",
+        "sk.m3.referrals",
+        "sk.m3.coaches",
+        "sk.m3.posters"
+      ],
+      "variations": [
+        "v.m3.pledge"
+      ],
+      "exposure": "undisclosed",
+      "novelty": "seen",
+      "seat": "A",
+      "prompt": "Suppose you each pick the choice that is better for you whatever the other does. How does that compare with both choosing {act:a1}?",
+      "facts": {},
+      "optionSets": [
+        [
+          {
+            "text": "Both of you get less: {pay:you:a3:b3} each, instead of {pay:you:a1:b1} each with {act:a1}.",
+            "claim": {
+              "t": "domOutcomeImprovable",
+              "than": [
+                "a1",
+                "b1"
+              ]
+            },
+            "code": "UNMATCHED"
+          },
+          {
+            "text": "Nothing beats it for both: each of you made the better choice.",
+            "claim": {
+              "t": "domOutcomeUnimprovable"
+            },
+            "code": "INDIVIDUAL_AS_JOINT"
+          },
+          {
+            "text": "{Them} picks {act:b1}, so you end up with {pay:you:a3:b1}.",
+            "claim": {
+              "t": "strictDom",
+              "who": "them",
+              "action": "b1"
+            },
+            "code": "IGNORED_OPPONENT_INCENTIVE"
+          }
+        ],
+        [
+          {
+            "text": "Worse for both: {pay:you:a3:b3} and {pay:them:a3:b3}, against {pay:you:a1:b1} and {pay:them:a1:b1} with {act:a1}.",
+            "claim": {
+              "t": "domOutcomeImprovable",
+              "than": [
+                "a1",
+                "b1"
+              ]
+            },
+            "code": "UNMATCHED"
+          },
+          {
+            "text": "Best for both, since each choice was the better one for its owner.",
+            "claim": {
+              "t": "domOutcomeUnimprovable"
+            },
+            "code": "INDIVIDUAL_AS_JOINT"
+          },
+          {
+            "text": "{Them} will give the most, {act:b1}, so you come out on top.",
+            "claim": {
+              "t": "strictDom",
+              "who": "them",
+              "action": "b1"
+            },
+            "code": "IGNORED_OPPONENT_INCENTIVE"
           }
         ]
       ]
@@ -1813,6 +2562,115 @@
       ]
     },
     {
+      "id": "i.m3.iesds.stuck",
+      "version": "1.0.0",
+      "lesson": "m3.l4",
+      "step": "explain",
+      "role": "practice",
+      "concept": "iesds",
+      "type": "reason_choice",
+      "structure": "m3.s.stuck",
+      "skins": [
+        "sk.m3.study",
+        "sk.m3.tools",
+        "sk.m3.practice",
+        "sk.m3.grid3"
+      ],
+      "variations": [
+        "v.m3.stuck"
+      ],
+      "exposure": "undisclosed",
+      "novelty": "seen",
+      "seat": "A",
+      "prompt": "Keep setting aside choices that are never better, looking again each time. What is left at the end?",
+      "facts": {
+        "steps": {
+          "k": "iesdsSteps"
+        },
+        "left": {
+          "k": "iesdsLeft"
+        }
+      },
+      "optionSets": [
+        [
+          {
+            "text": "More than one pair: once {act:b3} and then {act:a3} go, nothing else can.",
+            "claim": {
+              "t": "iesdsUnsolved"
+            },
+            "code": "INCOMPLETE_COMPARISON"
+          },
+          {
+            "text": "{Act:a3} for you and {act:b3} for {them}, your highest number.",
+            "claim": {
+              "t": "iesds",
+              "profile": [
+                "a3",
+                "b3"
+              ]
+            },
+            "code": "ACROSS_NOT_WITHIN"
+          },
+          {
+            "text": "{Act:a1} for you and {act:b1} for {them}, the first good match.",
+            "claim": {
+              "t": "iesds",
+              "profile": [
+                "a1",
+                "b1"
+              ]
+            },
+            "code": "INCOMPLETE_COMPARISON"
+          },
+          {
+            "text": "Everything: no choice here is worse than another in every case.",
+            "claim": {
+              "t": "noneDominated"
+            },
+            "code": "INCOMPLETE_COMPARISON"
+          }
+        ],
+        [
+          {
+            "text": "Several pairs: after {act:b3} and {act:a3}, nothing else drops out.",
+            "claim": {
+              "t": "iesdsUnsolved"
+            },
+            "code": "INCOMPLETE_COMPARISON"
+          },
+          {
+            "text": "You on {act:a3}, {them} on {act:b3}: the biggest number.",
+            "claim": {
+              "t": "iesds",
+              "profile": [
+                "a3",
+                "b3"
+              ]
+            },
+            "code": "ACROSS_NOT_WITHIN"
+          },
+          {
+            "text": "You on {act:a2}, {them} on {act:b2}: a good match for you both.",
+            "claim": {
+              "t": "iesds",
+              "profile": [
+                "a2",
+                "b2"
+              ]
+            },
+            "code": "INCOMPLETE_COMPARISON"
+          },
+          {
+            "text": "All of it: none of the choices is worse in every case here.",
+            "claim": {
+              "t": "noneDominated"
+            },
+            "code": "INCOMPLETE_COMPARISON"
+          }
+        ]
+      ]
+    },
+    {
       "id": "i.m3.words",
       "version": "1.0.0",
       "lesson": "m3.l4",
@@ -1838,6 +2696,126 @@
       "rubric": "rb.m3.iesds"
     },
     {
+      "id": "i.m3.weak.b",
+      "version": "1.0.0",
+      "lesson": "m3.l5",
+      "step": "explain",
+      "role": "practice",
+      "concept": "weak_dominance",
+      "type": "reason_choice",
+      "structure": "m3.s.weakb",
+      "skins": [
+        "sk.m3.generator",
+        "sk.m3.torch",
+        "sk.m3.projector",
+        "sk.m3.dials"
+      ],
+      "variations": [
+        "v.m3.weakb.2"
+      ],
+      "exposure": "undisclosed",
+      "novelty": "seen",
+      "seat": "B",
+      "prompt": "Compare {act:b1} with {act:b2} for you, across {them}’s choices. What is true?",
+      "facts": {
+        "wd": {
+          "k": "weak",
+          "who": "you",
+          "part": "dom"
+        },
+        "wo": {
+          "k": "weak",
+          "who": "you",
+          "part": "other"
+        },
+        "tie": {
+          "k": "weak",
+          "who": "you",
+          "part": "tie"
+        },
+        "win": {
+          "k": "weak",
+          "who": "you",
+          "part": "win"
+        },
+        "tp": {
+          "k": "weak",
+          "who": "you",
+          "part": "tiePay"
+        },
+        "wp": {
+          "k": "weak",
+          "who": "you",
+          "part": "winPay"
+        },
+        "op": {
+          "k": "weak",
+          "who": "you",
+          "part": "otherWinPay"
+        }
+      },
+      "optionSets": [
+        [
+          {
+            "text": "{Act:b1} is never worse, and better if {them} picks {act:a2}.",
+            "claim": {
+              "t": "weakDomOnly",
+              "who": "you",
+              "action": "b1"
+            },
+            "code": "UNMATCHED"
+          },
+          {
+            "text": "{Act:b1} is better against both of {them}’s choices.",
+            "claim": {
+              "t": "strictDom",
+              "who": "you",
+              "action": "b1"
+            },
+            "code": "WEAK_AS_STRICT"
+          },
+          {
+            "text": "{Act:b2} is never worse, and better if {them} picks {act:a1}.",
+            "claim": {
+              "t": "weakDomOnly",
+              "who": "you",
+              "action": "b2"
+            },
+            "code": "INCOMPLETE_COMPARISON"
+          }
+        ],
+        [
+          {
+            "text": "{Act:b1} ties against {act:a1} and wins against {act:a2}.",
+            "claim": {
+              "t": "weakDomOnly",
+              "who": "you",
+              "action": "b1"
+            },
+            "code": "UNMATCHED"
+          },
+          {
+            "text": "{Act:b1} wins against {act:a1} and against {act:a2}.",
+            "claim": {
+              "t": "strictDom",
+              "who": "you",
+              "action": "b1"
+            },
+            "code": "WEAK_AS_STRICT"
+          },
+          {
+            "text": "{Act:b2} ties against {act:a2} and wins against {act:a1}.",
+            "claim": {
+              "t": "weakDomOnly",
+              "who": "you",
+              "action": "b2"
+            },
+            "code": "INCOMPLETE_COMPARISON"
+          }
+        ]
+      ]
+    },
+    {
       "id": "i.m3.weak",
       "version": "1.0.0",
       "lesson": "m3.l5",
@@ -1857,7 +2835,43 @@
       "novelty": "seen",
       "seat": "A",
       "prompt": "Compare {act:a1} with {act:a2} for you, across {them}’s choices. What is true?",
-      "facts": {},
+      "facts": {
+        "wd": {
+          "k": "weak",
+          "who": "you",
+          "part": "dom"
+        },
+        "wo": {
+          "k": "weak",
+          "who": "you",
+          "part": "other"
+        },
+        "tie": {
+          "k": "weak",
+          "who": "you",
+          "part": "tie"
+        },
+        "win": {
+          "k": "weak",
+          "who": "you",
+          "part": "win"
+        },
+        "tp": {
+          "k": "weak",
+          "who": "you",
+          "part": "tiePay"
+        },
+        "wp": {
+          "k": "weak",
+          "who": "you",
+          "part": "winPay"
+        },
+        "op": {
+          "k": "weak",
+          "who": "you",
+          "part": "otherWinPay"
+        }
+      },
       "optionSets": [
         [
           {
@@ -2131,6 +3145,229 @@
           }
         ]
       ]
+    },
+    {
+      "id": "i.m3.t.weak",
+      "version": "1.0.0",
+      "lesson": "m3.l5",
+      "step": "explain",
+      "role": "transfer",
+      "concept": "weak_dominance",
+      "type": "reason_choice",
+      "structure": "m3.s.weakb",
+      "skins": [
+        "sk.m3.t.van"
+      ],
+      "variations": [
+        "v.m3.weakb.1"
+      ],
+      "exposure": "transfer_hidden",
+      "novelty": "new_skin",
+      "seat": "B",
+      "prompt": "Compare {act:b1} with {act:b2} for you, across {them}’s choices. What is true?",
+      "facts": {
+        "wd": {
+          "k": "weak",
+          "who": "you",
+          "part": "dom"
+        },
+        "wo": {
+          "k": "weak",
+          "who": "you",
+          "part": "other"
+        },
+        "tie": {
+          "k": "weak",
+          "who": "you",
+          "part": "tie"
+        },
+        "win": {
+          "k": "weak",
+          "who": "you",
+          "part": "win"
+        },
+        "tp": {
+          "k": "weak",
+          "who": "you",
+          "part": "tiePay"
+        },
+        "wp": {
+          "k": "weak",
+          "who": "you",
+          "part": "winPay"
+        },
+        "op": {
+          "k": "weak",
+          "who": "you",
+          "part": "otherWinPay"
+        }
+      },
+      "optionSets": [
+        [
+          {
+            "text": "{Act:b1} is never worse, and better if {them} picks {act:a2}.",
+            "claim": {
+              "t": "weakDomOnly",
+              "who": "you",
+              "action": "b1"
+            },
+            "code": "UNMATCHED"
+          },
+          {
+            "text": "{Act:b1} is better against both of {them}’s choices.",
+            "claim": {
+              "t": "strictDom",
+              "who": "you",
+              "action": "b1"
+            },
+            "code": "WEAK_AS_STRICT"
+          },
+          {
+            "text": "{Act:b2} is never worse, and better if {them} picks {act:a1}.",
+            "claim": {
+              "t": "weakDomOnly",
+              "who": "you",
+              "action": "b2"
+            },
+            "code": "INCOMPLETE_COMPARISON"
+          }
+        ],
+        [
+          {
+            "text": "{Act:b1} ties against {act:a1} and wins against {act:a2}.",
+            "claim": {
+              "t": "weakDomOnly",
+              "who": "you",
+              "action": "b1"
+            },
+            "code": "UNMATCHED"
+          },
+          {
+            "text": "{Act:b1} wins against {act:a1} and against {act:a2}.",
+            "claim": {
+              "t": "strictDom",
+              "who": "you",
+              "action": "b1"
+            },
+            "code": "WEAK_AS_STRICT"
+          },
+          {
+            "text": "{Act:b2} ties against {act:a2} and wins against {act:a1}.",
+            "claim": {
+              "t": "weakDomOnly",
+              "who": "you",
+              "action": "b2"
+            },
+            "code": "INCOMPLETE_COMPARISON"
+          }
+        ]
+      ]
+    },
+    {
+      "id": "i.m3.t.stuck",
+      "version": "1.0.0",
+      "lesson": "m3.l5",
+      "step": "explain",
+      "role": "transfer",
+      "concept": "iesds",
+      "type": "reason_choice",
+      "structure": "m3.s.stuck",
+      "skins": [
+        "sk.m3.t.trucks"
+      ],
+      "variations": [
+        "v.m3.stuck"
+      ],
+      "exposure": "transfer_hidden",
+      "novelty": "new_skin",
+      "seat": "A",
+      "prompt": "Keep setting aside choices that are never better, looking again each time. What is left at the end?",
+      "facts": {
+        "steps": {
+          "k": "iesdsSteps"
+        },
+        "left": {
+          "k": "iesdsLeft"
+        }
+      },
+      "optionSets": [
+        [
+          {
+            "text": "More than one pair: once {act:b3} and then {act:a3} go, nothing else can.",
+            "claim": {
+              "t": "iesdsUnsolved"
+            },
+            "code": "INCOMPLETE_COMPARISON"
+          },
+          {
+            "text": "{Act:a3} for you and {act:b3} for {them}, your highest number.",
+            "claim": {
+              "t": "iesds",
+              "profile": [
+                "a3",
+                "b3"
+              ]
+            },
+            "code": "ACROSS_NOT_WITHIN"
+          },
+          {
+            "text": "{Act:a1} for you and {act:b1} for {them}, the first good match.",
+            "claim": {
+              "t": "iesds",
+              "profile": [
+                "a1",
+                "b1"
+              ]
+            },
+            "code": "INCOMPLETE_COMPARISON"
+          },
+          {
+            "text": "Everything: no choice here is worse than another in every case.",
+            "claim": {
+              "t": "noneDominated"
+            },
+            "code": "INCOMPLETE_COMPARISON"
+          }
+        ],
+        [
+          {
+            "text": "Several pairs: after {act:b3} and {act:a3}, nothing else drops out.",
+            "claim": {
+              "t": "iesdsUnsolved"
+            },
+            "code": "INCOMPLETE_COMPARISON"
+          },
+          {
+            "text": "You on {act:a3}, {them} on {act:b3}: the biggest number.",
+            "claim": {
+              "t": "iesds",
+              "profile": [
+                "a3",
+                "b3"
+              ]
+            },
+            "code": "ACROSS_NOT_WITHIN"
+          },
+          {
+            "text": "You on {act:a2}, {them} on {act:b2}: a good match for you both.",
+            "claim": {
+              "t": "iesds",
+              "profile": [
+                "a2",
+                "b2"
+              ]
+            },
+            "code": "INCOMPLETE_COMPARISON"
+          },
+          {
+            "text": "All of it: none of the choices is worse in every case here.",
+            "claim": {
+              "t": "noneDominated"
+            },
+            "code": "INCOMPLETE_COMPARISON"
+          }
+        ]
+      ]
     }
   ],
   "feedback": [
@@ -2234,6 +3471,9 @@
       "concept": "dominated_action",
       "type": "reason_choice",
       "code": "CORRECT",
+      "items": [
+        "i.m3.dominated"
+      ],
       "phrasings": [
         "For {them}, {act:b2} beats {act:b3} against each of your choices: {pay:them:a1:b2} to {pay:them:a1:b3}, {pay:them:a2:b2} to {pay:them:a2:b3}, {pay:them:a3:b2} to {pay:them:a3:b3}. So {act:b3} is never the better choice for {them}.",
         "Row by row, {act:b2} gives {them} more than {act:b3}: {pay:them:a1:b2} to {pay:them:a1:b3}, {pay:them:a2:b2} to {pay:them:a2:b3}, {pay:them:a3:b2} to {pay:them:a3:b3}."
@@ -2244,6 +3484,9 @@
       "concept": "dominated_action",
       "type": "reason_choice",
       "code": "INCOMPLETE_COMPARISON",
+      "items": [
+        "i.m3.dominated"
+      ],
       "phrasings": [
         "For {them}, {act:b2} beats {act:b3} against each of your choices: {pay:them:a1:b2} to {pay:them:a1:b3}, {pay:them:a2:b2} to {pay:them:a2:b3}, {pay:them:a3:b2} to {pay:them:a3:b3}. {Act:b1} is low in one row but high in another, so it is not always worse.",
         "{Act:b1} gives {them} {pay:them:a1:b1} against your {act:a1} but {pay:them:a3:b1} against {act:a3}. Only {act:b3} loses in every row, to {act:b2}."
@@ -2253,6 +3496,9 @@
       "concept": "dominated_action",
       "type": "reason_choice",
       "code": "MISREAD_PAYOFF_OWNER",
+      "items": [
+        "i.m3.dominated"
+      ],
       "phrasings": [
         "For {them}, {act:b2} beats {act:b3} against each of your choices: {pay:them:a1:b2} to {pay:them:a1:b3}, {pay:them:a2:b2} to {pay:them:a2:b3}, {pay:them:a3:b2} to {pay:them:a3:b3}. Judge {them}’s choices by {them}’s numbers, the second in each cell.",
         "For {them}, {act:b2} is strong: {pay:them:a1:b2}, {pay:them:a2:b2}, {pay:them:a3:b2}. Your numbers do not tell you what is worse for {them}."
@@ -2325,18 +3571,18 @@
       "type": "reason_choice",
       "code": "CORRECT",
       "phrasings": [
-        "Against {act:b1}, both give you {pay:you:a1:b1}; against {act:b2}, {act:a1} gives {pay:you:a1:b2} and {act:a2} gives {pay:you:a2:b2}. So {act:a1} is never worse and better in one case.",
-        "With {act:b1} they tie at {pay:you:a1:b1}; with {act:b2}, {act:a1} gives {pay:you:a1:b2} and {act:a2} gives {pay:you:a2:b2}."
+        "Against {f:tie}, {f:wd} and {f:wo} both give you {f:tp}; against {f:win}, {f:wd} gives {f:wp} and {f:wo} gives {f:op}. So {f:wd} is never worse and better in one case.",
+        "With {f:tie} they tie at {f:tp}; with {f:win}, {f:wd} gives {f:wp} and {f:wo} gives {f:op}."
       ],
-      "term": "Never worse and sometimes better is weak dominance. It is a weaker claim than being better in every case."
+      "term": "Never worse and sometimes better is weak dominance. It is a weaker claim than being better in every case, so setting {f:wo} aside on this basis needs care."
     },
     {
       "concept": "weak_dominance",
       "type": "reason_choice",
       "code": "WEAK_AS_STRICT",
       "phrasings": [
-        "Against {act:b1}, {act:a1} and {act:a2} both give you {pay:you:a1:b1}: a tie, not a win. Only against {act:b2} is {act:a1} better ({pay:you:a1:b2} to {pay:you:a2:b2}).",
-        "With {act:b1} the two tie at {pay:you:a1:b1}. A tie is not a win, so {act:a1} is not better in both cases."
+        "Against {f:tie}, {f:wd} and {f:wo} both give you {f:tp}: a tie, not a win. Only against {f:win} is {f:wd} better ({f:wp} to {f:op}).",
+        "With {f:tie} the two tie at {f:tp}. A tie is not a win, so {f:wd} is not better in both cases."
       ]
     },
     {
@@ -2344,8 +3590,138 @@
       "type": "reason_choice",
       "code": "INCOMPLETE_COMPARISON",
       "phrasings": [
-        "Against {act:b2}, {act:a2} gives you {pay:you:a2:b2} and {act:a1} gives {pay:you:a1:b2}. So {act:a2} is worse there, not better.",
-        "With {act:b1} they tie at {pay:you:a1:b1}; with {act:b2}, {act:a1} is ahead, {pay:you:a1:b2} to {pay:you:a2:b2}."
+        "Against {f:win}, {f:wo} gives you {f:op} and {f:wd} gives {f:wp}. So {f:wo} is worse there, not better.",
+        "With {f:tie} they tie at {f:tp}; with {f:win}, {f:wd} is ahead, {f:wp} to {f:op}."
+      ]
+    },
+    {
+      "concept": "iesds",
+      "type": "reason_choice",
+      "code": "CORRECT",
+      "phrasings": [
+        "In order, {f:steps} can be set aside, each beaten in every case still open. What is left: {f:left}.",
+        "Set aside {f:steps}, looking again after each round. Left at the end: {f:left}."
+      ],
+      "term": "Removing dominated actions in rounds and checking again is iterated elimination of dominated strategies. It does not always leave a single pair."
+    },
+    {
+      "concept": "iesds",
+      "type": "reason_choice",
+      "code": "ACROSS_NOT_WITHIN",
+      "phrasings": [
+        "In order, {f:steps} can be set aside; what is left: {f:left}. A high number in one cell does not keep a choice in play.",
+        "Check each choice against the others in every open case: {f:steps} go, and {f:left} remains."
+      ]
+    },
+    {
+      "concept": "iesds",
+      "type": "reason_choice",
+      "code": "INCOMPLETE_COMPARISON",
+      "phrasings": [
+        "Look again after each removal: {f:steps} can be set aside, and then nothing more. What is left: {f:left}.",
+        "In order, {f:steps} go. After that every choice still open is better against something: {f:left}."
+      ]
+    },
+    {
+      "concept": "dominated_action",
+      "type": "reason_choice",
+      "code": "CORRECT",
+      "phrasings": [
+        "{F:by} gives you more than {f:dd} against each of {them}’s choices: {f:q1} to {f:p1}, {f:q2} to {f:p2}, {f:q3} to {f:p3}. So {f:dd} is never the better choice.",
+        "Case by case, {f:by} beats {f:dd} for you: {f:q1} to {f:p1}, {f:q2} to {f:p2}, {f:q3} to {f:p3}."
+      ],
+      "term": "An action that another action beats whatever the other side does is a dominated action."
+    },
+    {
+      "concept": "dominated_action",
+      "type": "reason_choice",
+      "code": "INCOMPLETE_COMPARISON",
+      "phrasings": [
+        "{F:by} beats {f:dd} for you in every case: {f:q1} to {f:p1}, {f:q2} to {f:p2}, {f:q3} to {f:p3}. A choice that is low once is not always worse.",
+        "Only {f:dd} loses to another choice in every case: {f:q1} to {f:p1}, {f:q2} to {f:p2}, {f:q3} to {f:p3}."
+      ]
+    },
+    {
+      "concept": "dominated_action",
+      "type": "reason_choice",
+      "code": "MISREAD_PAYOFF_OWNER",
+      "phrasings": [
+        "Judge your choices by your own numbers, the first in each cell: {f:by} gives you {f:q1}, {f:q2}, {f:q3} and {f:dd} only {f:p1}, {f:p2}, {f:p3}.",
+        "What {them} gets does not make a choice worse for you. Your numbers: {f:by} {f:q1}, {f:q2}, {f:q3}; {f:dd} {f:p1}, {f:p2}, {f:p3}."
+      ]
+    },
+    {
+      "concept": "dominant_strategy",
+      "type": "reason_choice",
+      "code": "CORRECT",
+      "items": [
+        "i.m3.three.dom"
+      ],
+      "phrasings": [
+        "Against {act:b1}: {act:a3} {pay:you:a3:b1}, {act:a2} {pay:you:a2:b1}, {act:a1} {pay:you:a1:b1}. Against {act:b2}: {pay:you:a3:b2}, {pay:you:a2:b2}, {pay:you:a1:b2}. Against {act:b3}: {pay:you:a3:b3}, {pay:you:a2:b3}, {pay:you:a1:b3}.",
+        "{Act:a3} gives you {pay:you:a3:b1}, {pay:you:a3:b2} and {pay:you:a3:b3}; {act:a2} {pay:you:a2:b1}, {pay:you:a2:b2}, {pay:you:a2:b3}; {act:a1} {pay:you:a1:b1}, {pay:you:a1:b2}, {pay:you:a1:b3}. {Dom:you} is ahead of both in every case."
+      ],
+      "term": "An action that gives you a higher payoff than every other action, whatever the other does, is a dominant strategy."
+    },
+    {
+      "concept": "dominant_strategy",
+      "type": "reason_choice",
+      "code": "INCOMPLETE_COMPARISON",
+      "items": [
+        "i.m3.three.dom"
+      ],
+      "phrasings": [
+        "Compare with every alternative: against {act:b1}, {act:a3} gives {pay:you:a3:b1}, {act:a2} {pay:you:a2:b1}, {act:a1} {pay:you:a1:b1}; the same order holds against {act:b2} and {act:b3}.",
+        "{Act:a3} gives you {pay:you:a3:b1}, {pay:you:a3:b2}, {pay:you:a3:b3}, more than {act:a2} ({pay:you:a2:b1}, {pay:you:a2:b2}, {pay:you:a2:b3}) and {act:a1}. Beating one alternative is not enough."
+      ]
+    },
+    {
+      "concept": "dominant_strategy",
+      "type": "reason_choice",
+      "code": "ACROSS_NOT_WITHIN",
+      "items": [
+        "i.m3.three.dom"
+      ],
+      "phrasings": [
+        "{Act:a1} with {act:b1} gives you {pay:you:a1:b1}, but compare within each of {them}’s choices: against {act:b1}, {act:a3} gives {pay:you:a3:b1}.",
+        "A good shared outcome does not make {act:a1} better for you: against {act:b1} it gives {pay:you:a1:b1}, {act:a3} gives {pay:you:a3:b1}."
+      ]
+    },
+    {
+      "concept": "dominant_strategy",
+      "type": "reason_choice",
+      "code": "CORRECT",
+      "items": [
+        "i.m3.dilemma"
+      ],
+      "phrasings": [
+        "{Act:a3} with {act:b3} gives you {pay:you:a3:b3} and {them} {pay:them:a3:b3}; {act:a1} with {act:b1} gives you {pay:you:a1:b1} and {them} {pay:them:a1:b1}. Each sure choice leads to an outcome worse for both.",
+        "Each of you does better with {act:a3} or {act:b3} whatever the other does, yet together that gives {pay:you:a3:b3} each, against {pay:you:a1:b1} each for {act:a1} with {act:b1}."
+      ],
+      "term": "A choice can be better for you whatever the other does and still leave both of you worse off than another outcome."
+    },
+    {
+      "concept": "dominant_strategy",
+      "type": "reason_choice",
+      "code": "INDIVIDUAL_AS_JOINT",
+      "items": [
+        "i.m3.dilemma"
+      ],
+      "phrasings": [
+        "{Act:a1} with {act:b1} gives you {pay:you:a1:b1} and {them} {pay:them:a1:b1}, more than {pay:you:a3:b3} and {pay:them:a3:b3}. Better for each is not the same as best for both.",
+        "Both of you get more with {act:a1} and {act:b1}: {pay:you:a1:b1} and {pay:them:a1:b1}, against {pay:you:a3:b3} and {pay:them:a3:b3}."
+      ]
+    },
+    {
+      "concept": "dominant_strategy",
+      "type": "reason_choice",
+      "code": "IGNORED_OPPONENT_INCENTIVE",
+      "items": [
+        "i.m3.dilemma"
+      ],
+      "phrasings": [
+        "For {them}, {act:b3} gives {pay:them:a3:b3} against your {act:a3}, more than {act:b1} gives ({pay:them:a3:b1}). {Them} has the same sure choice you do.",
+        "{Them} gets more from {act:b3} than from {act:b1} in every case, e.g. {pay:them:a3:b3} to {pay:them:a3:b1}. Expect {act:b3}."
       ]
     }
   ],

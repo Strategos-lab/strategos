@@ -86,3 +86,24 @@ Applies the reviewed decisions; no new Phase 2 content and no UI changes.
   an engine-computed best-response recap, without repeating the definition.
 - **Skins**: sk.m3.ticket is replaced by sk.m3.pricematch, and sk.m3.bakery.b by sk.m3.cart. The
   REVISE list was applied.
+
+## Pass B (content expansion, 7 Oct 2026)
+
+- **Cleanups**: the h.s.m2b held-out beliefs now give different correct actions across forms
+  (A 1/5 → a1, B 7/10 → a2, C 3/10 → a1). `bestResponseRecap` reads `bestResponseTable` from the
+  engine and only formats labels; the output is unchanged. The sequential validator is scoped to V1
+  `sequential_observed` identification structures (Production Rules §F).
+- **New structures**: m1.s.unseen (`sequential_unobserved`), m3.s.stuck (IESDS stops with four
+  outcomes left), m3.s.pledge (3×3, strictly dominant for both, dominated by a jointly better
+  outcome), m3.s.weakb (B-side weak-only dominance), plus held-out h.s.m3d, h.s.m3e and h.s.m3f.
+- **New claims and slots**: brTie, indifferent, prefers, noneDominated, domOutcomeImprovable,
+  domOutcomeUnimprovable; `iesdsSteps`, `iesdsLeft` and `weak` render slots (all engine-derived).
+- **Module items**: M1 +8 (timing without observation, ranking tie, three-player cases, two transfers);
+  M2 +6 (independent best response, best-response tie, near-switch belief, three-action belief, two
+  transfers); M3 +6 (three-action dominant, dilemma, IESDS not solving, B-side weak, two transfers).
+- **Roommate**: the three reasoning questions count once toward M3.1 via `Lesson.scenarioItems`
+  (validated by `validateScenarioItems`); the first experience is unchanged.
+- **Held-out (PROVISIONAL)**: 6/6/7 items; new `held-out-answers` validator rejects a fixed correct
+  position or a single correct action across parallel forms, and a single action answer per module.
+  Option sets rotate by form.
+- **Counts** (`contentCounts`): explanation 17/15/19, transfer 4/4/4.

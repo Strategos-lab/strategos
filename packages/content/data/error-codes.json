@@ -80,6 +80,11 @@
     "definition": "Set aside an action that is not worse in every case."
   },
   {
+    "code": "INDIVIDUAL_AS_JOINT",
+    "source": "content",
+    "definition": "Assumed that choices each better for their owner give an outcome no other outcome improves on for both."
+  },
+  {
     "code": "UNMATCHED",
     "source": "content",
     "definition": "A wrong answer that matches no known misconception."

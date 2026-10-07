@@ -130,6 +130,13 @@ means doing all the work" is fine; anything implying free-riding beats sharing i
   facts needed to reason about the opponent.
 - Before "What will B choose?" the learner can see the players, objectives/preferences, actions,
   timing, information structure and control.
+- Sequential validator scope: the content validator's sequential check (`sequentialIssues`) applies only
+  to the V1 Module 1 identification structures marked `sequential_observed`. For those specific
+  structures it checks that the authored order and observation are consistent with the engine. It is
+  not a general rule: backward induction does not in general coincide with normal-form Nash
+  equilibrium, and nothing in content may imply that it does. `sequential_unobserved` structures
+  (a later mover who cannot see the earlier choice) are strategically simultaneous and are taught as
+  such: order alone gives no advantage without observation.
 
 ## G. Learning loop
 

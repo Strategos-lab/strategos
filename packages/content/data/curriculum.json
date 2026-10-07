@@ -18,7 +18,8 @@
           "requires": [],
           "items": [
             "i.m1.players",
-            "i.m1.actions"
+            "i.m1.actions",
+            "i.m1.players.three"
           ],
           "reveal": {
             "concept": "players",
@@ -43,6 +44,7 @@
           ],
           "items": [
             "i.m1.ranking",
+            "i.m1.ranking.tie",
             "i.m1.payoff"
           ],
           "reveal": {
@@ -69,7 +71,11 @@
           "items": [
             "i.m1.info.meet",
             "i.m1.info.turns",
-            "i.m1.first"
+            "i.m1.first",
+            "i.m1.info.three",
+            "i.m1.unseen",
+            "i.m1.first.unseen",
+            "i.m1.unseen.why"
           ],
           "reveal": {
             "concept": "timing",
@@ -95,9 +101,12 @@
           "items": [
             "i.m1.depends.three",
             "i.m1.depends.turns",
+            "i.m1.depends.unseen",
             "i.m1.words",
             "i.m1.t.players",
-            "i.m1.t.timing"
+            "i.m1.t.timing",
+            "i.m1.t.unseen",
+            "i.m1.t.depends"
           ],
           "reveal": {
             "concept": "strategic_dependence",
@@ -131,7 +140,9 @@
             "i.m2.br.match",
             "i.m2.br.apart",
             "i.m2.br.three",
-            "i.m2.br.fill"
+            "i.m2.br.fill",
+            "i.m2.br.known",
+            "i.m2.br.tie"
           ],
           "reveal": {
             "concept": "best_response",
@@ -180,9 +191,13 @@
           ],
           "items": [
             "i.m2.belief",
+            "i.m2.belief.near",
+            "i.m2.belief.three",
             "i.m2.words",
             "i.m2.t.br",
-            "i.m2.t.belief"
+            "i.m2.t.belief",
+            "i.m2.t.flip",
+            "i.m2.t.three"
           ],
           "reveal": {
             "concept": "belief_response",
@@ -213,9 +228,15 @@
           ],
           "items": [
             "i.m3.dom.reason",
-            "i.m3.dom.fill"
+            "i.m3.dom.fill",
+            "i.m3.three.dom"
           ],
           "scenario": "roommate-kitchen",
+          "scenarioItems": [
+            "roommate-kitchen#if-b-cleans",
+            "roommate-kitchen#if-b-leaves",
+            "roommate-kitchen#either-way"
+          ],
           "reveal": {
             "concept": "dominant_strategy",
             "discipline": "GT",
@@ -237,7 +258,8 @@
           "items": [
             "i.m3.one.you",
             "i.m3.one.them",
-            "i.m3.one.reply"
+            "i.m3.one.reply",
+            "i.m3.dilemma"
           ]
         },
         {
@@ -277,6 +299,7 @@
           "items": [
             "i.m3.iesds.step",
             "i.m3.iesds",
+            "i.m3.iesds.stuck",
             "i.m3.words"
           ],
           "reveal": {
@@ -284,7 +307,7 @@
             "discipline": "GT",
             "body": [
               "Iterated elimination of dominated strategies removes dominated actions in rounds. After each round, check again: an action that was not dominated before may be now.",
-              "When one pair is left, the game is solved this way. Often nothing can be removed at all."
+              "When one pair is left, the game is solved this way. Sometimes elimination stops with several pairs left, and often nothing can be removed at all."
             ]
           }
         },
@@ -300,8 +323,11 @@
           ],
           "items": [
             "i.m3.weak",
+            "i.m3.weak.b",
             "i.m3.t.dom",
-            "i.m3.t.one"
+            "i.m3.t.one",
+            "i.m3.t.weak",
+            "i.m3.t.stuck"
           ],
           "reveal": {
             "concept": "weak_dominance",

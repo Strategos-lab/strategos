@@ -1,4 +1,5 @@
-import { actionIds, payoffOf, playerIndex, uniqueBestResponse } from './game.ts';
+import { paretoAnalysis } from '@strategos/engine';
+import { actionIds, bestResponseSet, payoffOf, playerIndex, uniqueBestResponse } from './game.ts';
 import { bestToBelief, type Instance } from './instance.ts';
 import type { Claim } from './types.ts';
 
@@ -68,10 +69,35 @@ export function evaluateClaim(c: Claim, inst: Instance): boolean {
         }
       return arg.length === 1 && arg[0] === `${c.profile[0]}|${c.profile[1]}`;
     }
+    case 'brTie': {
+      const set = bestResponseSet(s, inst.game, idx(c.who), c.against);
+      return set.length > 1 && sameSet(set, c.actions);
+    }
+    case 'indifferent': {
+      const p = idx(c.who);
+      return payoffOf(s, inst.params, p, c.profiles[0]) === payoffOf(s, inst.params, p, c.profiles[1]);
+    }
+    case 'prefers': {
+      const p = idx(c.who);
+      return payoffOf(s, inst.params, p, c.better) > payoffOf(s, inst.params, p, c.worse);
+    }
+    case 'noneDominated':
+      return inst.facts.strictlyDominated.A.length === 0 && inst.facts.strictlyDominated.B.length === 0;
+    case 'domOutcomeImprovable':
+    case 'domOutcomeUnimprovable': {
+      const { A, B } = inst.facts.strictlyDominant;
+      if (A === null || B === null) return false;
+      const cell = [s.actions.A.indexOf(A), s.actions.B.indexOf(B)];
+      const o = paretoAnalysis(inst.game).outcomes.find((x) => x.profile[0] === cell[0] && x.profile[1] === cell[1])!;
+      if (c.t === 'domOutcomeUnimprovable') return o.efficient;
+      const than = [s.actions.A.indexOf(c.than[0]), s.actions.B.indexOf(c.than[1])];
+      const better = [0, 1].every((p) => payoffOf(s, inst.params, p as 0 | 1, c.than) > payoffOf(s, inst.params, p as 0 | 1, [A, B]));
+      return better && o.dominatedBy.some((d) => d[0] === than[0] && d[1] === than[1]);
+    }
     case 'simultaneous':
       return s.sequence === 'simultaneous';
     case 'firstMover':
-      return s.sequence === 'sequential_observed' && idx(c.who) === 0;
+      return s.sequence !== 'simultaneous' && idx(c.who) === 0;
     case 'observes':
       return s.sequence === 'sequential_observed' && idx(c.who) === 1;
     case 'notObserves':

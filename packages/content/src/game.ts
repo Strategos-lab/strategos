@@ -91,12 +91,17 @@ export function payoffOf(s: Structure, params: Params, p: 0 | 1, profile: [strin
   return evalExpr(cell[p], params);
 }
 
-/** Unique best response of player p to the other's action id, or null on a tie. */
-export function uniqueBestResponse(s: Structure, game: NormalGame, p: 0 | 1, against: string): string | null {
+/** All best responses (engine, ties included) of player p to the other's action id. */
+export function bestResponseSet(s: Structure, game: NormalGame, p: 0 | 1, against: string): string[] {
   const opp = actionIds(s, (1 - p) as 0 | 1).indexOf(against);
   if (opp < 0) throw new Error(`${s.id}: "${against}" is not an action of player ${1 - p}`);
-  const br = bestResponses(game, p, opp);
-  return br.length === 1 ? actionIds(s, p)[br[0]!]! : null;
+  return bestResponses(game, p, opp).map((i) => actionIds(s, p)[i]!);
+}
+
+/** Unique best response of player p to the other's action id, or null on a tie. */
+export function uniqueBestResponse(s: Structure, game: NormalGame, p: 0 | 1, against: string): string | null {
+  const br = bestResponseSet(s, game, p, against);
+  return br.length === 1 ? br[0]! : null;
 }
 
 /** Structural facts computed by the engine (never authored by hand at runtime). */
@@ -178,9 +183,11 @@ export function matrices(s: Structure, params: Params): { A: number[][]; B: numb
 }
 
 /**
- * Sequential (A first, B observes) consistency: the backward-induction outcome(s) must coincide with the
- * normal-form pure Nash outcome(s), so the normal-form facts never point at a move the sequential story
- * contradicts. Returns problems (empty = coherent).
+ * V1 content-integrity check for the Module 1 sequential_observed identification structures only: their
+ * stories are authored so that the backward-induction outcome coincides with the normal-form pure outcome,
+ * so no normal-form fact (or story cue) points at a move the order of play contradicts. This is an authoring
+ * constraint on these structures, not a general claim: in general, backward induction can select a different
+ * outcome than normal-form reasoning (Module 4+). Returns problems (empty = coherent).
  */
 export function sequentialIssues(s: Structure, params: Params): string[] {
   if (s.sequence !== 'sequential_observed') return [];

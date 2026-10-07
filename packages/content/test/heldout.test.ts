@@ -7,11 +7,15 @@ import { has, run } from './helpers.ts';
 const root = join(import.meta.dirname, '..');
 
 describe('provisional held-out set', () => {
-  it('is flagged provisional, in three balanced parallel forms, 6 items per module', () => {
+  it('is flagged provisional, in three balanced parallel forms, 6–8 items per module', () => {
     expect(HELD_OUT.provisional).toBe(true);
     const forms = ['A', 'B', 'C'].map((f) => HELD_OUT.items.filter((i) => i.heldOutForm === f).length);
-    expect(forms).toEqual([6, 6, 6]);
-    for (const m of ['m1', 'm2', 'm3']) expect(HELD_OUT.items.filter((i) => i.lesson.startsWith(`${m}.`)).length).toBe(6);
+    expect(Math.max(...forms) - Math.min(...forms)).toBeLessThanOrEqual(1);
+    for (const m of ['m1', 'm2', 'm3']) {
+      const n = HELD_OUT.items.filter((i) => i.lesson.startsWith(`${m}.`)).length;
+      expect(n).toBeGreaterThanOrEqual(6);
+      expect(n).toBeLessThanOrEqual(8);
+    }
     for (const i of HELD_OUT.items) expect(i.role).toBe('held_out');
   });
   it('shares no ids, structures, stories or (structure, skin) pairs with practice', () => {

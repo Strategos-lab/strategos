@@ -125,6 +125,66 @@
     "notes": "A chooses first; B sees A’s choice. Identification only. Coherent: the backward-induction outcome equals the unique normal-form outcome (a1, b2), so no story cue points at a move the sequence contradicts."
   },
   {
+    "id": "m1.s.unseen",
+    "version": "1.0.0",
+    "module": 1,
+    "discipline": "GT",
+    "sequence": "sequential_unobserved",
+    "presentation": "narrative_only",
+    "scale": "ordinal",
+    "actions": {
+      "A": [
+        "a1",
+        "a2"
+      ],
+      "B": [
+        "b1",
+        "b2"
+      ]
+    },
+    "payoffs": {
+      "a1|b1": [
+        "3",
+        "2"
+      ],
+      "a1|b2": [
+        "1",
+        "1"
+      ],
+      "a2|b1": [
+        "0",
+        "1"
+      ],
+      "a2|b2": [
+        "2",
+        "2"
+      ]
+    },
+    "params": {},
+    "constraints": [],
+    "facts": {
+      "strictlyDominant": {
+        "A": null,
+        "B": null
+      },
+      "weaklyDominantOnly": {
+        "A": null,
+        "B": null
+      },
+      "strictlyDominated": {
+        "A": [],
+        "B": []
+      },
+      "bestResponseDependsOnOpponent": {
+        "A": true,
+        "B": true
+      },
+      "iesdsSolution": null,
+      "familyCode": "o"
+    },
+    "notes": "A chooses first; B chooses later WITHOUT seeing A’s choice (same normal form as choosing at once). B wants to end up with A and is indifferent between the two ways of doing so: a genuine tie in B’s ranking."
+  },
+  {
     "id": "m1.s.three",
     "version": "1.0.0",
     "module": 1,
@@ -752,6 +812,181 @@
     "notes": "No player has a strictly better action; removing never-better actions in rounds leaves (a1, b2)."
   },
   {
+    "id": "m3.s.stuck",
+    "version": "1.0.0",
+    "module": 3,
+    "discipline": "GT",
+    "sequence": "simultaneous",
+    "presentation": "matrix",
+    "scale": "ordinal",
+    "actions": {
+      "A": [
+        "a1",
+        "a2",
+        "a3"
+      ],
+      "B": [
+        "b1",
+        "b2",
+        "b3"
+      ]
+    },
+    "payoffs": {
+      "a1|b1": [
+        "3",
+        "3"
+      ],
+      "a1|b2": [
+        "1",
+        "1"
+      ],
+      "a1|b3": [
+        "0",
+        "0"
+      ],
+      "a2|b1": [
+        "1",
+        "1"
+      ],
+      "a2|b2": [
+        "3",
+        "3"
+      ],
+      "a2|b3": [
+        "0",
+        "0"
+      ],
+      "a3|b1": [
+        "0",
+        "2"
+      ],
+      "a3|b2": [
+        "0",
+        "2"
+      ],
+      "a3|b3": [
+        "4",
+        "1"
+      ]
+    },
+    "params": {},
+    "constraints": [],
+    "facts": {
+      "strictlyDominant": {
+        "A": null,
+        "B": null
+      },
+      "weaklyDominantOnly": {
+        "A": null,
+        "B": null
+      },
+      "strictlyDominated": {
+        "A": [],
+        "B": [
+          "b3"
+        ]
+      },
+      "bestResponseDependsOnOpponent": {
+        "A": true,
+        "B": true
+      },
+      "iesdsSolution": null,
+      "familyCode": "o"
+    },
+    "notes": "Contrast: b3 is never better for B; once it is set aside, a3 is never better for A; then nothing more can go. Four outcomes remain, so elimination does not settle the game."
+  },
+  {
+    "id": "m3.s.pledge",
+    "version": "1.0.0",
+    "module": 3,
+    "discipline": "GT",
+    "sequence": "simultaneous",
+    "presentation": "matrix",
+    "scale": "cardinal",
+    "actions": {
+      "A": [
+        "a1",
+        "a2",
+        "a3"
+      ],
+      "B": [
+        "b1",
+        "b2",
+        "b3"
+      ]
+    },
+    "payoffs": {
+      "a1|b1": [
+        "4",
+        "4"
+      ],
+      "a1|b2": [
+        "2",
+        "5"
+      ],
+      "a1|b3": [
+        "0",
+        "6"
+      ],
+      "a2|b1": [
+        "5",
+        "2"
+      ],
+      "a2|b2": [
+        "3",
+        "3"
+      ],
+      "a2|b3": [
+        "1",
+        "4"
+      ],
+      "a3|b1": [
+        "6",
+        "0"
+      ],
+      "a3|b2": [
+        "4",
+        "1"
+      ],
+      "a3|b3": [
+        "2",
+        "2"
+      ]
+    },
+    "params": {},
+    "constraints": [],
+    "facts": {
+      "strictlyDominant": {
+        "A": "a3",
+        "B": "b3"
+      },
+      "weaklyDominantOnly": {
+        "A": null,
+        "B": null
+      },
+      "strictlyDominated": {
+        "A": [
+          "a1",
+          "a2"
+        ],
+        "B": [
+          "b1",
+          "b2"
+        ]
+      },
+      "bestResponseDependsOnOpponent": {
+        "A": false,
+        "B": false
+      },
+      "iesdsSolution": [
+        "a3",
+        "b3"
+      ],
+      "familyCode": "o"
+    },
+    "notes": "Three effort levels (a1/b1 full, a2/b2 half, a3/b3 none): each unit of your effort costs you 1 and gives the other 2. Each player’s a3/b3 beats both alternatives in every case, yet (a1, b1) gives both more than (a3, b3)."
+  },
+  {
     "id": "m3.s.weak",
     "version": "1.0.0",
     "module": 3,
@@ -810,5 +1045,70 @@
       "familyCode": "o"
     },
     "notes": "Edge case: a1 is never worse than a2 and better once (a tie at b1)."
+  },
+  {
+    "id": "m3.s.weakb",
+    "version": "1.0.0",
+    "module": 3,
+    "discipline": "GT",
+    "sequence": "simultaneous",
+    "presentation": "matrix",
+    "scale": "ordinal",
+    "actions": {
+      "A": [
+        "a1",
+        "a2"
+      ],
+      "B": [
+        "b1",
+        "b2"
+      ]
+    },
+    "payoffs": {
+      "a1|b1": [
+        "1",
+        "W"
+      ],
+      "a1|b2": [
+        "3",
+        "W"
+      ],
+      "a2|b1": [
+        "2",
+        "3"
+      ],
+      "a2|b2": [
+        "0",
+        "0"
+      ]
+    },
+    "params": {
+      "W": [
+        1,
+        2
+      ]
+    },
+    "constraints": [],
+    "facts": {
+      "strictlyDominant": {
+        "A": null,
+        "B": null
+      },
+      "weaklyDominantOnly": {
+        "A": null,
+        "B": "b1"
+      },
+      "strictlyDominated": {
+        "A": [],
+        "B": []
+      },
+      "bestResponseDependsOnOpponent": {
+        "A": true,
+        "B": true
+      },
+      "iesdsSolution": null,
+      "familyCode": "o"
+    },
+    "notes": "Second weak-dominance instance, learner as B: b1 ties b2 against a1 (at W) and wins against a2. A’s better choice depends on B."
   }
 ]

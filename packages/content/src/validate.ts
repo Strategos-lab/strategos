@@ -5,7 +5,8 @@ import { allInstances, makeLookup, type Instance, type Lookup } from './instance
 import { leadClause, lintField, MAX_LENGTH, similarity, VERDICT_OPENER, type FieldKind, type LintIssue } from './lint.ts';
 import { hasSlot, render, slotValue } from './render.ts';
 import { keysFor } from './feedback/diagnose.ts';
-import { DOMAINS, STEPS, type ContentBundle, type HeldOutBundle, type Item, type Skin, type Structure } from './types.ts';
+import { ROOMMATE_SLICE } from './slice.ts';
+import { DOMAINS, STEPS, type Claim, type ContentBundle, type HeldOutBundle, type Item, type Skin, type Structure } from './types.ts';
 
 export interface Issue {
   rule: string;
@@ -48,6 +49,7 @@ export function validateStructures(structures: Structure[], issues: Issue[]) {
   for (const s of structures) {
     const w = `structure:${s.id}`;
     req(s as unknown as Record<string, unknown>, ['id', 'version', 'module', 'sequence', 'presentation', 'scale', 'actions', 'payoffs', 'params', 'facts'], w, issues);
+    if (!['simultaneous', 'sequential_observed', 'sequential_unobserved'].includes(s.sequence)) issues.push({ rule: 'schema', where: w, message: `unknown sequence "${String(s.sequence)}"` });
     if (!s.actions || !s.payoffs) continue;
     for (const a of s.actions.A) for (const b of s.actions.B) {
       if (!s.payoffs[`${a}|${b}`]) issues.push({ rule: 'structure', where: w, message: `missing payoff cell ${a}|${b}` });
@@ -361,7 +363,7 @@ export function gatedTexts(b: ContentBundle, extra: GatedText[] = [], hb?: HeldO
 }
 
 /** Validate the practice bundle (and, when given, the held-out set's separation). */
-export function validateContent(b: ContentBundle, opts: { extraTexts?: GatedText[]; heldOut?: HeldOutBundle } = {}): Issue[] {
+export function validateContent(b: ContentBundle, opts: { extraTexts?: GatedText[]; heldOut?: HeldOutBundle; scenarioQuestions?: Record<string, string[]> } = {}): Issue[] {
   const issues: Issue[] = [];
   dupIds(b.concepts, 'concept', issues);
   dupIds(b.structures, 'structure', issues);
@@ -381,6 +383,7 @@ export function validateContent(b: ContentBundle, opts: { extraTexts?: GatedText
   validateItems(b.items, b, look, issues, false);
   validateFeedbackLibrary(b, issues);
   validateTransfer(b, issues);
+  validateScenarioItems(b, opts.scenarioQuestions ?? { [ROOMMATE_SLICE.id]: ROOMMATE_SLICE.questions.map((q) => String(q.id)) }, issues);
   for (const g of checkGating(gatedTexts(b, opts.extraTexts ?? [], opts.heldOut), b.concepts, b.curriculum)) issues.push({ rule: 'gating', ...g });
   if (opts.heldOut) validateHeldOut(b, opts.heldOut, issues);
   return issues;
@@ -491,6 +494,112 @@ export function validateHeldOut(b: ContentBundle, h: HeldOutBundle, issues: Issu
   for (const i of h.items) forms.set(i.heldOutForm ?? '?', (forms.get(i.heldOutForm ?? '?') ?? 0) + 1);
   const counts = ['A', 'B', 'C'].map((f) => forms.get(f) ?? 0);
   if (Math.max(...counts) - Math.min(...counts) > 1) issues.push({ rule: 'held-out', where: 'held-out', message: `parallel forms are unbalanced (${counts.join('/')})` });
+  for (const x of heldOutAnswerShortcuts(h)) issues.push({ rule: 'held-out-answers', where: x.where, message: x.message });
+}
+
+/** The answer an option claim commits to, when it names actions or a profile (null for yes/no-style claims). */
+export function claimAnswer(c: Claim): string | null {
+  switch (c.t) {
+    case 'br': case 'brToBelief': case 'strictDom': case 'weakDomOnly': case 'strictlyDominated':
+      return c.action;
+    case 'iesds':
+      return c.profile.join('|');
+    case 'topOutcome':
+      return c.profile.join('|');
+    case 'brTie':
+      return [...c.actions].sort().join('+');
+    default:
+      return null;
+  }
+}
+
+export interface HeldAnswer { item: string; form: string; group: string; module: string; positions: number[]; answers: (string | null)[] }
+
+/** Engine-evaluated correct option position and answer of every held-out item (all instances, all option sets). */
+export function heldOutAnswers(h: HeldOutBundle): HeldAnswer[] {
+  const look = makeLookup(h);
+  const out: HeldAnswer[] = [];
+  for (const item of h.items) {
+    if (item.type !== 'reason_choice') continue;
+    let insts: Instance[] = [];
+    try { insts = allInstances(item, look); } catch { continue; }
+    const positions: number[] = [];
+    const answers: (string | null)[] = [];
+    for (const inst of insts) for (const set of item.optionSets ?? []) {
+      const ci = set.findIndex((o) => evaluateClaim(o.claim, inst));
+      positions.push(ci);
+      answers.push(ci >= 0 ? claimAnswer(set[ci]!.claim) : null);
+    }
+    out.push({ item: item.id, form: item.heldOutForm ?? '?', group: item.parallelOf ?? item.id, module: item.lesson.split('.')[0]!, positions, answers });
+  }
+  return out;
+}
+
+/**
+ * Held-out answer shortcuts (plan §3.4): across the parallel forms of one practice item, the correct option
+ * must not sit at the same position every time, and where the answer is an action (or profile) it must not be
+ * the same one every time. Within a module, action answers must not all be the same action either.
+ */
+export function heldOutAnswerShortcuts(h: HeldOutBundle): { where: string; message: string }[] {
+  const out: { where: string; message: string }[] = [];
+  const rows = heldOutAnswers(h);
+  const groups = new Map<string, HeldAnswer[]>();
+  for (const r of rows) groups.set(r.group, [...(groups.get(r.group) ?? []), r]);
+  for (const [g, rs] of groups) {
+    if (rs.length < 2) continue;
+    const pos = new Set(rs.flatMap((r) => r.positions));
+    if (pos.size < 2) out.push({ where: `held-out group ${g}`, message: `the correct option is at position ${[...pos][0]} in every form (${rs.map((r) => r.item).join(', ')})` });
+    const ans = rs.flatMap((r) => r.answers).filter((a): a is string => a !== null);
+    if (ans.length === rs.flatMap((r) => r.answers).length && ans.length > 0 && new Set(ans).size < 2) {
+      out.push({ where: `held-out group ${g}`, message: `the same correct answer (${ans[0]}) in every form (${rs.map((r) => r.item).join(', ')})` });
+    }
+  }
+  const mods = new Map<string, string[]>();
+  for (const r of rows) for (const a of r.answers) if (a !== null && !a.includes('|') && !a.includes('+')) mods.set(r.module, [...(mods.get(r.module) ?? []), a]);
+  for (const [m, as] of mods) if (as.length > 1 && new Set(as).size < 2) out.push({ where: `held-out module ${m}`, message: `every action answer is ${as[0]}` });
+  return out;
+}
+
+export interface ModuleCounts { explanation: number; transfer: number; discovery: number; structures: number; substantiveSkins: number; scenarioItems: number }
+
+/**
+ * Plan §10.6 counts per module. Explanation items (all types) = discovery, practice and recognition items plus
+ * slice reasoning questions assigned to a lesson (`scenarioItems`, counted once). Transfer items are counted
+ * separately. Substantive skins exclude purposeful mirrors and transfer-only skins.
+ */
+export function contentCounts(b: ContentBundle): Record<string, ModuleCounts> {
+  const out: Record<string, ModuleCounts> = {};
+  for (const m of b.curriculum.modules) {
+    const items = b.items.filter((i) => i.lesson.startsWith(`${m.id}.`));
+    const practice = items.filter((i) => i.role !== 'transfer');
+    const scenario = new Set(m.lessons.flatMap((l) => l.scenarioItems ?? []));
+    const structures = new Set(b.structures.filter((s) => s.module === m.number).map((s) => s.id));
+    const pskins = new Set(practice.flatMap((i) => i.skins));
+    out[m.id] = {
+      explanation: practice.length + scenario.size,
+      transfer: items.filter((i) => i.role === 'transfer').length,
+      discovery: items.filter((i) => i.role === 'discovery').length,
+      structures: structures.size,
+      substantiveSkins: b.skins.filter((k) => pskins.has(k.id) && !k.mirrorOf && k.structures.some((x) => structures.has(x))).length,
+      scenarioItems: scenario.size,
+    };
+  }
+  return out;
+}
+
+/** Slice questions assigned to lessons must name the lesson's scenario, exist, and be assigned once. */
+export function validateScenarioItems(b: ContentBundle, questionIds: Record<string, string[]>, issues: Issue[]) {
+  const seen = new Set<string>();
+  for (const l of b.curriculum.modules.flatMap((m) => m.lessons)) {
+    for (const ref of l.scenarioItems ?? []) {
+      const [sc, q] = ref.split('#');
+      const w = `lesson:${l.id}`;
+      if (seen.has(ref)) issues.push({ rule: 'scenario-items', where: w, message: `${ref} is counted more than once` });
+      seen.add(ref);
+      if (sc !== l.scenario) issues.push({ rule: 'scenario-items', where: w, message: `${ref} is not from this lesson's scenario` });
+      else if (!questionIds[sc!]?.includes(q ?? '')) issues.push({ rule: 'scenario-items', where: w, message: `${ref} is not a question of ${sc}` });
+    }
+  }
 }
 
 /**
