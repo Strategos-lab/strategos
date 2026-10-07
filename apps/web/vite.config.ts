@@ -16,7 +16,7 @@ export default defineConfig({
         theme_color: '#1a1f2e',
         background_color: '#0f1219',
         display: 'standalone',
-        id: '/strategos/?app=strategos-2',
+        id: '/strategos/',
         start_url: '/strategos/',
         scope: '/strategos/',
         icons: [

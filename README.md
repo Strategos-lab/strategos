@@ -2,7 +2,7 @@
 
 Strategic decision laboratory — a **static, installable PWA** for learning to think strategically. Device-only storage. No accounts, no backend, no AI, no analytics.
 
-**Live (GitHub Pages):** https://Wangden-Bhutia.github.io/strategos/
+**Live (GitHub Pages):** https://strategos-lab.github.io/strategos/
 
 ## Phase status
 
@@ -49,7 +49,7 @@ Within the Phase 0 / V1 shell budget. See CI job summary on each deploy for the 
 
 ### Android (Chrome)
 
-1. Open https://Wangden-Bhutia.github.io/strategos/
+1. Open https://strategos-lab.github.io/strategos/
 2. Browser menu → **Install app** / **Add to Home screen**, or use the install prompt if shown.
 3. Prefer the installed icon for day-to-day use.
 
@@ -59,7 +59,7 @@ Within the Phase 0 / V1 shell budget. See CI job summary on each deploy for the 
 2. Otherwise open **Settings → Apps**, find **STRATEGOS** (a stale copy) and **Uninstall** it. Export learning data first if the installed copy holds any.
 3. Back in Chrome, reload the page and tap **Install STRATEGOS** (in-app button) or Chrome menu ⋮ → **Install app**.
 
-The manifest has a stable `id: "/strategos/?app=strategos-2"` (with `start_url` and `scope` both `/strategos/`), so Chrome identifies this app separately from other `wangden-bhutia.github.io` Pages apps.
+The manifest has a stable `id: "/strategos/"` (with `start_url` and `scope` both `/strategos/`). The app is hosted under the dedicated `Strategos-lab` organisation, so its origin `https://strategos-lab.github.io` is not shared with any other app. Never change the `id` once installed.
 
 To check installability from a desktop: `node apps/web/scripts/check-installability.mjs` (headless Chromium, CDP `Page.getInstallabilityErrors`).
 

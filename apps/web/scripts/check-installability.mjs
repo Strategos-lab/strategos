@@ -2,7 +2,7 @@
 // Usage: node scripts/check-installability.mjs [url]
 import { chromium } from 'playwright';
 
-const url = process.argv[2] ?? 'https://wangden-bhutia.github.io/strategos/';
+const url = process.argv[2] ?? 'https://strategos-lab.github.io/strategos/';
 const browser = await chromium.launch();
 const context = await browser.newContext();
 const page = await context.newPage();

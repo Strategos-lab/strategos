@@ -59,8 +59,8 @@ export function HomePage() {
       <footer className="site-footer">
         <p className="muted small">
           Live at{' '}
-          <a href="https://Wangden-Bhutia.github.io/strategos/">
-            Wangden-Bhutia.github.io/strategos
+          <a href="https://strategos-lab.github.io/strategos/">
+            strategos-lab.github.io/strategos
           </a>
           . Hash routes: <code>#/</code>
         </p>

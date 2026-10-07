@@ -56,7 +56,7 @@ test.describe('Phase 0 install', () => {
     const res = await request.get('./manifest.webmanifest');
     expect(res.ok()).toBe(true);
     const m = await res.json();
-    expect(m.id).toBe('/strategos/?app=strategos-2');
+    expect(m.id).toBe('/strategos/');
     expect(m.start_url).toBe('/strategos/');
     expect(m.scope).toBe('/strategos/');
   });
