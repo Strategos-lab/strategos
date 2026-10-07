@@ -7,9 +7,11 @@
  * in a file listed in MARKER_ALLOWED_FILES is skipped (that is where the prohibited topics are
  * defined). Markers anywhere else, or unbalanced/nested markers, are lint errors.
  * This file and the hygiene tests define the list itself and are the only files not scanned.
+ * (File name ends in hygiene.test.ts so the engine's vocabulary scan skips this list.)
  */
 import { readdirSync, readFileSync, statSync, existsSync } from 'node:fs';
 import { join, relative, sep } from 'node:path';
+import { describe, expect, it } from 'vitest';
 
 export const BANNED_TERMS =
   /\b(police|policing|patrol\w*|crime\w*|criminal\w*|suspects?|arrest\w*|jail\w*|detective\w*|officers?|cops?|enforcement|interrogat\w*|inspect\w*|offenders?|sheriff\w*|warrants?|convict\w*|sentenc\w*|prison(?!er'?s[ _-]dilemma|ers_dilemma)\w*|politic\w*|elections?|investigat\w*)\b/gi;
@@ -22,8 +24,7 @@ export const MARKER_ALLOWED_FILES = ['docs/STRATEGOS_PRODUCTION_RULES.md'];
 
 /** Files that define the banned list itself (not scanned). */
 export const LIST_DEFINITION_FILES = [
-  'apps/web/src/lint/bannedTermsLint.ts',
-  'apps/web/src/lint/__tests__/bannedTermsLint.test.ts',
+  'apps/web/src/lint/banned-terms.hygiene.test.ts',
   'apps/web/src/content/__tests__/content-hygiene.test.ts',
 ];
 
@@ -101,3 +102,70 @@ export function lintRepo(repo: string): LintIssue[] {
     return lintText(file, readFileSync(abs, 'utf8'));
   });
 }
+
+// ---- tests ----
+
+const START = MARKER_START;
+const END = MARKER_END;
+const RULES = 'docs/STRATEGOS_PRODUCTION_RULES.md';
+const TERM = 'police';
+const repo = join(import.meta.dirname, '..', '..', '..', '..');
+
+describe('banned-terms lint', () => {
+  it('(A) catches a prohibited term in ordinary authored content', () => {
+    const issues = lintText('apps/web/src/content/scenarios/fixture.json', `{"situation": "A ${TERM} case."}`);
+    expect(issues.map((i) => i.message)).toEqual([`banned term "${TERM}"`]);
+  });
+
+  it('(B) permits the term inside the designated section of the rules file', () => {
+    const text = `# Rules\n\n${START}\n- No ${TERM} content.\n${END}\n\nOther rules.\n`;
+    expect(lintText(RULES, text)).toEqual([]);
+  });
+
+  it('(C) catches the term elsewhere in the rules file', () => {
+    const text = `# Rules about ${TERM}\n\n${START}\n- No ${TERM} content.\n${END}\n\nMore ${TERM}.\n`;
+    const issues = lintText(RULES, text);
+    expect(issues).toHaveLength(2);
+    expect(issues.map((i) => i.line)).toEqual([1, 7]);
+  });
+
+  it('markers in any other file are an error and exempt nothing', () => {
+    const text = `${START}\nNo ${TERM}.\n${END}\n`;
+    const issues = lintText('docs/other.md', text);
+    expect(issues.filter((i) => i.message.includes('marker not allowed'))).toHaveLength(2);
+    expect(issues.some((i) => i.message.includes('banned term'))).toBe(true);
+  });
+
+  it('unbalanced or nested markers fail and void the exemption', () => {
+    expect(lintText(RULES, `${START}\nNo ${TERM}.\n`).map((i) => i.message)).toEqual([
+      'unclosed banned-terms definition start marker',
+      `banned term "${TERM}"`,
+    ]);
+    expect(lintText(RULES, `${END}\n`).map((i) => i.message)).toEqual(['banned-terms definition end marker without start']);
+    const nested = lintText(RULES, `${START}\n${START}\nNo ${TERM}.\n${END}\n`);
+    expect(nested.map((i) => i.message)).toContain('nested banned-terms definition start marker');
+    expect(nested.map((i) => i.message)).toContain(`banned term "${TERM}"`);
+  });
+
+  it("does not flag the Prisoner's Dilemma", () => {
+    expect(lintText('docs/x.md', "The Prisoner's Dilemma and prisoners_dilemma.")).toEqual([]);
+  });
+
+  it('covers web src (incl. scenarios), engine src, all docs, READMEs and the rules file', () => {
+    const rel = lintTargets(repo).map((f) => f.slice(repo.length + 1).split('\\').join('/'));
+    for (const must of [
+      'apps/web/src/content/scenarios/roommate-kitchen.json',
+      'apps/web/src/pages/SlicePage.tsx',
+      'packages/engine/src/index.ts',
+      'docs/STRATEGOS_PRODUCTION_RULES.md',
+      'docs/phase0.md',
+      'docs/slice-roommate.md',
+      'README.md',
+      'packages/engine/README.md',
+    ]) expect(rel).toContain(must);
+  });
+
+  it('the real repository is clean', () => {
+    expect(lintRepo(repo)).toEqual([]);
+  });
+});
