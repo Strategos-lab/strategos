@@ -11,7 +11,7 @@ Home (`#/`): title + **Start** (install card behaviour unchanged). Then:
 
 | # | Step | What the learner sees / does |
 |---|------|------------------------------|
-| 1 | Encounter | “You are Roommate A.” plus all ten context items in words. **No matrix, no numbers grid.** Continue. |
+| 1 | Encounter | A short story (the situation + “You are Roommate A.”), an at-a-glance block (Players, Choices, Timing, Your task), then five collapsed `<details>` sections (What you each care about, What you control, What B controls, What you know, What the numbers mean; 48 px summaries, keyboard-operable). Story, glance and Continue fit a 390×844 screen without scrolling. **No matrix, no numbers grid.** |
 | 2 | Predict | “What do you predict Roommate B will choose?” — Clean / Leave it (actions only). |
 | 3 | Confidence | Slider 50–100 % in steps of 5 (no scoring text). |
 | 4 | Decide | “What will you choose?” — Clean / Leave it. One tap locks in. Back is available on steps 2–4 only. |
@@ -36,6 +36,17 @@ fails if any field is missing or blank.
 Payoffs (A, B): Clean/Clean 3,3 · Clean/Leave 0,5 · Leave/Clean 5,0 · Leave/Leave 1,1, on a 0–5
 scale (“how good each outcome is for that person; higher is better; only the order and size within
 this situation matter; not money”).
+
+### No answers before the reasoning step
+
+The encounter describes motivations qualitatively (“You both want a clean kitchen. Cleaning takes
+effort and nobody enjoys it. Cleaning while the other relaxes and still enjoys the clean kitchen
+feels unfair. Roommate B has the same kinds of feelings.”) with no ranked list, so the learner has
+to infer the ordering and later read the exact values in the table. A content test bans ranking
+words (best, worst, next best, better, prefer…, regardless, either way, whatever …) in all copy
+shown before step 8 (encounter items, prompts, outcome stories, matrix notes). The layout of the ten
+items (story / glance / details) is fixed in `CONTEXT_FIELDS`, so every scenario gets the same
+structure and the validator still requires all ten.
 
 ## Engine is the single source of truth
 

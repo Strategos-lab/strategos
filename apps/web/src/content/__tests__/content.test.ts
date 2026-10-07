@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { CONTEXT_FIELDS, RAW_SCENARIOS, SCENARIOS, validateScenario } from '..';
+import { CONTEXT_FIELDS, RAW_SCENARIOS, SCENARIOS, contextFieldsAt, validateScenario, type Scenario } from '..';
 
 const clone = <T,>(x: T): T => JSON.parse(JSON.stringify(x)) as T;
 type Mutable = Record<string, unknown> & { context: Record<string, unknown> };
@@ -74,8 +74,66 @@ describe('scenario content validation', () => {
       [['5', '0'], ['1', '1']],
     ]);
     expect(s.opponentPolicy.probabilities).toEqual({ clean: '3/10', leave: '7/10' });
-    expect(s.context.knownUnknown).toMatch(/don’t know what B will do/);
+    expect(s.context.knownUnknown).toMatch(/don’t know what B will choose/);
+    expect(s.context.knownUnknown).toMatch(/understand what is at stake for each other/);
     expect(s.context.payoffMeaning).toMatch(/0–5 scale/);
     expect(s.context.payoffMeaning).toMatch(/not money/);
+  });
+});
+
+describe('encounter layout and wording', () => {
+  it('places all ten items: story (1), at-a-glance (4), collapsed details (5)', () => {
+    expect(contextFieldsAt('story').map((f) => f.key)).toEqual(['situation']);
+    expect(contextFieldsAt('glance').map((f) => f.key)).toEqual(['players', 'choices', 'timing', 'task']);
+    expect(contextFieldsAt('details').map((f) => f.key)).toEqual([
+      'preferences',
+      'learnerControls',
+      'opponentControls',
+      'knownUnknown',
+      'payoffMeaning',
+    ]);
+    const placed = [...contextFieldsAt('story'), ...contextFieldsAt('glance'), ...contextFieldsAt('details')];
+    expect(new Set(placed.map((f) => f.key)).size).toBe(CONTEXT_FIELDS.length);
+    for (const f of CONTEXT_FIELDS) expect(f.shortLabel.length).toBeLessThanOrEqual(28);
+  });
+
+  // Small authored ban list: copy shown before the reasoning questions must not rank outcomes or
+  // say one action is better regardless; the learner infers that from motivations and the table.
+  const RANKING_WORDS = /\b(best|worst|next best|better|worse|prefer\w*|most|least|ideal|optimal|rather|regardless|either way|whatever)\b/i;
+
+  const preRevealCopy = (s: Scenario): [string, string][] => [
+    ['roleStatement', s.roleStatement],
+    ...CONTEXT_FIELDS.map(({ key }) => [`context.${key}`, s.context[key]] as [string, string]),
+    ...Object.entries(s.prompts).map(([k, v]) => [`prompts.${k}`, v] as [string, string]),
+    ...Object.entries(s.outcomes).map(([k, v]) => [`outcomes.${k}`, v] as [string, string]),
+    ['matrix.intro', s.matrix.intro],
+    ...s.matrix.howToRead.map((t, i) => [`matrix.howToRead.${i}`, t] as [string, string]),
+  ];
+
+  it('the ban list catches the old ranked wording', () => {
+    expect('Best for you: B cleans and you don’t. Next best: you both clean.').toMatch(RANKING_WORDS);
+    expect('Worst: you clean alone.').toMatch(RANKING_WORDS);
+  });
+
+  for (const s of SCENARIOS) {
+    it(`${s.id}: encounter and pre-reasoning copy contains no ranking words`, () => {
+      for (const [path, text] of preRevealCopy(s)) expect(text, path).not.toMatch(RANKING_WORDS);
+    });
+  }
+
+  it('roommate motivations are qualitative and consistent with the payoffs', () => {
+    const s = SCENARIOS.find((x) => x.id === 'roommate-kitchen')!;
+    const p = s.context.preferences;
+    expect(p).toMatch(/clean kitchen/);
+    expect(p).toMatch(/effort/);
+    expect(p).toMatch(/unfair/);
+    expect(p).toMatch(/same kinds of feelings/);
+    // "Cleaning while the other relaxes feels unfair" must match the lone cleaner's lowest number.
+    const lone = s.game.payoffs[0]![1]![0]!; // A cleans, B leaves it
+    const all = s.game.payoffs.flat().map((c) => Number(c[0]));
+    expect(Number(lone)).toBe(Math.min(...all));
+    // "Both want a clean kitchen": both cleaning beats both leaving it, for each person.
+    expect(Number(s.game.payoffs[0]![0]![0])).toBeGreaterThan(Number(s.game.payoffs[1]![1]![0]));
+    expect(Number(s.game.payoffs[0]![0]![1])).toBeGreaterThan(Number(s.game.payoffs[1]![1]![1]));
   });
 });

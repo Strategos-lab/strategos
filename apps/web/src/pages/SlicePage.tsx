@@ -1,6 +1,6 @@
 import { useEffect, useMemo, useReducer, useRef, useState, type ReactNode, type RefObject } from 'react';
 import { Link, useSearchParams } from 'react-router-dom';
-import { FIRST_SCENARIO, CONTEXT_FIELDS, type Scenario } from '../content';
+import { FIRST_SCENARIO, contextFieldsAt, type Scenario } from '../content';
 import { InstallCard } from '../components/InstallCard';
 import { ConfidenceControl } from '../components/ConfidenceControl';
 import { PayoffMatrix } from '../components/PayoffMatrix';
@@ -189,17 +189,32 @@ function StepBody({ scenario: s, state, dispatch, headingRef, restartSeed }: Ste
     case 'encounter':
       return (
         <Card step="encounter" title="The situation" headingRef={headingRef}>
-          <p className="role-statement" data-testid="role-statement">
-            {s.roleStatement}
-          </p>
-          <dl className="context-list">
-            {CONTEXT_FIELDS.map(({ key, label }) => (
-              <div key={key} className="context-item" data-testid={`context-${key}`}>
-                <dt>{label}</dt>
+          <div className="story">
+            {contextFieldsAt('story').map(({ key }) => (
+              <p key={key} data-testid={`context-${key}`}>
+                {s.context[key]}
+              </p>
+            ))}
+            <p className="role-statement" data-testid="role-statement">
+              {s.roleStatement}
+            </p>
+          </div>
+          <dl className="glance" aria-label="At a glance" data-testid="glance">
+            {contextFieldsAt('glance').map(({ key, shortLabel }) => (
+              <div key={key} className="glance-row" data-testid={`context-${key}`}>
+                <dt>{shortLabel}</dt>
                 <dd>{s.context[key]}</dd>
               </div>
             ))}
           </dl>
+          <div className="context-details">
+            {contextFieldsAt('details').map(({ key, shortLabel }) => (
+              <details key={key} className="disclosure" data-testid={`context-${key}`}>
+                <summary>{shortLabel}</summary>
+                <p>{s.context[key]}</p>
+              </details>
+            ))}
+          </div>
           <div className="btn-row step-actions">
             <ContinueButton onClick={() => dispatch({ type: 'CONTINUE' })} />
           </div>

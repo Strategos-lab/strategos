@@ -25,10 +25,42 @@ test.describe('Learner slice: the shared kitchen', () => {
     await page.getByRole('button', { name: 'Start' }).click();
     await expectFocusedHeading(page, 'The situation');
     await expect(page.getByTestId('role-statement')).toHaveText('You are Roommate A.');
-    await expect(page.locator('.context-item')).toHaveCount(10);
+    await expect(page.locator('[data-testid^="context-"]')).toHaveCount(10);
     await expect(page.locator('table')).toHaveCount(0);
     await expect(page.getByTestId('payoff-matrix')).toHaveCount(0);
     await expectLearnerClean(page);
+  });
+
+  test('encounter: story + at-a-glance + Continue fit a 390×844 screen; details collapsed and expandable', async ({ page }) => {
+    await page.setViewportSize({ width: 390, height: 844 });
+    await page.goto('./#/');
+    await page.getByRole('button', { name: 'Start' }).click();
+    await expectFocusedHeading(page, 'The situation');
+    await expect(page.getByTestId('context-situation')).toBeInViewport({ ratio: 1 });
+    await expect(page.getByTestId('role-statement')).toBeInViewport({ ratio: 1 });
+    await expect(page.getByTestId('glance')).toBeInViewport({ ratio: 1 });
+    await expect(page.getByRole('button', { name: 'Continue' })).toBeInViewport({ ratio: 1 });
+
+    const details = page.locator('details.disclosure');
+    await expect(details).toHaveCount(5);
+    for (const d of await details.all()) {
+      await expect(d).not.toHaveAttribute('open', /.*/);
+      const box = await d.locator('summary').boundingBox();
+      expect(box!.height).toBeGreaterThanOrEqual(48);
+    }
+    const prefs = page.getByTestId('context-preferences');
+    await expect(prefs.locator('p')).toBeHidden();
+    await prefs.getByText('What you each care about').click();
+    await expect(prefs).toHaveAttribute('open', '');
+    await expect(prefs.locator('p')).toBeVisible();
+    await expect(prefs.locator('p')).toContainText('feels unfair');
+    await expect(prefs.locator('p')).not.toContainText(/best|worst/i);
+    // Keyboard: focus a summary and toggle it with Enter.
+    const known = page.getByTestId('context-knownUnknown');
+    await known.locator('summary').focus();
+    await page.keyboard.press('Enter');
+    await expect(known).toHaveAttribute('open', '');
+    await expect(known.locator('p')).toContainText('don’t know what B will choose');
   });
 
   test('walks the full slice (seed 3: B leaves it) and saves the attempt', async ({ page }) => {

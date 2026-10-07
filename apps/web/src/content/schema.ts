@@ -7,19 +7,26 @@
  */
 import { Rational, validateGame, type NormalGame } from '@strategos/engine';
 
-/** The ten context items every scenario must state before the learner commits to anything. */
+/**
+ * The ten context items every scenario must state before the learner commits to anything.
+ * `placement` fixes the encounter layout for every scenario: the situation opens as a short story,
+ * four items form an at-a-glance block, the rest sit in collapsed disclosure sections.
+ */
 export const CONTEXT_FIELDS = [
-  { key: 'situation', label: 'What is happening' },
-  { key: 'players', label: 'Who is involved' },
-  { key: 'preferences', label: 'What each person cares about' },
-  { key: 'choices', label: 'Choices available' },
-  { key: 'learnerControls', label: 'What you control' },
-  { key: 'opponentControls', label: 'What the other person controls' },
-  { key: 'knownUnknown', label: 'What you know and don’t know' },
-  { key: 'timing', label: 'Timing' },
-  { key: 'payoffMeaning', label: 'What the numbers mean' },
-  { key: 'task', label: 'What you are asked to do' },
+  { key: 'situation', label: 'What is happening', shortLabel: 'Story', placement: 'story' },
+  { key: 'players', label: 'Who is involved', shortLabel: 'Players', placement: 'glance' },
+  { key: 'preferences', label: 'What each person cares about', shortLabel: 'What you each care about', placement: 'details' },
+  { key: 'choices', label: 'Choices available', shortLabel: 'Choices', placement: 'glance' },
+  { key: 'learnerControls', label: 'What you control', shortLabel: 'What you control', placement: 'details' },
+  { key: 'opponentControls', label: 'What the other person controls', shortLabel: 'What B controls', placement: 'details' },
+  { key: 'knownUnknown', label: 'What you know and don’t know', shortLabel: 'What you know', placement: 'details' },
+  { key: 'timing', label: 'Timing', shortLabel: 'Timing', placement: 'glance' },
+  { key: 'payoffMeaning', label: 'What the numbers mean', shortLabel: 'What the numbers mean', placement: 'details' },
+  { key: 'task', label: 'What you are asked to do', shortLabel: 'Your task', placement: 'glance' },
 ] as const;
+
+export type ContextPlacement = (typeof CONTEXT_FIELDS)[number]['placement'];
+export const contextFieldsAt = (placement: ContextPlacement) => CONTEXT_FIELDS.filter((f) => f.placement === placement);
 
 export type ContextKey = (typeof CONTEXT_FIELDS)[number]['key'];
 export type ScenarioContext = Record<ContextKey, string>;

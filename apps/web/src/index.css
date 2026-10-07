@@ -700,3 +700,94 @@ code {
 .payoff-matrix.read-only {
   table-layout: fixed;
 }
+
+/* Encounter: story + at-a-glance + collapsed details */
+.story {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+}
+
+.story p {
+  font-size: 1rem;
+}
+
+.glance {
+  margin: 0;
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 0.3rem 0.75rem;
+  padding: 0.6rem 0.75rem;
+  background: var(--surface-2);
+  border-radius: 8px;
+  font-size: 0.9rem;
+}
+
+.glance-row {
+  display: contents;
+}
+
+.glance dt {
+  color: var(--muted);
+  font-size: 0.72rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  padding-top: 0.2rem;
+}
+
+.glance dd {
+  margin: 0;
+}
+
+.context-details {
+  display: flex;
+  flex-direction: column;
+  border-top: 1px solid var(--border);
+}
+
+.disclosure {
+  border-bottom: 1px solid var(--border);
+}
+
+.disclosure summary {
+  min-height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem;
+  cursor: pointer;
+  list-style: none;
+  font-size: 0.95rem;
+  padding: 0 0.15rem;
+}
+
+.disclosure summary::-webkit-details-marker {
+  display: none;
+}
+
+.disclosure summary::after {
+  content: '+';
+  font-family: var(--mono);
+  color: var(--accent);
+  font-size: 1.1rem;
+}
+
+.disclosure[open] summary::after {
+  content: '\2212';
+}
+
+.disclosure summary:focus-visible {
+  outline: 2px solid var(--focus);
+  outline-offset: 2px;
+}
+
+.disclosure p {
+  margin: 0 0 0.75rem;
+  font-size: 0.92rem;
+  color: #c2bdb4;
+}
+
+.home.flow {
+  gap: 1rem;
+  padding-top: 0.75rem;
+}
