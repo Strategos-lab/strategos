@@ -54,9 +54,15 @@ Browser storage (IndexedDB, Cache Storage, localStorage) is keyed by **origin** 
 
 ## Android install troubleshooting
 
-- Manifest `id` is `/strategos/`; `start_url` and `scope` are `/strategos/`. Orientation lock removed (not needed).
+- Manifest `id` is `/strategos/?app=strategos-2`; `start_url` and `scope` are `/strategos/`. Orientation lock removed (not needed).
 - In-app **Install STRATEGOS** button appears when Chrome fires `beforeinstallprompt`. It is hidden when running standalone (a “Running as installed app” note shows instead) and after `appinstalled`.
 - “Already installed” with no icon: check the app drawer; otherwise uninstall the stale STRATEGOS from Settings → Apps and reinstall from Chrome.
+
+### Manifest id: do not change it again
+
+Chrome kept a stale installed-app record for the original id (`https://wangden-bhutia.github.io/strategos/`). On Android this showed "This app is already installed", but no app existed in the app drawer or Settings → Apps. The id was therefore changed to `/strategos/?app=strategos-2`, an id Chrome had never seen. `start_url` and `scope` stay `/strategos/`. The id is only an identity key: it is never fetched and does not affect the service-worker precache or `navigateFallback`.
+
+**Once the app is installed, never change the manifest `id` again.** Changing it makes Chrome treat the app as a different app, so existing installs become orphaned. The only exception is if this stale-record problem happens again; in that case move to a new id (for example `?app=strategos-3`) and record it here.
 
 ## Demo content note
 
