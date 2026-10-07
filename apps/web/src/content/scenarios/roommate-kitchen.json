@@ -1,19 +1,19 @@
 {
   "id": "roommate-kitchen",
-  "contentVersion": "1.1.0",
+  "contentVersion": "1.2.0",
   "title": "The shared kitchen",
   "roleStatement": "You are Roommate A.",
   "context": {
-    "situation": "You share a flat with another person. The kitchen needs cleaning. Both of you independently decide whether to Clean or Leave it.",
-    "players": "You (Roommate A) and Roommate B.",
+    "situation": "You share a flat with Roommate B. The kitchen needs cleaning. You both decide whether to clean it or leave it.",
+    "players": "You and Roommate B.",
     "preferences": "You both want a clean kitchen. Cleaning takes effort and nobody enjoys it. Cleaning while the other relaxes and still enjoys the clean kitchen feels unfair. Roommate B has the same kinds of feelings.",
-    "choices": "Clean or Leave it (same for both).",
+    "choices": "Clean or Leave it.",
     "learnerControls": "Only your own choice: Clean or Leave it.",
     "opponentControls": "Only B’s own choice. Neither of you can force the other.",
-    "knownUnknown": "You both understand what is at stake for each other. You don’t know what B will choose; B is deciding at the same time and cares about the same kind of things you do.",
-    "timing": "At the same time. Neither sees the other’s choice.",
-    "payoffMeaning": "Each outcome gets a number for each person: how good it is for that person on a 0–5 scale. A higher number means that person is happier with the outcome. Only the order and size within this situation matter; the numbers are not money.",
-    "task": "Predict what B will choose, then make your own choice."
+    "knownUnknown": "You both understand what is at stake for each other. You don’t know what B will choose.",
+    "timing": "You choose at the same time. Neither sees the other’s choice.",
+    "payoffMeaning": "Each outcome gets a number for each person on a 0–5 scale. A higher number means that person is happier with the outcome. Only the order and size within this situation matter; the numbers are not money.",
+    "task": "Predict B’s choice, then make your own."
   },
   "timingKind": "simultaneous",
   "game": {
@@ -82,27 +82,27 @@
       "leave": "7/10"
     },
     "rngStream": 1,
-    "description": "Roommate B’s choice was drawn by a fixed rule written into this exercise: Leave it 7 times in 10, Clean 3 times in 10. Each attempt has its own seed, so a draw can be replayed exactly. Your decision is never graded on this draw.",
-    "rationale": "B mostly leaves it (Leave it is better for B whatever A does) but sometimes cleans, as real people often do. The mix makes both outcomes in B’s column appear across attempts, so the learner meets the difference between a good decision and a lucky or unlucky outcome. It is consistent with what A is told: A does not know B’s choice; B decides at the same time and cares about the same kind of things."
+    "description": "B’s behaviour in this exercise was fixed: 70% Leave it, 30% Clean. That behaviour is separate from the payoff structure of the game.",
+    "rationale": "B mostly leaves it (Leave it gives B a higher payoff whatever A does) but sometimes cleans, as people often do. The mix makes both of B’s columns appear across attempts, so the learner meets the difference between a good decision and a lucky or unlucky outcome. It matches what A is told: A does not know B’s choice. The mix is an authored exercise rule, not a prediction about what theory says players will do."
   },
   "prompts": {
-    "predict": "What do you predict Roommate B will choose?",
-    "confidence": "How confident are you that Roommate B will choose {prediction}?",
+    "predict": "What will B choose?",
+    "confidence": "How sure are you?",
     "decide": "What will you choose?",
-    "decideNote": "Roommate B is deciding at the same time and won’t see your choice. Your choice locks in: you can’t change it afterwards."
+    "decideNote": "B is choosing at the same time and won’t see your choice."
   },
   "outcomes": {
-    "clean|clean": "You both cleaned. The work was shared and the kitchen is spotless. A fair, decent result for each of you.",
-    "clean|leave": "You cleaned while B left it. The kitchen is clean, but you did all the work and B enjoyed it for free.",
-    "leave|clean": "You left it and B cleaned. You get a clean kitchen without lifting a finger; B did all the work.",
-    "leave|leave": "You both left it. Nobody did any work, and the kitchen stays a mess for both of you."
+    "clean|clean": "You both cleaned. The work was shared, and the kitchen is clean.",
+    "clean|leave": "You cleaned. B didn’t. The kitchen is clean, but you did all the work.",
+    "leave|clean": "B cleaned. You didn’t. The kitchen is clean, but B did all the work.",
+    "leave|leave": "Neither of you cleaned. The kitchen stays messy."
   },
   "matrix": {
-    "intro": "Here is the whole situation as a table of every possible combination. It is a model of the story you just played.",
+    "intro": "Here is the whole game as a table.",
     "howToRead": [
-      "Each cell is one combination of both choices.",
-      "In each cell the first number is yours (Roommate A) and the second is Roommate B’s.",
-      "You chose a row. B chose a column. Together they landed in the highlighted cell."
+      "Each cell shows one possible combination of choices.",
+      "First number = your payoff. Second number = B’s payoff.",
+      "Your choice is the row. B’s choice is the column."
     ]
   },
   "questions": [
@@ -110,31 +110,32 @@
       "id": "if-b-cleans",
       "kind": "best-reply",
       "opponentAction": "clean",
-      "prompt": "If Roommate B chooses Clean, which is better for you?"
+      "prompt": "If B chooses Clean, which is better for you?"
     },
     {
       "id": "if-b-leaves",
       "kind": "best-reply",
       "opponentAction": "leave",
-      "prompt": "If Roommate B chooses Leave it, which is better for you?"
+      "prompt": "If B chooses Leave it, which is better for you?"
     },
     {
       "id": "either-way",
       "kind": "dominant-action",
-      "prompt": "Is there one action that gives you more whatever Roommate B does?",
-      "noneLabel": "No, it depends"
+      "prompt": "Looking at both comparisons, what pattern do you see?",
+      "noneLabel": "It depends on what B chooses.",
+      "alwaysLabel": "{action} is always better."
     }
   ],
   "feedback": {
     "rankedItem": "{action} gives you {payoff}",
-    "line": "If Roommate B chooses {opponentAction}: {ranked}.",
-    "bestReplyCorrect": "Yes. {lines}",
-    "bestReplyIncorrect": "Not quite. {lines} So {best} is better for you.",
+    "line": "{ranked}.",
+    "bestReplyCorrect": "{lines} Because B chose {opponentAction}, {best} is your best response. A best response is the action that gives you the higher payoff against what the other player chose.",
+    "bestReplyIncorrect": "{lines} Because B chose {opponentAction}, {best} is your best response. A best response is the action that gives you the higher payoff against what the other player chose.",
     "bestReplyTie": "{lines} Both are equally good for you here.",
-    "dominantCorrect": "Yes. {lines} {dominant} gives you more whatever B does.",
-    "dominantIncorrect": "Not quite. {lines} {dominant} gives you more whatever B does.",
-    "noneCorrect": "Right. {lines} Which is better depends on what B does.",
-    "noneIncorrect": "Not quite. {lines} No single action is better whatever B does; it depends on B."
+    "dominantCorrect": "{lines} {dominant} is a dominant strategy. A dominant strategy gives you a higher payoff no matter what the other player does.",
+    "dominantIncorrect": "{lines} {dominant} is a dominant strategy. A dominant strategy gives you a higher payoff no matter what the other player does.",
+    "noneCorrect": "{lines} Which is better depends on what B does.",
+    "noneIncorrect": "{lines} No single action is better whatever B does; it depends on B."
   },
-  "closingNote": "{dominant} is better for you either way, and the same holds for B. Yet if both of you reason this way, you each get {mutualYou} instead of {betterYou}."
+  "closingNote": "{dominant} gives each player a higher payoff whatever the other player does. If both choose {dominant}, both get {mutualYou}. If both choose Clean, both get {betterYou}. So each player’s individually better action leads to a result that is worse for both."
 }

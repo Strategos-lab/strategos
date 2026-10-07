@@ -7,7 +7,6 @@ import { PayoffMatrix } from '../components/PayoffMatrix';
 import {
   closingNote,
   decisionConsistency,
-  dominantAction,
   fillTemplate,
   freshSeed,
   learnerActions,
@@ -312,8 +311,12 @@ function StepBody({ scenario: s, state, dispatch, headingRef, restartSeed }: Ste
       return (
         <StepView step="confidence" title={fillTemplate(s.prompts.confidence, { prediction: predicted })} variant="question" headingRef={headingRef}>
           <div className="prediction-recap" aria-hidden="true">
-            <span className="label">{B}</span>
-            <span className="recap-value">{predicted}</span>
+            <span className="recap-compact">
+              B <span className="recap-arrow" aria-hidden="true">
+                →
+              </span>{' '}
+              <span className="recap-value">{predicted}</span>
+            </span>
           </div>
           <ConfidenceControl
             value={state.confidence}
@@ -321,7 +324,7 @@ function StepBody({ scenario: s, state, dispatch, headingRef, restartSeed }: Ste
             min={CONFIDENCE_MIN}
             max={CONFIDENCE_MAX}
             step={CONFIDENCE_STEP}
-            label={`Confidence that ${B} chooses ${predicted}`}
+            label={`How sure you are that B chooses ${predicted}`}
             variant="hero"
           />
           <Actions>
@@ -418,10 +421,6 @@ function StepBody({ scenario: s, state, dispatch, headingRef, restartSeed }: Ste
               <li key={t}>{t}</li>
             ))}
           </ul>
-          <p className="meta" data-testid="matrix-landing">
-            You chose the row “{own[i]!.label}”. {B} chose the column “{opp[j]!.label}”. Together: ({state.outcome!.payoffs[0]},{' '}
-            {state.outcome!.payoffs[1]}).
-          </p>
           <Actions>
             <ContinueButton onClick={() => dispatch({ type: 'CONTINUE' })} />
           </Actions>
@@ -483,11 +482,10 @@ function ExplainStep({ scenario: s, state, dispatch, headingRef }: StepProps) {
                 {parts.hasMore ? (
                   <details className="why">
                     <summary>Why</summary>
-                    <p>{parts.full}</p>
+                    <p>{parts.why}</p>
                   </details>
-                ) : (
-                  <span className="sr-only">{parts.full}</span>
-                )}
+                ) : null}
+                <span className="sr-only">{parts.full}</span>
               </div>
             ) : null}
           </section>
@@ -513,8 +511,6 @@ function SummaryStep({ scenario: s, state, dispatch, headingRef, restartSeed }: 
   const actual = opp[state.opponentAction!]!.label;
   const chosen = own[state.choice!]!.label;
   const consistency = decisionConsistency(s, state.prediction!, state.confidence, state.choice!);
-  const bestToPrediction = consistency.best.map((i) => own[i]!.label).join(' / ');
-  const dom = dominantAction(s);
   const [you, them] = state.outcome!.payoffs;
   return (
     <StepView step="summary" title="Summary" variant="label" headingRef={headingRef}>
@@ -523,10 +519,10 @@ function SummaryStep({ scenario: s, state, dispatch, headingRef, restartSeed }: 
           Your run
         </h3>
         <dl className="run" data-testid="run">
-          <div className="run-row">
+          <div className="run-row" data-testid="summary-prediction">
             <dt>Prediction</dt>
             <dd>
-              {predicted} <span className="mono-dim">· {state.confidence}%</span>
+              {predicted} <span className="mono-dim">· {state.confidence}% confident</span>
             </dd>
           </div>
           <div className="run-row">
@@ -541,22 +537,17 @@ function SummaryStep({ scenario: s, state, dispatch, headingRef, restartSeed }: 
           </div>
           <div className="run-row">
             <dt>Decision quality</dt>
-            <dd className="emph">{consistency.consistent ? 'Best reply to your prediction' : 'Not the best reply to your prediction'}</dd>
+            <dd className="emph" data-testid="summary-decision-quality">
+              {consistency.consistent ? 'Best response to your prediction' : 'Not the best response to your prediction'}
+            </dd>
           </div>
           <div className="run-row">
             <dt>Outcome</dt>
-            <dd className="mono">
-              {you} <span className="dim">·</span> <span className="dim">{them}</span>
+            <dd className="mono" data-testid="summary-outcome-pair">
+              {you} for you <span className="dim">·</span> {them} for B
             </dd>
           </div>
         </dl>
-        <details className="disclosure disclosure-quiet">
-          <summary>Your prediction in words</summary>
-          <p data-testid="summary-prediction">
-            You predicted {B} would choose <strong>{predicted}</strong>, with {state.confidence}% confidence. {B} actually chose{' '}
-            <strong>{actual}</strong>.
-          </p>
-        </details>
       </section>
 
       <hr className="rule" />
@@ -567,27 +558,16 @@ function SummaryStep({ scenario: s, state, dispatch, headingRef, restartSeed }: 
         </h3>
         <div className="notice">
           <div className="notice-item" data-testid="summary-decision">
-            <p className="notice-head">Decision: judged on what you knew</p>
-            <p>
-              You chose <strong>{chosen}</strong>.{' '}
-              {consistency.consistent
-                ? `That was the best reply to your own prediction.`
-                : `That was not the best reply to your own prediction: given what you predicted, ${bestToPrediction} would have served you better.`}
-              {dom !== null ? ` (${own[dom]!.label} gives you more whatever ${B} does.)` : null}
-            </p>
+            <p className="notice-head">Decision</p>
+            <p>Your decision is judged using what you knew before B chose.</p>
           </div>
           <div className="notice-item" data-testid="summary-outcome">
-            <p className="notice-head">Outcome: what actually happened</p>
-            <p>
-              You got <strong>{you}</strong>; {B} got <strong>{them}</strong>. Outcome: ({you}, {them}). This part also depended on {B}’s draw,
-              which is luck from your point of view. It does not change the judgement of your decision above.
-            </p>
+            <p className="notice-head">Outcome</p>
+            <p>The result also depended on what B actually chose.</p>
           </div>
           <div className="notice-item" data-testid="summary-policy">
-            <p className="notice-head">How {B} decided</p>
-            <p className="dim">
-              {s.opponentPolicy.description} <span className="mono-dim">Seed {state.seed}.</span>
-            </p>
+            <p className="notice-head">How B decided</p>
+            <p className="dim">{s.opponentPolicy.description}</p>
           </div>
         </div>
       </section>

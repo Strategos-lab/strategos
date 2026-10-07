@@ -10,6 +10,7 @@ import {
   questionFeedback,
   questionOptions,
 } from '../engineFacts';
+import { feedbackParts } from '../../ui/feedbackParts';
 
 const ids = S.game.players[0]!.actions.map((a) => a.id);
 const q = (id: string) => S.questions.find((x) => x.id === id)!;
@@ -26,32 +27,39 @@ describe('structured questions are engine-checked', () => {
     expect(correctOptions(S, q('if-b-leaves'))).toEqual(['leave']);
   });
 
-  it('feedback quotes all four payoff comparisons with engine values', () => {
+  it('feedback is evidence-first with engine payoff comparisons', () => {
     const table = bestResponseTable(S.game, 0);
-    // If B cleans: Leave it 5 vs Clean 3; if B leaves it: Leave it 1 vs Clean 0.
     expect(table[0]!.payoffs.map(String)).toEqual(['3', '5']);
     expect(table[1]!.payoffs.map(String)).toEqual(['0', '1']);
-    expect(comparisonLine(S, 0)).toBe('If Roommate B chooses Clean: Leave it gives you 5, Clean gives you 3.');
-    expect(comparisonLine(S, 1)).toBe('If Roommate B chooses Leave it: Leave it gives you 1, Clean gives you 0.');
+    expect(comparisonLine(S, 0)).toBe('Leave it gives you 5; Clean gives you 3.');
+    expect(comparisonLine(S, 1)).toBe('Leave it gives you 1; Clean gives you 0.');
     const right = questionFeedback(S, q('if-b-cleans'), 'leave');
     expect(right.correct).toBe(true);
-    expect(right.text).toContain('Leave it gives you 5, Clean gives you 3');
+    expect(right.text).not.toMatch(/^(Yes|Right|Correct|Not quite)\b/i);
+    const parts = feedbackParts(right.text);
+    expect(parts.headline).toBe('Leave it gives you 5; Clean gives you 3.');
+    expect(parts.why).toMatch(/best response/);
     const wrong = questionFeedback(S, q('if-b-leaves'), 'clean');
     expect(wrong.correct).toBe(false);
-    expect(wrong.text).toContain('Leave it gives you 1, Clean gives you 0');
-    expect(wrong.text).toContain('So Leave it is better for you.');
+    expect(feedbackParts(wrong.text).headline).toBe('Leave it gives you 1; Clean gives you 0.');
   });
 
-  it('the "whatever B does" answer matches engine dominance', () => {
+  it('Q3 options and dominant-strategy feedback match the engine', () => {
     const d = dominance(S.game, 0).strictlyDominantAction;
     expect(d).toBe(1);
     expect(correctOptions(S, q('either-way'))).toEqual([ids[d!]]);
-    expect(questionOptions(S, q('either-way')).map((o) => o.label)).toEqual(['Clean', 'Leave it', 'No, it depends']);
+    expect(questionOptions(S, q('either-way')).map((o) => o.label)).toEqual([
+      'Clean is always better.',
+      'Leave it is always better.',
+      'It depends on what B chooses.',
+    ]);
     const fb = questionFeedback(S, q('either-way'), NONE_OPTION);
     expect(fb.correct).toBe(false);
-    expect(fb.text).toContain('Leave it gives you more whatever B does');
-    expect(fb.text).toContain('Leave it gives you 5, Clean gives you 3');
-    expect(fb.text).toContain('Leave it gives you 1, Clean gives you 0');
+    expect(fb.text).toContain('Leave it is a dominant strategy');
+    expect(fb.text).toContain('higher payoff no matter what the other player does');
+    expect(fb.text).toContain('Leave it gives you 5; Clean gives you 3');
+    expect(fb.text).toContain('Leave it gives you 1; Clean gives you 0');
+    expect(fb.text).not.toMatch(/nash|equilibri|dilemma/i);
   });
 
   it('every template is fully populated (no leftover placeholders)', () => {
@@ -61,12 +69,11 @@ describe('structured questions are engine-checked', () => {
       }
     }
     expect(closingNote(S)).toBe(
-      'Leave it is better for you either way, and the same holds for B. Yet if both of you reason this way, you each get 1 instead of 3.',
+      'Leave it gives each player a higher payoff whatever the other player does. If both choose Leave it, both get 1. If both choose Clean, both get 3. So each player’s individually better action leads to a result that is worse for both.',
     );
   });
 
   it('answers follow the engine when the payoffs change (nothing hard-coded)', () => {
-    // A coordination-style variant: no dominant action, best reply depends on B.
     const coord: Scenario = { ...S, game: { ...S.game, payoffs: [[['4', '4'], ['0', '3']], [['3', '0'], ['2', '2']]] } };
     expect(correctOptions(coord, q('if-b-cleans'))).toEqual(['clean']);
     expect(correctOptions(coord, q('if-b-leaves'))).toEqual(['leave']);
@@ -74,7 +81,6 @@ describe('structured questions are engine-checked', () => {
     expect(questionFeedback(coord, q('either-way'), NONE_OPTION).text).toContain('depends on what B does');
     expect(questionFeedback(coord, q('either-way'), 'clean').text).toContain('it depends on B');
     expect(closingNote(coord)).toBeNull();
-    // Ties use the tie template.
     const tie: Scenario = { ...S, game: { ...S.game, payoffs: [[['2', '3'], ['0', '5']], [['2', '0'], ['1', '1']]] } };
     expect(correctOptions(tie, q('if-b-cleans'))).toEqual(['clean', 'leave']);
     expect(questionFeedback(tie, q('if-b-cleans'), 'clean').text).toContain('equally good');
@@ -87,7 +93,6 @@ describe('structured questions are engine-checked', () => {
           const fact = decisionConsistency(S, prediction, conf, choice);
           const ic = internalConsistency(S.game, 0, fact.belief, choice);
           expect(fact.consistent).toBe(ic.consistent);
-          // Leave it is the best reply to any belief in this game.
           expect(fact.consistent).toBe(choice === 1);
         }
       }

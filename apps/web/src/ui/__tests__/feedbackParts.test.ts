@@ -4,18 +4,29 @@ import { questionFeedback, questionOptions } from '../../slice/engineFacts';
 import { feedbackParts, statusLabel } from '../feedbackParts';
 
 describe('feedbackParts (presentation only)', () => {
-  it('uses the concluding statement as headline and keeps the full authored text', () => {
-    const p = feedbackParts('Not quite. If Roommate B chooses Leave it: Leave it gives you 1, Clean gives you 0. So Leave it is better for you.');
-    expect(p.headline).toBe('So Leave it is better for you.');
+  it('uses the first evidence statement as headline; later text is Why', () => {
+    const p = feedbackParts(
+      'Leave it gives you 1; Clean gives you 0. Because B chose Leave it, Leave it is your best response.',
+    );
+    expect(p.headline).toBe('Leave it gives you 1; Clean gives you 0.');
+    expect(p.why).toContain('best response');
     expect(p.hasMore).toBe(true);
-    expect(p.full).toMatch(/^Not quite\. If Roommate B/);
+    expect(p.full).toMatch(/^Leave it gives you 1/);
   });
 
-  it('a single statement after the status word needs no Why disclosure', () => {
-    const p = feedbackParts('Yes. If Roommate B chooses Clean: Leave it gives you 5, Clean gives you 3.');
+  it('strips a leading status word when present (legacy templates)', () => {
+    const p = feedbackParts('Not quite. Leave it gives you 1; Clean gives you 0. So Leave it is better for you.');
+    expect(p.headline).toBe('Leave it gives you 1; Clean gives you 0.');
+    expect(p.why).toBe('So Leave it is better for you.');
+    expect(p.hasMore).toBe(true);
+  });
+
+  it('a single evidence statement needs no Why disclosure', () => {
+    const p = feedbackParts('Leave it gives you 5; Clean gives you 3.');
     expect(p).toEqual({
-      headline: 'If Roommate B chooses Clean: Leave it gives you 5, Clean gives you 3.',
-      full: 'Yes. If Roommate B chooses Clean: Leave it gives you 5, Clean gives you 3.',
+      headline: 'Leave it gives you 5; Clean gives you 3.',
+      why: '',
+      full: 'Leave it gives you 5; Clean gives you 3.',
       hasMore: false,
     });
   });
@@ -26,8 +37,10 @@ describe('feedbackParts (presentation only)', () => {
         const fb = questionFeedback(S, q, o.id);
         const p = feedbackParts(fb.text);
         expect(p.full).toBe(fb.text);
-        expect(fb.text.endsWith(p.headline)).toBe(true);
+        expect(fb.text.startsWith(p.headline)).toBe(true);
         expect(p.headline.length).toBeGreaterThan(0);
+        // Evidence precedes conclusion: headline is not a Correct/Not-quite lead-in.
+        expect(p.headline).not.toMatch(/^(Yes|Right|Correct|Not quite)\b/i);
       }
     }
     expect(statusLabel(true)).toBe('✓ Correct');

@@ -121,6 +121,15 @@ describe('encounter layout and wording', () => {
     });
   }
 
+  it('outcome stories are observational (no editorial verdict words)', () => {
+    const BANNED_OUTCOME = /\b(fair|decent|enjoyed it for free|good outcome|bad outcome|spotless)\b/i;
+    for (const s of SCENARIOS) {
+      for (const [cell, text] of Object.entries(s.outcomes)) {
+        expect(text, `${s.id} outcomes.${cell}`).not.toMatch(BANNED_OUTCOME);
+      }
+    }
+  });
+
   it('roommate motivations are qualitative and consistent with the payoffs', () => {
     const s = SCENARIOS.find((x) => x.id === 'roommate-kitchen')!;
     const p = s.context.preferences;

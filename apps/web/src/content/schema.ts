@@ -58,8 +58,10 @@ export interface DominantActionQuestion {
   id: string;
   kind: 'dominant-action';
   prompt: string;
-  /** Label of the "no single action" option, e.g. "No, it depends". */
+  /** Label of the "no single action" option, e.g. "It depends on what B chooses." */
   noneLabel: string;
+  /** Optional template for each own-action option, e.g. "{action} is always better." */
+  alwaysLabel?: string;
 }
 
 export type StructuredQuestion = BestReplyQuestion | DominantActionQuestion;

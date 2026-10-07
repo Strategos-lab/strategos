@@ -49,19 +49,21 @@ describe('SlicePage (learner vertical slice)', () => {
     await click('Continue');
 
     // 2 PREDICT: actions only.
-    expect(heading()).toHaveTextContent('What do you predict Roommate B will choose?');
+    expect(heading()).toHaveTextContent('What will B choose?');
     expect(heading()).toHaveFocus();
     const predictGroup = screen.getByRole('group');
     expect(within(predictGroup).getAllByRole('button').map((b) => b.textContent)).toEqual(['Clean', 'Leave it']);
     await userEvent.click(within(predictGroup).getByRole('button', { name: 'Leave it' }));
 
     // 3 CONFIDENCE
-    expect(heading()).toHaveTextContent('How confident are you that Roommate B will choose Leave it?');
+    expect(heading()).toHaveTextContent('How sure are you?');
+    expect(document.querySelector('.prediction-recap')).toHaveTextContent('B'); expect(document.querySelector('.prediction-recap')).toHaveTextContent('Leave it');
     expect(document.body.textContent).not.toMatch(/calibration|stub/i);
     await click('Continue');
 
     // 4 DECIDE: own actions only, never joint outcomes.
     expect(heading()).toHaveTextContent('What will you choose?');
+    expect(screen.getByText(/B is choosing at the same time/)).toBeInTheDocument();
     const decideGroup = screen.getByRole('group');
     const labels = within(decideGroup).getAllByRole('button').map((b) => b.textContent);
     expect(labels).toEqual(['Clean', 'Leave it']);
@@ -77,18 +79,20 @@ describe('SlicePage (learner vertical slice)', () => {
     // 6 OUTCOME in words first.
     expect(screen.getByTestId('outcome-words')).toHaveTextContent('You get 0. Roommate B gets 5.');
     expect(screen.getByTestId('outcome-story')).toHaveTextContent(FIRST_SCENARIO.outcomes['clean|leave']!);
+    expect(screen.getByTestId('outcome-story')).not.toHaveTextContent(/fair|decent|enjoyed it for free|good outcome|bad outcome/i);
     expect(screen.getByTestId('outcome-pair')).toHaveTextContent('Outcome: (0, 5)');
     expect(document.querySelector('table')).toBeNull();
     await click('Continue');
 
     // 7 MATRIX REVEAL: read-only, header cells, realised cell highlighted.
     expect(heading()).toHaveTextContent('The whole situation');
+    expect(screen.getByText('Here is the whole game as a table.')).toBeInTheDocument();
     const table = screen.getByRole('table');
     expect(within(table).queryAllByRole('button')).toHaveLength(0);
     expect(within(table).getAllByRole('rowheader').map((h) => h.textContent)).toEqual(['Cleanyour choice', 'Leave it']);
     expect(within(table).getAllByRole('columnheader').length).toBeGreaterThanOrEqual(3);
     expect(screen.getByTestId('realised-cell')).toHaveTextContent('0,5');
-    expect(screen.getByTestId('matrix-landing')).toHaveTextContent('You chose the row “Clean”. Roommate B chose the column “Leave it”.');
+    expect(screen.queryByTestId('matrix-landing')).toBeNull();
     await click('Continue');
 
     // 8 STRUCTURED EXPLANATION
@@ -96,22 +100,32 @@ describe('SlicePage (learner vertical slice)', () => {
     const cont = screen.getByTestId('btn-continue');
     expect(cont).toBeDisabled();
     await userEvent.click(within(screen.getByTestId('question-if-b-cleans')).getByRole('button', { name: 'Leave it' }));
-    expect(screen.getByTestId('feedback-if-b-cleans')).toHaveTextContent('If Roommate B chooses Clean: Leave it gives you 5, Clean gives you 3.');
+    expect(screen.getByTestId('feedback-if-b-cleans')).toHaveTextContent('Leave it gives you 5; Clean gives you 3.');
+    expect(screen.getByTestId('feedback-if-b-cleans').querySelector('.feedback-headline')!.textContent).toBe(
+      'Leave it gives you 5; Clean gives you 3.',
+    );
     await userEvent.click(within(screen.getByTestId('question-if-b-leaves')).getByRole('button', { name: 'Clean' }));
-    expect(screen.getByTestId('feedback-if-b-leaves')).toHaveTextContent('Not quite.');
-    await userEvent.click(within(screen.getByTestId('question-either-way')).getByRole('button', { name: 'Leave it' }));
-    expect(screen.getByTestId('feedback-either-way')).toHaveTextContent('Leave it gives you more whatever B does.');
-    expect(screen.getByTestId('closing-note')).toHaveTextContent('you each get 1 instead of 3');
+    expect(screen.getByTestId('feedback-if-b-leaves')).toHaveTextContent('Not quite');
+    await userEvent.click(
+      within(screen.getByTestId('question-either-way')).getByRole('button', { name: 'Leave it is always better.' }),
+    );
+    expect(screen.getByTestId('feedback-either-way')).toHaveTextContent('Leave it is a dominant strategy');
+    expect(screen.getByTestId('closing-note')).toHaveTextContent('individually better action leads to a result that is worse for both');
     expect(document.body.textContent).not.toMatch(/nash|equilibri|dilemma/i);
     await click('Continue');
 
     // 9 SUMMARY
     expect(heading()).toHaveTextContent('Summary');
     expect(heading()).toHaveFocus();
-    expect(screen.getByTestId('summary-prediction')).toHaveTextContent('You predicted Roommate B would choose Leave it, with 75% confidence. Roommate B actually chose Leave it.');
-    expect(screen.getByTestId('summary-decision')).toHaveTextContent('not the best reply to your own prediction');
-    expect(screen.getByTestId('summary-outcome')).toHaveTextContent('You got 0; Roommate B got 5.');
-    expect(screen.getByTestId('summary-policy')).toHaveTextContent('7 times in 10');
+    expect(screen.getByTestId('summary-prediction')).toHaveTextContent('Leave it');
+    expect(screen.getByTestId('summary-prediction')).toHaveTextContent('75% confident');
+    expect(screen.getByTestId('summary-decision-quality')).toHaveTextContent('Not the best response to your prediction');
+    expect(screen.getByTestId('summary-decision')).toHaveTextContent('judged using what you knew before B chose');
+    expect(screen.getByTestId('summary-outcome')).toHaveTextContent('depended on what B actually chose');
+    expect(screen.getByTestId('summary-outcome-pair')).toHaveTextContent('0 for you');
+    expect(screen.getByTestId('summary-outcome-pair')).toHaveTextContent('5 for B');
+    expect(screen.getByTestId('summary-policy')).toHaveTextContent('70% Leave it, 30% Clean');
+    expect(document.body.textContent).not.toMatch(/\b[Ss]eed\b/);
 
     await waitFor(async () => {
       const events = await listLearningEvents();
@@ -152,11 +166,11 @@ describe('SlicePage (learner vertical slice)', () => {
     await click('Continue');
     await click('Clean');
     await click('Back');
-    expect(heading()).toHaveTextContent('What do you predict');
+    expect(heading()).toHaveTextContent('What will B choose?');
     await click('Clean');
     await click('Continue');
     await click('Back');
-    expect(heading()).toHaveTextContent('How confident');
+    expect(heading()).toHaveTextContent('How sure are you?');
     await click('Continue');
     await click('Leave it');
     expect(screen.getByTestId('response-text')).toHaveTextContent('You chose Leave it. Roommate B chose Clean.');

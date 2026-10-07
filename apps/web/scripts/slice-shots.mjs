@@ -52,7 +52,7 @@ await cont();
 await page.getByTestId('question-if-b-cleans').getByRole('button', { name: 'Leave it' }).click();
 await page.getByTestId('question-if-b-leaves').getByRole('button', { name: 'Clean' }).click();
 await shot('08-reasoning.png');
-await page.getByTestId('question-either-way').getByRole('button', { name: 'Leave it' }).click();
+await page.getByTestId('question-either-way').getByRole('button', { name: 'Leave it is always better.' }).click();
 await cont();
 await page.getByTestId('save-note').waitFor();
 await shot('09-summary.png');

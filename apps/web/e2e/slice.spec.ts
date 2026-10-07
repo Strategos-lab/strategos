@@ -2,6 +2,8 @@ import { expect, test, type Page } from '@playwright/test';
 
 const DEV_LABELS = /Phase 0 stub|calibration scoring|Demo only|Debug: show engine output|Developer mode/i;
 const TAP_A_CELL = /Tap a cell/i;
+const SEED_WORD = /\b[Ss]eed\b/;
+const POLICY_MIX = /70%\s*Leave it,\s*30%\s*Clean/;
 
 const h2 = (page: Page) => page.locator('#step-heading');
 
@@ -14,6 +16,14 @@ async function expectLearnerClean(page: Page) {
 async function expectFocusedHeading(page: Page, name: string | RegExp) {
   await expect(h2(page)).toHaveText(name);
   await expect(h2(page)).toBeFocused();
+}
+
+/** Walk through encounter → decide without revealing B's action. */
+async function reachDecide(page: Page, prediction: 'Clean' | 'Leave it') {
+  await page.getByRole('button', { name: 'Start' }).click();
+  await page.getByRole('button', { name: 'Continue' }).click();
+  await page.getByRole('group', { name: /prediction/i }).getByRole('button', { name: prediction }).click();
+  await page.getByRole('button', { name: 'Continue' }).click();
 }
 
 test.describe('Learner slice: the shared kitchen', () => {
@@ -46,7 +56,8 @@ test.describe('Learner slice: the shared kitchen', () => {
     for (const d of await details.all()) {
       await expect(d).not.toHaveAttribute('open', /.*/);
       const box = await d.locator('summary').boundingBox();
-      expect(box!.height).toBeGreaterThanOrEqual(48);
+      // Subpixel rounding on some Chromium builds yields 47.999… for a 48px min-height.
+      expect(Math.round(box!.height)).toBeGreaterThanOrEqual(48);
     }
     const prefs = page.getByTestId('context-preferences');
     await expect(prefs.locator('p')).toBeHidden();
@@ -55,12 +66,36 @@ test.describe('Learner slice: the shared kitchen', () => {
     await expect(prefs.locator('p')).toBeVisible();
     await expect(prefs.locator('p')).toContainText('feels unfair');
     await expect(prefs.locator('p')).not.toContainText(/best|worst/i);
-    // Keyboard: focus a summary and toggle it with Enter.
     const known = page.getByTestId('context-knownUnknown');
     await known.locator('summary').focus();
     await page.keyboard.press('Enter');
     await expect(known).toHaveAttribute('open', '');
     await expect(known.locator('p')).toContainText('don’t know what B will choose');
+  });
+
+  test('70/30 policy and seed stay hidden until summary; seed never shown to learners', async ({ page }) => {
+    await page.goto('./#/?seed=3');
+    await reachDecide(page, 'Leave it');
+    // Still pre-reveal: no policy mix, no seed word.
+    let body = await page.locator('body').innerText();
+    expect(body).not.toMatch(POLICY_MIX);
+    expect(body).not.toMatch(SEED_WORD);
+    await page.getByRole('group', { name: 'Your choice' }).getByRole('button', { name: 'Leave it' }).click();
+    await page.getByRole('button', { name: 'Continue' }).click(); // outcome
+    await page.getByRole('button', { name: 'Continue' }).click(); // matrix
+    await page.getByRole('button', { name: 'Continue' }).click(); // explain
+    body = await page.locator('body').innerText();
+    expect(body).not.toMatch(POLICY_MIX);
+    expect(body).not.toMatch(SEED_WORD);
+    // Answer all three questions to reach summary.
+    await page.getByTestId('question-if-b-cleans').getByRole('button', { name: 'Leave it' }).click();
+    await page.getByTestId('question-if-b-leaves').getByRole('button', { name: 'Leave it' }).click();
+    await page.getByTestId('question-either-way').getByRole('button', { name: 'Leave it is always better.' }).click();
+    await page.getByRole('button', { name: 'Continue' }).click();
+    await expectFocusedHeading(page, 'Summary');
+    await expect(page.getByTestId('summary-policy')).toContainText(POLICY_MIX);
+    body = await page.locator('body').innerText();
+    expect(body).not.toMatch(SEED_WORD);
   });
 
   test('walks the full slice (seed 3: B leaves it) and saves the attempt', async ({ page }) => {
@@ -73,7 +108,7 @@ test.describe('Learner slice: the shared kitchen', () => {
     await page.getByRole('button', { name: 'Continue' }).click();
 
     // 2 Predict (actions only)
-    await expectFocusedHeading(page, 'What do you predict Roommate B will choose?');
+    await expectFocusedHeading(page, 'What will B choose?');
     const predict = page.getByRole('group', { name: /prediction/i });
     await expect(predict.getByRole('button')).toHaveText(['Clean', 'Leave it']);
     for (const b of await predict.getByRole('button').all()) {
@@ -83,7 +118,8 @@ test.describe('Learner slice: the shared kitchen', () => {
     await predict.getByRole('button', { name: 'Leave it' }).click();
 
     // 3 Confidence
-    await expectFocusedHeading(page, 'How confident are you that Roommate B will choose Leave it?');
+    await expectFocusedHeading(page, 'How sure are you?');
+    await expect(page.locator('.prediction-recap')).toContainText('Leave it');
     await page.locator('#confidence-slider').fill('80');
     await expect(page.getByTestId('confidence-control')).toContainText('80%');
     await expectLearnerClean(page);
@@ -93,6 +129,7 @@ test.describe('Learner slice: the shared kitchen', () => {
     await expectFocusedHeading(page, 'What will you choose?');
     const decide = page.getByRole('group', { name: 'Your choice' });
     await expect(decide.getByRole('button')).toHaveText(['Clean', 'Leave it']);
+    await expect(page.getByText('B is choosing at the same time and won’t see your choice.')).toBeVisible();
     await expect(page.locator('table')).toHaveCount(0);
     await decide.getByRole('button', { name: 'Leave it' }).click();
 
@@ -105,19 +142,21 @@ test.describe('Learner slice: the shared kitchen', () => {
     // 6 Outcome in words first
     await expectFocusedHeading(page, 'What happened');
     await expect(page.getByTestId('outcome-words')).toHaveText('You get 1. Roommate B gets 1.');
-    await expect(page.getByTestId('outcome-story')).toContainText('You both left it');
+    await expect(page.getByTestId('outcome-story')).toHaveText('Neither of you cleaned. The kitchen stays messy.');
+    await expect(page.getByTestId('outcome-story')).not.toContainText(/fair|decent|enjoyed it for free/i);
     await expect(page.getByTestId('outcome-pair')).toHaveText('Outcome: (1, 1)');
     await expect(page.locator('table')).toHaveCount(0);
     await page.getByRole('button', { name: 'Continue' }).click();
 
     // 7 Matrix reveal: read-only
     await expectFocusedHeading(page, 'The whole situation');
+    await expect(page.getByText('Here is the whole game as a table.')).toBeVisible();
     const table = page.getByRole('table');
     await expect(table).toBeVisible();
     await expect(table.getByRole('button')).toHaveCount(0);
     await expect(table.getByRole('rowheader')).toHaveCount(2);
     await expect(page.getByTestId('realised-cell')).toContainText('1,1');
-    await expect(page.getByTestId('matrix-landing')).toContainText('You chose the row “Leave it”. Roommate B chose the column “Leave it”.');
+    await expect(page.getByTestId('matrix-landing')).toHaveCount(0);
     await expectLearnerClean(page);
     await page.getByRole('button', { name: 'Continue' }).click();
 
@@ -125,21 +164,34 @@ test.describe('Learner slice: the shared kitchen', () => {
     await expectFocusedHeading(page, 'Check your reasoning');
     await expect(page.getByTestId('btn-continue')).toBeDisabled();
     await page.getByTestId('question-if-b-cleans').getByRole('button', { name: 'Leave it' }).click();
-    await expect(page.getByTestId('feedback-if-b-cleans')).toContainText('Leave it gives you 5, Clean gives you 3');
+    await expect(page.getByTestId('feedback-if-b-cleans')).toContainText('Leave it gives you 5; Clean gives you 3.');
+    await expect(page.getByTestId('feedback-if-b-cleans').locator('.feedback-headline')).toHaveText(
+      'Leave it gives you 5; Clean gives you 3.',
+    );
     await page.getByTestId('question-if-b-leaves').getByRole('button', { name: 'Leave it' }).click();
-    await expect(page.getByTestId('feedback-if-b-leaves')).toContainText('Leave it gives you 1, Clean gives you 0');
-    await page.getByTestId('question-either-way').getByRole('button', { name: 'No, it depends' }).click();
-    await expect(page.getByTestId('feedback-either-way')).toContainText('Not quite.');
-    await expect(page.getByTestId('closing-note')).toContainText('you each get 1 instead of 3');
+    await expect(page.getByTestId('feedback-if-b-leaves')).toContainText('Leave it gives you 1; Clean gives you 0.');
+    const q3 = page.getByTestId('question-either-way');
+    await expect(q3.getByRole('button')).toHaveText([
+      'Clean is always better.',
+      'Leave it is always better.',
+      'It depends on what B chooses.',
+    ]);
+    await q3.getByRole('button', { name: 'It depends on what B chooses.' }).click();
+    await expect(page.getByTestId('feedback-either-way')).toContainText('Not quite');
+    await expect(page.getByTestId('feedback-either-way')).toContainText('Leave it is a dominant strategy');
+    await expect(page.getByTestId('closing-note')).toContainText('individually better action leads to a result that is worse for both');
     await page.getByRole('button', { name: 'Continue' }).click();
 
     // 9 Summary
     await expectFocusedHeading(page, 'Summary');
-    await expect(page.getByTestId('summary-prediction')).toContainText('80% confidence');
-    await expect(page.getByTestId('summary-decision')).toContainText('That was the best reply to your own prediction.');
-    await expect(page.getByTestId('summary-outcome')).toContainText('You got 1; Roommate B got 1.');
-    await expect(page.getByTestId('summary-policy')).toContainText('Leave it 7 times in 10');
+    await expect(page.getByTestId('summary-prediction')).toContainText('80% confident');
+    await expect(page.getByTestId('summary-decision-quality')).toContainText('Best response to your prediction');
+    await expect(page.getByTestId('summary-decision')).toContainText('judged using what you knew before B chose');
+    await expect(page.getByTestId('summary-outcome')).toContainText('depended on what B actually chose');
+    await expect(page.getByTestId('summary-policy')).toContainText('70% Leave it, 30% Clean');
     await expect(page.getByTestId('save-note')).toContainText('saved on this device');
+    const summaryText = await page.locator('body').innerText();
+    expect(summaryText).not.toMatch(SEED_WORD);
     await expectLearnerClean(page);
 
     await page.getByRole('button', { name: 'Try again' }).click();
@@ -151,7 +203,7 @@ test.describe('Learner slice: the shared kitchen', () => {
     await expectLearnerClean(page);
   });
 
-  test('seed 1: B cleans; Back works only before the decision', async ({ page }) => {
+  test('seed 1: B cleans; Back works only before the decision; Clean/Clean outcome story', async ({ page }) => {
     await page.goto('./#/?seed=1');
     await page.getByRole('button', { name: 'Start' }).click();
     await page.getByRole('button', { name: 'Continue' }).click();
@@ -165,6 +217,9 @@ test.describe('Learner slice: the shared kitchen', () => {
     await expect(page.getByRole('button', { name: 'Back' })).toHaveCount(0);
     await page.getByRole('button', { name: 'Continue' }).click();
     await expect(page.getByTestId('outcome-words')).toHaveText('You get 3. Roommate B gets 3.');
+    await expect(page.getByTestId('outcome-story')).toHaveText(
+      'You both cleaned. The work was shared, and the kitchen is clean.',
+    );
   });
 
   test('developer route still works and is not linked from the learner UI', async ({ page }) => {

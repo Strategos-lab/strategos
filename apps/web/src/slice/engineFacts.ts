@@ -92,8 +92,13 @@ export interface QuestionOption {
 }
 
 export function questionOptions(s: Scenario, q: StructuredQuestion): QuestionOption[] {
-  const own = learnerActions(s).map((a) => ({ id: a.id, label: a.label }));
-  return q.kind === 'dominant-action' ? [...own, { id: NONE_OPTION, label: q.noneLabel }] : own;
+  const own = learnerActions(s);
+  if (q.kind !== 'dominant-action') return own.map((a) => ({ id: a.id, label: a.label }));
+  const actionOpts = own.map((a) => ({
+    id: a.id,
+    label: q.alwaysLabel ? fillTemplate(q.alwaysLabel, { action: a.label }) : a.label,
+  }));
+  return [...actionOpts, { id: NONE_OPTION, label: q.noneLabel }];
 }
 
 /** Correct option ids for a structured question, derived from engine outputs only. */
@@ -112,7 +117,7 @@ export function fillTemplate(template: string, values: Record<string, string>): 
   return template.replace(/\{(\w+)\}/g, (m, k: string) => (k in values ? values[k]! : m));
 }
 
-/** "If Roommate B chooses Clean: Leave it gives you 5, Clean gives you 3." (engine values, best first). */
+/** "Leave it gives you 5; Clean gives you 3." (engine values, best first). */
 export function comparisonLine(s: Scenario, opponentAction: number): string {
   const own = learnerActions(s);
   const { payoffs } = bestReplyFacts(s, opponentAction);
@@ -121,7 +126,7 @@ export function comparisonLine(s: Scenario, opponentAction: number): string {
     .sort((a, b) => Rational.parse(payoffs[b]!).cmp(Rational.parse(payoffs[a]!)) || a - b);
   const ranked = order
     .map((i) => fillTemplate(s.feedback.rankedItem, { action: own[i]!.label, payoff: payoffs[i]! }))
-    .join(', ');
+    .join('; ');
   return fillTemplate(s.feedback.line, { opponentAction: opponentActions(s)[opponentAction]!.label, ranked });
 }
 
@@ -141,9 +146,11 @@ export function questionFeedback(s: Scenario, q: StructuredQuestion, answer: str
     return { correct, text: fillTemplate(tpl, values) };
   }
   const d = dominantAction(s);
-  const lines = opponentActions(s)
-    .map((_, j) => comparisonLine(s, j))
-    .join(' ');
+  // One evidence statement (joined with an em dash) so the headline stays evidence-first.
+  const lines =
+    opponentActions(s)
+      .map((_, j) => comparisonLine(s, j).replace(/\.$/, ''))
+      .join(' — ') + '.';
   const values = { lines, dominant: d === null ? '' : own[d]!.label };
   const tpl =
     d === null

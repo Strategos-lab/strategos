@@ -658,16 +658,34 @@ code {
 /* Confidence */
 .prediction-recap {
   display: flex;
-  flex-direction: column;
-  gap: var(--space-1);
+  align-items: baseline;
+  gap: var(--space-2);
   padding-left: var(--space-4);
   border-left: 2px solid var(--accent-line);
+  font-size: var(--fs-sm);
+  color: var(--text-2);
+  font-family: var(--font-mono);
+  letter-spacing: var(--tracking-label);
+  text-transform: uppercase;
+}
+
+.recap-compact {
+  display: inline-flex;
+  align-items: baseline;
+  gap: var(--space-2);
+}
+
+.recap-arrow {
+  color: var(--accent);
 }
 
 .recap-value {
-  font-size: var(--fs-lg);
+  font-size: var(--fs-md);
   font-weight: 600;
   color: var(--text);
+  text-transform: none;
+  letter-spacing: 0;
+  font-family: var(--font-sans);
 }
 
 .confidence-hero {
