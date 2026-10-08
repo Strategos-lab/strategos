@@ -1,6 +1,6 @@
 # Phase 2 implementation plan (content system + Modules 1–3)
 
-Authorities: V1 Plan rev. 2 (incl. scope amendments) → `STRATEGOS_PRODUCTION_RULES.md` → code.
+Authorities: [V1 Plan rev. 2](STRATEGOS_V1_PLAN.md) (incl. scope amendments) → `STRATEGOS_PRODUCTION_RULES.md` → code.
 
 ## Already in place (reuse)
 

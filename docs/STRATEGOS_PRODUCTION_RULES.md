@@ -2,8 +2,9 @@
 
 Living operational contract. Read before every task.
 
-**Relationship to the V1 Plan.** `STRATEGOS_V1_Plan_v2.md` (as amended by the *Final V1 Build
-Authorisation*) is the master specification: curriculum, architecture, data model, roadmap. These
+**Relationship to the V1 Plan.** [`docs/STRATEGOS_V1_PLAN.md`](STRATEGOS_V1_PLAN.md) (as amended by
+the *Final V1 Build Authorisation* — that authorisation document itself has not been supplied to this
+repository) is the master specification: curriculum, architecture, data model, roadmap. These
 Production Rules are the operational standard for how STRATEGOS must **look, behave, teach, explain
 and be implemented**. They do not replace the plan.
 

@@ -4,7 +4,7 @@ Strategic decision laboratory — a **static, installable PWA** for learning to 
 
 **Live (GitHub Pages):** https://strategos-lab.github.io/strategos/
 
-**Production Rules:** read [`docs/STRATEGOS_PRODUCTION_RULES.md`](docs/STRATEGOS_PRODUCTION_RULES.md) before every task. It is the operational contract for look, behaviour, teaching and implementation, alongside the V1 Plan.
+**Production Rules:** read [`docs/STRATEGOS_PRODUCTION_RULES.md`](docs/STRATEGOS_PRODUCTION_RULES.md) before every task. It is the operational contract for look, behaviour, teaching and implementation, alongside the [V1 Plan](docs/STRATEGOS_V1_PLAN.md).
 
 ## Status
 
