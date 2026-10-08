@@ -28,6 +28,17 @@ export const LIST_DEFINITION_FILES = [
   'apps/web/src/content/__tests__/content-hygiene.test.ts',
 ];
 
+/**
+ * Authoritative specification documents that must remain a faithful, verbatim transcription of
+ * externally supplied source material (not scanned). Unlike every other file this lint covers,
+ * these are not authored for the app and must not be edited — including to satisfy this lint —
+ * so a marker-exempted region (MARKER_ALLOWED_FILES) is the wrong tool here: the whole document is
+ * out of scope for this project's own vocabulary rules, by the nature of what it is. This is
+ * reserved for that narrow case; an ordinary repo-authored doc belongs under the lint, or should
+ * use the marker mechanism if it genuinely needs to discuss a banned topic in one section.
+ */
+export const SPEC_TRANSCRIPTION_FILES = ['docs/STRATEGOS_V1_PLAN.md'];
+
 export interface LintIssue {
   file: string;
   line: number;
@@ -104,7 +115,7 @@ export function lintTargets(repo: string): string[] {
 export function lintRepo(repo: string): LintIssue[] {
   return lintTargets(repo).flatMap((abs) => {
     const file = relative(repo, abs).split(sep).join('/');
-    if (LIST_DEFINITION_FILES.includes(file)) return [];
+    if (LIST_DEFINITION_FILES.includes(file) || SPEC_TRANSCRIPTION_FILES.includes(file)) return [];
     return lintText(file, readFileSync(abs, 'utf8'));
   });
 }
@@ -178,5 +189,16 @@ describe('banned-terms lint', () => {
 
   it('the real repository is clean', () => {
     expect(lintRepo(repo)).toEqual([]);
+  });
+
+  it('only the V1 Plan is exempted as an authoritative spec transcription, and it still appears in the covered file list (scanned, just not linted)', () => {
+    expect(SPEC_TRANSCRIPTION_FILES).toEqual(['docs/STRATEGOS_V1_PLAN.md']);
+    const rel = lintTargets(repo).map((f) => f.slice(repo.length + 1).split('\\').join('/'));
+    expect(rel).toContain('docs/STRATEGOS_V1_PLAN.md');
+  });
+
+  it('lintText alone still flags the term at that path; only lintRepo exempts the whole file by its exact path', () => {
+    expect(lintText('docs/STRATEGOS_V1_PLAN.md', `You are a serving ${TERM} officer.`).map((i) => i.message)).toEqual([`banned term "${TERM}"`, 'banned term "officer"']);
+    expect(lintRepo(repo).some((i) => i.file === 'docs/STRATEGOS_V1_PLAN.md')).toBe(false);
   });
 });
