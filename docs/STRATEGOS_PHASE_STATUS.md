@@ -7,13 +7,18 @@ phase boundary rather than inferring current state from commit messages or chat 
 
 ## Current phase
 
-Phase 2 (content system and Modules 1–3), per the phase sequence in
-`docs/STRATEGOS_V1_PLAN.md` §13.
+Phase 2 (content system and Modules 1–3) is complete and signed off, per the phase sequence in
+`docs/STRATEGOS_V1_PLAN.md` §13. Phase 3 is authorised but not yet started.
 
 ## Current status
 
-Final editorial/pedagogical review of Phase 2 content has been completed (see the session record);
-sign-off is **pending** your review of that report. Phase 2 is **not yet signed off**.
+**Phase 2 is formally signed off.** The final Phase 2 audit (read-only, covering all eight final
+editorial findings, content/educational integrity, frozen-decision verification, repository
+hygiene, and full engineering validation) returned a verdict of **PASS**, with the explicit
+statement "Phase 2 is ready for sign-off." All eight final editorial findings are resolved.
+Executable validation is green (engine, content, web, typecheck, dependency allow-list, build); the
+previously documented e2e sandbox browser limitation remains, is non-blocking, and is unrelated to
+application code (CI installs browsers fresh). **Phase 3 is now authorised to begin.**
 
 ## Completed
 
@@ -24,11 +29,17 @@ sign-off is **pending** your review of that report. Phase 2 is **not yet signed 
   (`docs/phase2.md`), plus:
   - Phase 2 corrective pass (7 Oct 2026).
   - Phase 2 content top-up — Pass B (content expansion) and Pass B corrections (7 Oct 2026).
-- Storage import-reliability correction (atomic, validated learning-data import/replace).
+  - Storage import-reliability correction (atomic, validated learning-data import/replace).
+  - Repository-native source-of-truth anchoring (`CLAUDE.md`, `docs/STRATEGOS_V1_PLAN.md`, this
+    file).
+  - Final Phase 2 correction pass — all eight findings from the final editorial review resolved.
+  - Repository-hygiene scan-boundary corrections for the two controlled specification/status
+    documents.
+  - **Final Phase 2 audit: PASS. Phase 2 formally signed off.**
 
-## Current candidate commit
+## Final validated checkpoint
 
-`4c346e2`
+`0cb10e8`
 
 ## Frozen Phase 2 decisions
 
@@ -49,17 +60,14 @@ Confirmed present in the repository as of this audit, each traceable to a specif
 
 ## Next gate
 
-Phase 2 sign-off decision, informed by the editorial review already delivered (findings: 2 Major
-items in Module 1, 1 Major item in Module 3's held-out set, plus several Minor items — see the
-session record for the full report with item IDs and recommended corrections).
+Phase 3 ("Core play UI, PWA shell and structured explanation" per V1 Plan §13), now authorised to
+begin. Phase 3 implementation has not started as of this checkpoint; starting it is a separate task.
 
 ## Explicitly unauthorised future work
 
-- **Phase 3 has not begun and is not authorised.** Per V1 Plan §13, Phase 3 ("Core play UI, PWA shell
-  and structured explanation") is scoped to be built from the general content pipeline, after Phase 2
-  and before the Phase 4 "vertical slice" milestone — see the conflict noted below.
 - No AI/LLM, backend, accounts, cloud sync, analytics, telemetry, or gamification in any phase, per
-  CLAUDE.md and the V1 Plan's Constraints C1, C3 and §12 "Deliberately NOT in V1" table.
+  CLAUDE.md and the V1 Plan's Constraints C1, C3 and §12 "Deliberately NOT in V1" table. These remain
+  binding regardless of phase.
 
 ## Conflicts identified against `docs/STRATEGOS_V1_PLAN.md`
 
