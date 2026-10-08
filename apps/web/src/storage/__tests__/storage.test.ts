@@ -7,8 +7,28 @@ import {
   writeLearningEvent,
   LEARNING_DB_NAME,
 } from '../index';
-import { resetLearningDbForTests } from '../learningDb';
+import { getLearningDb, resetLearningDbForTests } from '../learningDb';
 import { requestPersistentStorage } from '../persist';
+
+const sampleEvent = {
+  type: 'old',
+  payload: {},
+  createdAt: '2026-10-01T00:00:00.000Z',
+  schemaVersion: 1,
+  engineVersion: '0.0.0-phase0',
+  contentVersion: '0.0.0-phase0',
+};
+
+function sampleExport(events: unknown[]) {
+  return {
+    format: 'strategos-learning',
+    formatVersion: 1,
+    exportedAt: '2026-10-07T00:00:00.000Z',
+    database: LEARNING_DB_NAME,
+    excludesWorksheet: true,
+    events,
+  };
+}
 
 describe('learning storage', () => {
   beforeEach(async () => {
@@ -105,6 +125,85 @@ describe('learning storage', () => {
     await expect(importLearningReplace({ format: 'nope' })).rejects.toThrow(
       /unexpected format/,
     );
+  });
+
+  it('rejects an import with a malformed event at the start, leaving existing data intact', async () => {
+    await writeLearningEvent(sampleEvent);
+
+    await expect(
+      importLearningReplace(
+        sampleExport([
+          { type: 'bad', payload: {} /* missing createdAt, schemaVersion, etc. */ },
+          { ...sampleEvent, type: 'good' },
+        ]),
+      ),
+    ).rejects.toThrow(/events\[0\]/);
+
+    const events = await listLearningEvents();
+    expect(events).toHaveLength(1);
+    expect(events[0]?.type).toBe('old');
+  });
+
+  it('rejects an import with a malformed event later in the array, leaving existing data intact and no partial import', async () => {
+    await writeLearningEvent(sampleEvent);
+
+    await expect(
+      importLearningReplace(
+        sampleExport([
+          { ...sampleEvent, type: 'good-1' },
+          { ...sampleEvent, type: 'good-2', schemaVersion: 'not-a-number' },
+        ]),
+      ),
+    ).rejects.toThrow(/events\[1\]/);
+
+    const events = await listLearningEvents();
+    expect(events).toHaveLength(1);
+    expect(events[0]?.type).toBe('old');
+    expect(events.some((e) => e.type === 'good-1')).toBe(false);
+  });
+
+  it('rolls back the whole replace if the write step fails, leaving existing data intact', async () => {
+    await writeLearningEvent(sampleEvent);
+
+    const bulkAddSpy = vi
+      .spyOn(getLearningDb().events, 'bulkAdd')
+      .mockRejectedValueOnce(new Error('simulated write failure'));
+
+    await expect(
+      importLearningReplace(sampleExport([{ ...sampleEvent, type: 'imported' }])),
+    ).rejects.toThrow(/simulated write failure/);
+
+    bulkAddSpy.mockRestore();
+
+    const events = await listLearningEvents();
+    expect(events).toHaveLength(1);
+    expect(events[0]?.type).toBe('old');
+  });
+
+  it('round-trips a real export through import and reproduces the same learning history', async () => {
+    await writeLearningEvent({ ...sampleEvent, type: 'a', payload: { n: 1 } });
+
+    const exported = await exportLearningToObject();
+
+    // Simulate a fresh device: wipe, then import the exported file.
+    await eraseLearningData();
+    expect(await listLearningEvents()).toHaveLength(0);
+
+    const result = await importLearningReplace(exported);
+
+    expect(result.count).toBe(1);
+    const events = await listLearningEvents();
+    expect(events.map((e) => e.type)).toEqual(['a']);
+    expect(events.map((e) => e.payload)).toEqual([{ n: 1 }]);
+  });
+
+  it('accepts an empty events array and replaces existing data with an empty set', async () => {
+    await writeLearningEvent(sampleEvent);
+
+    const result = await importLearningReplace(sampleExport([]));
+
+    expect(result.count).toBe(0);
+    expect(await listLearningEvents()).toHaveLength(0);
   });
 });
 

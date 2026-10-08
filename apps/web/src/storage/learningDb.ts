@@ -55,3 +55,21 @@ export async function listLearningEvents(): Promise<LearningEvent[]> {
 export async function eraseLearningData(): Promise<void> {
   await getLearningDb().events.clear();
 }
+
+/**
+ * Atomically replace all learning events. The clear and the writes happen in
+ * one Dexie transaction: if any write fails, the whole transaction rolls
+ * back and existing data is left untouched (no cleared-but-not-reloaded
+ * state).
+ */
+export async function replaceLearningData(
+  events: Array<Omit<LearningEvent, 'id'>>,
+): Promise<void> {
+  const db = getLearningDb();
+  await db.transaction('rw', db.events, async () => {
+    await db.events.clear();
+    if (events.length > 0) {
+      await db.events.bulkAdd(events);
+    }
+  });
+}
