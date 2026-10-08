@@ -29,15 +29,21 @@ export const LIST_DEFINITION_FILES = [
 ];
 
 /**
- * Authoritative specification documents that must remain a faithful, verbatim transcription of
- * externally supplied source material (not scanned). Unlike every other file this lint covers,
- * these are not authored for the app and must not be edited — including to satisfy this lint —
- * so a marker-exempted region (MARKER_ALLOWED_FILES) is the wrong tool here: the whole document is
- * out of scope for this project's own vocabulary rules, by the nature of what it is. This is
- * reserved for that narrow case; an ordinary repo-authored doc belongs under the lint, or should
- * use the marker mechanism if it genuinely needs to discuss a banned topic in one section.
+ * Controlled specification/status documents that must not be reworded merely to satisfy this
+ * lint (not scanned). Two distinct reasons land a file here, both narrow:
+ *  - docs/STRATEGOS_V1_PLAN.md: a faithful, verbatim transcription of externally supplied source
+ *    material. Not authored for the app; editing it, including to dodge this lint, is out of
+ *    bounds regardless of what it says.
+ *  - docs/STRATEGOS_PHASE_STATUS.md: the repository's controlled current-state tracker. It
+ *    legitimately quotes Production Rules' own banned-terms sentence verbatim when recording a
+ *    specification conflict, which is a record of project history and policy, not learner/content
+ *    text — rewording that quotation to satisfy this lint would misquote the rule it is reporting.
+ * A marker-exempted region (MARKER_ALLOWED_FILES) is the wrong tool for either: a plain reader of
+ * the document, not a maintainer adding markers, decides what these files say. This is reserved for
+ * that narrow case; an ordinary repo-authored doc belongs under the lint, or should use the marker
+ * mechanism if it genuinely needs to discuss a banned topic in one section.
  */
-export const SPEC_TRANSCRIPTION_FILES = ['docs/STRATEGOS_V1_PLAN.md'];
+export const SPEC_TRANSCRIPTION_FILES = ['docs/STRATEGOS_V1_PLAN.md', 'docs/STRATEGOS_PHASE_STATUS.md'];
 
 export interface LintIssue {
   file: string;
@@ -191,14 +197,22 @@ describe('banned-terms lint', () => {
     expect(lintRepo(repo)).toEqual([]);
   });
 
-  it('only the V1 Plan is exempted as an authoritative spec transcription, and it still appears in the covered file list (scanned, just not linted)', () => {
-    expect(SPEC_TRANSCRIPTION_FILES).toEqual(['docs/STRATEGOS_V1_PLAN.md']);
+  it('exactly the V1 Plan and the phase status tracker are exempted as controlled spec/status documents, and both still appear in the covered file list (scanned, just not linted)', () => {
+    expect(SPEC_TRANSCRIPTION_FILES).toEqual(['docs/STRATEGOS_V1_PLAN.md', 'docs/STRATEGOS_PHASE_STATUS.md']);
     const rel = lintTargets(repo).map((f) => f.slice(repo.length + 1).split('\\').join('/'));
     expect(rel).toContain('docs/STRATEGOS_V1_PLAN.md');
+    expect(rel).toContain('docs/STRATEGOS_PHASE_STATUS.md');
   });
 
-  it('lintText alone still flags the term at that path; only lintRepo exempts the whole file by its exact path', () => {
+  it('lintText alone still flags the term at either path; only lintRepo exempts the whole file by its exact path', () => {
     expect(lintText('docs/STRATEGOS_V1_PLAN.md', `You are a serving ${TERM} officer.`).map((i) => i.message)).toEqual([`banned term "${TERM}"`, 'banned term "officer"']);
+    expect(lintText('docs/STRATEGOS_PHASE_STATUS.md', `No ${TERM}, law-enforcement or profession content.`).map((i) => i.message)).toEqual([`banned term "${TERM}"`, 'banned term "enforcement"']);
     expect(lintRepo(repo).some((i) => i.file === 'docs/STRATEGOS_V1_PLAN.md')).toBe(false);
+    expect(lintRepo(repo).some((i) => i.file === 'docs/STRATEGOS_PHASE_STATUS.md')).toBe(false);
+  });
+
+  it('a learner/content file right next to the exemption is still fully scanned', () => {
+    expect(lintText('docs/phase0.md', `A ${TERM} case.`).map((i) => i.message)).toEqual([`banned term "${TERM}"`]);
+    expect(SPEC_TRANSCRIPTION_FILES).not.toContain('docs/phase0.md');
   });
 });
