@@ -245,11 +245,18 @@ export function validateItems(items: Item[], b: Pick<ContentBundle, 'curriculum'
   }
 }
 
-export function validateFeedbackLibrary(b: ContentBundle, issues: Issue[]) {
+/**
+ * `extraItemIds`: ids of items outside the practice bundle (currently: the held-out set) that a
+ * feedback key's `items` scope may legitimately name — a held-out item needing wording specific to
+ * its own structure (e.g. a tie phrased with its own action ids) scopes a key to itself exactly as a
+ * practice item does; this only widens the known-id set checked against, it does not relax any other
+ * check.
+ */
+export function validateFeedbackLibrary(b: ContentBundle, issues: Issue[], extraItemIds: string[] = []) {
   const seen = new Set<string>();
   for (const k of b.feedback) {
     const id = `${k.concept}/${k.type}/${k.code}${k.items ? `@${k.items.join(',')}` : ''}`;
-    for (const i of k.items ?? []) if (!b.items.some((x) => x.id === i)) issues.push({ rule: 'reference', where: `feedback:${id}`, message: `unknown item "${i}"` });
+    for (const i of k.items ?? []) if (!b.items.some((x) => x.id === i) && !extraItemIds.includes(i)) issues.push({ rule: 'reference', where: `feedback:${id}`, message: `unknown item "${i}"` });
     const w = `feedback:${id}`;
     if (seen.has(id)) issues.push({ rule: 'unique-id', where: w, message: 'duplicate feedback key' });
     seen.add(id);
@@ -381,7 +388,7 @@ export function validateContent(b: ContentBundle, opts: { extraTexts?: GatedText
   validateMirrors(b.skins, issues);
   const look = makeLookup(b);
   validateItems(b.items, b, look, issues, false);
-  validateFeedbackLibrary(b, issues);
+  validateFeedbackLibrary(b, issues, opts.heldOut?.items.map((i) => i.id) ?? []);
   validateTransfer(b, issues);
   validateCodeScope(b, opts.heldOut, issues);
   validateScenarioItems(b, opts.scenarioQuestions ?? { [ROOMMATE_SLICE.id]: ROOMMATE_SLICE.questions.map((q) => String(q.id)) }, issues);

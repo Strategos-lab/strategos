@@ -792,10 +792,10 @@
     },
     {
       "id": "sk.m1.t.printer",
-      "version": "1.0.0",
-      "domain": "markets",
+      "version": "2.0.0",
+      "domain": "abstract",
       "tone": "neutral",
-      "title": "Two print shops",
+      "title": "Switch and three dials",
       "structures": [
         "m1.s.three"
       ],
@@ -806,35 +806,28 @@
           "short": "you"
         },
         "other": {
-          "id": "bhatt",
-          "label": "Mr Bhatt",
-          "short": "Mr Bhatt"
+          "id": "other",
+          "label": "The other side",
+          "short": "the other side"
         }
       },
       "seats": [
         "A"
       ],
       "actionLabels": {
-        "a1": "Standard rate",
-        "a2": "Rush rate",
-        "b1": "Next-day",
-        "b2": "Same-day",
-        "b3": "Two-day"
+        "a1": "Switch up",
+        "a2": "Switch down",
+        "b1": "Dial low",
+        "b2": "Dial mid",
+        "b3": "Dial high"
       },
-      "situation": "You and Mr Bhatt run print shops on the same college road. This term you set your rate, standard or rush, while he sets his delivery promise: next-day, same-day or two-day. The college office sends orders to both shops.",
+      "situation": "A test rig has your switch and the other side’s dial. You flip the switch up or down. At the same moment, the other side sets its dial to low, mid or high, without seeing your switch.",
       "incentives": {
-        "m1.s.three": "You earn most at the standard rate when Mr Bhatt promises next-day delivery, and how the term goes for you depends on his promise. Mr Bhatt earns most promising same-day while you keep the standard rate."
+        "m1.s.three": "You score highest switching up when the dial reads low, and how the reading comes out for you depends on the dial. The other side scores highest when you switch up and it sets the dial to mid."
       },
-      "timing": "You both decide before term starts. Neither sees the other’s notice first.",
-      "information": "You know how Mr Bhatt’s customers think. You don’t know which promise he will make.",
-      "matrixLabel": "Outcomes for your rate and Mr Bhatt’s promise",
-      "nonPlayers": [
-        {
-          "id": "office",
-          "label": "The college office",
-          "short": "the college office"
-        }
-      ]
+      "timing": "You both choose at the same moment: switch and dial move together. Neither of you sees the other’s setting first.",
+      "information": "You know how the other side’s scoring works. You don’t know which dial setting it will choose.",
+      "matrixLabel": "Outcomes for your switch and the other side’s dial"
     }
   ],
   "variations": [
@@ -894,17 +887,6 @@
       "optionSets": [
         [
           {
-            "text": "You and {them}: each of your choices changes the result.",
-            "claim": {
-              "t": "playerSet",
-              "actors": [
-                "you",
-                "them"
-              ]
-            },
-            "code": "UNMATCHED"
-          },
-          {
             "text": "You, {them} and {np:0}, as all of you are in the story.",
             "claim": {
               "t": "playerSet",
@@ -915,6 +897,17 @@
               ]
             },
             "code": "MODEL_EXTRA_PLAYER"
+          },
+          {
+            "text": "You and {them}: each of your choices changes the result.",
+            "claim": {
+              "t": "playerSet",
+              "actors": [
+                "you",
+                "them"
+              ]
+            },
+            "code": "UNMATCHED"
           },
           {
             "text": "Only you: {them} has no real say in the result.",
@@ -928,17 +921,6 @@
           }
         ],
         [
-          {
-            "text": "{Them} and you, because both choices shape what happens.",
-            "claim": {
-              "t": "playerSet",
-              "actors": [
-                "you",
-                "them"
-              ]
-            },
-            "code": "UNMATCHED"
-          },
           {
             "text": "Everyone in the story, including {np:0}.",
             "claim": {
@@ -960,6 +942,17 @@
               ]
             },
             "code": "MODEL_MISSING_PLAYER"
+          },
+          {
+            "text": "{Them} and you, because both choices shape what happens.",
+            "claim": {
+              "t": "playerSet",
+              "actors": [
+                "you",
+                "them"
+              ]
+            },
+            "code": "UNMATCHED"
           }
         ]
       ]
@@ -1195,17 +1188,6 @@
       "optionSets": [
         [
           {
-            "text": "You and {them}: each of your choices changes the result.",
-            "claim": {
-              "t": "playerSet",
-              "actors": [
-                "you",
-                "them"
-              ]
-            },
-            "code": "UNMATCHED"
-          },
-          {
             "text": "You, {them} and {np:0}, as all of you are in the story.",
             "claim": {
               "t": "playerSet",
@@ -1226,6 +1208,17 @@
               ]
             },
             "code": "MODEL_MISSING_PLAYER"
+          },
+          {
+            "text": "You and {them}: each of your choices changes the result.",
+            "claim": {
+              "t": "playerSet",
+              "actors": [
+                "you",
+                "them"
+              ]
+            },
+            "code": "UNMATCHED"
           }
         ],
         [
@@ -1651,14 +1644,6 @@
       "optionSets": [
         [
           {
-            "text": "You do, and {them} sees your choice.",
-            "claim": {
-              "t": "firstMover",
-              "who": "you"
-            },
-            "code": "UNMATCHED"
-          },
-          {
             "text": "{Them} does, and you see that choice.",
             "claim": {
               "t": "firstMover",
@@ -1672,17 +1657,17 @@
               "t": "simultaneous"
             },
             "code": "MODEL_WRONG_TIMING"
-          }
-        ],
-        [
+          },
           {
-            "text": "You choose first; {them} follows.",
+            "text": "You do, and {them} sees your choice.",
             "claim": {
               "t": "firstMover",
               "who": "you"
             },
             "code": "UNMATCHED"
-          },
+          }
+        ],
+        [
           {
             "text": "{Them} chooses first; you follow.",
             "claim": {
@@ -1690,6 +1675,14 @@
               "who": "them"
             },
             "code": "MODEL_WRONG_TIMING"
+          },
+          {
+            "text": "You choose first; {them} follows.",
+            "claim": {
+              "t": "firstMover",
+              "who": "you"
+            },
+            "code": "UNMATCHED"
           },
           {
             "text": "You both choose at the same moment.",
@@ -1908,14 +1901,6 @@
         ],
         [
           {
-            "text": "You choose first; {them} follows, unseen.",
-            "claim": {
-              "t": "firstMover",
-              "who": "you"
-            },
-            "code": "UNMATCHED"
-          },
-          {
             "text": "{Them} chooses first; you follow.",
             "claim": {
               "t": "firstMover",
@@ -1929,6 +1914,14 @@
               "t": "simultaneous"
             },
             "code": "MODEL_WRONG_TIMING"
+          },
+          {
+            "text": "You choose first; {them} follows, unseen.",
+            "claim": {
+              "t": "firstMover",
+              "who": "you"
+            },
+            "code": "UNMATCHED"
           }
         ]
       ]
@@ -2037,20 +2030,20 @@
       "optionSets": [
         [
           {
-            "text": "Yes: your same choice can go better or worse, depending on {them}.",
-            "claim": {
-              "t": "dependsOnOther",
-              "who": "you"
-            },
-            "code": "UNMATCHED"
-          },
-          {
             "text": "No: your own choice alone settles how it goes for you.",
             "claim": {
               "t": "notDependsOnOther",
               "who": "you"
             },
             "code": "IGNORED_DEPENDENCE"
+          },
+          {
+            "text": "Yes: your same choice can go better or worse, depending on {them}.",
+            "claim": {
+              "t": "dependsOnOther",
+              "who": "you"
+            },
+            "code": "UNMATCHED"
           },
           {
             "text": "Only if {them} gets to see your choice before deciding.",
@@ -2113,14 +2106,6 @@
       "optionSets": [
         [
           {
-            "text": "Yes: your same choice can go better or worse, depending on {them}.",
-            "claim": {
-              "t": "dependsOnOther",
-              "who": "you"
-            },
-            "code": "UNMATCHED"
-          },
-          {
             "text": "No: your own choice alone settles how it goes for you.",
             "claim": {
               "t": "notDependsOnOther",
@@ -2134,17 +2119,17 @@
               "t": "never"
             },
             "code": "MODEL_WRONG_INFO"
-          }
-        ],
-        [
+          },
           {
-            "text": "Yes, because {them}’s choice changes what your choice brings.",
+            "text": "Yes: your same choice can go better or worse, depending on {them}.",
             "claim": {
               "t": "dependsOnOther",
               "who": "you"
             },
             "code": "UNMATCHED"
-          },
+          }
+        ],
+        [
           {
             "text": "No, because only your own choice counts for you here.",
             "claim": {
@@ -2152,6 +2137,14 @@
               "who": "you"
             },
             "code": "IGNORED_DEPENDENCE"
+          },
+          {
+            "text": "Yes, because {them}’s choice changes what your choice brings.",
+            "claim": {
+              "t": "dependsOnOther",
+              "who": "you"
+            },
+            "code": "UNMATCHED"
           },
           {
             "text": "Only when {them} decides after seeing your choice.",
@@ -2214,14 +2207,6 @@
         ],
         [
           {
-            "text": "Yes, because {them}’s choice changes what your choice brings.",
-            "claim": {
-              "t": "dependsOnOther",
-              "who": "you"
-            },
-            "code": "UNMATCHED"
-          },
-          {
             "text": "No, because only your own choice counts for you here.",
             "claim": {
               "t": "notDependsOnOther",
@@ -2235,6 +2220,14 @@
               "t": "never"
             },
             "code": "MODEL_WRONG_INFO"
+          },
+          {
+            "text": "Yes, because {them}’s choice changes what your choice brings.",
+            "claim": {
+              "t": "dependsOnOther",
+              "who": "you"
+            },
+            "code": "UNMATCHED"
           }
         ]
       ]
@@ -2287,17 +2280,6 @@
       "optionSets": [
         [
           {
-            "text": "You and {them}: each of your choices changes the result.",
-            "claim": {
-              "t": "playerSet",
-              "actors": [
-                "you",
-                "them"
-              ]
-            },
-            "code": "UNMATCHED"
-          },
-          {
             "text": "You, {them} and {np:0}, as all of you are in the story.",
             "claim": {
               "t": "playerSet",
@@ -2308,6 +2290,17 @@
               ]
             },
             "code": "MODEL_EXTRA_PLAYER"
+          },
+          {
+            "text": "You and {them}: each of your choices changes the result.",
+            "claim": {
+              "t": "playerSet",
+              "actors": [
+                "you",
+                "them"
+              ]
+            },
+            "code": "UNMATCHED"
           },
           {
             "text": "Only you: {them} has no real say in the result.",
@@ -2528,20 +2521,20 @@
       "optionSets": [
         [
           {
-            "text": "Yes: your same choice can go better or worse, depending on {them}.",
-            "claim": {
-              "t": "dependsOnOther",
-              "who": "you"
-            },
-            "code": "UNMATCHED"
-          },
-          {
             "text": "No: your own choice alone settles how it goes for you.",
             "claim": {
               "t": "notDependsOnOther",
               "who": "you"
             },
             "code": "IGNORED_DEPENDENCE"
+          },
+          {
+            "text": "Yes: your same choice can go better or worse, depending on {them}.",
+            "claim": {
+              "t": "dependsOnOther",
+              "who": "you"
+            },
+            "code": "UNMATCHED"
           },
           {
             "text": "Only if {them} gets to see your choice before deciding.",

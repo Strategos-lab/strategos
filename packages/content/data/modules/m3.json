@@ -1675,7 +1675,7 @@
               "who": "you",
               "action": "a1"
             },
-            "code": "ACROSS_NOT_WITHIN"
+            "code": "INDIVIDUAL_AS_JOINT"
           }
         ]
       ]
@@ -3807,6 +3807,55 @@
       "phrasings": [
         "For {them}, {act:b3} gives {pay:them:a2:b3} against your {act:a2}, more than {act:b1} gives ({pay:them:a2:b1}). {Them} has a sure choice too.",
         "{Them} gets more from {act:b3} than from {act:b1} in every case, e.g. {pay:them:a2:b3} to {pay:them:a2:b1}. Expect {act:b3}."
+      ]
+    },
+    {
+      "concept": "dominant_strategy",
+      "type": "reason_choice",
+      "code": "INDIVIDUAL_AS_JOINT",
+      "items": [
+        "i.m3.three.dom"
+      ],
+      "phrasings": [
+        "{Act:a1} with {act:b1} gives you {pay:you:a1:b1} and {them} {pay:them:a1:b1}, good for both of you — but against {act:b1}, {act:a3} gives you {pay:you:a3:b1}, more than {act:a1}’s {pay:you:a1:b1}. A good outcome for both is not the same as better for you whatever {them} does.",
+        "Against {act:b1}: {act:a1} gives you {pay:you:a1:b1}, {act:a3} gives you {pay:you:a3:b1}. {Act:a3} wins there too, even though {act:a1} with {act:b1} suits you both."
+      ]
+    },
+    {
+      "concept": "dominant_strategy",
+      "type": "reason_choice",
+      "code": "CORRECT",
+      "items": [
+        "h.m3.dilemma.c"
+      ],
+      "phrasings": [
+        "{Act:a3} with {act:b1} gives you {pay:you:a3:b1} and {them} {pay:them:a3:b1}; {act:a2} with {act:b2} gives you {pay:you:a2:b2} and {them} {pay:them:a2:b2}. Each sure choice leads to an outcome worse for both.",
+        "You do better with {act:a3} and {them} with {act:b1} whatever the other does, yet together that gives {pay:you:a3:b1} and {pay:them:a3:b1}, against {pay:you:a2:b2} and {pay:them:a2:b2}."
+      ],
+      "term": "A choice can be better for you whatever the other does and still leave both of you worse off than another outcome."
+    },
+    {
+      "concept": "dominant_strategy",
+      "type": "reason_choice",
+      "code": "INDIVIDUAL_AS_JOINT",
+      "items": [
+        "h.m3.dilemma.c"
+      ],
+      "phrasings": [
+        "{Act:a2} with {act:b2} gives you {pay:you:a2:b2} and {them} {pay:them:a2:b2}, more than {pay:you:a3:b1} and {pay:them:a3:b1}. Better for each is not the same as best for both.",
+        "Both of you get more with {act:a2} and {act:b2}: {pay:you:a2:b2} and {pay:them:a2:b2}, against {pay:you:a3:b1} and {pay:them:a3:b1}."
+      ]
+    },
+    {
+      "concept": "dominant_strategy",
+      "type": "reason_choice",
+      "code": "IGNORED_OPPONENT_INCENTIVE",
+      "items": [
+        "h.m3.dilemma.c"
+      ],
+      "phrasings": [
+        "For {them}, {act:b1} gives {pay:them:a3:b1} against your {act:a3}, more than {act:b2} gives ({pay:them:a3:b2}). {Them} has a sure choice too.",
+        "{Them} gets more from {act:b1} than from {act:b2} in every case, e.g. {pay:them:a3:b1} to {pay:them:a3:b2}. Expect {act:b1}."
       ]
     }
   ],

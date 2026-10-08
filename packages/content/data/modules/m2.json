@@ -3094,6 +3094,55 @@
         "With your belief, {act:a1} gives you {ev:a1} on average, {act:a2} gives {ev:a2} and {act:a3} gives {ev:a3}. Following what you believe points to {bbr}.",
         "Under the chance you gave: {act:a1} {ev:a1}, {act:a2} {ev:a2}, {act:a3} {ev:a3}. A steady payoff is not the highest average here; {bbr} is."
       ]
+    },
+    {
+      "concept": "best_response",
+      "type": "reason_choice",
+      "code": "CORRECT",
+      "items": [
+        "h.m2.br.tie.b"
+      ],
+      "phrasings": [
+        "Against {act:a2}, {act:b2} gives you {pay:you:a2:b2} and {act:b3} gives you {pay:you:a2:b3}. Both are equally good for you there.",
+        "If {them} chooses {act:a2}: {act:b2} {pay:you:a2:b2}, {act:b3} {pay:you:a2:b3}. A tie, so either is a best choice."
+      ],
+      "term": "When two actions tie for the highest payoff, both are best responses."
+    },
+    {
+      "concept": "best_response",
+      "type": "reason_choice",
+      "code": "TREATING_TIE_AS_STRICT",
+      "items": [
+        "h.m2.br.tie.b"
+      ],
+      "phrasings": [
+        "Against {act:a2}, {act:b2} gives you {pay:you:a2:b2} and {act:b3} gives you {pay:you:a2:b3}: a tie, so neither is ahead.",
+        "With {them} on {act:a2}, both of your choices give {pay:you:a2:b2}. Neither one beats the other."
+      ]
+    },
+    {
+      "concept": "best_response",
+      "type": "reason_choice",
+      "code": "ACROSS_NOT_WITHIN",
+      "items": [
+        "h.m2.br.tie.b"
+      ],
+      "phrasings": [
+        "Compare within {act:a2}: {act:b2} gives you {pay:you:a2:b2} and {act:b3} gives you {pay:you:a2:b3}. Payoffs against {act:a1} do not apply here.",
+        "With {them} on {act:a2}, only that column counts: {pay:you:a2:b2} and {pay:you:a2:b3}, a tie."
+      ]
+    },
+    {
+      "concept": "best_response",
+      "type": "reason_choice",
+      "code": "INCOMPLETE_COMPARISON",
+      "items": [
+        "h.m2.br.tie.b"
+      ],
+      "phrasings": [
+        "Against {act:a2}, {act:b2} gives you {pay:you:a2:b2} and {act:b3} gives you {pay:you:a2:b3}: a tie. Check {act:a1} separately too.",
+        "Neither {act:b2} nor {act:b3} beats the other against {act:a2}. Look at {act:a1} on its own before deciding."
+      ]
     }
   ],
   "rubrics": [

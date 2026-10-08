@@ -592,6 +592,236 @@
       },
       "heldOut": true,
       "notes": "Weak dominance for the learner on a1 (tie at b1); the other side’s better choice depends on yours."
+    },
+    {
+      "id": "h.s.m2c",
+      "version": "1.0.0",
+      "module": 2,
+      "discipline": "GT",
+      "sequence": "simultaneous",
+      "presentation": "matrix",
+      "scale": "cardinal",
+      "actions": {
+        "A": [
+          "a1",
+          "a2"
+        ],
+        "B": [
+          "b1",
+          "b2",
+          "b3"
+        ]
+      },
+      "payoffs": {
+        "a1|b1": [
+          "3",
+          "4"
+        ],
+        "a1|b2": [
+          "1",
+          "2"
+        ],
+        "a1|b3": [
+          "2",
+          "1"
+        ],
+        "a2|b1": [
+          "0",
+          "1"
+        ],
+        "a2|b2": [
+          "3",
+          "3"
+        ],
+        "a2|b3": [
+          "1",
+          "3"
+        ]
+      },
+      "params": {},
+      "constraints": [],
+      "facts": {
+        "strictlyDominant": {
+          "A": null,
+          "B": null
+        },
+        "weaklyDominantOnly": {
+          "A": null,
+          "B": null
+        },
+        "strictlyDominated": {
+          "A": [],
+          "B": []
+        },
+        "bestResponseDependsOnOpponent": {
+          "A": true,
+          "B": true
+        },
+        "iesdsSolution": null,
+        "familyCode": "o"
+      },
+      "heldOut": true,
+      "notes": "Held-out best-response-tie structure for M2 (seat B has three actions; a genuine tie against a2). Not isomorphic to m2.s.three or any practised M2 structure (engine-checked)."
+    },
+    {
+      "id": "h.s.m3g",
+      "version": "1.0.0",
+      "module": 3,
+      "discipline": "GT",
+      "sequence": "simultaneous",
+      "presentation": "matrix",
+      "scale": "ordinal",
+      "actions": {
+        "A": [
+          "a1",
+          "a2",
+          "a3"
+        ],
+        "B": [
+          "b1",
+          "b2",
+          "b3"
+        ]
+      },
+      "payoffs": {
+        "a1|b1": [
+          "3",
+          "6"
+        ],
+        "a1|b2": [
+          "1",
+          "2"
+        ],
+        "a1|b3": [
+          "2",
+          "1"
+        ],
+        "a2|b1": [
+          "4",
+          "7"
+        ],
+        "a2|b2": [
+          "7",
+          "5"
+        ],
+        "a2|b3": [
+          "3",
+          "3"
+        ],
+        "a3|b1": [
+          "5",
+          "4"
+        ],
+        "a3|b2": [
+          "8",
+          "1"
+        ],
+        "a3|b3": [
+          "6",
+          "0"
+        ]
+      },
+      "params": {},
+      "constraints": [],
+      "facts": {
+        "strictlyDominant": {
+          "A": "a3",
+          "B": "b1"
+        },
+        "weaklyDominantOnly": {
+          "A": null,
+          "B": null
+        },
+        "strictlyDominated": {
+          "A": [
+            "a1",
+            "a2"
+          ],
+          "B": [
+            "b2",
+            "b3"
+          ]
+        },
+        "bestResponseDependsOnOpponent": {
+          "A": false,
+          "B": false
+        },
+        "iesdsSolution": [
+          "a3",
+          "b1"
+        ],
+        "familyCode": "o"
+      },
+      "heldOut": true,
+      "notes": "Held-out social-dilemma structure for M3, parallel to m3.s.rush (i.m3.dilemma): a3 strictly dominant for A, b1 for B; their outcome (5, 4) is worse for both than (a2, b2) at (7, 5). Engine-checked not isomorphic to m3.s.rush, m3.s.pledge, m3.s.roommate or any other M3 structure under action relabelling or seat swap."
+    },
+    {
+      "id": "h.s.m3h",
+      "version": "1.0.0",
+      "module": 3,
+      "discipline": "GT",
+      "sequence": "simultaneous",
+      "presentation": "matrix",
+      "scale": "ordinal",
+      "actions": {
+        "A": [
+          "a1",
+          "a2"
+        ],
+        "B": [
+          "b1",
+          "b2"
+        ]
+      },
+      "payoffs": {
+        "a1|b1": [
+          "2",
+          "4"
+        ],
+        "a1|b2": [
+          "5",
+          "1"
+        ],
+        "a2|b1": [
+          "1",
+          "3"
+        ],
+        "a2|b2": [
+          "4",
+          "0"
+        ]
+      },
+      "params": {},
+      "constraints": [],
+      "facts": {
+        "strictlyDominant": {
+          "A": "a1",
+          "B": "b1"
+        },
+        "weaklyDominantOnly": {
+          "A": null,
+          "B": null
+        },
+        "strictlyDominated": {
+          "A": [
+            "a2"
+          ],
+          "B": [
+            "b2"
+          ]
+        },
+        "bestResponseDependsOnOpponent": {
+          "A": false,
+          "B": false
+        },
+        "iesdsSolution": [
+          "a1",
+          "b1"
+        ],
+        "familyCode": "o"
+      },
+      "heldOut": true,
+      "notes": "Second held-out both-dominant 2x2 structure for M3 (form B of h.m3.dom), structurally distinct from h.s.m3a: different payoff pattern and a different engine family (o, not h). Engine-checked not isomorphic to h.s.m3a or any other M3 structure under action relabelling or seat swap."
     }
   ],
   "skins": [
@@ -962,10 +1192,10 @@
     },
     {
       "id": "hk.m2.race",
-      "version": "1.0.0",
-      "domain": "sports_games",
+      "version": "2.0.0",
+      "domain": "abstract",
       "tone": "neutral",
-      "title": "Training for a race",
+      "title": "Mode and switch",
       "structures": [
         "h.s.m2b"
       ],
@@ -976,35 +1206,35 @@
           "short": "you"
         },
         "other": {
-          "id": "nair",
-          "label": "Mr Nair",
-          "short": "Mr Nair"
+          "id": "other",
+          "label": "The other side",
+          "short": "the other side"
         }
       },
       "seats": [
         "A"
       ],
       "actionLabels": {
-        "a1": "Hill runs",
-        "a2": "Flat runs",
-        "b1": "Flat course",
-        "b2": "Hilly course"
+        "a1": "Mode one",
+        "a2": "Mode two",
+        "b1": "Switch down",
+        "b2": "Switch up"
       },
-      "situation": "You are training for a local race. You decide whether to practise hill runs or flat runs, while the organiser, Mr Nair, decides whether the course will be flat or hilly.",
+      "situation": "A device has two modes you can set, and an environment switch the other side controls. You set your mode; at the same moment, the other side sets the switch.",
       "incentives": {
-        "h.s.m2b": "Hill practice pays off well on a hilly course and not at all on a flat one; flat runs help a little either way, more on a flat course."
+        "h.s.m2b": "Mode one scores well when the switch is up and not at all when it’s down; mode two helps a little either way, more when the switch is down."
       },
-      "timing": "You both decide this month, separately.",
-      "information": "You know how Mr Nair plans. You don’t know which course he will set.",
-      "matrixLabel": "Outcomes for your training and the course",
+      "timing": "You both set yours at the same moment, separately.",
+      "information": "You know how the other side’s scoring works. You don’t know which way it will set the switch.",
+      "matrixLabel": "Outcomes for your mode and the switch",
       "heldOut": true
     },
     {
       "id": "hk.m2.packing",
-      "version": "1.0.0",
-      "domain": "everyday_life",
+      "version": "2.0.0",
+      "domain": "markets",
       "tone": "neutral",
-      "title": "Packing for a visit",
+      "title": "Stock for market day",
       "structures": [
         "h.s.m2b"
       ],
@@ -1015,35 +1245,35 @@
           "short": "you"
         },
         "other": {
-          "id": "kapoor",
-          "label": "Mrs Kapoor",
-          "short": "Mrs Kapoor"
+          "id": "irfan",
+          "label": "Irfan",
+          "short": "Irfan"
         }
       },
       "seats": [
         "A"
       ],
       "actionLabels": {
-        "a1": "Heavy coat",
-        "a2": "Light jacket",
-        "b1": "Indoor day",
-        "b2": "Outdoor day"
+        "a1": "Stock umbrellas",
+        "a2": "Stock sunhats",
+        "b1": "Feature: sun gear",
+        "b2": "Feature: rain gear"
       },
-      "situation": "You are visiting Mrs Kapoor in the hills. You decide whether to pack a heavy coat or a light jacket, while she decides whether to plan an indoor day or an outdoor day.",
+      "situation": "You run a market stall and stock either umbrellas or sunhats for the week. Irfan, who sets the market’s weekly feature, decides separately whether the feature is rain gear or sun gear.",
       "incentives": {
-        "h.s.m2b": "The coat is a great help on an outdoor day and a burden indoors; the jacket is fine either way, a little better indoors."
+        "h.s.m2b": "Umbrellas sell well when the feature is rain gear and not at all when it’s sun gear; sunhats sell a little either way, a bit more when the feature is sun gear."
       },
-      "timing": "You both decide before the visit, separately.",
-      "information": "You know what Mrs Kapoor enjoys. You don’t know which day she will plan.",
-      "matrixLabel": "Outcomes for your packing and her plan",
+      "timing": "You both decide before the market opens, separately.",
+      "information": "You know how shoppers respond to the feature. You don’t know which feature Irfan will set.",
+      "matrixLabel": "Outcomes for your stock and the market feature",
       "heldOut": true
     },
     {
       "id": "hk.m2.interview",
-      "version": "1.0.0",
-      "domain": "work_business",
+      "version": "2.0.0",
+      "domain": "society_collective",
       "tone": "neutral",
-      "title": "The interview",
+      "title": "The community stall",
       "structures": [
         "h.s.m2b"
       ],
@@ -1054,27 +1284,27 @@
           "short": "you"
         },
         "other": {
-          "id": "sen",
-          "label": "Dr Sen",
-          "short": "Dr Sen"
+          "id": "preeti",
+          "label": "Preeti",
+          "short": "Preeti"
         }
       },
       "seats": [
         "A"
       ],
       "actionLabels": {
-        "a1": "Technical revision",
-        "a2": "Presentation practice",
-        "b1": "Presentation",
-        "b2": "Technical test"
+        "a1": "Prepare craft display",
+        "a2": "Prepare food display",
+        "b1": "Theme: local food",
+        "b2": "Theme: handicrafts"
       },
-      "situation": "You are preparing for a job interview by revising technical questions or practising a presentation. Dr Sen, who chairs the panel, decides whether the interview will be a presentation or a technical test.",
+      "situation": "You are preparing a stall for the neighbourhood festival, either a craft display or a food display. Preeti, who sets the festival’s theme, decides separately between handicrafts and local food.",
       "incentives": {
-        "h.s.m2b": "Technical revision pays off well in a technical test and not at all for a presentation; presentation practice helps a little either way, more for a presentation."
+        "h.s.m2b": "The craft display draws a crowd when the theme is handicrafts and barely any when it’s local food; the food display does alright either way, a bit better when the theme is local food."
       },
-      "timing": "You both prepare this week, separately.",
-      "information": "You know how Dr Sen runs panels. You don’t know which format she will choose.",
-      "matrixLabel": "Outcomes for your preparation and the format",
+      "timing": "You both decide this week, separately.",
+      "information": "You know how fairgoers respond. You don’t know which theme Preeti will set.",
+      "matrixLabel": "Outcomes for your display and the festival’s theme",
       "heldOut": true
     },
     {
@@ -1353,6 +1583,126 @@
       "information": "You know how Mr Sood plans. You don’t know when he will deliver.",
       "matrixLabel": "Outcomes for your hours and Mr Sood’s delivery",
       "heldOut": true
+    },
+    {
+      "id": "hk.m2.circleb",
+      "version": "1.0.0",
+      "domain": "social_interaction",
+      "tone": "neutral",
+      "title": "Weekend plans",
+      "structures": [
+        "h.s.m2c"
+      ],
+      "roles": {
+        "you": {
+          "id": "you",
+          "label": "You",
+          "short": "you"
+        },
+        "other": {
+          "id": "ved",
+          "label": "Ved",
+          "short": "Ved"
+        }
+      },
+      "seats": [
+        "B"
+      ],
+      "actionLabels": {
+        "a1": "Stay nearby",
+        "a2": "Leave town",
+        "b1": "Quiet gathering",
+        "b2": "Games night",
+        "b3": "Film marathon"
+      },
+      "situation": "You and Ved are planning this weekend. Ved decides whether to stay nearby or go out of town; at the same moment, you decide which of three plans to line up.",
+      "incentives": {
+        "h.s.m2c@B": "You do best lining up the quiet gathering when Ved stays nearby, and your best plan depends on what Ved decides. If Ved goes out of town, the games night and the film marathon suit you equally well."
+      },
+      "timing": "Ved decides and you line up a plan at the same moment.",
+      "information": "You both know what the other wants. You don’t know whether Ved will stay nearby or go out of town.",
+      "matrixLabel": "Outcomes for Ved’s choice and your plan",
+      "heldOut": true
+    },
+    {
+      "id": "hk.m3.hours",
+      "version": "1.0.0",
+      "domain": "work_business",
+      "tone": "neutral",
+      "title": "Workshop hours",
+      "structures": [
+        "h.s.m3g"
+      ],
+      "roles": {
+        "you": {
+          "id": "you",
+          "label": "You",
+          "short": "you"
+        },
+        "other": {
+          "id": "dutta",
+          "label": "Mr Dutta",
+          "short": "Mr Dutta"
+        }
+      },
+      "seats": [
+        "A"
+      ],
+      "actionLabels": {
+        "a1": "Standard hours",
+        "a2": "Shortened hours",
+        "a3": "Extended hours",
+        "b1": "Standard hours",
+        "b2": "Shortened hours",
+        "b3": "Extended hours"
+      },
+      "situation": "You and Mr Dutta run the only two repair workshops in the market. Each month, you each set your opening hours: standard, shortened or extended.",
+      "incentives": {
+        "h.s.m3g": "Extended hours draw in customers who would otherwise go to Mr Dutta’s workshop, at some cost in staff overtime. Shortened hours save on staff and rent, more so when Mr Dutta also keeps his hours short."
+      },
+      "timing": "You both set next month’s hours now, separately.",
+      "information": "You both know the market and each other’s costs. You don’t know which hours Mr Dutta will set.",
+      "matrixLabel": "Outcomes for your hours and Mr Dutta’s hours",
+      "heldOut": true
+    },
+    {
+      "id": "hk.m3.busk",
+      "version": "1.0.0",
+      "domain": "social_interaction",
+      "tone": "neutral",
+      "title": "Morning or evening",
+      "structures": [
+        "h.s.m3h"
+      ],
+      "roles": {
+        "you": {
+          "id": "you",
+          "label": "You",
+          "short": "you"
+        },
+        "other": {
+          "id": "priya",
+          "label": "Priya",
+          "short": "Priya"
+        }
+      },
+      "seats": [
+        "A"
+      ],
+      "actionLabels": {
+        "a1": "Morning slot",
+        "a2": "Evening slot",
+        "b1": "Morning slot",
+        "b2": "Evening slot"
+      },
+      "situation": "You and Priya both busk on the same street corner. Each day, you each pick a slot: morning or evening.",
+      "incentives": {
+        "h.s.m3h": "The morning slot gets you more passers-by than the evening slot, and it pays especially well when Priya busks in the evening instead. Priya also draws a bigger crowd from the morning slot."
+      },
+      "timing": "You both pick your slot at the start of the day, separately.",
+      "information": "You both know the street and what draws a crowd. You don’t know which slot Priya will pick.",
+      "matrixLabel": "Outcomes for your slot and Priya’s slot",
+      "heldOut": true
     }
   ],
   "variations": [
@@ -1451,6 +1801,30 @@
     {
       "id": "hv.m3f",
       "structure": "h.s.m3f",
+      "params": {},
+      "seat": "A",
+      "purpose": "preserve",
+      "heldOut": true
+    },
+    {
+      "id": "hv.m2c",
+      "structure": "h.s.m2c",
+      "params": {},
+      "seat": "B",
+      "purpose": "preserve",
+      "heldOut": true
+    },
+    {
+      "id": "hv.m3g",
+      "structure": "h.s.m3g",
+      "params": {},
+      "seat": "A",
+      "purpose": "preserve",
+      "heldOut": true
+    },
+    {
+      "id": "hv.m3h",
+      "structure": "h.s.m3h",
       "params": {},
       "seat": "A",
       "purpose": "preserve",
@@ -1917,7 +2291,7 @@
               "t": "observes",
               "who": "them"
             },
-            "code": "MODEL_WRONG_INFO"
+            "code": "UNMATCHED"
           }
         ],
         [
@@ -1943,7 +2317,7 @@
               "t": "observes",
               "who": "them"
             },
-            "code": "MODEL_WRONG_INFO"
+            "code": "UNMATCHED"
           }
         ]
       ],
@@ -2888,12 +3262,12 @@
       "role": "held_out",
       "concept": "dominant_strategy",
       "type": "reason_choice",
-      "structure": "h.s.m3a",
+      "structure": "h.s.m3h",
       "skins": [
-        "hk.m3.court"
+        "hk.m3.busk"
       ],
       "variations": [
-        "hv.m3a"
+        "hv.m3h"
       ],
       "exposure": "transfer_hidden",
       "novelty": "new_structure",
@@ -3408,6 +3782,202 @@
       ],
       "heldOutForm": "C",
       "parallelOf": "i.m3.dominated"
+    },
+    {
+      "id": "h.m2.br.tie.b",
+      "version": "1.0.0",
+      "lesson": "m2.l1",
+      "step": "explain",
+      "role": "held_out",
+      "concept": "best_response",
+      "type": "reason_choice",
+      "structure": "h.s.m2c",
+      "skins": [
+        "hk.m2.circleb"
+      ],
+      "variations": [
+        "hv.m2c"
+      ],
+      "exposure": "transfer_hidden",
+      "novelty": "new_structure",
+      "seat": "B",
+      "prompt": "If {them} chooses {act:a2}, which is better for you?",
+      "facts": {},
+      "optionSets": [
+        [
+          {
+            "text": "{Act:b1}: against {act:a1} it would give you {pay:you:a1:b1}.",
+            "claim": {
+              "t": "br",
+              "who": "you",
+              "against": "a2",
+              "action": "b1"
+            },
+            "code": "ACROSS_NOT_WITHIN"
+          },
+          {
+            "text": "{Act:b2}: it must edge ahead of {act:b3} against {act:a2}.",
+            "claim": {
+              "t": "br",
+              "who": "you",
+              "against": "a2",
+              "action": "b2"
+            },
+            "code": "TREATING_TIE_AS_STRICT"
+          },
+          {
+            "text": "{Act:b3}: it is better for you whatever {them} does.",
+            "claim": {
+              "t": "strictDom",
+              "who": "you",
+              "action": "b3"
+            },
+            "code": "INCOMPLETE_COMPARISON"
+          },
+          {
+            "text": "Neither: against {act:a2}, {act:b2} and {act:b3} both give you {pay:you:a2:b2}.",
+            "claim": {
+              "t": "brTie",
+              "who": "you",
+              "against": "a2",
+              "actions": [
+                "b2",
+                "b3"
+              ]
+            },
+            "code": "UNMATCHED"
+          }
+        ],
+        [
+          {
+            "text": "{Act:b1}, since with {act:a1} it gets you {pay:you:a1:b1}.",
+            "claim": {
+              "t": "br",
+              "who": "you",
+              "against": "a2",
+              "action": "b1"
+            },
+            "code": "ACROSS_NOT_WITHIN"
+          },
+          {
+            "text": "They tie: against {act:a2} each gives you {pay:you:a2:b2}.",
+            "claim": {
+              "t": "brTie",
+              "who": "you",
+              "against": "a2",
+              "actions": [
+                "b2",
+                "b3"
+              ]
+            },
+            "code": "UNMATCHED"
+          },
+          {
+            "text": "{Act:b3}, since one of them has to be ahead.",
+            "claim": {
+              "t": "br",
+              "who": "you",
+              "against": "a2",
+              "action": "b3"
+            },
+            "code": "TREATING_TIE_AS_STRICT"
+          },
+          {
+            "text": "{Act:b2}: it is better for you whatever {them} does.",
+            "claim": {
+              "t": "strictDom",
+              "who": "you",
+              "action": "b2"
+            },
+            "code": "INCOMPLETE_COMPARISON"
+          }
+        ]
+      ],
+      "heldOutForm": "B",
+      "parallelOf": "i.m2.br.tie"
+    },
+    {
+      "id": "h.m3.dilemma.c",
+      "version": "1.0.0",
+      "lesson": "m3.l2",
+      "step": "explain",
+      "role": "held_out",
+      "concept": "dominant_strategy",
+      "type": "reason_choice",
+      "structure": "h.s.m3g",
+      "skins": [
+        "hk.m3.hours"
+      ],
+      "variations": [
+        "hv.m3g"
+      ],
+      "exposure": "transfer_hidden",
+      "novelty": "new_structure",
+      "seat": "A",
+      "prompt": "Suppose you each pick the choice that is better for you whatever the other does. How does that compare with {act:a2} and {act:b2}?",
+      "facts": {},
+      "optionSets": [
+        [
+          {
+            "text": "Both of you get less: {pay:you:a3:b1} and {pay:them:a3:b1}, instead of {pay:you:a2:b2} and {pay:them:a2:b2} with {act:a2}.",
+            "claim": {
+              "t": "domOutcomeImprovable",
+              "than": [
+                "a2",
+                "b2"
+              ]
+            },
+            "code": "UNMATCHED"
+          },
+          {
+            "text": "Nothing beats it for both: each of you made the better choice.",
+            "claim": {
+              "t": "domOutcomeUnimprovable"
+            },
+            "code": "INDIVIDUAL_AS_JOINT"
+          },
+          {
+            "text": "{Them} will pick {act:b2}, so with {act:a3} you end up with {pay:you:a3:b2}.",
+            "claim": {
+              "t": "strictDom",
+              "who": "them",
+              "action": "b2"
+            },
+            "code": "IGNORED_OPPONENT_INCENTIVE"
+          }
+        ],
+        [
+          {
+            "text": "{Them} will choose {act:b2}, so you come out well ahead.",
+            "claim": {
+              "t": "strictDom",
+              "who": "them",
+              "action": "b2"
+            },
+            "code": "IGNORED_OPPONENT_INCENTIVE"
+          },
+          {
+            "text": "Worse for both: {pay:you:a3:b1} and {pay:them:a3:b1}, against {pay:you:a2:b2} and {pay:them:a2:b2} with {act:a2}.",
+            "claim": {
+              "t": "domOutcomeImprovable",
+              "than": [
+                "a2",
+                "b2"
+              ]
+            },
+            "code": "UNMATCHED"
+          },
+          {
+            "text": "Best for both, since each choice was the better one for its owner.",
+            "claim": {
+              "t": "domOutcomeUnimprovable"
+            },
+            "code": "INDIVIDUAL_AS_JOINT"
+          }
+        ]
+      ],
+      "heldOutForm": "C",
+      "parallelOf": "i.m3.dilemma"
     }
   ]
 }
