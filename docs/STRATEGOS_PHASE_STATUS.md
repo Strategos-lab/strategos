@@ -63,6 +63,16 @@ Confirmed present in the repository as of this audit, each traceable to a specif
 Phase 3 ("Core play UI, PWA shell and structured explanation" per V1 Plan §13), now authorised to
 begin. Phase 3 implementation has not started as of this checkpoint; starting it is a separate task.
 
+## Pending authorised changes (not yet implemented)
+
+- **Internationally neutral scenario content.** `docs/STRATEGOS_PRODUCTION_RULES.md` now records an
+  authorisation override: skin names, settings and vocabulary must be internationally neutral, not
+  Indian-English-specific, overriding the V1 Plan's §3.8 "Indian English ... Bengali or Hindi" note
+  (that planned localisation path is dropped, not deferred). The decision is recorded; the authored
+  skin content in `packages/content/data/modules/*.json` and `packages/content/data/held-out/` still
+  uses Indian names, vocabulary and settings (e.g. "dhaba", "tiffin", cricket) as of this checkpoint —
+  rewriting it is a separate, not-yet-scoped task.
+
 ## Explicitly unauthorised future work
 
 - No AI/LLM, backend, accounts, cloud sync, analytics, telemetry, or gamification in any phase, per

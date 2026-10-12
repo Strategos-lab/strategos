@@ -12,8 +12,9 @@ and be implemented**. They do not replace the plan.
 - On a conflict (rules ↔ plan ↔ code), do not silently pick one. Identify it, preserve the
   higher-level product decision, and report it before making any speculative change.
 - Authorisation overrides of the plan: no AI in any version; GitHub Pages PWA; general-public
-  fictional domains only (see B); Module 5 = Social Dilemmas with contrast games; minimal two-stage sequential
-  model; phases 0–9 one at a time, each confirmed.
+  fictional domains only (see B); internationally neutral names, settings and vocabulary, not
+  Indian-English-specific (see B); Module 5 = Social Dilemmas with contrast games; minimal two-stage
+  sequential model; phases 0–9 one at a time, each confirmed.
 
 ---
 
@@ -52,6 +53,11 @@ and be implemented**. They do not replace the plan.
 <!-- lint:banned-terms-definition:start -->
 - No policing, law-enforcement or profession content. General-public fictional domains only.
 <!-- lint:banned-terms-definition:end -->
+- Scenario content (skin names, settings, vocabulary) is internationally neutral: understandable to
+  a general global audience, not assuming one country's spelling, idiom or cultural references.
+  Overrides the V1 Plan's "Indian English spelling and number formats ... Bengali or Hindi"
+  localisation note (§3.8); the originally planned Bengali/Hindi localisation path is accordingly
+  dropped, not merely deferred.
 - `Math.random` is forbidden. Use the engine's seeded PRNG.
 
 ## C. Visual design standard (preserve)
