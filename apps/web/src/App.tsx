@@ -1,5 +1,5 @@
 import { HashRouter, Navigate, Route, Routes } from 'react-router-dom';
-import { SlicePage } from './pages/SlicePage';
+import { LessonPage } from './pages/LessonPage';
 import { DataPage } from './pages/DataPage';
 import { DevPage } from './pages/DevPage';
 import { UpdateBanner } from './components/UpdateBanner';
@@ -9,7 +9,7 @@ export default function App() {
     <HashRouter>
       <UpdateBanner />
       <Routes>
-        <Route path="/" element={<SlicePage />} />
+        <Route path="/" element={<LessonPage lessonId="m1.l1" />} />
         <Route path="/data" element={<DataPage />} />
         {/* Developer mode: not linked from the learner UI. */}
         <Route path="/dev" element={<DevPage />} />
