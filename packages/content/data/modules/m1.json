@@ -18,8 +18,8 @@
         },
         "other": {
           "id": "meera",
-          "label": "Meera",
-          "short": "Meera"
+          "label": "Maria",
+          "short": "Maria"
         }
       },
       "seats": [
@@ -31,18 +31,18 @@
         "b1": "Canteen",
         "b2": "Dhaba"
       },
-      "situation": "You and Meera take lunch at the same time. Each of you heads either to the canteen or to the dhaba across the road. Your phones are out of charge. The canteen cook serves whoever comes.",
+      "situation": "You and Maria take lunch at the same time. Each of you heads either to the café or to the diner across the road. Your phones are out of charge. The café owner serves whoever comes.",
       "incentives": {
-        "m1.s.meet": "You like the canteen more; Meera likes the dhaba more. Each of you would rather eat together than alone, and eating alone is worse at the other person’s favourite place."
+        "m1.s.meet": "You like the café more; Maria likes the diner more. Each of you would rather eat together than alone, and eating alone is worse at the other person’s favourite place."
       },
       "timing": "You both set off at the same time. Neither of you sees where the other goes.",
-      "information": "You both know what the other likes. You don’t know where Meera will go.",
-      "matrixLabel": "Outcomes for your place and Meera’s place",
+      "information": "You both know what the other likes. You don’t know where Maria will go.",
+      "matrixLabel": "Outcomes for your place and Maria’s place",
       "nonPlayers": [
         {
           "id": "cook",
-          "label": "The canteen cook",
-          "short": "the canteen cook"
+          "label": "The café owner",
+          "short": "the café owner"
         }
       ]
     },
@@ -63,8 +63,8 @@
         },
         "other": {
           "id": "ravi",
-          "label": "Ravi",
-          "short": "Ravi"
+          "label": "Leo",
+          "short": "Leo"
         }
       },
       "seats": [
@@ -76,18 +76,18 @@
         "b1": "Document",
         "b2": "Slides"
       },
-      "situation": "You and Ravi each start this week’s team update, either as a document or as slides. Your manager, Ms Iyer, reads whatever arrives on Friday.",
+      "situation": "You and Leo each start this week’s team update, either as a document or as slides. Your manager, Ms Carter, reads whatever arrives on Friday.",
       "incentives": {
-        "m1.s.meet": "You work faster in a document; Ravi works faster in slides. You would both rather use one format than two, and two formats are worse when each of you uses the other’s favourite."
+        "m1.s.meet": "You work faster in a document; Leo works faster in slides. You would both rather use one format than two, and two formats are worse when each of you uses the other’s favourite."
       },
       "timing": "You both start on the same morning. Neither sees the other’s draft until it is done.",
-      "information": "You both know how the other likes to work. You don’t know which format Ravi will pick.",
-      "matrixLabel": "Outcomes for your format and Ravi’s format",
+      "information": "You both know how the other likes to work. You don’t know which format Leo will pick.",
+      "matrixLabel": "Outcomes for your format and Leo’s format",
       "nonPlayers": [
         {
           "id": "iyer",
-          "label": "Ms Iyer",
-          "short": "Ms Iyer"
+          "label": "Ms Carter",
+          "short": "Ms Carter"
         }
       ]
     },
@@ -108,8 +108,8 @@
         },
         "other": {
           "id": "kabir",
-          "label": "Kabir",
-          "short": "Kabir"
+          "label": "Alex",
+          "short": "Alex"
         }
       },
       "seats": [
@@ -121,18 +121,18 @@
         "b1": "Morning",
         "b2": "Evening"
       },
-      "situation": "You and Kabir both want to train at the club this weekend, at the morning session or the evening session. Coach Sharma runs both sessions either way.",
+      "situation": "You and Alex both want to train at the club this weekend, at the morning session or the evening session. Coach Wilson runs both sessions either way.",
       "incentives": {
-        "m1.s.meet": "You like mornings more; Kabir likes evenings more. Each of you would rather train together than alone, and training alone is worse at the time the other likes."
+        "m1.s.meet": "You like mornings more; Alex likes evenings more. Each of you would rather train together than alone, and training alone is worse at the time the other likes."
       },
       "timing": "You each sign up at the same time. Neither sees the other’s sign-up.",
-      "information": "You both know which time the other likes. You don’t know which session Kabir will pick.",
-      "matrixLabel": "Outcomes for your session and Kabir’s session",
+      "information": "You both know which time the other likes. You don’t know which session Alex will pick.",
+      "matrixLabel": "Outcomes for your session and Alex’s session",
       "nonPlayers": [
         {
           "id": "coach",
-          "label": "Coach Sharma",
-          "short": "Coach Sharma"
+          "label": "Coach Wilson",
+          "short": "Coach Wilson"
         }
       ]
     },
@@ -153,26 +153,26 @@
         },
         "other": {
           "id": "tara",
-          "label": "Tara",
-          "short": "Tara"
+          "label": "Nina",
+          "short": "Nina"
         }
       },
       "seats": [
         "A"
       ],
       "actionLabels": {
-        "a1": "Town mela",
+        "a1": "Town square",
         "a2": "Riverside",
-        "b1": "Town mela",
+        "b1": "Town square",
         "b2": "Riverside"
       },
-      "situation": "You and Tara sell handmade crafts and share one van. This weekend each of you books a stall at either the town mela or the riverside market. The organisers rent stalls to anyone.",
+      "situation": "You and Nina sell handmade crafts and share one van. This weekend each of you books a stall at either the town square market or the riverside market. The organisers rent stalls to anyone.",
       "incentives": {
-        "m1.s.meet": "You sell more at the town mela; Tara sells more by the river. Sharing the van to one place beats going to two, and going alone is worse at the other’s favourite place."
+        "m1.s.meet": "You sell more at the town square; Nina sells more by the river. Sharing the van to one place beats going to two, and going alone is worse at the other’s favourite place."
       },
       "timing": "You both book at the same time. Neither sees the other’s booking.",
-      "information": "You both know where the other sells best. You don’t know where Tara will book.",
-      "matrixLabel": "Outcomes for your market and Tara’s market",
+      "information": "You both know where the other sells best. You don’t know where Nina will book.",
+      "matrixLabel": "Outcomes for your market and Nina’s market",
       "nonPlayers": [
         {
           "id": "organisers",
@@ -198,8 +198,8 @@
         },
         "other": {
           "id": "asha",
-          "label": "Asha",
-          "short": "Asha"
+          "label": "Grace",
+          "short": "Grace"
         }
       },
       "seats": [
@@ -211,13 +211,13 @@
         "b1": "Join you",
         "b2": "Own event"
       },
-      "situation": "Your housing society is planning a park clean-up. You fix the date first: a weekday or the weekend. Asha, who leads a volunteer group, reads your notice and then decides whether her group joins yours or holds its own event later.",
+      "situation": "Your housing society is planning a park clean-up. You fix the date first: a weekday or the weekend. Grace, who leads a volunteer group, reads your notice and then decides whether her group joins yours or holds its own event later.",
       "incentives": {
-        "m1.s.turns": "You can lead only on a weekday, and either way you want Asha’s group to join. Her group is free at weekends: on a weekend date they want to join; on a weekday they would rather hold their own event."
+        "m1.s.turns": "You can lead only on a weekday, and either way you want Grace’s group to join. Her group is free at weekends: on a weekend date they want to join; on a weekday they would rather hold their own event."
       },
-      "timing": "You choose first. Asha chooses after reading your notice.",
-      "information": "Asha sees your date before deciding. You know what Asha’s group wants.",
-      "matrixLabel": "Outcomes for your date and Asha’s reply"
+      "timing": "You choose first. Grace chooses after reading your notice.",
+      "information": "Grace sees your date before deciding. You know what Grace’s group wants.",
+      "matrixLabel": "Outcomes for your date and Grace’s reply"
     },
     {
       "id": "sk.m1.dial",
@@ -274,8 +274,8 @@
         },
         "other": {
           "id": "sahil",
-          "label": "Sahil",
-          "short": "Sahil"
+          "label": "Sam",
+          "short": "Sam"
         }
       },
       "seats": [
@@ -283,17 +283,17 @@
       ],
       "actionLabels": {
         "a1": "Rice",
-        "a2": "Rotis",
-        "b1": "Dal",
-        "b2": "Curry"
+        "a2": "Noodles",
+        "b1": "Soup",
+        "b2": "Stew"
       },
-      "situation": "You are cooking dinner. You decide first whether to make rice or rotis. Your brother Sahil sees what you started and then makes dal or a curry to go with it.",
+      "situation": "You are cooking dinner. You decide first whether to make rice or noodles. Your brother Sam sees what you started and then makes a soup or a stew to go with it.",
       "incentives": {
-        "m1.s.turns": "Rice is much quicker for you to make, and you also like dal more than curry. Sahil likes curry with rice but dal with rotis, and rotis with dal is his favourite meal."
+        "m1.s.turns": "Rice is much quicker for you to make, and you also like soup more than stew. Sam likes stew with rice but soup with noodles, and noodles with soup is his favourite meal."
       },
-      "timing": "You choose first. Sahil chooses after seeing what you are making.",
-      "information": "Sahil knows what you started before choosing. You both know each other’s tastes.",
-      "matrixLabel": "Outcomes for your dish and Sahil’s side dish"
+      "timing": "You choose first. Sam chooses after seeing what you are making.",
+      "information": "Sam knows what you started before choosing. You both know each other’s tastes.",
+      "matrixLabel": "Outcomes for your dish and Sam’s side dish"
     },
     {
       "id": "sk.m1.van",
@@ -350,8 +350,8 @@
         },
         "other": {
           "id": "nikhil",
-          "label": "Nikhil",
-          "short": "Nikhil"
+          "label": "Noah",
+          "short": "Noah"
         }
       },
       "seats": [
@@ -364,18 +364,18 @@
         "b2": "Noon",
         "b3": "Evening"
       },
-      "situation": "You and Nikhil are planning Sunday. At the same moment, you post the place, the museum or the lake, and Nikhil posts the start time: morning, noon or evening. His sister Pooja will drive you both, wherever and whenever.",
+      "situation": "You and Noah are planning Sunday. At the same moment, you post the place, the museum or the lake, and Noah posts the start time: morning, noon or evening. His sister Claire will drive you both, wherever and whenever.",
       "incentives": {
-        "m1.s.three": "You most want the museum in the morning, and how the day goes for you depends on the time Nikhil picks. Nikhil most wants the museum at noon."
+        "m1.s.three": "You most want the museum in the morning, and how the day goes for you depends on the time Noah picks. Noah most wants the museum at noon."
       },
       "timing": "You both post at the same moment. Neither sees the other’s post first.",
-      "information": "You know what Nikhil likes. You don’t know which time he will post.",
-      "matrixLabel": "Outcomes for your place and Nikhil’s start time",
+      "information": "You know what Noah likes. You don’t know which time he will post.",
+      "matrixLabel": "Outcomes for your place and Noah’s start time",
       "nonPlayers": [
         {
           "id": "pooja",
-          "label": "Pooja",
-          "short": "Pooja"
+          "label": "Claire",
+          "short": "Claire"
         }
       ]
     },
@@ -396,8 +396,8 @@
         },
         "other": {
           "id": "zoya",
-          "label": "Zoya",
-          "short": "Zoya"
+          "label": "Zoe",
+          "short": "Zoe"
         }
       },
       "seats": [
@@ -410,18 +410,18 @@
         "b2": "Novel",
         "b3": "Play"
       },
-      "situation": "Your reading circle meets this week. You choose whether it meets in person or online. At the same time Zoya chooses what to read: a short story, a novel or a play. Mr Das, who owns the café, hosts whatever is chosen.",
+      "situation": "Your reading circle meets this week. You choose whether it meets in person or online. At the same time Zoe chooses what to read: a short story, a novel or a play. Mr Reed, who owns the café, hosts whatever is chosen.",
       "incentives": {
-        "m1.s.three": "You enjoy meeting in person most when the reading is a short story, and how the evening goes for you depends on what Zoya picks. Zoya enjoys a novel in person most."
+        "m1.s.three": "You enjoy meeting in person most when the reading is a short story, and how the evening goes for you depends on what Zoe picks. Zoe enjoys a novel in person most."
       },
-      "timing": "You and Zoya decide at the same time. Neither sees the other’s choice first.",
-      "information": "You know what Zoya enjoys. You don’t know what she will pick.",
-      "matrixLabel": "Outcomes for your format and Zoya’s reading",
+      "timing": "You and Zoe decide at the same time. Neither sees the other’s choice first.",
+      "information": "You know what Zoe enjoys. You don’t know what she will pick.",
+      "matrixLabel": "Outcomes for your format and Zoe’s reading",
       "nonPlayers": [
         {
           "id": "das",
-          "label": "Mr Das",
-          "short": "Mr Das"
+          "label": "Mr Reed",
+          "short": "Mr Reed"
         }
       ]
     },
@@ -430,7 +430,7 @@
       "version": "1.0.0",
       "domain": "markets",
       "tone": "neutral",
-      "title": "Two tiffin services",
+      "title": "Two lunch delivery services",
       "structures": [
         "m1.s.three"
       ],
@@ -442,8 +442,8 @@
         },
         "other": {
           "id": "hari",
-          "label": "Hari",
-          "short": "Hari"
+          "label": "Oliver",
+          "short": "Oliver"
         }
       },
       "seats": [
@@ -456,18 +456,18 @@
         "b2": "Mixed",
         "b3": "Special"
       },
-      "situation": "You and Hari run tiffin services in the same lane. Today you set your price, regular or discount, while Hari sets his menu: simple, mixed or special. One delivery rider carries both services’ boxes.",
+      "situation": "You and Oliver run lunch delivery services on the same street. Today you set your price, regular or discount, while Oliver sets his menu: simple, mixed or special. One courier delivers both services’ orders.",
       "incentives": {
-        "m1.s.three": "You earn most at your regular price when Hari offers the simple menu, and how your day goes depends on his menu. Hari earns most when you keep the regular price and he offers mixed."
+        "m1.s.three": "You earn most at your regular price when Oliver offers the simple menu, and how your day goes depends on his menu. Oliver earns most when you keep the regular price and he offers mixed."
       },
       "timing": "You both decide in the morning at the same time. Neither knows the other’s choice until lunch.",
-      "information": "You know how Hari’s customers think. You don’t know which menu he will offer.",
-      "matrixLabel": "Outcomes for your price and Hari’s menu",
+      "information": "You know how Oliver’s customers think. You don’t know which menu he will offer.",
+      "matrixLabel": "Outcomes for your price and Oliver’s menu",
       "nonPlayers": [
         {
           "id": "rider",
-          "label": "The delivery rider",
-          "short": "the delivery rider"
+          "label": "The courier",
+          "short": "the courier"
         }
       ]
     },
@@ -488,8 +488,8 @@
         },
         "other": {
           "id": "jaya",
-          "label": "Jaya",
-          "short": "Jaya"
+          "label": "Maya",
+          "short": "Maya"
         }
       },
       "seats": [
@@ -502,18 +502,18 @@
         "b2": "Steady",
         "b3": "Cautious"
       },
-      "situation": "In a friendly cricket match you captain the fielding side and set an attacking or a defensive field. At the same time Jaya, the batting captain, sets her order: aggressive, steady or cautious. The umpire runs the game whatever you both choose.",
+      "situation": "In a friendly football match you coach your team and set an attacking or a defensive formation. At the same time Maya, the other team’s coach, sets her tactics: aggressive, steady or cautious. The referee runs the game whatever you both choose.",
       "incentives": {
-        "m1.s.three": "You do best with an attacking field against an aggressive order, and your result depends on Jaya’s order. Jaya does best with a steady order against an attacking field."
+        "m1.s.three": "You do best with an attacking formation against an aggressive tactic, and your result depends on Maya’s tactic. Maya does best with a steady tactic against an attacking formation."
       },
-      "timing": "Both of you decide before the first ball. Neither sees the other’s plan.",
-      "information": "You know how Jaya likes to bat. You don’t know which order she will choose.",
-      "matrixLabel": "Outcomes for your field and Jaya’s batting order",
+      "timing": "Both of you decide before kick-off. Neither sees the other’s plan.",
+      "information": "You know how Maya likes to coach. You don’t know which tactic she will choose.",
+      "matrixLabel": "Outcomes for your formation and Maya’s tactic",
       "nonPlayers": [
         {
           "id": "umpire",
-          "label": "The umpire",
-          "short": "the umpire"
+          "label": "The referee",
+          "short": "the referee"
         }
       ]
     },
@@ -534,8 +534,8 @@
         },
         "other": {
           "id": "kiran",
-          "label": "Kiran",
-          "short": "Kiran"
+          "label": "Kai",
+          "short": "Kai"
         }
       },
       "seats": [
@@ -547,18 +547,18 @@
         "b1": "Opening",
         "b2": "Closing"
       },
-      "situation": "You and Kiran volunteer at the community library. This Saturday each of you signs up for one shift, opening or closing. Mrs Pillai, the librarian, keeps the doors open all day regardless.",
+      "situation": "You and Kai volunteer at the community library. This Saturday each of you signs up for one shift, opening or closing. Mrs Baker, the librarian, keeps the doors open all day regardless.",
       "incentives": {
-        "m1.s.meet": "You like the opening shift more; Kiran likes closing more. Both of you enjoy a shared shift more than a lone one, and a lone shift is worse when it is the one the other likes."
+        "m1.s.meet": "You like the opening shift more; Kai likes closing more. Both of you enjoy a shared shift more than a lone one, and a lone shift is worse when it is the one the other likes."
       },
       "timing": "You sign up at the same time. Neither sees the other’s name on the sheet.",
-      "information": "You know which shift Kiran likes. You don’t know which one Kiran will take.",
-      "matrixLabel": "Outcomes for your shift and Kiran’s shift",
+      "information": "You know which shift Kai likes. You don’t know which one Kai will take.",
+      "matrixLabel": "Outcomes for your shift and Kai’s shift",
       "nonPlayers": [
         {
           "id": "pillai",
-          "label": "Mrs Pillai",
-          "short": "Mrs Pillai"
+          "label": "Mrs Baker",
+          "short": "Mrs Baker"
         }
       ]
     },
@@ -579,8 +579,8 @@
         },
         "other": {
           "id": "anil",
-          "label": "Anil",
-          "short": "Anil"
+          "label": "Adam",
+          "short": "Adam"
         }
       },
       "seats": [
@@ -592,13 +592,13 @@
         "b1": "Buy now",
         "b2": "Wait"
       },
-      "situation": "At your second-hand book stall you name your asking price first, high or low. Anil, a regular buyer, hears your price and then decides to buy now or wait until next week.",
+      "situation": "At your second-hand book stall you name your asking price first, high or low. Adam, a regular buyer, hears your price and then decides to buy now or wait until next week.",
       "incentives": {
-        "m1.s.turns": "A high price earns you much more on each book, and you would also like Anil to buy now. Anil would wait at a high price but buy now at a low price, which suits him best."
+        "m1.s.turns": "A high price earns you much more on each book, and you would also like Adam to buy now. Adam would wait at a high price but buy now at a low price, which suits him best."
       },
-      "timing": "You name a price first. Anil decides after hearing it.",
-      "information": "Anil hears your price before deciding. You know how he shops.",
-      "matrixLabel": "Outcomes for your price and Anil’s reply"
+      "timing": "You name a price first. Adam decides after hearing it.",
+      "information": "Adam hears your price before deciding. You know how he shops.",
+      "matrixLabel": "Outcomes for your price and Adam’s reply"
     },
     {
       "id": "sk.m1.trek",
@@ -617,8 +617,8 @@
         },
         "other": {
           "id": "rohan",
-          "label": "Rohan",
-          "short": "Rohan"
+          "label": "Ryan",
+          "short": "Ryan"
         }
       },
       "seats": [
@@ -630,13 +630,13 @@
         "b1": "North gate",
         "b2": "Lake path"
       },
-      "situation": "You and Rohan plan to walk together on Sunday. You set off first, by the north gate or the lake path. Rohan leaves an hour later and must pick a route too. There is no phone signal on the hill.",
+      "situation": "You and Ryan plan to walk together on Sunday. You set off first, by the north gate or the lake path. Ryan leaves an hour later and must pick a route too. There is no phone signal on the hill.",
       "incentives": {
-        "m1.s.unseen": "You like the north gate route most, and the walk is better with Rohan along. Walking alone, you still prefer the north gate. Rohan just wants to walk with you; either route suits him equally."
+        "m1.s.unseen": "You like the north gate route most, and the walk is better with Ryan along. Walking alone, you still prefer the north gate. Ryan just wants to walk with you; either route suits him equally."
       },
-      "timing": "You leave first. Rohan leaves later, without knowing which route you took.",
-      "information": "Rohan cannot see or ask which way you went. You both know what the other likes.",
-      "matrixLabel": "Outcomes for your route and Rohan’s route"
+      "timing": "You leave first. Ryan leaves later, without knowing which route you took.",
+      "information": "Ryan cannot see or ask which way you went. You both know what the other likes.",
+      "matrixLabel": "Outcomes for your route and Ryan’s route"
     },
     {
       "id": "sk.m1.site",
@@ -655,8 +655,8 @@
         },
         "other": {
           "id": "farid",
-          "label": "Farid",
-          "short": "Farid"
+          "label": "Felix",
+          "short": "Felix"
         }
       },
       "seats": [
@@ -668,13 +668,13 @@
         "b1": "East site",
         "b2": "West site"
       },
-      "situation": "You and Farid must sign off a delivery together today at one of two building sites. You drive out first, to the east site or the west site. Farid leaves the office later. The site phones are down all day.",
+      "situation": "You and Felix must sign off a delivery together today at one of two building sites. You drive out first, to the east site or the west site. Felix leaves the office later. The site phones are down all day.",
       "incentives": {
-        "m1.s.unseen": "The east site is nearer your next meeting, and signing off together saves you a second trip. Alone, you still prefer the east site. Farid wants to be where you are; either site suits him."
+        "m1.s.unseen": "The east site is nearer your next meeting, and signing off together saves you a second trip. Alone, you still prefer the east site. Felix wants to be where you are; either site suits him."
       },
-      "timing": "You leave first. Farid chooses his site later, without hearing from you.",
-      "information": "Farid cannot find out which site you chose. You both know what the other wants.",
-      "matrixLabel": "Outcomes for your site and Farid’s site"
+      "timing": "You leave first. Felix chooses his site later, without hearing from you.",
+      "information": "Felix cannot find out which site you chose. You both know what the other wants.",
+      "matrixLabel": "Outcomes for your site and Felix’s site"
     },
     {
       "id": "sk.m1.outing",
@@ -693,8 +693,8 @@
         },
         "other": {
           "id": "meenal",
-          "label": "Meenal",
-          "short": "Meenal"
+          "label": "Mia",
+          "short": "Mia"
         }
       },
       "seats": [
@@ -706,13 +706,13 @@
         "b1": "Old market",
         "b2": "Riverside"
       },
-      "situation": "You and your cousin Meenal want to spend Saturday afternoon together in town. You head out first, to the old market or the riverside. Meenal finishes work later and then heads to one of them. Her phone is being repaired.",
+      "situation": "You and your cousin Mia want to spend Saturday afternoon together in town. You head out first, to the old market or the riverside. Mia finishes work later and then heads to one of them. Her phone is being repaired.",
       "incentives": {
-        "m1.s.unseen": "You enjoy the old market most, and the afternoon is better with Meenal there. On your own, you still prefer the market. Meenal only cares about finding you; the two places are equal for her."
+        "m1.s.unseen": "You enjoy the old market most, and the afternoon is better with Mia there. On your own, you still prefer the market. Mia only cares about finding you; the two places are equal for her."
       },
-      "timing": "You go first. Meenal goes later, without word from you.",
-      "information": "Meenal cannot learn where you went. You both know what the other enjoys.",
-      "matrixLabel": "Outcomes for your place and Meenal’s place"
+      "timing": "You go first. Mia goes later, without word from you.",
+      "information": "Mia cannot learn where you went. You both know what the other enjoys.",
+      "matrixLabel": "Outcomes for your place and Mia’s place"
     },
     {
       "id": "sk.m1.boxes",
@@ -769,8 +769,8 @@
         },
         "other": {
           "id": "sneha",
-          "label": "Sneha",
-          "short": "Sneha"
+          "label": "Sofia",
+          "short": "Sofia"
         }
       },
       "seats": [
@@ -782,13 +782,13 @@
         "b1": "Corner café",
         "b2": "Book café"
       },
-      "situation": "You and your friend Sneha want to meet after your evening class. Your class ends first, so you walk to the corner café or the book café. Sneha’s class ends later; then she picks one. Your phone battery is dead.",
+      "situation": "You and your friend Sofia want to meet after your evening class. Your class ends first, so you walk to the corner café or the book café. Sofia’s class ends later; then she picks one. Your phone battery is dead.",
       "incentives": {
-        "m1.s.unseen": "You prefer the corner café, and an evening with Sneha is better than one alone. Alone, you still prefer the corner café. Sneha just wants to find you; both cafés are the same to her."
+        "m1.s.unseen": "You prefer the corner café, and an evening with Sofia is better than one alone. Alone, you still prefer the corner café. Sofia just wants to find you; both cafés are the same to her."
       },
-      "timing": "You arrive first. Sneha chooses later, without a message from you.",
-      "information": "Sneha has no way to know which café you picked. You both know what the other wants.",
-      "matrixLabel": "Outcomes for your café and Sneha’s café"
+      "timing": "You arrive first. Sofia chooses later, without a message from you.",
+      "information": "Sofia has no way to know which café you picked. You both know what the other wants.",
+      "matrixLabel": "Outcomes for your café and Sofia’s café"
     },
     {
       "id": "sk.m1.t.printer",
@@ -2860,14 +2860,14 @@
         {
           "id": "deciders",
           "text": "Names everyone whose choice changes the result, and nobody else.",
-          "meets": "“Meera and I each pick where to eat.”",
-          "misses": "“The cook, Meera and I are all involved.”"
+          "meets": "“Maria and I each pick where to eat.”",
+          "misses": "“The cook, Maria and I are all involved.”"
         },
         {
           "id": "options",
           "text": "Lists the options open to each person.",
-          "meets": "“Each of us can go to the canteen or the dhaba.”",
-          "misses": "“I can go to the canteen.”"
+          "meets": "“Each of us can go to the café or the diner.”",
+          "misses": "“I can go to the café.”"
         },
         {
           "id": "knowledge",
@@ -2878,8 +2878,8 @@
         {
           "id": "wants",
           "text": "States what each person wants, including how the other’s choice matters to them.",
-          "meets": "“I like the canteen more, but we both want to eat together.”",
-          "misses": "“I want the canteen.”"
+          "meets": "“I like the café more, but we both want to eat together.”",
+          "misses": "“I want the café.”"
         }
       ],
       "selfAssessmentWeight": 0,

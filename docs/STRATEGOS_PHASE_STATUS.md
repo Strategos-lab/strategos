@@ -65,13 +65,18 @@ begin. Phase 3 implementation has not started as of this checkpoint; starting it
 
 ## Pending authorised changes (not yet implemented)
 
-- **Internationally neutral scenario content.** `docs/STRATEGOS_PRODUCTION_RULES.md` now records an
+- **Internationally neutral scenario content.** `docs/STRATEGOS_PRODUCTION_RULES.md` records an
   authorisation override: skin names, settings and vocabulary must be internationally neutral, not
   Indian-English-specific, overriding the V1 Plan's §3.8 "Indian English ... Bengali or Hindi" note
-  (that planned localisation path is dropped, not deferred). The decision is recorded; the authored
-  skin content in `packages/content/data/modules/*.json` and `packages/content/data/held-out/` still
-  uses Indian names, vocabulary and settings (e.g. "dhaba", "tiffin", cricket) as of this checkpoint —
-  rewriting it is a separate, not-yet-scoped task.
+  (that planned localisation path is dropped, not deferred). **Module 1's 20 skins
+  (`packages/content/data/modules/m1.json`) are rewritten** (common international first names;
+  café/diner, lunch-delivery, and football framing replacing canteen/dhaba, tiffin, mela and
+  cricket vocabulary) and pass the full content validator and hygiene suite. **Modules 2–3
+  (`m2.json`, `m3.json`) and the held-out set (`data/held-out/provisional.json`) are not yet
+  rewritten** and still use Indian names, vocabulary and settings as of this checkpoint — that is a
+  separate, not-yet-scoped follow-up. The British/Indian English *spelling* convention enforced by
+  `packages/content/src/lint.ts`'s `US_SPELLING` check is unchanged (out of scope for this override;
+  it is a separate decision from scenario content/vocabulary neutrality).
 
 ## Explicitly unauthorised future work
 
