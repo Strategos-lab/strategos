@@ -1,6 +1,6 @@
 import { useEffect, useMemo, useRef, useState, type ReactNode } from 'react';
 import { Link, useSearchParams } from 'react-router-dom';
-import { PLAY_CONTENT, diagnose, feedbackFor, render, type Diagnosis, type Item, type Lesson, type Response } from '@strategos/content/play';
+import { PLAY_CONTENT, diagnose, feedbackFor, render, storyText, type Diagnosis, type Item, type Lesson, type Response } from '@strategos/content/play';
 import { InstallCard } from '../components/InstallCard';
 import { freshSeed, instanceFor, parseSeed } from '../lesson/lessonInstances';
 import { advance, currentItem, isComplete, startLesson, type LessonSession } from '../lesson/lessonSession';
@@ -162,6 +162,9 @@ export function LessonPage({ lessonId }: { lessonId: string }) {
             </span>
           </span>
         </div>
+        <p className="prose-lead" data-testid="situation">
+          {storyText(instance, 'situation')}
+        </p>
         <h2 id="step-heading" tabIndex={-1} ref={headingRef} className="step-heading step-heading-question">
           {render(item.prompt, instance)}
         </h2>

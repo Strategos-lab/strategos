@@ -2,7 +2,7 @@ import { cleanup, render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { MemoryRouter } from 'react-router-dom';
 import { afterEach, beforeEach, describe, expect, it } from 'vitest';
-import { PLAY_CONTENT, diagnose } from '@strategos/content/play';
+import { PLAY_CONTENT, diagnose, storyText } from '@strategos/content/play';
 import { LessonPage } from '../LessonPage';
 import { instanceFor } from '../../lesson/lessonInstances';
 import { listLearningEvents } from '../../storage';
@@ -54,6 +54,8 @@ describe('LessonPage (m1.l1, generic item/instance player)', () => {
       const prompt = screen.getByRole('heading', { level: 2 });
       expect(prompt).toHaveFocus();
       expect(prompt.textContent).not.toMatch(/\{.*\}/);
+      // The story must be told before the question is asked, or it can't be answered.
+      expect(screen.getByTestId('situation')).toHaveTextContent(storyText(instance, 'situation'));
       const group = screen.getByRole('group', { name: 'Your answer' });
       const optionButtons = Array.from(group.querySelectorAll('button'));
       expect(optionButtons).toHaveLength(item.optionSets![0]!.length);
