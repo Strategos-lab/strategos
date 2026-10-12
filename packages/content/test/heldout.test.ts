@@ -47,16 +47,21 @@ describe('provisional held-out set', () => {
     expect(has(issues, 'held-out', /unbalanced/)).toBe(true);
     expect(has(issues, 'held-out', /same concept with the same item type/)).toBe(true);
   });
-  it('is never reachable from the slice entry or the web app (not bundled, not practised)', () => {
+  it('is never reachable from the slice entry, the play entry, or the web app (not bundled, not practised)', () => {
     const slice = readFileSync(join(root, 'src/slice.ts'), 'utf8');
     expect(slice).not.toMatch(/from ['"][^'"]*(held-out|modules\/)/);
+    // The play entry (a second, equally narrow door for the generic lesson player) must import the
+    // authored modules directly, never through ./data.ts, so held-out stays unreachable from it too.
+    const play = readFileSync(join(root, 'src/play.ts'), 'utf8');
+    expect(play).not.toMatch(/from ['"][^'"]*held-out|from ['"]\.\/data\.ts['"]/);
     const webSrc = join(root, '../../apps/web/src');
     const walk = (d: string): string[] => readdirSync(d).flatMap((f) => (statSync(join(d, f)).isDirectory() ? walk(join(d, f)) : [join(d, f)]));
-    // App code (not tests) may import only the slice entry, never the full bundle or held-out data.
+    // App code (not tests) may import only the slice or play entry, never the full bundle or held-out data.
     for (const f of walk(webSrc).filter((x) => /\.(ts|tsx)$/.test(x) && !/\.test\.tsx?$/.test(x))) {
       const t = readFileSync(f, 'utf8');
       expect(t, f).not.toMatch(/from ['"]@strategos\/content['"]|from ['"][^'"]*held-out|HELD_OUT/);
     }
     expect(readFileSync(join(webSrc, 'content/index.ts'), 'utf8')).toMatch(/from '@strategos\/content\/slice'/);
+    expect(readFileSync(join(webSrc, 'lesson/lessonInstances.ts'), 'utf8')).toMatch(/from '@strategos\/content\/play'/);
   });
 });
