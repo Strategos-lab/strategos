@@ -18,8 +18,8 @@
         },
         "other": {
           "id": "farah",
-          "label": "Farah",
-          "short": "Farah"
+          "label": "Hannah",
+          "short": "Hannah"
         }
       },
       "seats": [
@@ -31,13 +31,13 @@
         "b1": "Shared drive",
         "b2": "Laptop only"
       },
-      "situation": "At the end of each day, you and Farah each decide whether to save your work to the team’s shared drive or keep it only on your laptop.",
+      "situation": "At the end of each day, you and Hannah each decide whether to save your work to the team’s shared drive or keep it only on your laptop.",
       "incentives": {
-        "m3.s.both": "Saving to the shared drive protects your own work, and you also gain when Farah’s work is there. The same holds for Farah."
+        "m3.s.both": "Saving to the shared drive protects your own work, and you also gain when Hannah’s work is there. The same holds for Hannah."
       },
       "timing": "You both decide at the end of the day, separately.",
-      "information": "You both know what is at stake for each other. You don’t know what Farah will do today.",
-      "matrixLabel": "Outcomes for your saving and Farah’s saving"
+      "information": "You both know what is at stake for each other. You don’t know what Hannah will do today.",
+      "matrixLabel": "Outcomes for your saving and Hannah’s saving"
     },
     {
       "id": "sk.m3.tyres",
@@ -56,8 +56,8 @@
         },
         "other": {
           "id": "vikram",
-          "label": "Vikram",
-          "short": "Vikram"
+          "label": "Marcus",
+          "short": "Marcus"
         }
       },
       "seats": [
@@ -69,13 +69,13 @@
         "b1": "Check tyres",
         "b2": "Skip it"
       },
-      "situation": "Before a group cycling ride, you and Vikram each decide whether to check your own tyres or skip it.",
+      "situation": "Before a group cycling ride, you and Marcus each decide whether to check your own tyres or skip it.",
       "incentives": {
-        "m3.s.both": "Checking your tyres makes your own ride safer, and the ride goes better for you when Vikram has checked his. The same holds for Vikram."
+        "m3.s.both": "Checking your tyres makes your own ride safer, and the ride goes better for you when Marcus has checked his. The same holds for Marcus."
       },
       "timing": "You both get ready at home, at the same time.",
-      "information": "You both know what is at stake for each other. You don’t know whether Vikram will check.",
-      "matrixLabel": "Outcomes for your check and Vikram’s check"
+      "information": "You both know what is at stake for each other. You don’t know whether Marcus will check.",
+      "matrixLabel": "Outcomes for your check and Marcus’s check"
     },
     {
       "id": "sk.m3.fridge",
@@ -94,8 +94,8 @@
         },
         "other": {
           "id": "yash",
-          "label": "Yash",
-          "short": "Yash"
+          "label": "Ethan",
+          "short": "Ethan"
         }
       },
       "seats": [
@@ -107,13 +107,13 @@
         "b1": "Label",
         "b2": "Don’t label"
       },
-      "situation": "You and your flatmate Yash each decide whether to label your food in the shared fridge this week.",
+      "situation": "You and your flatmate Ethan each decide whether to label your food in the shared fridge this week.",
       "incentives": {
-        "m3.s.both": "Labelling your own food keeps it from being eaten by mistake, and the fridge is easier for you when Yash labels his too. The same holds for Yash."
+        "m3.s.both": "Labelling your own food keeps it from being eaten by mistake, and the fridge is easier for you when Ethan labels his too. The same holds for Ethan."
       },
       "timing": "You both shop and stock the fridge separately this week.",
-      "information": "You both know what is at stake for each other. You don’t know whether Yash will label.",
-      "matrixLabel": "Outcomes for your labelling and Yash’s labelling"
+      "information": "You both know what is at stake for each other. You don’t know whether Ethan will label.",
+      "matrixLabel": "Outcomes for your labelling and Ethan’s labelling"
     },
     {
       "id": "sk.m3.streetlight",
@@ -132,8 +132,8 @@
         },
         "other": {
           "id": "anjali",
-          "label": "Anjali",
-          "short": "Anjali"
+          "label": "Sophie",
+          "short": "Sophie"
         }
       },
       "seats": [
@@ -145,13 +145,13 @@
         "b1": "Report",
         "b2": "Don’t report"
       },
-      "situation": "A street light on your lane is broken. You and your neighbour Anjali each decide whether to report it on the ward office’s app.",
+      "situation": "A street light on your lane is broken. You and your neighbour Sophie each decide whether to report it on the city’s repair app.",
       "incentives": {
-        "m3.s.both": "Each report moves the repair up the list, and only people who report get updates on it. The same holds for Anjali."
+        "m3.s.both": "Each report moves the repair up the list, and only people who report get updates on it. The same holds for Sophie."
       },
       "timing": "You both decide this evening, separately.",
-      "information": "You both know what is at stake for each other. You don’t know whether Anjali will report.",
-      "matrixLabel": "Outcomes for your report and Anjali’s report"
+      "information": "You both know what is at stake for each other. You don’t know whether Sophie will report.",
+      "matrixLabel": "Outcomes for your report and Sophie’s report"
     },
     {
       "id": "sk.m3.bakery.a",
@@ -208,8 +208,8 @@
         },
         "other": {
           "id": "raju",
-          "label": "Raju",
-          "short": "Raju"
+          "label": "Carlos",
+          "short": "Carlos"
         }
       },
       "seats": [
@@ -221,13 +221,13 @@
         "b1": "The square",
         "b2": "The park"
       },
-      "situation": "Raju sells vegetables from a cart, either at the market square or by the park, and decides this evening where to stand. You buy from him and decide where to walk for your vegetables.",
+      "situation": "Carlos sells vegetables from a cart, either at the market square or by the park, and decides this evening where to stand. You buy from him and decide where to walk for your vegetables.",
       "incentives": {
-        "m3.s.one@B": "You only get your vegetables if you go where the cart is, and the square is nearer your home. The square gets Raju far more passing trade, and he also likes regulars like you to come to the square."
+        "m3.s.one@B": "You only get your vegetables if you go where the cart is, and the square is nearer your home. The square gets Carlos far more passing trade, and he also likes regulars like you to come to the square."
       },
-      "timing": "You both decide this evening, separately. Raju’s phone is switched off.",
-      "information": "You know how Raju’s trade works. You don’t know where he will stand.",
-      "matrixLabel": "Outcomes for Raju’s spot and yours"
+      "timing": "You both decide this evening, separately. Carlos’s phone is switched off.",
+      "information": "You know how Carlos’s trade works. You don’t know where he will stand.",
+      "matrixLabel": "Outcomes for Carlos’s spot and yours"
     },
     {
       "id": "sk.m3.picnic.a",
@@ -246,8 +246,8 @@
         },
         "other": {
           "id": "sunil",
-          "label": "Sunil",
-          "short": "Sunil"
+          "label": "David",
+          "short": "David"
         }
       },
       "seats": [
@@ -259,13 +259,13 @@
         "b1": "Bus stop",
         "b2": "Car park"
       },
-      "situation": "You are meeting your friend Sunil for a picnic. You decide whether to come by bus or by car, and Sunil decides whether to wait for you at the bus stop or at the car park.",
+      "situation": "You are meeting your friend David for a picnic. You decide whether to come by bus or by car, and David decides whether to wait for you at the bus stop or at the car park.",
       "incentives": {
-        "m3.s.one": "The bus is cheaper and quicker for you than driving, and you would rather Sunil waits at the bus stop. Sunil wants to wait where you will arrive."
+        "m3.s.one": "The bus is cheaper and quicker for you than driving, and you would rather David waits at the bus stop. David wants to wait where you will arrive."
       },
       "timing": "You both set off at the same time. Neither can reach the other.",
-      "information": "You both know what the other wants. You don’t know where Sunil will wait.",
-      "matrixLabel": "Outcomes for your travel and Sunil’s waiting spot"
+      "information": "You both know what the other wants. You don’t know where David will wait.",
+      "matrixLabel": "Outcomes for your travel and David’s waiting spot"
     },
     {
       "id": "sk.m3.picnic.b",
@@ -284,8 +284,8 @@
         },
         "other": {
           "id": "sunil",
-          "label": "Sunil",
-          "short": "Sunil"
+          "label": "David",
+          "short": "David"
         }
       },
       "seats": [
@@ -297,13 +297,13 @@
         "b1": "Bus stop",
         "b2": "Car park"
       },
-      "situation": "You are meeting your friend Sunil for a picnic. Sunil decides whether to come by bus or by car, and you decide whether to wait for him at the bus stop or at the car park.",
+      "situation": "You are meeting your friend David for a picnic. David decides whether to come by bus or by car, and you decide whether to wait for him at the bus stop or at the car park.",
       "incentives": {
-        "m3.s.one@B": "You want to wait where Sunil will arrive. The bus is cheaper and quicker for him than driving, and he would rather you wait at the bus stop."
+        "m3.s.one@B": "You want to wait where David will arrive. The bus is cheaper and quicker for him than driving, and he would rather you wait at the bus stop."
       },
       "timing": "You both set off at the same time. Neither can reach the other.",
-      "information": "You both know what the other wants. You don’t know how Sunil will travel.",
-      "matrixLabel": "Outcomes for Sunil’s travel and your waiting spot",
+      "information": "You both know what the other wants. You don’t know how David will travel.",
+      "matrixLabel": "Outcomes for David’s travel and your waiting spot",
       "mirrorOf": "sk.m3.picnic.a",
       "mirrorPurpose": "Seat rotation with a learner-role purpose: in sk.m3.picnic.a the learner holds the sure choice; here the learner must predict the other person from their incentives and then respond (m3.l2 seat-B items)."
     },
@@ -364,8 +364,8 @@
         },
         "other": {
           "id": "leena",
-          "label": "Leena",
-          "short": "Leena"
+          "label": "Emily",
+          "short": "Emily"
         }
       },
       "seats": [
@@ -373,19 +373,19 @@
       ],
       "actionLabels": {
         "a1": "Rolls",
-        "a2": "Thalis",
+        "a2": "Sandwiches",
         "a3": "Snacks",
         "b1": "Juice",
-        "b2": "Lassi",
+        "b2": "Smoothie",
         "b3": "Tea"
       },
-      "situation": "You and Leena run food stalls side by side at a weekend market. You choose your main dish: rolls, thalis or snacks. At the same time Leena chooses her drink: juice, lassi or tea.",
+      "situation": "You and Emily run food stalls side by side at a weekend market. You choose your main dish: rolls, sandwiches or snacks. At the same time Emily chooses her drink: juice, smoothie or tea.",
       "incentives": {
-        "m3.s.elim": "What you each earn depends on how the two menus fit together. You earn most selling snacks next to tea; Leena earns most with lassi next to thalis, or juice next to snacks."
+        "m3.s.elim": "What you each earn depends on how the two menus fit together. You earn most selling snacks next to tea; Emily earns most with smoothie next to sandwiches, or juice next to snacks."
       },
       "timing": "You both fix your menus on Friday, separately.",
-      "information": "You both know the market well. You don’t know what Leena will choose.",
-      "matrixLabel": "Outcomes for your dish and Leena’s drink"
+      "information": "You both know the market well. You don’t know what Emily will choose.",
+      "matrixLabel": "Outcomes for your dish and Emily’s drink"
     },
     {
       "id": "sk.m3.roster",
@@ -404,8 +404,8 @@
         },
         "other": {
           "id": "pranav",
-          "label": "Pranav",
-          "short": "Pranav"
+          "label": "Daniel",
+          "short": "Daniel"
         }
       },
       "seats": [
@@ -419,13 +419,13 @@
         "b2": "Full",
         "b3": "Short"
       },
-      "situation": "You and Pranav plan next week’s shifts for your two teams. You choose a pattern for yours: early, standard or late. At the same moment Pranav chooses his: split, full or short.",
+      "situation": "You and Daniel plan next week’s shifts for your two teams. You choose a pattern for yours: early, standard or late. At the same moment Daniel chooses his: split, full or short.",
       "incentives": {
-        "m3.s.elim": "How each week goes depends on how the two patterns fit. Your best week is late against short; Pranav’s best is full against standard, or split against late."
+        "m3.s.elim": "How each week goes depends on how the two patterns fit. Your best week is late against short; Daniel’s best is full against standard, or split against late."
       },
       "timing": "You both send your pattern at the same moment.",
-      "information": "You both know how the teams work. You don’t know Pranav’s pattern.",
-      "matrixLabel": "Outcomes for your pattern and Pranav’s pattern"
+      "information": "You both know how the teams work. You don’t know Daniel’s pattern.",
+      "matrixLabel": "Outcomes for your pattern and Daniel’s pattern"
     },
     {
       "id": "sk.m3.hockey",
@@ -444,8 +444,8 @@
         },
         "other": {
           "id": "gill",
-          "label": "Ms Gill",
-          "short": "Ms Gill"
+          "label": "Ms Parker",
+          "short": "Ms Parker"
         }
       },
       "seats": [
@@ -459,13 +459,13 @@
         "b2": "Central",
         "b3": "Deep"
       },
-      "situation": "In a hockey match you choose your team’s plan: press, hold or counter. At the same moment the other coach, Ms Gill, chooses hers: wide, central or deep.",
+      "situation": "In a hockey match you choose your team’s plan: press, hold or counter. At the same moment the other coach, Ms Parker, chooses hers: wide, central or deep.",
       "incentives": {
-        "m3.s.elim": "How the match goes for each side depends on how the plans meet. Your best result is counter against deep; Ms Gill’s best is central against hold, or wide against counter."
+        "m3.s.elim": "How the match goes for each side depends on how the plans meet. Your best result is counter against deep; Ms Parker’s best is central against hold, or wide against counter."
       },
       "timing": "Both coaches set their plans before the match, at the same time.",
-      "information": "You both know each other’s teams. You don’t know Ms Gill’s plan.",
-      "matrixLabel": "Outcomes for your plan and Ms Gill’s plan"
+      "information": "You both know each other’s teams. You don’t know Ms Parker’s plan.",
+      "matrixLabel": "Outcomes for your plan and Ms Parker’s plan"
     },
     {
       "id": "sk.m3.pricematch",
@@ -484,8 +484,8 @@
         },
         "other": {
           "id": "khanna",
-          "label": "Mr Khanna",
-          "short": "Mr Khanna"
+          "label": "Mr Foster",
+          "short": "Mr Foster"
         }
       },
       "seats": [
@@ -497,13 +497,13 @@
         "b1": "No sale",
         "b2": "Run a sale"
       },
-      "situation": "You run a stationery shop in a mall, opposite Mr Khanna’s. This week the mall offers a free price-match scheme: members may match any rival sale price. You decide whether to join, and Mr Khanna decides whether to run a sale.",
+      "situation": "You run a stationery shop in a mall, opposite Mr Foster’s. This week the mall offers a free price-match scheme: members may match any rival sale price. You decide whether to join, and Mr Foster decides whether to run a sale.",
       "incentives": {
-        "m3.s.weak": "Joining is free and changes nothing on a normal week. If Mr Khanna runs a sale, matching it keeps some customers; outside the scheme you lose them. His sale pays him when you stay out, and costs him when you join."
+        "m3.s.weak": "Joining is free and changes nothing on a normal week. If Mr Foster runs a sale, matching it keeps some customers; outside the scheme you lose them. His sale pays him when you stay out, and costs him when you join."
       },
       "timing": "You both decide on Monday, separately. The mall names its members only at the end of the week.",
-      "information": "You both know how the scheme works. You don’t know whether Mr Khanna will run a sale.",
-      "matrixLabel": "Outcomes for your choice and Mr Khanna’s"
+      "information": "You both know how the scheme works. You don’t know whether Mr Foster will run a sale.",
+      "matrixLabel": "Outcomes for your choice and Mr Foster’s"
     },
     {
       "id": "sk.m3.shapes",
@@ -560,8 +560,8 @@
         },
         "other": {
           "id": "mohan",
-          "label": "Mohan",
-          "short": "Mohan"
+          "label": "Victor",
+          "short": "Victor"
         }
       },
       "seats": [
@@ -573,13 +573,13 @@
         "b1": "Sort waste",
         "b2": "Don’t sort"
       },
-      "situation": "Your building has a new compost bin. You and your neighbour Mohan each decide whether to sort your kitchen waste for it.",
+      "situation": "Your building has a new compost bin. You and your neighbour Victor each decide whether to sort your kitchen waste for it.",
       "incentives": {
-        "m3.s.both": "Sorting your own waste gets you compost for your plants, and you gain more when Mohan sorts his too. The same holds for Mohan."
+        "m3.s.both": "Sorting your own waste gets you compost for your plants, and you gain more when Victor sorts his too. The same holds for Victor."
       },
       "timing": "You both decide this week, separately.",
-      "information": "You both know what is at stake for each other. You don’t know whether Mohan will sort.",
-      "matrixLabel": "Outcomes for your sorting and Mohan’s sorting"
+      "information": "You both know what is at stake for each other. You don’t know whether Victor will sort.",
+      "matrixLabel": "Outcomes for your sorting and Victor’s sorting"
     },
     {
       "id": "sk.m3.t.tutor",
@@ -598,8 +598,8 @@
         },
         "other": {
           "id": "menon",
-          "label": "Mrs Menon",
-          "short": "Mrs Menon"
+          "label": "Mrs Clarke",
+          "short": "Mrs Clarke"
         }
       },
       "seats": [
@@ -611,13 +611,13 @@
         "b1": "Log in",
         "b2": "Travel"
       },
-      "situation": "Your tutor, Mrs Menon, decides whether to hold today’s class online or at her home. At the same time you decide whether to log in from home or travel to her house.",
+      "situation": "Your tutor, Mrs Clarke, decides whether to hold today’s class online or at her home. At the same time you decide whether to log in from home or travel to her house.",
       "incentives": {
-        "m3.s.one@B": "You want to be wherever the class is held. Teaching online saves Mrs Menon setting up her front room for a class, and she would rather you log in."
+        "m3.s.one@B": "You want to be wherever the class is held. Teaching online saves Mrs Clarke setting up her front room for a class, and she would rather you log in."
       },
       "timing": "You both decide this morning, separately.",
-      "information": "You know what Mrs Menon prefers. You don’t know where she will hold the class.",
-      "matrixLabel": "Outcomes for Mrs Menon’s choice and yours"
+      "information": "You know what Mrs Clarke prefers. You don’t know where she will hold the class.",
+      "matrixLabel": "Outcomes for Mrs Clarke’s choice and yours"
     },
     {
       "id": "sk.m3.study",
@@ -636,8 +636,8 @@
         },
         "other": {
           "id": "tara",
-          "label": "Tara",
-          "short": "Tara"
+          "label": "Nora",
+          "short": "Nora"
         }
       },
       "seats": [
@@ -651,13 +651,13 @@
         "b2": "Café",
         "b3": "Video call"
       },
-      "situation": "You and Tara are revising for the same exam this weekend. Each of you picks where to study: the library, the café, or a video call from home. You decide on Friday night, separately.",
+      "situation": "You and Nora are revising for the same exam this weekend. Each of you picks where to study: the library, the café, or a video call from home. You decide on Friday night, separately.",
       "incentives": {
-        "m3.s.stuck": "You both want to study together, and the library and the café suit you equally well. A video call is your favourite if Tara joins one, and useless otherwise. Tara would rather go out than be on a call."
+        "m3.s.stuck": "You both want to study together, and the library and the café suit you equally well. A video call is your favourite if Nora joins one, and useless otherwise. Nora would rather go out than be on a call."
       },
       "timing": "You both decide on Friday night, separately.",
-      "information": "You both know what the other wants. You don’t know where Tara will go.",
-      "matrixLabel": "Outcomes for your place and Tara’s place"
+      "information": "You both know what the other wants. You don’t know where Nora will go.",
+      "matrixLabel": "Outcomes for your place and Nora’s place"
     },
     {
       "id": "sk.m3.tools",
@@ -676,8 +676,8 @@
         },
         "other": {
           "id": "vivek",
-          "label": "Vivek",
-          "short": "Vivek"
+          "label": "Owen",
+          "short": "Owen"
         }
       },
       "seats": [
@@ -691,13 +691,13 @@
         "b2": "Notebook",
         "b3": "Your tool"
       },
-      "situation": "You and Vivek must each keep this quarter’s project tracker in one place: the team spreadsheet, the team notebook, or a custom tool you built. Each of you sets up your part on Monday.",
+      "situation": "You and Owen must each keep this quarter’s project tracker in one place: the team spreadsheet, the team notebook, or a custom tool you built. Each of you sets up your part on Monday.",
       "incentives": {
-        "m3.s.stuck": "Using the same place as Vivek saves you both work, and the spreadsheet and the notebook are equally good. Your tool is your favourite if Vivek uses it too. Vivek finds your tool slow and prefers either team option."
+        "m3.s.stuck": "Using the same place as Owen saves you both work, and the spreadsheet and the notebook are equally good. Your tool is your favourite if Owen uses it too. Owen finds your tool slow and prefers either team option."
       },
       "timing": "You both set up on Monday, separately.",
-      "information": "You both know what the other wants. You don’t know which Vivek will use.",
-      "matrixLabel": "Outcomes for your tracker and Vivek’s tracker"
+      "information": "You both know what the other wants. You don’t know which Owen will use.",
+      "matrixLabel": "Outcomes for your tracker and Owen’s tracker"
     },
     {
       "id": "sk.m3.practice",
@@ -716,8 +716,8 @@
         },
         "other": {
           "id": "ishan",
-          "label": "Ishan",
-          "short": "Ishan"
+          "label": "Aaron",
+          "short": "Aaron"
         }
       },
       "seats": [
@@ -731,13 +731,13 @@
         "b2": "Court two",
         "b3": "Gym drills"
       },
-      "situation": "You and Ishan practise tennis together on Saturdays. Each of you heads to court one, court two, or the gym for fitness drills, without checking with the other first.",
+      "situation": "You and Aaron practise tennis together on Saturdays. Each of you heads to court one, court two, or the gym for fitness drills, without checking with the other first.",
       "incentives": {
-        "m3.s.stuck": "You both want to practise together, and the two courts are equally good. Gym drills are your favourite if Ishan comes, and wasted otherwise. Ishan would rather be on a court than in the gym."
+        "m3.s.stuck": "You both want to practise together, and the two courts are equally good. Gym drills are your favourite if Aaron comes, and wasted otherwise. Aaron would rather be on a court than in the gym."
       },
       "timing": "You both set off on Saturday morning, separately.",
-      "information": "You both know what the other wants. You don’t know where Ishan will go.",
-      "matrixLabel": "Outcomes for your choice and Ishan’s choice"
+      "information": "You both know what the other wants. You don’t know where Aaron will go.",
+      "matrixLabel": "Outcomes for your choice and Aaron’s choice"
     },
     {
       "id": "sk.m3.grid3",
@@ -796,8 +796,8 @@
         },
         "other": {
           "id": "iyer",
-          "label": "Mr Iyer",
-          "short": "Mr Iyer"
+          "label": "Mr Bennett",
+          "short": "Mr Bennett"
         }
       },
       "seats": [
@@ -811,13 +811,13 @@
         "b2": "Medium net",
         "b3": "Large net"
       },
-      "situation": "You and Mr Iyer each run a boat on the same small lake. Before the season each of you picks the nets you will use.",
+      "situation": "You and Mr Bennett each run a boat on the same small lake. Before the season each of you picks the nets you will use.",
       "incentives": {
         "m3.s.rush": "A bigger net lands more fish for the boat using it, but large nets thin out next season’s fish for both boats. Two small nets are slower to haul than one large one."
       },
       "timing": "You both buy nets before the season, separately.",
-      "information": "You both know the lake and each other’s costs. You don’t know which nets Mr Iyer will buy.",
-      "matrixLabel": "Outcomes for your nets and Mr Iyer’s nets"
+      "information": "You both know the lake and each other’s costs. You don’t know which nets Mr Bennett will buy.",
+      "matrixLabel": "Outcomes for your nets and Mr Bennett’s nets"
     },
     {
       "id": "sk.m3.fares",
@@ -836,8 +836,8 @@
         },
         "other": {
           "id": "bose",
-          "label": "Mrs Bose",
-          "short": "Mrs Bose"
+          "label": "Mrs Hayes",
+          "short": "Mrs Hayes"
         }
       },
       "seats": [
@@ -851,13 +851,13 @@
         "b2": "Small cut",
         "b3": "Deep cut"
       },
-      "situation": "You and Mrs Bose run the only two minibuses on a hill route. This month each of you sets your fare.",
+      "situation": "You and Mrs Hayes run the only two minibuses on a hill route. This month each of you sets your fare.",
       "incentives": {
         "m3.s.rush": "A lower fare draws riders from the other minibus, but deep cuts leave both of you short of money for fuel and repairs. Riders barely notice a small cut."
       },
       "timing": "You both post fares on the first, separately.",
-      "information": "You both know the route and each other’s costs. You don’t know Mrs Bose’s fare.",
-      "matrixLabel": "Outcomes for your fare and Mrs Bose’s fare"
+      "information": "You both know the route and each other’s costs. You don’t know Mrs Hayes’s fare.",
+      "matrixLabel": "Outcomes for your fare and Mrs Hayes’s fare"
     },
     {
       "id": "sk.m3.canal",
@@ -876,8 +876,8 @@
         },
         "other": {
           "id": "gowda",
-          "label": "Mr Gowda",
-          "short": "Mr Gowda"
+          "label": "Mr Lawson",
+          "short": "Mr Lawson"
         }
       },
       "seats": [
@@ -891,13 +891,13 @@
         "b2": "Half day",
         "b3": "No clearing"
       },
-      "situation": "You and Mr Gowda farm side by side. The canal stretch next to your field feeds his crops, and the stretch next to his feeds yours. This week each of you decides how long to spend clearing your stretch.",
+      "situation": "You and Mr Lawson farm side by side. The canal stretch next to your field feeds his crops, and the stretch next to his feeds yours. This week each of you decides how long to spend clearing your stretch.",
       "incentives": {
-        "m3.s.pledge": "Each half day you spend clearing costs you a half day of field work and brings Mr Gowda twice as much in water. His clearing does the same for you. The same holds for Mr Gowda."
+        "m3.s.pledge": "Each half day you spend clearing costs you a half day of field work and brings Mr Lawson twice as much in water. His clearing does the same for you. The same holds for Mr Lawson."
       },
       "timing": "You both decide on Monday, separately.",
-      "information": "You both know what is at stake for each other. You don’t know how long Mr Gowda will clear.",
-      "matrixLabel": "Outcomes for your clearing and Mr Gowda’s clearing"
+      "information": "You both know what is at stake for each other. You don’t know how long Mr Lawson will clear.",
+      "matrixLabel": "Outcomes for your clearing and Mr Lawson’s clearing"
     },
     {
       "id": "sk.m3.referrals",
@@ -916,8 +916,8 @@
         },
         "other": {
           "id": "priya",
-          "label": "Priya",
-          "short": "Priya"
+          "label": "Isabella",
+          "short": "Isabella"
         }
       },
       "seats": [
@@ -931,13 +931,13 @@
         "b2": "One referral",
         "b3": "None"
       },
-      "situation": "You and Priya are freelance designers. This month each of you decides how many client referrals to write for the other: two, one or none.",
+      "situation": "You and Isabella are freelance designers. This month each of you decides how many client referrals to write for the other: two, one or none.",
       "incentives": {
-        "m3.s.pledge": "Each referral you write costs you an afternoon of paid work and brings Priya twice that in new work. Her referrals do the same for you. The same holds for Priya."
+        "m3.s.pledge": "Each referral you write costs you an afternoon of paid work and brings Isabella twice that in new work. Her referrals do the same for you. The same holds for Isabella."
       },
       "timing": "You both decide at the start of the month, separately.",
-      "information": "You both know what is at stake for each other. You don’t know how many Priya will write.",
-      "matrixLabel": "Outcomes for your referrals and Priya’s referrals"
+      "information": "You both know what is at stake for each other. You don’t know how many Isabella will write.",
+      "matrixLabel": "Outcomes for your referrals and Isabella’s referrals"
     },
     {
       "id": "sk.m3.coaches",
@@ -956,8 +956,8 @@
         },
         "other": {
           "id": "khan",
-          "label": "Ms Khan",
-          "short": "Ms Khan"
+          "label": "Ms Dawson",
+          "short": "Ms Dawson"
         }
       },
       "seats": [
@@ -971,13 +971,13 @@
         "b2": "One coach",
         "b3": "No coach"
       },
-      "situation": "Your cricket club and Ms Khan’s club train juniors on the same ground. This season each club decides how many of its coaches to lend to the other club’s juniors: two, one or none.",
+      "situation": "Your football club and Ms Dawson’s club train juniors on the same ground. This season each club decides how many of its coaches to lend to the other club’s juniors: two, one or none.",
       "incentives": {
-        "m3.s.pledge": "Each coach you lend costs your club a session and gives Ms Khan’s juniors twice that benefit. Her coaches do the same for your juniors. The same holds for Ms Khan."
+        "m3.s.pledge": "Each coach you lend costs your club a session and gives Ms Dawson’s juniors twice that benefit. Her coaches do the same for your juniors. The same holds for Ms Dawson."
       },
       "timing": "Both clubs decide before the season, separately.",
-      "information": "You both know what is at stake for each other. You don’t know how many coaches Ms Khan will lend.",
-      "matrixLabel": "Outcomes for your lending and Ms Khan’s lending"
+      "information": "You both know what is at stake for each other. You don’t know how many coaches Ms Dawson will lend.",
+      "matrixLabel": "Outcomes for your lending and Ms Dawson’s lending"
     },
     {
       "id": "sk.m3.posters",
@@ -996,8 +996,8 @@
         },
         "other": {
           "id": "shah",
-          "label": "Mrs Shah",
-          "short": "Mrs Shah"
+          "label": "Mrs Fields",
+          "short": "Mrs Fields"
         }
       },
       "seats": [
@@ -1011,20 +1011,20 @@
         "b2": "One poster",
         "b3": "No poster"
       },
-      "situation": "You run a tea shop and Mrs Shah runs the bookshop at the other end of the lane. Each of you decides how many posters for the other’s shop to put up in your window: two, one or none.",
+      "situation": "You run a tea shop and Mrs Fields runs the bookshop at the other end of the lane. Each of you decides how many posters for the other’s shop to put up in your window: two, one or none.",
       "incentives": {
-        "m3.s.pledge": "Each poster you put up takes window space you could use, and brings Mrs Shah twice that in customers. Her posters do the same for you. The same holds for Mrs Shah."
+        "m3.s.pledge": "Each poster you put up takes window space you could use, and brings Mrs Fields twice that in customers. Her posters do the same for you. The same holds for Mrs Fields."
       },
       "timing": "You both decide this week, separately.",
-      "information": "You both know what is at stake for each other. You don’t know how many posters Mrs Shah will put up.",
-      "matrixLabel": "Outcomes for your posters and Mrs Shah’s posters"
+      "information": "You both know what is at stake for each other. You don’t know how many posters Mrs Fields will put up.",
+      "matrixLabel": "Outcomes for your posters and Mrs Fields’s posters"
     },
     {
       "id": "sk.m3.generator",
       "version": "1.0.0",
       "domain": "markets",
       "tone": "neutral",
-      "title": "The wedding hall",
+      "title": "The event hall",
       "structures": [
         "m3.s.weakb"
       ],
@@ -1036,8 +1036,8 @@
         },
         "other": {
           "id": "iyer",
-          "label": "Mr Iyer",
-          "short": "Mr Iyer"
+          "label": "Mr Bennett",
+          "short": "Mr Bennett"
         }
       },
       "seats": [
@@ -1049,13 +1049,13 @@
         "b1": "Bring generator",
         "b2": "No generator"
       },
-      "situation": "You run a catering service. Mr Iyer, who owns a wedding hall, decides whether to book a day event or a night event. At the same time you decide whether to bring your spare generator.",
+      "situation": "You run a catering service. Mr Bennett, who owns an event hall, decides whether to book a day event or a night event. At the same time you decide whether to bring your spare generator.",
       "incentives": {
-        "m3.s.weakb@B": "In daylight the generator stays off, and Mr Iyer pays for it either way. At night, power cuts are common, and a generator saves your service. Mr Iyer prefers a night event only if a generator is there."
+        "m3.s.weakb@B": "In daylight the generator stays off, and Mr Bennett pays for it either way. At night, the power can go out, and a generator saves your service. Mr Bennett prefers a night event only if a generator is there."
       },
       "timing": "You both decide this week, separately.",
-      "information": "You know how Mr Iyer plans. You don’t know which event he will book.",
-      "matrixLabel": "Outcomes for Mr Iyer’s booking and your choice"
+      "information": "You know how Mr Bennett plans. You don’t know which event he will book.",
+      "matrixLabel": "Outcomes for Mr Bennett’s booking and your choice"
     },
     {
       "id": "sk.m3.torch",
@@ -1074,8 +1074,8 @@
         },
         "other": {
           "id": "anand",
-          "label": "Anand",
-          "short": "Anand"
+          "label": "Patrick",
+          "short": "Patrick"
         }
       },
       "seats": [
@@ -1087,13 +1087,13 @@
         "b1": "Pack a torch",
         "b2": "No torch"
       },
-      "situation": "Your friend Anand picks the route for this evening’s walk: the valley path, which ends before dark, or the ridge path, which ends after dark. You pack your bag at the same time.",
+      "situation": "Your friend Patrick picks the route for this evening’s walk: the valley path, which ends before dark, or the ridge path, which ends after dark. You pack your bag at the same time.",
       "incentives": {
-        "m3.s.weakb@B": "On the valley path a torch makes no difference to you. On the ridge path, a torch is what gets you down safely. Anand enjoys the ridge only if someone has a torch; otherwise he prefers the valley."
+        "m3.s.weakb@B": "On the valley path a torch makes no difference to you. On the ridge path, a torch is what gets you down safely. Patrick enjoys the ridge only if someone has a torch; otherwise he prefers the valley."
       },
       "timing": "You both decide at home, separately.",
-      "information": "You know what Anand likes. You don’t know which path he will pick.",
-      "matrixLabel": "Outcomes for Anand’s route and your packing"
+      "information": "You know what Patrick likes. You don’t know which path he will pick.",
+      "matrixLabel": "Outcomes for Patrick’s route and your packing"
     },
     {
       "id": "sk.m3.projector",
@@ -1112,8 +1112,8 @@
         },
         "other": {
           "id": "neel",
-          "label": "Neel",
-          "short": "Neel"
+          "label": "Simon",
+          "short": "Simon"
         }
       },
       "seats": [
@@ -1125,13 +1125,13 @@
         "b1": "Carry projector",
         "b2": "Leave it"
       },
-      "situation": "Your colleague Neel decides whether tomorrow’s pitch happens in your office or at the client’s. You decide whether to carry the team projector with you.",
+      "situation": "Your colleague Simon decides whether tomorrow’s pitch happens in your office or at the client’s. You decide whether to carry the team projector with you.",
       "incentives": {
-        "m3.s.weakb@B": "In your office a projector is already set up, so carrying one changes nothing. At the client’s, your own projector is what makes the pitch work. Neel prefers the client’s office only if you bring it."
+        "m3.s.weakb@B": "In your office a projector is already set up, so carrying one changes nothing. At the client’s, your own projector is what makes the pitch work. Simon prefers the client’s office only if you bring it."
       },
       "timing": "You both decide this evening, separately.",
-      "information": "You know how Neel plans. You don’t know where he will hold the pitch.",
-      "matrixLabel": "Outcomes for Neel’s venue and your choice"
+      "information": "You know how Simon plans. You don’t know where he will hold the pitch.",
+      "matrixLabel": "Outcomes for Simon’s venue and your choice"
     },
     {
       "id": "sk.m3.dials",
@@ -1188,8 +1188,8 @@
         },
         "other": {
           "id": "rina",
-          "label": "Rina",
-          "short": "Rina"
+          "label": "Clara",
+          "short": "Clara"
         }
       },
       "seats": [
@@ -1201,13 +1201,13 @@
         "b1": "Book the van",
         "b2": "No van"
       },
-      "situation": "Rina is planning Friday for your team: lunch in the office, or an outing to the lake. At the same time you decide whether to book the society’s van, which members may book at no charge.",
+      "situation": "Clara is planning Friday for your team: lunch in the office, or an outing to the lake. At the same time you decide whether to book the company van, which staff may book at no charge.",
       "incentives": {
-        "m3.s.weakb@B": "If lunch is in the office, the van just stays parked. For an outing, the van is the only way the whole team gets there. Rina prefers the outing only if the van is booked."
+        "m3.s.weakb@B": "If lunch is in the office, the van just stays parked. For an outing, the van is the only way the whole team gets there. Clara prefers the outing only if the van is booked."
       },
       "timing": "You both decide on Wednesday, separately.",
-      "information": "You know how Rina plans. You don’t know which she will choose.",
-      "matrixLabel": "Outcomes for Rina’s plan and your booking"
+      "information": "You know how Clara plans. You don’t know which she will choose.",
+      "matrixLabel": "Outcomes for Clara’s plan and your booking"
     },
     {
       "id": "sk.m3.t.trucks",
@@ -1226,8 +1226,8 @@
         },
         "other": {
           "id": "rahul",
-          "label": "Rahul",
-          "short": "Rahul"
+          "label": "George",
+          "short": "George"
         }
       },
       "seats": [
@@ -1241,13 +1241,13 @@
         "b2": "College",
         "b3": "Night market"
       },
-      "situation": "You and Rahul run food trucks and share one generator, so you must park together to open. Each of you picks a spot for Saturday: the stadium, the college, or the night market.",
+      "situation": "You and George run food trucks and share one generator, so you must park together to open. Each of you picks a spot for Saturday: the stadium, the college, or the night market.",
       "incentives": {
-        "m3.s.stuck": "Parking together lets you both open, and the stadium and the college are equally good. The night market is your best spot if Rahul comes too. Rahul has no permit there and does worse there than at the stadium."
+        "m3.s.stuck": "Parking together lets you both open, and the stadium and the college are equally good. The night market is your best spot if George comes too. George has no permit there and does worse there than at the stadium."
       },
       "timing": "You both decide on Thursday, separately.",
-      "information": "You both know what the other wants. You don’t know where Rahul will park.",
-      "matrixLabel": "Outcomes for your spot and Rahul’s spot"
+      "information": "You both know what the other wants. You don’t know where George will park.",
+      "matrixLabel": "Outcomes for your spot and George’s spot"
     }
   ],
   "variations": [
@@ -3868,13 +3868,13 @@
         {
           "id": "owner",
           "text": "Judges each person’s choices by that person’s own numbers.",
-          "meets": "“Leena’s tea gives her less than lassi in every row.”",
+          "meets": "“Emily’s tea gives her less than smoothie in every row.”",
           "misses": "“Tea gives me a low number, so she will drop it.”"
         },
         {
           "id": "every",
           "text": "Sets a choice aside only when another beats it in every case that is still open.",
-          "meets": "“Lassi beats tea against rolls, thalis and snacks.”",
+          "meets": "“Smoothie beats tea against rolls, sandwiches and snacks.”",
           "misses": "“Rolls are usually worse, so I dropped them.”"
         },
         {
@@ -3886,7 +3886,7 @@
         {
           "id": "end",
           "text": "States which pair is left and that it came from the removals, not from the highest number.",
-          "meets": "“Rolls with lassi is all that is left.”",
+          "meets": "“Rolls with smoothie is all that is left.”",
           "misses": "“Snacks with tea, because that is my best cell.”"
         }
       ],

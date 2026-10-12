@@ -68,13 +68,15 @@ begin. Phase 3 implementation has not started as of this checkpoint; starting it
 - **Internationally neutral scenario content.** `docs/STRATEGOS_PRODUCTION_RULES.md` records an
   authorisation override: skin names, settings and vocabulary must be internationally neutral, not
   Indian-English-specific, overriding the V1 Plan's §3.8 "Indian English ... Bengali or Hindi" note
-  (that planned localisation path is dropped, not deferred). **Module 1's 20 skins
-  (`packages/content/data/modules/m1.json`) are rewritten** (common international first names;
-  café/diner, lunch-delivery, and football framing replacing canteen/dhaba, tiffin, mela and
-  cricket vocabulary) and pass the full content validator and hygiene suite. **Modules 2–3
-  (`m2.json`, `m3.json`) and the held-out set (`data/held-out/provisional.json`) are not yet
-  rewritten** and still use Indian names, vocabulary and settings as of this checkpoint — that is a
-  separate, not-yet-scoped follow-up. The British/Indian English *spelling* convention enforced by
+  (that planned localisation path is dropped, not deferred). **Modules 1–3's skins
+  (`packages/content/data/modules/{m1,m2,m3}.json`, 73 skins total) are rewritten** (common
+  international first names; internationally recognisable settings/vocabulary — café/diner,
+  lunch-delivery, football, event hall, city repair app, sandwiches/smoothie — replacing
+  canteen/dhaba, tiffin, mela, cricket, wedding-hall/power-cut framing, ward office, housing
+  society, thali/lassi) and pass the full content validator and hygiene suite. **The held-out set
+  (`data/held-out/provisional.json`) is not yet rewritten** and still uses Indian names, vocabulary
+  and settings as of this checkpoint — a separate, not-yet-scoped follow-up (lower priority: it is
+  not reachable from the app). The British/Indian English *spelling* convention enforced by
   `packages/content/src/lint.ts`'s `US_SPELLING` check is unchanged (out of scope for this override;
   it is a separate decision from scenario content/vocabulary neutrality).
 
