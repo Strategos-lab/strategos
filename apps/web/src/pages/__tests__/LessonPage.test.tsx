@@ -45,6 +45,9 @@ describe('LessonPage (m1.l1, generic item/instance player)', () => {
     renderAt(`/?seed=${SEED}`);
     expect(screen.getByRole('heading', { level: 1, name: 'STRATEGOS' })).toBeInTheDocument();
     expect(screen.getByRole('heading', { level: 2, name: 'Who is deciding?' })).toBeInTheDocument();
+    // App-level about copy: what it's for and the recommended cadence, no hype or gamification language.
+    expect(screen.getByTestId('intro-cadence')).toHaveTextContent('A few exercises a day');
+    expect(document.body.textContent).not.toMatch(/great job|good job|streak|badge|points|level up/i);
     expect(document.body.textContent).not.toMatch(DEV_LABELS);
     await click('Start');
 

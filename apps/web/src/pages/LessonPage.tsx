@@ -82,13 +82,20 @@ export function LessonPage({ lessonId }: { lessonId: string }) {
         <header className="intro-head">
           <p className="label">Strategic thinking laboratory</p>
           <h1 className="wordmark wordmark-lg">STRATEGOS</h1>
-          <p className="intro-lede">{lesson.objective}</p>
+          <p className="intro-lede">
+            Short exercises in reading a situation before reacting to it: who is actually deciding, what their
+            real options are, and what each side knows.
+          </p>
+          <p className="meta" data-testid="intro-cadence">
+            A few exercises a day, most days, builds this habit faster than one long session.
+          </p>
         </header>
         <section className="start" aria-labelledby="start-heading">
           <p className="label">First lesson</p>
           <h2 id="start-heading" className="start-title">
             {lesson.workingTitle}
           </h2>
+          <p className="intro-lede">{lesson.objective}</p>
           <button
             type="button"
             className="btn btn-primary btn-block"
