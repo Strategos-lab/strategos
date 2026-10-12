@@ -43,9 +43,11 @@ describe('web content hygiene', () => {
     const learner = [
       'pages/SlicePage.tsx',
       'pages/LessonPage.tsx',
+      'pages/ModulesPage.tsx',
       'pages/DataPage.tsx',
       'components/StoragePanel.tsx',
       'components/ConfidenceControl.tsx',
+      'components/PageFooter.tsx',
       'lesson/lessonSession.ts',
       'lesson/lessonInstances.ts',
       'lesson/lessonAttemptRecord.ts',

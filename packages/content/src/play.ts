@@ -34,4 +34,5 @@ export const PLAY_CONTENT: ContentBundle = {
 export { makeLookup, generateInstance, type Instance, type Lookup } from './instance.ts';
 export { render, slotValue, storyText } from './render.ts';
 export { diagnose, feedbackFor, keysFor, feedbackKey, type Response, type Diagnosis, type FeedbackMessage } from './feedback/diagnose.ts';
-export type { ContentBundle, Item, Lesson, Module, Curriculum, FeedbackKey } from './types.ts';
+export { termAllowed, lessonOrder } from './gating.ts';
+export type { ContentBundle, Item, Lesson, Module, Curriculum, FeedbackKey, Concept, Rubric, RubricCriterion, FillSlot } from './types.ts';

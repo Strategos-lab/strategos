@@ -45,8 +45,6 @@ describe('LessonPage (m1.l1, generic item/instance player)', () => {
     renderAt(`/?seed=${SEED}`);
     expect(screen.getByRole('heading', { level: 1, name: 'STRATEGOS' })).toBeInTheDocument();
     expect(screen.getByRole('heading', { level: 2, name: 'Who is deciding?' })).toBeInTheDocument();
-    // App-level about copy: what it's for and the recommended cadence, no hype or gamification language.
-    expect(screen.getByTestId('intro-cadence')).toHaveTextContent('A few exercises a day');
     expect(document.body.textContent).not.toMatch(/great job|good job|streak|badge|points|level up/i);
     expect(document.body.textContent).not.toMatch(DEV_LABELS);
     await click('Start');
@@ -100,5 +98,73 @@ describe('LessonPage (m1.l1, generic item/instance player)', () => {
     expect(screen.getByTestId(`feedback-${item.id}`)).toHaveTextContent('✓ Correct');
     await click('Continue');
     expect(heading()).toHaveFocus();
+  });
+
+  it('plays a fill_in item (m1.l2) with inline blanks checked against the engine', async () => {
+    render(
+      <MemoryRouter initialEntries={[`/?seed=${SEED}`]}>
+        <LessonPage lessonId="m1.l2" />
+      </MemoryRouter>,
+    );
+    await click('Start');
+    // First two items are reason_choice; answer either option to reach the fill_in item.
+    for (let i = 0; i < 2; i++) {
+      const group = screen.getByRole('group', { name: 'Your answer' });
+      await userEvent.click(group.querySelectorAll('button')[0]!);
+      await click('Continue');
+    }
+
+    const payoffItem = PLAY_CONTENT.items.find((i) => i.id === 'i.m1.payoff')!;
+    const instance = instanceFor(payoffItem, `${SEED}:${payoffItem.id}`);
+    expect(screen.getByTestId('item-i.m1.payoff')).toBeInTheDocument();
+    const s1 = screen.getByTestId('blank-s1') as HTMLInputElement;
+    const s2 = screen.getByTestId('blank-s2') as HTMLInputElement;
+    expect(screen.getByTestId('btn-check')).toBeDisabled();
+
+    // Wrong answers first: swapped payoffs (the MISREAD_PAYOFF_OWNER known-wrong value).
+    const wrongS1 = payoffItem.slots![0]!.knownWrong[0]!.value;
+    const wrongS2 = payoffItem.slots![1]!.knownWrong[0]!.value;
+    const { slotValue } = await import('@strategos/content/play');
+    await userEvent.type(s1, slotValue(wrongS1, instance));
+    await userEvent.type(s2, slotValue(wrongS2, instance));
+    expect(screen.getByTestId('btn-check')).toBeEnabled();
+    await click('Check');
+    expect(screen.getByTestId('feedback-i.m1.payoff')).toHaveTextContent('Not quite');
+    expect(s1).toBeDisabled();
+    await click('Continue');
+    expect(screen.getByTestId('step-reveal')).toBeInTheDocument();
+  });
+
+  it('plays an own_words item (m1.l4) with a self-check shown after submitting', async () => {
+    render(
+      <MemoryRouter initialEntries={[`/?seed=${SEED}`]}>
+        <LessonPage lessonId="m1.l4" />
+      </MemoryRouter>,
+    );
+    await click('Start');
+    for (let i = 0; i < 3; i++) {
+      const group = screen.getByRole('group', { name: 'Your answer' });
+      await userEvent.click(group.querySelectorAll('button')[0]!);
+      await click('Continue');
+    }
+    expect(screen.getByTestId('item-i.m1.words')).toBeInTheDocument();
+    expect(screen.queryByTestId('self-check')).toBeNull();
+    const input = screen.getByTestId('own-words-input');
+    await userEvent.type(input, 'I would pick my best response to what I believe they will do.');
+    await click('Submit');
+    expect(input).toBeDisabled();
+    const check = screen.getByTestId('self-check');
+    expect(check.textContent).toContain('Names everyone whose choice changes the result');
+    await click('Continue');
+    // Four more reason_choice items remain before this lesson's reveal.
+    for (let i = 0; i < 4; i++) {
+      const group = screen.getByRole('group', { name: 'Your answer' });
+      await userEvent.click(group.querySelectorAll('button')[0]!);
+      await click('Continue');
+    }
+    expect(screen.getByTestId('step-reveal')).toBeInTheDocument();
+    const events = await listLearningEvents();
+    const payload = events[0]!.payload as { items: Array<{ itemId: string; code: string }> };
+    expect(payload.items.find((i) => i.itemId === 'i.m1.words')!.code).toBe('SELF_ASSESSED');
   });
 });

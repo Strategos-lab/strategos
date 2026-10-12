@@ -8,7 +8,12 @@ phase boundary rather than inferring current state from commit messages or chat 
 ## Current phase
 
 Phase 2 (content system and Modules 1–3) is complete and signed off, per the phase sequence in
-`docs/STRATEGOS_V1_PLAN.md` §13. Phase 3 is authorised but not yet started.
+`docs/STRATEGOS_V1_PLAN.md` §13. Phase 3 ("Core play UI") is in progress: a generic, item-list-driven
+lesson player now plays 15 of Module 1–3's 16 lessons end to end (`reason_choice`, `fill_in` and
+`own_words` item types), with a lesson menu linking all of them. Not yet built: the roommate-scenario
+lesson (`m3.l1`), matrix/model-builder UI, predict-with-confidence, decide-as-a-move, observe/DQ
+items, PWA shell items (manifest/update-prompt beyond what already exists), and the deploy/e2e
+pipeline — see "Next gate".
 
 ## Current status
 
@@ -36,6 +41,15 @@ application code (CI installs browsers fresh). **Phase 3 is now authorised to be
   - Repository-hygiene scan-boundary corrections for the two controlled specification/status
     documents.
   - **Final Phase 2 audit: PASS. Phase 2 formally signed off.**
+- Phase 3 (in progress) — generic lesson player (`apps/web/src/lesson/*`, `pages/LessonPage.tsx`,
+  `pages/ModulesPage.tsx`), driven by `@strategos/content`'s Item/Instance model via the new
+  `@strategos/content/play` entry point (held-out-firewall-preserving, see
+  `packages/content/src/play.ts`):
+  - Increment 1 — `m1.l1` playable end to end (`reason_choice` items only).
+  - Increment 2 — `fill_in` and `own_words` (self-assessed) item type support added; a lesson menu
+    added; every Module 1–3 lesson except `m3.l1` (depends on the still-dormant roommate slice) is
+    now playable.
+  - Internationally neutral scenario content — see "Pending authorised changes" below.
 
 ## Final validated checkpoint
 
@@ -60,8 +74,12 @@ Confirmed present in the repository as of this audit, each traceable to a specif
 
 ## Next gate
 
-Phase 3 ("Core play UI, PWA shell and structured explanation" per V1 Plan §13), now authorised to
-begin. Phase 3 implementation has not started as of this checkpoint; starting it is a separate task.
+Phase 3 ("Core play UI, PWA shell and structured explanation" per V1 Plan §13) is in progress (see
+"Completed"). Remaining, not yet scoped or started: migrating the roommate slice onto the generic
+Item model so `m3.l1` becomes playable (tracked since increment 1 as future work, not guessed at
+until an `m3.l1`-shaped item — predict/decide against a fixed matrix — exists); matrix/tap-to-mark
+rendering; model builder; predict-with-confidence; decide-as-a-move; observe-with-DQ items; and the
+deploy/e2e pipeline. Each is a separate task.
 
 ## Pending authorised changes (not yet implemented)
 
