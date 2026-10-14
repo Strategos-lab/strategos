@@ -51,6 +51,7 @@ describe('web content hygiene', () => {
       'lesson/lessonSession.ts',
       'lesson/lessonInstances.ts',
       'lesson/lessonAttemptRecord.ts',
+      'lesson/lessonProgress.ts',
       '../../../packages/content/data/roommate/roommate-kitchen.json',
     ];
     const devOnly = /Phase 0 stub|calibration scoring|Demo only|Debug: show engine output|Tap a cell|Nash|equilibri/i;

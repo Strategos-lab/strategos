@@ -63,6 +63,14 @@ application code (CI installs browsers fresh). **Phase 3 is now authorised to be
     lesson's `reveal` screen. The scenario's `slice.attempt` and the lesson's `lesson.attempt`
     remain two independent events (not correlated) — unchanged from increment 3's design, not
     revisited here since nothing read them together yet.
+  - Increment 5 — lesson-menu UX pass: `apps/web/src/lesson/lessonProgress.ts` derives readiness
+    and completion purely from what's already recorded on-device (which lessons have a
+    `lesson.attempt` event; a lesson's `requires` concepts matched against what completed lessons'
+    `introduces`) — no new tracking system, no mastery scoring, no scheduling (those remain Phase
+    4+ per the V1 Plan's own phase sequence, not started). `ModulesPage` now shows a "Start"/
+    "Continue" entry point to the next ready, not-yet-completed lesson, marks completed lessons,
+    and marks lessons still missing a prerequisite with which earlier lesson to finish first — but
+    every lesson stays a plain, clickable link regardless of state; nothing is enforced or locked.
   - Internationally neutral scenario content — see "Pending authorised changes" below.
 
 ## Final validated checkpoint
