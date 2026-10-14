@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { PLAY_CONTENT } from '@strategos/content/play';
+import { InstallCard } from '../components/InstallCard';
 import { PageFooter } from '../components/PageFooter';
 import { loadLessonProgress, missingPrerequisites, nextLesson, type LessonProgress } from '../lesson/lessonProgress';
 
@@ -55,6 +56,8 @@ export function ModulesPage() {
           </Link>
         </section>
       ) : null}
+
+      <InstallCard />
 
       {PLAY_CONTENT.curriculum.modules.map((m) => (
         <section key={m.id} className="start" aria-labelledby={`module-heading-${m.id}`}>

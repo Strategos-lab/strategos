@@ -28,7 +28,7 @@ async function reachDecide(page: Page, prediction: 'Clean' | 'Leave it') {
 
 test.describe('Learner slice: the shared kitchen', () => {
   test('home leads straight into the encounter; no matrix or dev labels', async ({ page }) => {
-    await page.goto('./#/');
+    await page.goto('./#/lesson/m3.l1');
     await expect(page.getByRole('heading', { name: 'STRATEGOS', exact: true })).toBeVisible();
     await expect(page.locator('table')).toHaveCount(0);
     await expectLearnerClean(page);
@@ -43,7 +43,7 @@ test.describe('Learner slice: the shared kitchen', () => {
 
   test('home: Start comes before the quieter install card', async ({ page }) => {
     await page.setViewportSize({ width: 360, height: 740 });
-    await page.goto('./#/');
+    await page.goto('./#/lesson/m3.l1');
     const start = page.getByRole('button', { name: 'Start' });
     await expect(start).toBeInViewport({ ratio: 1 });
     const card = page.getByTestId('install-card');
@@ -55,7 +55,7 @@ test.describe('Learner slice: the shared kitchen', () => {
 
   test('encounter: story + at-a-glance + Continue fit a 390×844 screen; details collapsed and expandable', async ({ page }) => {
     await page.setViewportSize({ width: 390, height: 844 });
-    await page.goto('./#/');
+    await page.goto('./#/lesson/m3.l1');
     await page.getByRole('button', { name: 'Start' }).click();
     await expectFocusedHeading(page, 'The situation');
     await expect(page.getByTestId('context-situation')).toBeInViewport({ ratio: 1 });
@@ -99,7 +99,7 @@ test.describe('Learner slice: the shared kitchen', () => {
   });
 
   test('70/30 policy and seed stay hidden until summary; seed never shown to learners', async ({ page }) => {
-    await page.goto('./#/?seed=3');
+    await page.goto('./#/lesson/m3.l1?seed=3');
     await reachDecide(page, 'Leave it');
     // Still pre-reveal: no policy mix, no seed word.
     let body = await page.locator('body').innerText();
@@ -124,7 +124,7 @@ test.describe('Learner slice: the shared kitchen', () => {
   });
 
   test('walks the full slice (seed 3: B leaves it) and saves the attempt', async ({ page }) => {
-    await page.goto('./#/?seed=3');
+    await page.goto('./#/lesson/m3.l1?seed=3');
     await page.getByRole('button', { name: 'Start' }).click();
 
     // 1 Encounter
@@ -252,7 +252,7 @@ test.describe('Learner slice: the shared kitchen', () => {
   });
 
   test('seed 1: B cleans; Back works only before the decision; Clean/Clean outcome story', async ({ page }) => {
-    await page.goto('./#/?seed=1');
+    await page.goto('./#/lesson/m3.l1?seed=1');
     await page.getByRole('button', { name: 'Start' }).click();
     await page.getByRole('button', { name: 'Continue' }).click();
     await page.getByRole('button', { name: 'Back' }).click();
@@ -294,7 +294,7 @@ test.describe('Privacy / offline assets', () => {
     page.on('requestfinished', (r) => {
       if (r.url().endsWith('.woff2')) fontRequests.push(r.url());
     });
-    await page.goto('./#/?seed=3');
+    await page.goto('./#/lesson/m3.l1?seed=3');
     await page.getByRole('button', { name: 'Start' }).click();
     await page.getByRole('button', { name: 'Continue' }).click();
     await page.getByRole('button', { name: 'Leave it' }).click();

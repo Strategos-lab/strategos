@@ -87,9 +87,9 @@ test.describe('Phase 0 install', () => {
     await expect(card.getByRole('heading', { name: 'Install STRATEGOS' })).toBeVisible();
     await expect(card).toContainText('Add it to your home screen for full-screen, offline practice.');
 
-    // Card is secondary: it sits after the Start button so it never competes with it.
+    // Card is secondary: it sits after the primary continue/start action so it never competes with it.
     const cardBox = await card.boundingBox();
-    const startBox = await page.getByTestId('btn-start').boundingBox();
+    const startBox = await page.getByTestId('btn-continue-lesson').boundingBox();
     expect(cardBox!.y).toBeGreaterThan(startBox!.y);
 
     // Touch targets >= 44px.

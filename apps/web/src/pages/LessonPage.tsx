@@ -13,7 +13,6 @@ import {
   type Lesson,
   type Response,
 } from '@strategos/content/play';
-import { InstallCard } from '../components/InstallCard';
 import { PageFooter } from '../components/PageFooter';
 import { freshSeed, instanceFor, parseSeed } from '../lesson/lessonInstances';
 import { advance, advanceSelfAssessed, currentItem, isComplete, startLesson, type LessonSession } from '../lesson/lessonSession';
@@ -137,7 +136,6 @@ export function LessonPage({ lessonId: lessonIdProp }: { lessonId?: string }) {
             Start
           </button>
         </section>
-        <InstallCard />
         <PageFooter />
       </main>
     );
