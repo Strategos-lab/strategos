@@ -1,4 +1,4 @@
-import { cleanup, render, screen } from '@testing-library/react';
+import { cleanup, render, screen, within } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { MemoryRouter } from 'react-router-dom';
 import { afterEach, beforeEach, describe, expect, it } from 'vitest';
@@ -8,6 +8,7 @@ import { instanceFor } from '../../lesson/lessonInstances';
 import { listLearningEvents } from '../../storage';
 import { resetLearningDbForTests } from '../../storage/learningDb';
 import { LESSON_ATTEMPT_EVENT_TYPE } from '../../lesson/lessonAttemptRecord';
+import { ATTEMPT_EVENT_TYPE } from '../../slice/attemptRecord';
 
 const DEV_LABELS = /Phase 0 stub|calibration scoring|Demo only|Debug: show engine output|Tap a cell|Nash|equilibri/i;
 const SEED = 7;
@@ -168,18 +169,65 @@ describe('LessonPage (m1.l1, generic item/instance player)', () => {
     expect(payload.items.find((i) => i.itemId === 'i.m1.words')!.code).toBe('SELF_ASSESSED');
   });
 
-  it('plays the roommate scenario directly for m3.l1, not the generic item flow', async () => {
+  it('sequences m3.l1: the roommate scenario, then its 3 generic items, then the lesson reveal', async () => {
     render(
       <MemoryRouter initialEntries={['/?seed=3']}>
         <LessonPage lessonId="m3.l1" />
       </MemoryRouter>,
     );
-    // The roommate scenario's own intro (SlicePage), not LessonPage's generic lesson intro.
+    // The roommate scenario's own intro (SlicePage) plays first, not LessonPage's generic intro.
     expect(screen.getByRole('heading', { level: 1, name: 'STRATEGOS' })).toBeInTheDocument();
     expect(screen.getByRole('heading', { level: 2, name: 'The shared kitchen' })).toBeInTheDocument();
     expect(screen.queryByText('All lessons')).toBeNull();
-    expect(screen.queryByTestId('item-i.m3.dom.reason')).toBeNull();
     await click('Start');
     expect(heading()).toHaveTextContent('The situation');
+
+    // Walk the scenario generically: encounter, predict, confidence, decide, response, outcome, matrix.
+    await click('Continue'); // encounter -> predict
+    await userEvent.click(within(screen.getByRole('group')).getAllByRole('button')[0]!); // predict
+    await click('Continue'); // confirm confidence
+    await userEvent.click(within(screen.getByRole('group', { name: 'Your choice' })).getAllByRole('button')[0]!); // decide
+    await click('Continue'); // response -> outcome
+    await click('Continue'); // outcome -> matrix
+    await click('Continue'); // matrix -> explain
+
+    // Explain: 3 structured questions, one revealed at a time.
+    for (let i = 0; i < 3; i++) {
+      const groups = screen.getAllByRole('group');
+      const current = groups[groups.length - 1]!;
+      const unanswered = within(current)
+        .getAllByRole('button')
+        .find((b) => !b.hasAttribute('disabled'))!;
+      await userEvent.click(unanswered);
+    }
+    await click('Continue'); // FINISH -> summary
+
+    // Summary: the new "Continue" action (not "Try again") hands off into the lesson's generic items.
+    expect(screen.getByTestId('btn-scenario-continue')).toBeInTheDocument();
+    expect(screen.getByTestId('btn-try-again')).toBeInTheDocument();
+    await userEvent.click(screen.getByTestId('btn-scenario-continue'));
+
+    // Now LessonPage's own intro for the lesson's 3 generic items.
+    expect(screen.getByText('Checking each case')).toBeInTheDocument();
+    await click('Start');
+    expect(screen.getByTestId('item-i.m3.dom.reason')).toBeInTheDocument();
+
+    for (let i = 0; i < 3; i++) {
+      const blanks = document.querySelectorAll('.fill-blank');
+      if (blanks.length > 0) {
+        for (const b of Array.from(blanks)) await userEvent.type(b as HTMLInputElement, '1');
+        await click('Check');
+      } else {
+        const group = screen.getByRole('group', { name: 'Your answer' });
+        await userEvent.click(group.querySelectorAll('button')[0]!);
+      }
+      await click('Continue');
+    }
+    expect(screen.getByTestId('step-reveal')).toBeInTheDocument();
+    expect(screen.getAllByTestId('reveal-body').map((p) => p.textContent).join(' ')).toMatch(/dominant/i);
+
+    // Two independent, uncorrelated events: the scenario's own slice.attempt and this lesson's attempt.
+    const events = await listLearningEvents();
+    expect(events.map((e) => e.type).sort()).toEqual([LESSON_ATTEMPT_EVENT_TYPE, ATTEMPT_EVENT_TYPE].sort());
   });
 });

@@ -49,8 +49,12 @@ const STEP_NAMES: Record<Exclude<Step, 'intro'>, string> = {
   summary: 'Summary',
 };
 
-/** First learner-facing experience: one complete roommate encounter, driven by content + engine. */
-export function SlicePage({ scenario = FIRST_SCENARIO }: { scenario?: Scenario }) {
+/**
+ * First learner-facing experience: one complete roommate encounter, driven by content + engine.
+ * `onComplete`, when given, shows an extra "Continue" action on the summary screen (alongside the
+ * usual "Try again") for a caller sequencing this encounter into something larger (e.g. a lesson).
+ */
+export function SlicePage({ scenario = FIRST_SCENARIO, onComplete }: { scenario?: Scenario; onComplete?: () => void }) {
   const [params] = useSearchParams();
   const urlSeed = parseSeed(params.get('seed'));
   const [state, dispatch] = useReducer(
@@ -126,7 +130,7 @@ export function SlicePage({ scenario = FIRST_SCENARIO }: { scenario?: Scenario }
         </p>
         <h1 className="flow-title">{scenario.title}</h1>
       </header>
-      <StepBody scenario={scenario} state={state} dispatch={dispatch} headingRef={headingRef} restartSeed={freshSeed} />
+      <StepBody scenario={scenario} state={state} dispatch={dispatch} headingRef={headingRef} restartSeed={freshSeed} onComplete={onComplete} />
       {state.step === 'summary' && saveNote ? (
         <p className="meta" role="status" data-testid="save-note">
           {saveNote}
@@ -183,6 +187,8 @@ interface StepProps {
   headingRef: RefObject<HTMLHeadingElement | null>;
   /** Try again always draws a fresh seed. */
   restartSeed: () => number;
+  /** Set only when this encounter is embedded in something larger (e.g. a lesson); see SlicePage. */
+  onComplete?: () => void;
 }
 
 /**
@@ -259,7 +265,7 @@ function Said({ label, value, className }: { label: string; value: string; class
   );
 }
 
-function StepBody({ scenario: s, state, dispatch, headingRef, restartSeed }: StepProps) {
+function StepBody({ scenario: s, state, dispatch, headingRef, restartSeed, onComplete }: StepProps) {
   const own = learnerActions(s);
   const opp = opponentActions(s);
   const A = learnerLabel(s);
@@ -460,7 +466,7 @@ function StepBody({ scenario: s, state, dispatch, headingRef, restartSeed }: Ste
       return <ExplainStep scenario={s} state={state} dispatch={dispatch} headingRef={headingRef} restartSeed={restartSeed} />;
 
     case 'summary':
-      return <SummaryStep scenario={s} state={state} dispatch={dispatch} headingRef={headingRef} restartSeed={restartSeed} />;
+      return <SummaryStep scenario={s} state={state} dispatch={dispatch} headingRef={headingRef} restartSeed={restartSeed} onComplete={onComplete} />;
 
     default:
       return null;
@@ -538,7 +544,7 @@ function ExplainStep({ scenario: s, state, dispatch, headingRef }: StepProps) {
   );
 }
 
-function SummaryStep({ scenario: s, state, dispatch, headingRef, restartSeed }: StepProps) {
+function SummaryStep({ scenario: s, state, dispatch, headingRef, restartSeed, onComplete }: StepProps) {
   const own = learnerActions(s);
   const opp = opponentActions(s);
   const B = opponentLabel(s);
@@ -611,9 +617,14 @@ function SummaryStep({ scenario: s, state, dispatch, headingRef, restartSeed }: 
       </section>
 
       <Actions>
+        {onComplete ? (
+          <button type="button" className="btn btn-primary" data-testid="btn-scenario-continue" onClick={onComplete}>
+            Continue
+          </button>
+        ) : null}
         <button
           type="button"
-          className="btn btn-primary"
+          className={onComplete ? 'btn btn-quiet' : 'btn btn-primary'}
           data-testid="btn-try-again"
           onClick={() => dispatch({ type: 'RESTART', seed: restartSeed(), at: nowIso() })}
         >

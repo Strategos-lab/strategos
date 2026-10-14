@@ -81,6 +81,7 @@ export function LessonPage({ lessonId: lessonIdProp }: { lessonId?: string }) {
   const headingRef = useRef<HTMLHeadingElement>(null);
   const [saveNote, setSaveNote] = useState('');
   const savedKey = useRef<string | null>(null);
+  const [scenarioDone, setScenarioDone] = useState(false);
 
   useEffect(() => {
     if (!session) return;
@@ -103,10 +104,11 @@ export function LessonPage({ lessonId: lessonIdProp }: { lessonId?: string }) {
     );
   }, [session]);
 
-  // m3.l1 is the only lesson built on the standalone roommate scenario rather than generic items;
-  // play the existing, unmodified roommate flow for it, not the generic item sequence below.
-  if (lesson.scenario === 'roommate-kitchen') {
-    return <SlicePage scenario={FIRST_SCENARIO} />;
+  // m3.l1 pairs the standalone roommate scenario with its generic items: play the existing,
+  // unmodified roommate flow first (discovery), then fall through to the generic item sequence
+  // below (generalisation) once it's done, exactly as any other lesson's items would play.
+  if (lesson.scenario === 'roommate-kitchen' && !scenarioDone) {
+    return <SlicePage scenario={FIRST_SCENARIO} onComplete={() => setScenarioDone(true)} />;
   }
 
   if (!session) {

@@ -12,11 +12,10 @@ Phase 2 (content system and Modules 1–3) is complete and signed off, per the p
 lesson player plays 15 of Module 1–3's 16 lessons end to end (`reason_choice`, `fill_in` and
 `own_words` item types); the 16th, `m3.l1`, plays its standalone roommate scenario via the existing,
 unmodified `SlicePage`/`machine.ts`/`engineFacts.ts` flow — every lesson in the curriculum is now
-reachable from the lesson menu. Not yet built: sequencing `m3.l1`'s scenario together with its 3
-generic items and reveal into one continuous lesson (still two separate attempts/screens — see
-"Next gate"); matrix/model-builder UI as a *generic* item type; predict-with-confidence and
-decide-as-a-move as generic item types; observe/DQ items; PWA shell items beyond what already
-exists; and the deploy/e2e pipeline.
+reachable from the lesson menu, and `m3.l1` now plays as one continuous lesson: its roommate
+scenario, then its 3 generic items, then its reveal. Not yet built: matrix/model-builder UI as a
+*generic* item type; predict-with-confidence and decide-as-a-move as generic item types;
+observe/DQ items; PWA shell items beyond what already exists; and the deploy/e2e pipeline.
 
 ## Current status
 
@@ -55,9 +54,15 @@ application code (CI installs browsers fresh). **Phase 3 is now authorised to be
   - Increment 3 — `m3.l1` unblocked in the lesson menu: `LessonPage` plays its roommate scenario
     via the existing, unmodified `SlicePage`/`machine.ts`/`engineFacts.ts`/`slice.ts` flow
     (explicitly frozen, Production Rules §K) rather than redesigning those mechanics generically.
-    Deliberately scenario-only: `m3.l1`'s 3 generic items and its `reveal` screen are not yet
-    sequenced together with the scenario into one lesson (two separate, uncorrelated attempts for
-    now) — a follow-up, not guessed at here.
+    Deliberately scenario-only in this increment: the scenario and the lesson's 3 generic
+    items/reveal were two separate, uncorrelated attempts.
+  - Increment 4 — `m3.l1` sequenced into one continuous lesson: `SlicePage` gained an optional
+    `onComplete` prop (additive; unused by the standalone roommate route, which keeps "Try again"
+    only) shown as a "Continue" action on its summary screen; `LessonPage` plays the scenario
+    first, then falls through to the same generic item flow every other lesson uses, ending at the
+    lesson's `reveal` screen. The scenario's `slice.attempt` and the lesson's `lesson.attempt`
+    remain two independent events (not correlated) — unchanged from increment 3's design, not
+    revisited here since nothing read them together yet.
   - Internationally neutral scenario content — see "Pending authorised changes" below.
 
 ## Final validated checkpoint
@@ -84,12 +89,10 @@ Confirmed present in the repository as of this audit, each traceable to a specif
 ## Next gate
 
 Phase 3 ("Core play UI, PWA shell and structured explanation" per V1 Plan §13) is in progress (see
-"Completed"). Remaining, not yet scoped or started: sequencing `m3.l1`'s roommate scenario together
-with its 3 generic items and `reveal` screen into one continuous lesson (needs an `onComplete`
-affordance on `SlicePage` and orchestration in `LessonPage`, explicitly deferred at increment 3);
-matrix/tap-to-mark rendering, predict-with-confidence, decide-as-a-move and observe-with-DQ items as
-*generic* item types (not needed by any currently-authored content, so not built speculatively); and
-the deploy/e2e pipeline. Each is a separate task.
+"Completed"). Every Module 1–3 lesson is now playable end to end. Remaining, not yet scoped or
+started: matrix/tap-to-mark rendering, predict-with-confidence, decide-as-a-move and
+observe-with-DQ items as *generic* item types (not needed by any currently-authored content, so
+not built speculatively); and the deploy/e2e pipeline. Each is a separate task.
 
 ## Pending authorised changes (not yet implemented)
 
