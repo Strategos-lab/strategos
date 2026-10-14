@@ -9,11 +9,14 @@ phase boundary rather than inferring current state from commit messages or chat 
 
 Phase 2 (content system and Modules 1–3) is complete and signed off, per the phase sequence in
 `docs/STRATEGOS_V1_PLAN.md` §13. Phase 3 ("Core play UI") is in progress: a generic, item-list-driven
-lesson player now plays 15 of Module 1–3's 16 lessons end to end (`reason_choice`, `fill_in` and
-`own_words` item types), with a lesson menu linking all of them. Not yet built: the roommate-scenario
-lesson (`m3.l1`), matrix/model-builder UI, predict-with-confidence, decide-as-a-move, observe/DQ
-items, PWA shell items (manifest/update-prompt beyond what already exists), and the deploy/e2e
-pipeline — see "Next gate".
+lesson player plays 15 of Module 1–3's 16 lessons end to end (`reason_choice`, `fill_in` and
+`own_words` item types); the 16th, `m3.l1`, plays its standalone roommate scenario via the existing,
+unmodified `SlicePage`/`machine.ts`/`engineFacts.ts` flow — every lesson in the curriculum is now
+reachable from the lesson menu. Not yet built: sequencing `m3.l1`'s scenario together with its 3
+generic items and reveal into one continuous lesson (still two separate attempts/screens — see
+"Next gate"); matrix/model-builder UI as a *generic* item type; predict-with-confidence and
+decide-as-a-move as generic item types; observe/DQ items; PWA shell items beyond what already
+exists; and the deploy/e2e pipeline.
 
 ## Current status
 
@@ -49,6 +52,12 @@ application code (CI installs browsers fresh). **Phase 3 is now authorised to be
   - Increment 2 — `fill_in` and `own_words` (self-assessed) item type support added; a lesson menu
     added; every Module 1–3 lesson except `m3.l1` (depends on the still-dormant roommate slice) is
     now playable.
+  - Increment 3 — `m3.l1` unblocked in the lesson menu: `LessonPage` plays its roommate scenario
+    via the existing, unmodified `SlicePage`/`machine.ts`/`engineFacts.ts`/`slice.ts` flow
+    (explicitly frozen, Production Rules §K) rather than redesigning those mechanics generically.
+    Deliberately scenario-only: `m3.l1`'s 3 generic items and its `reveal` screen are not yet
+    sequenced together with the scenario into one lesson (two separate, uncorrelated attempts for
+    now) — a follow-up, not guessed at here.
   - Internationally neutral scenario content — see "Pending authorised changes" below.
 
 ## Final validated checkpoint
@@ -75,11 +84,12 @@ Confirmed present in the repository as of this audit, each traceable to a specif
 ## Next gate
 
 Phase 3 ("Core play UI, PWA shell and structured explanation" per V1 Plan §13) is in progress (see
-"Completed"). Remaining, not yet scoped or started: migrating the roommate slice onto the generic
-Item model so `m3.l1` becomes playable (tracked since increment 1 as future work, not guessed at
-until an `m3.l1`-shaped item — predict/decide against a fixed matrix — exists); matrix/tap-to-mark
-rendering; model builder; predict-with-confidence; decide-as-a-move; observe-with-DQ items; and the
-deploy/e2e pipeline. Each is a separate task.
+"Completed"). Remaining, not yet scoped or started: sequencing `m3.l1`'s roommate scenario together
+with its 3 generic items and `reveal` screen into one continuous lesson (needs an `onComplete`
+affordance on `SlicePage` and orchestration in `LessonPage`, explicitly deferred at increment 3);
+matrix/tap-to-mark rendering, predict-with-confidence, decide-as-a-move and observe-with-DQ items as
+*generic* item types (not needed by any currently-authored content, so not built speculatively); and
+the deploy/e2e pipeline. Each is a separate task.
 
 ## Pending authorised changes (not yet implemented)
 

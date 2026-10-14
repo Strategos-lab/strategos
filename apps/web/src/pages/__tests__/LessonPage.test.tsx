@@ -167,4 +167,19 @@ describe('LessonPage (m1.l1, generic item/instance player)', () => {
     const payload = events[0]!.payload as { items: Array<{ itemId: string; code: string }> };
     expect(payload.items.find((i) => i.itemId === 'i.m1.words')!.code).toBe('SELF_ASSESSED');
   });
+
+  it('plays the roommate scenario directly for m3.l1, not the generic item flow', async () => {
+    render(
+      <MemoryRouter initialEntries={['/?seed=3']}>
+        <LessonPage lessonId="m3.l1" />
+      </MemoryRouter>,
+    );
+    // The roommate scenario's own intro (SlicePage), not LessonPage's generic lesson intro.
+    expect(screen.getByRole('heading', { level: 1, name: 'STRATEGOS' })).toBeInTheDocument();
+    expect(screen.getByRole('heading', { level: 2, name: 'The shared kitchen' })).toBeInTheDocument();
+    expect(screen.queryByText('All lessons')).toBeNull();
+    expect(screen.queryByTestId('item-i.m3.dom.reason')).toBeNull();
+    await click('Start');
+    expect(heading()).toHaveTextContent('The situation');
+  });
 });

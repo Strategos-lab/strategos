@@ -2,10 +2,8 @@ import { Link } from 'react-router-dom';
 import { PLAY_CONTENT } from '@strategos/content/play';
 import { PageFooter } from '../components/PageFooter';
 
-/** Lessons the generic lesson player cannot run yet, with why. */
-const UNAVAILABLE: Record<string, string> = {
-  'm3.l1': 'Not yet available on this device — this lesson uses the roommate scenario.',
-};
+/** Lessons the lesson player cannot run yet, with why. Empty for now — kept for future use. */
+const UNAVAILABLE: Record<string, string> = {};
 
 /** Landing page: what the app is for, the recommended cadence, and every lesson across all modules. */
 export function ModulesPage() {

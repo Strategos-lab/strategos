@@ -18,6 +18,8 @@ import { PageFooter } from '../components/PageFooter';
 import { freshSeed, instanceFor, parseSeed } from '../lesson/lessonInstances';
 import { advance, advanceSelfAssessed, currentItem, isComplete, startLesson, type LessonSession } from '../lesson/lessonSession';
 import { persistLessonAttempt } from '../lesson/lessonAttemptRecord';
+import { SlicePage } from './SlicePage';
+import { FIRST_SCENARIO } from '../content';
 
 const nowIso = () => new Date().toISOString();
 const pad2 = (n: number) => String(n).padStart(2, '0');
@@ -100,6 +102,12 @@ export function LessonPage({ lessonId: lessonIdProp }: { lessonId?: string }) {
       () => setSaveNote('This attempt could not be saved on this device.'),
     );
   }, [session]);
+
+  // m3.l1 is the only lesson built on the standalone roommate scenario rather than generic items;
+  // play the existing, unmodified roommate flow for it, not the generic item sequence below.
+  if (lesson.scenario === 'roommate-kitchen') {
+    return <SlicePage scenario={FIRST_SCENARIO} />;
+  }
 
   if (!session) {
     return (

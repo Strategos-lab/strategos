@@ -21,10 +21,6 @@ describe('ModulesPage (lesson menu)', () => {
 
     for (const m of PLAY_CONTENT.curriculum.modules) {
       for (const l of m.lessons) {
-        if (l.id === 'm3.l1') {
-          expect(screen.getByTestId('lesson-m3.l1-blocked')).toHaveTextContent('roommate scenario');
-          continue;
-        }
         const link = screen.getByTestId(`lesson-${l.id}`);
         expect(link).toHaveAttribute('href', `/lesson/${l.id}`);
         expect(link).toHaveTextContent(l.workingTitle);
