@@ -206,6 +206,9 @@ export function LessonPage({ lessonId: lessonIdProp }: { lessonId?: string }) {
         <p className="prose-lead" data-testid="situation">
           {storyText(instance, 'situation')}
         </p>
+        <p className="prose" data-testid="incentive">
+          {storyText(instance, 'incentive')}
+        </p>
 
         {item.type === 'fill_in' ? (
           <h2 id="step-heading" tabIndex={-1} ref={headingRef} className="step-heading step-heading-question">
